@@ -11,51 +11,50 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Billy Andina
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/billy026.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Billy026)]
+[[portfolio](team/billyandina.md)]
 
 * Role: Project Advisor
 
-### Jane Doe
+### Nguyen Nhat Minh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/minhkiwi14.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/minhkiwi14)]
+[[portfolio](team/minh.md)]
 
-* Role: Team Lead
+* Role: Developer
 * Responsibilities: UI
 
-### Johnny Doe
+### Kwan Fai Yew
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/0xf41" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](https://github.com/0xF41)] [[portfolio](team/kwanfaiyew.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Vikram Goyal
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/vikramgoyal23.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/VikramGoyal23)]
+[[portfolio](team/vikramgoyal.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Zayd Mahmud
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/ZaydM18)]
+[[portfolio](team/zaydmahmud.md)]
 
 * Role: Developer
 * Responsibilities: UI
