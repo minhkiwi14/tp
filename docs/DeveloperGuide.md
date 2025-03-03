@@ -1,10 +1,10 @@
 ---
   layout: default.md
-  title: "Developer Guide"
+  title: "Better Call TA"
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# Better Call TA Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -274,27 +274,53 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of student contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Better Call TA is a contact management platform for teaching assistants to manage the details of students in their class(es) as well as relevant administrative details
 
 
 ### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+| Priority  | As a …​                              | I want to …​                                       | So that I can…​                                             |
+|-----------|----------------------------------|------------------------------------------------|------------------------------------------------|
+| ***       | New user                         | See usage instructions                         | Refer to instructions when I forget how to use the App |
+| ***       | User                             | Add a new person                              |                                                    |
+| ***       | User                             | Delete a person                              | Remove entries that I no longer need            |
+| ***       | User                             | Find a person by name                        | Locate details of persons without going through the entire list |
+| **        | User                             | Hide private contact details                 | Minimize the chance of someone else seeing them by accident |
+| *         | User with many persons in the address book | Sort persons by name                         | Locate a person easily                            |
+| ***       | TA                               | View my student’s contacts                   | Reference them when writing emails              |
+| ***       | TA                               | Add my student’s contact                     | Modify the list when a new student joins        |
+| ***       | TA                               | Delete my student’s contact                  | Modify the list if they drop the module        |
+| **        | TA                               | Edit my student’s contact                    | Change minute details as the course goes on    |
+| **        | TA                               | Track the attendance of a student            | Mark them on participation                     |
+| **        | TA                               | Filter my student’s contact by name          | Easily find them for emergencies               |
+| **        | TA                               | Import student contact lists                 | Avoid manually entering data for large classes |
+| **        | TA                               | Archive student contact information          | Keep my active list clean and organized        |
+| **        | TA                               | Use keyboard shortcuts for common actions    | Navigate the platform more efficiently         |
+| **        | TA                               | Create a “quick view” summary of a student’s key details | Access essential information at a glance  |
+| **        | TA                               | Add a student without filling in all the information | Add a student without having all their details |
+| *         | TA                               | Clear my student’s contacts                  | Start with a new list after every semester     |
+| *         | TA                               | View the general grade of a student          | Filter out those who may need the most help    |
+| * (Epic)  | TA                               | Sort my students according to different categories | Track their progress against certain metrics |
+| *         | TA                               | Sort students by attendance                  | Track which classes they have attended        |
+| *         | TA                               | Categorize my students into their respective classes | Easily find students belonging to a specific class |
+| *         | TA                               | Categorize my students into their group teams | Contact the team as a whole                    |
+| *         | TA                               | Sort students by grades                      | See who needs more guidance                   |
+| *         | TA                               | Check when a student has an appointment with me | Get to our meeting on time                    |
+| *         | TA                               | Track each student’s class participation     | Give them the appropriate marks               |
+| *         | TA                               | Set preferred communication methods for each student | Contact them in the way they prefer      |
+| *         | TA                               | Add detailed notes to student profiles       | Keep track of important details               |
+| *         | TA                               | View a calendar of all student-related events | Stay organized and prepared                   |
+| *         | TA                               | Track student accommodations                 | Ensure compliance with university policies    |
+| *         | TA                               | Generate visual graphs of student engagement trends | Present data clearly during meetings     |
+| *         | TA                               | Toggle between light and dark mode          | Use the platform comfortably in different lighting conditions |
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+
 
 *{More to be added}*
 

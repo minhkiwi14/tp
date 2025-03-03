@@ -32,9 +32,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Kwan Fai Yew
 
-<img src="images/0xf41" width="200px">
+<img src="images/0xf41.jpg" width="200px">
 
-[[github](https://github.com/0xF41)] [[portfolio](team/kwanfaiyew.md)]
+[[github](https://github.com/0xF41)]
+[[portfolio](team/kwanfaiyew.md)]
 
 * Role: Developer
 * Responsibilities: Data
