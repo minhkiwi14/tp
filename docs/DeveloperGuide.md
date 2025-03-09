@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -67,13 +67,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,7 +116,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -139,7 +139,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -287,12 +287,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 | Priority  | As a …​                              | I want to …​                                       | So that I can…​                                             |
 |-----------|----------------------------------|------------------------------------------------|------------------------------------------------|
-| ***       | New user                         | See usage instructions                         | Refer to instructions when I forget how to use the App |
-| ***       | User                             | Add a new person                              |                                                    |
-| ***       | User                             | Delete a person                              | Remove entries that I no longer need            |
-| ***       | User                             | Find a person by name                        | Locate details of persons without going through the entire list |
-| **        | User                             | Hide private contact details                 | Minimize the chance of someone else seeing them by accident |
-| *         | User with many persons in the address book | Sort persons by name                         | Locate a person easily                            |
+| ***       | New user                         | See usage instructions                        | Refer to instructions when I forget how to use the App |
+| ***       | User                             | Add a new person                              | Add a new student to the tutorial group       |
+| ***       | User                             | Delete a person                              | Remove students no longer taking the course      |
+| ***       | User                             | Find a student by name                                | Locate details of a student without going through the entire list |
+| **        | User                  | Hide private contact details              | Minimize the chance of someone else seeing them by accident |
+| *         | User with many students in the address book | Sort students by name                                | Locate a person easily                    |
 | ***       | TA                               | View my student’s contacts                   | Reference them when writing emails              |
 | ***       | TA                               | Add my student’s contact                     | Modify the list when a new student joins        |
 | ***       | TA                               | Delete my student’s contact                  | Modify the list if they drop the module        |
@@ -326,16 +326,71 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `BetterCallTA` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**<u>Use case: List all students</u>**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to list all students
+2. BetterCallTA displays all students in an ordered list.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. List is empty
+
+    Use case ends.
+
+<br>
+
+**<u>Use case: Add a student</u>**
+
+**MSS**
+
+1. User requests to add a student
+2. BetterCallTA checks validity of provided information
+3. BetterCallTA adds the student
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Not all information is given.
+
+    * 1a1. BetterCallTA sets fields where information is not given to "NA".
+
+      Use case resumes at step 2.
+
+* 2a. Student ID has incorrect format.
+
+    * 2a1. BetterCallTA shows an error message, specifying the correct format.
+
+      Use case ends.
+
+* 2b. Email is not NA and does not have a correct domain format.
+
+    * 2b1. BetterCallTA shows an error message, specifying that correct domain is missing.
+
+      Use case ends.
+
+* 3a. The student cannot be added to the list.
+
+    * 3a1. BetterCallTA shows an error message.
+
+      Use case ends.
+
+<br>
+
+**<u>Use case: Delete a student</u>**
+
+**MSS**
+
+1.  User requests to <u>list students (UC1)</u>
+2.  BetterCallTA shows a list of students
+3.  User requests to delete a specific student in the list
+4.  BetterCallTA deletes the student
 
     Use case ends.
 
@@ -347,9 +402,22 @@ _{Explain here how the data archiving feature will be implemented}_
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. BetterCallTA shows an error message.
 
       Use case resumes at step 2.
+
+<br>
+
+**<u>Use case: See usage instructions</u>**
+
+**MSS**
+
+1. User requests to see all usage instructions
+2. BetterCallTA displays a link to the User Guide
+
+   Use case ends.
+
+<br>
 
 *{More to be added}*
 
