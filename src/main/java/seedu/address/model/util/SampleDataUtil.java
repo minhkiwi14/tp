@@ -22,6 +22,9 @@ public class SampleDataUtil {
     public static final Remark EMPTY_REMARK = new Remark("");
 
     public static Person[] getSamplePersons() {
+        // For future
+        return new Person[] {};
+        /**
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"), EMPTY_REMARK,
@@ -41,7 +44,7 @@ public class SampleDataUtil {
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), EMPTY_REMARK,
                 getTagSet("colleagues"))
-        };
+        };*/
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
