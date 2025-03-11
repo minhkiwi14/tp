@@ -4,12 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's address in the address book.
+ * Represents a Person's address in BetterCallTA.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
 public class Address {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Addresses can take any values, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -27,7 +28,7 @@ public class Address {
     public Address(String address) {
         requireNonNull(address);
         checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
-        value = address;
+        this.value = address;
     }
 
     /**
@@ -39,7 +40,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return value;
+        return this.value;
     }
 
     @Override
@@ -54,12 +55,12 @@ public class Address {
         }
 
         Address otherAddress = (Address) other;
-        return value.equals(otherAddress.value);
+        return this.value.equals(otherAddress.value);
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return this.value.hashCode();
     }
 
 }

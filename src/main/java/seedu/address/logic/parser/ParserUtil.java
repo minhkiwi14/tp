@@ -2,13 +2,19 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
+import seedu.address.model.person.Participation;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Id;
+import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Course;
 
 /**
@@ -104,5 +110,57 @@ public class ParserUtil {
             throw new ParseException(Course.MESSAGE_CONSTRAINTS);
         }
         return new Course(trimmedCourse);
+    }
+
+    /**
+     * Parses a {@code String attendance} into a {@code Attendance}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attendance} is invalid.
+     */
+    public static Attendance parseAttendance(String attendance) throws ParseException {
+        requireNonNull(attendance);
+        String trimmedAttendance = attendance.trim();
+        if (!Attendance.isValidAttendance(trimmedAttendance)) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
+        return new Attendance(trimmedAttendance);
+    }
+
+    /**
+     * Parses a {@code String participation} into a {@code Participation}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code participation} is invalid.
+     */
+    public static Participation parseParticipation(String participation) throws ParseException {
+        requireNonNull(participation);
+        String trimmedParticipation = participation.trim();
+        if (!Participation.isValidParticipation(trimmedParticipation)) {
+            throw new ParseException(Participation.MESSAGE_CONSTRAINTS);
+        }
+        return new Participation(trimmedParticipation);
+    }
+
+    // Not yet implemented
+
+    /**
+     * Parses a {@code String grade} into a {@code Grade}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code grade} is invalid.
+     */
+    public static Grade parseGrade(String grade) throws ParseException {
+        return new Grade();
+    }
+
+    /**
+     * Parses a {@code String notes} into a list of {@code Note}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code notes} is invalid.
+     */
+    public static List<Note> parseNotes(String notes) throws ParseException {
+        return List.of();
     }
 }
