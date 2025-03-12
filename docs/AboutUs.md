@@ -53,7 +53,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zayd Mahmud
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zaydm18.png" width="200px">
 
 [[github](https://github.com/ZaydM18)]
 [[portfolio](team/zaydmahmud.md)]
