@@ -151,7 +151,5 @@ class JsonAdaptedPerson {
         final List<Note> modelNotes = new ArrayList<>(studentNotes);
         return new Person(modelId, modelName, modelPhone, modelEmail,
                 modelCourse, modelAttendance, modelParticipation, modelGrade, modelNotes);
-        }
     }
-
 }
