@@ -78,7 +78,9 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
 
-        if ()
+        if (containsSameId(editedPerson)) {
+            throw new DuplicateIdException();
+        }
 
         internalList.set(index, editedPerson);
     }
