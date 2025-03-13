@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.DuplicateIdException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -34,6 +35,18 @@ public class UniquePersonList implements Iterable<Person> {
     public boolean contains(Person toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSamePerson);
+    }
+
+    /**
+     * Returns the person with the given Student ID.
+     * Returns null if no such person exists.
+     */
+    public Person getPerson(Id id) {
+        requireNonNull(id);
+        return internalList.stream()
+                .filter(p -> p.getId()
+                .equals(id))
+                .findFirst().orElse(null);
     }
 
     /**
@@ -65,6 +78,8 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
 
+        if ()
+
         internalList.set(index, editedPerson);
     }
 
@@ -94,8 +109,8 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void setPersons(List<Person> persons) {
         requireAllNonNull(persons);
-        if (!personsAreUnique(persons)) {
-            throw new DuplicatePersonException();
+        if (!idsAreUnique(persons)) {
+            throw new DuplicateIdException();
         }
 
         internalList.setAll(persons);
@@ -139,12 +154,20 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if the list contains only unique student IDs.
      */
-    private boolean personsAreUnique(List<Person> persons) {
+    private boolean containsSameId(Person person) {
+        Id id = person.getId();
+        return internalList.stream().anyMatch(p -> p.getId().equals(id));
+    }
+
+    /**
+     * Returns true if {@code persons} contains only unique student IDs.
+     */
+    private boolean idsAreUnique(List<Person> persons) {
         for (int i = 0; i < persons.size() - 1; i++) {
             for (int j = i + 1; j < persons.size(); j++) {
-                if (persons.get(i).isSamePerson(persons.get(j))) {
+                if (persons.get(i).getId().equals(persons.get(j).getId())) {
                     return false;
                 }
             }

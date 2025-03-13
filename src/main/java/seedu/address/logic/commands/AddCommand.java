@@ -27,6 +27,7 @@ public class AddCommand extends Command {
             %s ID (Student ID)
 
             Optional Parameters:
+            (Cannot have duplicate parameters)
             %s PHONE
             %s EMAIL
             %s COURSE
@@ -36,8 +37,8 @@ public class AddCommand extends Command {
             add /name Jesse Pinkman /id A1234567C /phone 98765432 /email jesse@nus.edu.sg /course CS2103T
             """;
 
-    public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD, PREFIX_NAME,
-            PREFIX_ID, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_COURSE);
+    public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD,
+            PREFIX_NAME,PREFIX_ID, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_COURSE);
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
