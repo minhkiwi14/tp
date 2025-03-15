@@ -25,17 +25,6 @@ public class Person {
     private final List<Note> notes;
 
     /**
-     * Overloaded Constructor for Person.
-     * Used when initializing a new Person object with minimal details.
-     *
-     * @param id   The id of the person.
-     * @param name The name of the person.
-     */
-    public Person(Id id, Name name) {
-        this(id, name, new Phone(""), new Email(""), new Course(""));
-    }
-
-    /**
      * Constructor for Person.
      * Used when initializing a new Person object with full details.
      *
@@ -61,7 +50,7 @@ public class Person {
     /**
      * Constructor for Person.
      * Used when setting all fields of a Person object.
-     * 
+     *
      * @param id            The student ID of the person.
      * @param name          The name of the person.
      * @param phone         The phone number of the person.
