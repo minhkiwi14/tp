@@ -51,18 +51,15 @@ public class ArgumentTokenizer {
     }
 
     /**
-     * {@see findAllPrefixPositions}
+     * Finds all occurrences of a given prefix in the arguments string.
      */
     private static List<PrefixPosition> findPrefixPositions(String argsString, Prefix prefix) {
         List<PrefixPosition> positions = new ArrayList<>();
-
         int prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), 0);
         while (prefixPosition != -1) {
-            PrefixPosition extendedPrefix = new PrefixPosition(prefix, prefixPosition);
-            positions.add(extendedPrefix);
-            prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition);
+            positions.add(new PrefixPosition(prefix, prefixPosition));
+            prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition + 1);
         }
-
         return positions;
     }
 
@@ -77,8 +74,8 @@ public class ArgumentTokenizer {
      *         not found
      */
     private static int findPrefixPosition(String argsString, String prefix, int fromIndex) {
-        int prefixIndex = argsString.indexOf(" /" + prefix, fromIndex); // Ensure space before /
-        return prefixIndex == -1 ? -1 : prefixIndex + 1; // Adjust to start at '/'
+        int prefixIndex = argsString.indexOf(prefix, fromIndex); // Simplified search
+        return prefixIndex == -1 ? -1 : prefixIndex; // Return position directly
     }
 
     /**
@@ -95,22 +92,18 @@ public class ArgumentTokenizer {
      * @return ArgumentMultimap object that maps prefixes to their arguments
      */
     private static ArgumentMultimap extractArguments(String argsString, List<PrefixPosition> prefixPositions) {
-
         // Sort by start position
         prefixPositions.sort((prefix1, prefix2) -> prefix1.getStartPosition() - prefix2.getStartPosition());
 
         // Insert a PrefixPosition to represent the preamble
-        PrefixPosition preambleMarker = new PrefixPosition(new Prefix(""), 0);
-        prefixPositions.add(0, preambleMarker);
+        prefixPositions.add(0, new PrefixPosition(new Prefix(""), 0));
 
         // Add a dummy PrefixPosition to represent the end of the string
-        PrefixPosition endPositionMarker = new PrefixPosition(new Prefix(""), argsString.length());
-        prefixPositions.add(endPositionMarker);
+        prefixPositions.add(new PrefixPosition(new Prefix(""), argsString.length()));
 
         // Map prefixes to their argument values (if any)
         ArgumentMultimap argMultimap = new ArgumentMultimap();
         for (int i = 0; i < prefixPositions.size() - 1; i++) {
-            // Extract and store prefixes and their arguments
             Prefix argPrefix = prefixPositions.get(i).getPrefix();
             String argValue = extractArgumentValue(argsString, prefixPositions.get(i), prefixPositions.get(i + 1));
             argMultimap.put(argPrefix, argValue);
@@ -129,8 +122,7 @@ public class ArgumentTokenizer {
             PrefixPosition nextPrefixPosition) {
         Prefix prefix = currentPrefixPosition.getPrefix();
         int valueStartPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length() + 1; // +1 for space
-        String value = argsString.substring(valueStartPos, nextPrefixPosition.getStartPosition());
-        return value.trim();
+        return argsString.substring(valueStartPos, nextPrefixPosition.getStartPosition()).trim();
     }
 
     /**
