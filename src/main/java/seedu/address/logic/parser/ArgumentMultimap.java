@@ -30,9 +30,8 @@ public class ArgumentMultimap {
      * @param argValue Argument value to be associated with the specified prefix key
      */
     public void put(Prefix prefix, String argValue) {
-        List<String> argValues = getAllValues(prefix);
-        argValues.add(argValue);
-        argMultimap.put(prefix, argValues);
+        // Updated to use computeIfAbsent to avoid overwriting the list
+        argMultimap.computeIfAbsent(prefix, k -> new ArrayList<>()).add(argValue);
     }
 
     /**
@@ -49,10 +48,7 @@ public class ArgumentMultimap {
      * Modifying the returned list will not affect the underlying data structure of the ArgumentMultimap.
      */
     public List<String> getAllValues(Prefix prefix) {
-        if (!argMultimap.containsKey(prefix)) {
-            return new ArrayList<>();
-        }
-        return new ArrayList<>(argMultimap.get(prefix));
+        return new ArrayList<>(argMultimap.getOrDefault(prefix, new ArrayList<>()));
     }
 
     /**
@@ -67,8 +63,8 @@ public class ArgumentMultimap {
      * once among the arguments.
      */
     public void verifyNoDuplicatePrefixesFor(Prefix... prefixes) throws ParseException {
-        Prefix[] duplicatedPrefixes = Stream.of(prefixes).distinct()
-                .filter(prefix -> argMultimap.containsKey(prefix) && argMultimap.get(prefix).size() > 1)
+        Prefix[] duplicatedPrefixes = Stream.of(prefixes)
+                .filter(prefix -> argMultimap.getOrDefault(prefix, List.of()).size() > 1)
                 .toArray(Prefix[]::new);
 
         if (duplicatedPrefixes.length > 0) {
