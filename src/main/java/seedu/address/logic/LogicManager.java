@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
@@ -38,6 +40,7 @@ public class LogicManager implements Logic {
      */
     public LogicManager(Model model, Storage storage) {
         this.model = model;
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         this.storage = storage;
         addressBookParser = new AddressBookParser();
     }
