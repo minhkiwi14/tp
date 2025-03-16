@@ -11,7 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -21,6 +23,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+    private final ObservableList<Person> personList;
     private final FilteredList<Person> filteredPersons;
 
     /**
@@ -33,6 +36,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.personList = this.addressBook.getPersonList();
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
@@ -94,6 +98,18 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Person getPerson(Id id) throws PersonNotFoundException{
+        requireNonNull(id);
+        Person person = addressBook.getPerson(id);
+
+        if (person != null) {
+            return person;
+        } else {
+            throw new PersonNotFoundException();
+        }
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
@@ -109,6 +125,13 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+    //=========== Person List Accessors ======================================================================
+
+    @Override
+    public ObservableList<Person> getPersonList() {
+        return this.personList;
     }
 
     //=========== Filtered Person List Accessors =============================================================
