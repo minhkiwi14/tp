@@ -43,7 +43,18 @@ public class Messages {
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Email: ")
-                .append(person.getEmail());
+                .append(person.getEmail())
+                .append("; Course: ")
+                .append(person.getCourse())
+                .append("; Attendance: ")
+                .append(person.getAttendance())
+                .append("; Participation: ")
+                .append(person.getParticipation())
+                .append("; Grade: ")
+                .append(person.getGrade());
+                //.append("; Note: ")
+                //.append(person.getNote());
+
         return builder.toString();
     }
 

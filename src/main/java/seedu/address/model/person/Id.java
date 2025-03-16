@@ -10,13 +10,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Id {
 
     public static final String MESSAGE_CONSTRAINTS = 
-            "IDs should start with the letter 'A', followed by 7 digits, and end with an uppercase letter.";
+            "The inputted ID has an incorrect format. "
+            + "Please refer to the User Guide for the accepted formats.";
 
     /**
      * The first character of the ID must be 'A',
      * followed by 7 digits, and end with an uppercase letter.
      */
-    public static final String VALIDATION_REGEX = "^[A]\\d{7}[A-Z]$";
+    public static final String VALIDATION_REGEX = "^(A|U|HT|NT)\\d{7}[ABEHJLMNRUWXY]$";
 
     public final String id;
 
