@@ -17,10 +17,14 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
+import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -141,12 +145,25 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Course course;
+        private Attendance attendance;
+        private Participation participation;
+        private Grade grade;
+        private Note note;
         
-        public EditPersonDescriptor() {}
+        /**
+         * Default constructor.
+         * Sets {@code attendance}, {@code participation}, {@code grade} and {@code note} to their default
+         * values.
+         */
+        public EditPersonDescriptor() {
+            setAttendance(new Attendance());
+            setParticipation(new Participation());
+            setGrade(new Grade());
+            setNote(new Note("NA"));
+        }
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setNewId(toCopy.new_id);
@@ -154,6 +171,10 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setCourse(toCopy.course);
+            setAttendance(toCopy.attendance);
+            setParticipation(toCopy.participation);
+            setGrade(toCopy.grade);
+            setNote(toCopy.note);
         }
 
         /**
@@ -203,6 +224,38 @@ public class EditCommand extends Command {
             return Optional.ofNullable(course);
         }
 
+        public void setAttendance(Attendance attendance) {
+            this.attendance = attendance;
+        }
+
+        public Optional<Attendance> getAttendance() {
+            return Optional.ofNullable(attendance);
+        }
+
+        public void setParticipation(Participation participation) {
+            this.participation = participation;
+        }
+
+        public Optional<Participation> getParticipation() {
+            return Optional.ofNullable(participation);
+        }
+
+        public void setGrade(Grade grade) {
+            this.grade = grade;
+        }
+
+        public Optional<Grade> getGrade() {
+            return Optional.ofNullable(grade);
+        }
+
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -219,7 +272,11 @@ public class EditCommand extends Command {
                     && Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(course, otherEditPersonDescriptor.course);
+                    && Objects.equals(course, otherEditPersonDescriptor.course)
+                    && Objects.equals(attendance, otherEditPersonDescriptor.attendance)
+                    && Objects.equals(participation, otherEditPersonDescriptor.participation)
+                    && Objects.equals(grade, otherEditPersonDescriptor.grade)
+                    && Objects.equals(note, otherEditPersonDescriptor.note);
         }
 
         @Override
@@ -230,6 +287,10 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("course", course)
+                    .add("attendance", attendance)
+                    .add("participation", participation)
+                    .add("grade", grade)
+                    .add("note", note)
                     .toString();
         }
     }
