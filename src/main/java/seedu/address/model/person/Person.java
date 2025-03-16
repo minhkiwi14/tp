@@ -278,7 +278,12 @@ public class Person {
         return this.id.equals(otherPerson.id)
                 && this.name.equals(otherPerson.name)
                 && this.phone.equals(otherPerson.phone)
-                && this.email.equals(otherPerson.email);
+                && this.email.equals(otherPerson.email)
+                && this.course.equals(otherPerson.course)
+                && this.attendance.equals(otherPerson.attendance)
+                && this.participation.equals(otherPerson.participation)
+                && this.grade.equals(otherPerson.grade);
+                //&& this.notes.equals(otherPerson.notes);
     }
 
     /**
@@ -305,6 +310,10 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("course", course)
+                .add("attendance", attendance)
+                .add("participation", participation)
+                .add("grade", grade)
+                //.add("notes", notes)
                 .toString();
     }
 }

@@ -45,14 +45,14 @@ public class Attendance {
      */
     public Attendance(String status) {
         requireNonNull(status);
-        checkArgument(isValidAttendance(status), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
         this.status = attendanceMap.get(status.toUpperCase());
     }
 
     /**
      * Returns true if a given string is a valid attendance status.
      */
-    public static boolean isValidAttendance(String test) {
+    public static boolean isValidStatus(String test) {
         return attendanceMap.containsKey(test.toUpperCase());
     }
 

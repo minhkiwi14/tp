@@ -74,16 +74,11 @@ public class UniquePersonList implements Iterable<Person> {
             throw new PersonNotFoundException();
         }
 
-        boolean areSamePeople = target.isSamePerson(editedPerson);
-        boolean alreadyContainsEditedPerson = contains(editedPerson);
-        boolean isIdChanged = !target.getId().equals(editedPerson.getId());
-        boolean listAlreadyContainsId = containsSameId(editedPerson);
-
-        if (!areSamePeople && alreadyContainsEditedPerson) {
+        if (!target.isSamePerson(editedPerson) && contains(editedPerson)) {
             throw new DuplicatePersonException();
         }
 
-        if (isIdChanged && listAlreadyContainsId) {
+        if (containsSameId(editedPerson)) {
             throw new DuplicateIdException();
         }
 
