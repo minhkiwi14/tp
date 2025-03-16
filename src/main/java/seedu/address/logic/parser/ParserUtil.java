@@ -121,7 +121,7 @@ public class ParserUtil {
     public static Attendance parseAttendance(String attendance) throws ParseException {
         requireNonNull(attendance);
         String trimmedAttendance = attendance.trim();
-        if (!Attendance.isValidAttendance(trimmedAttendance)) {
+        if (!Attendance.isValidStatus(trimmedAttendance)) {
             throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
         }
         return new Attendance(trimmedAttendance);
@@ -136,7 +136,7 @@ public class ParserUtil {
     public static Participation parseParticipation(String participation) throws ParseException {
         requireNonNull(participation);
         String trimmedParticipation = participation.trim();
-        if (!Participation.isValidParticipation(trimmedParticipation)) {
+        if (!Participation.isValidStatus(trimmedParticipation)) {
             throw new ParseException(Participation.MESSAGE_CONSTRAINTS);
         }
         return new Participation(trimmedParticipation);

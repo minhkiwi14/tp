@@ -43,14 +43,14 @@ public class Participation {
      */
     public Participation(String status) {
         requireNonNull(status);
-        checkArgument(isValidParticipation(status), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
         this.status = participationMap.get(status.toUpperCase());
     }
 
     /**
      * Returns true if a given string is a valid participation status.
      */
-    public static boolean isValidParticipation(String test) {
+    public static boolean isValidStatus(String test) {
         return participationMap.containsKey(test.toUpperCase());
     }
 
