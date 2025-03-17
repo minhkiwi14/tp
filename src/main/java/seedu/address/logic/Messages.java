@@ -1,10 +1,13 @@
 package seedu.address.logic;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javafx.util.Pair;
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Person;
 
 /**
@@ -43,8 +46,35 @@ public class Messages {
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Email: ")
-                .append(person.getEmail());
+                .append(person.getEmail())
+                .append("; Course: ")
+                .append(person.getCourse())
+                .append("; Attendance: ")
+                .append(person.getAttendance())
+                .append("; Participation: ")
+                .append(person.getParticipation())
+                .append("; Grade: ")
+                .append(person.getGrade());
+                //.append("; Note: ")
+                //.append(person.getNote());
+
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code updatedFields} to be displayed as output for Edit command.
+     * 
+     * @param oldId original ID to identify person edited.
+     */
+    public static String editFormat(Id oldId, List<Pair<String, String>> updatedFields) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Original Id: " + oldId + ", ");
+
+        for (Pair<String, String> p : updatedFields) {
+            sb.append(p.getKey() + ": " + p.getValue() + ", ");
+        }
+        sb.delete(sb.length() - 2, sb.length()); // remove last comma
+
+        return sb.toString();
+    }
 }

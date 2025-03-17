@@ -9,18 +9,25 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import javafx.util.Pair;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
+import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -85,7 +92,11 @@ public class EditCommand extends Command {
 
             model.setPerson(personToEdit, editedPerson);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+
+            List<Pair<String, String>> updatedFields = getUpdatedFields(personToEdit, editedPerson);
+
+            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
+                    Messages.editFormat(personToEdit.getId(), updatedFields)));
         } catch (PersonNotFoundException e) {
             throw new CommandException(e.getMessage());
         }
@@ -109,6 +120,36 @@ public class EditCommand extends Command {
                 personToEdit.getNotes());
     }
 
+    /**
+     * Returns the list of changed fields between {@code personToEdit} and
+     * {@code editedPerson} and their values.
+     */
+    private List<Pair<String, String>> getUpdatedFields(Person personToEdit, Person editedPerson) {
+        List<Pair<String, String>> updatedFields = new ArrayList<>();
+
+        if (!personToEdit.getId().equals(editedPerson.getId())) {
+            updatedFields.add(new Pair<>("New Id", editedPerson.getId().toString()));
+        }
+
+        if (!personToEdit.getName().equals(editedPerson.getName())) {
+            updatedFields.add(new Pair<>("Name", editedPerson.getName().toString()));
+        }
+
+        if (!personToEdit.getPhone().equals(editedPerson.getPhone())) {
+            updatedFields.add(new Pair<>("Phone", editedPerson.getPhone().toString()));
+        }
+
+        if (!personToEdit.getEmail().equals(editedPerson.getEmail())) {
+            updatedFields.add(new Pair<>("Email", editedPerson.getEmail().toString()));
+        }
+
+        if (!personToEdit.getCourse().equals(editedPerson.getCourse())) {
+            updatedFields.add(new Pair<>("Course", editedPerson.getCourse().toString()));
+        }
+
+        return updatedFields;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -121,12 +162,14 @@ public class EditCommand extends Command {
         }
 
         EditCommand otherEditCommand = (EditCommand) other;
-        return editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+        return id.equals(otherEditCommand.id)
+                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .add("id", id)
                 .add("editPersonDescriptor", editPersonDescriptor)
                 .toString();
     }
@@ -141,12 +184,25 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Course course;
+        private Attendance attendance;
+        private Participation participation;
+        private Grade grade;
+        private Note note;
         
-        public EditPersonDescriptor() {}
+        /**
+         * Default constructor.
+         * Sets {@code attendance}, {@code participation}, {@code grade} and {@code note} to their default
+         * values.
+         */
+        public EditPersonDescriptor() {
+            setAttendance(new Attendance());
+            setParticipation(new Participation());
+            setGrade(new Grade());
+            setNote(new Note("NA"));
+        }
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setNewId(toCopy.new_id);
@@ -154,6 +210,10 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setCourse(toCopy.course);
+            setAttendance(toCopy.attendance);
+            setParticipation(toCopy.participation);
+            setGrade(toCopy.grade);
+            setNote(toCopy.note);
         }
 
         /**
@@ -203,6 +263,38 @@ public class EditCommand extends Command {
             return Optional.ofNullable(course);
         }
 
+        public void setAttendance(Attendance attendance) {
+            this.attendance = attendance;
+        }
+
+        public Optional<Attendance> getAttendance() {
+            return Optional.ofNullable(attendance);
+        }
+
+        public void setParticipation(Participation participation) {
+            this.participation = participation;
+        }
+
+        public Optional<Participation> getParticipation() {
+            return Optional.ofNullable(participation);
+        }
+
+        public void setGrade(Grade grade) {
+            this.grade = grade;
+        }
+
+        public Optional<Grade> getGrade() {
+            return Optional.ofNullable(grade);
+        }
+
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -219,7 +311,11 @@ public class EditCommand extends Command {
                     && Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(course, otherEditPersonDescriptor.course);
+                    && Objects.equals(course, otherEditPersonDescriptor.course)
+                    && Objects.equals(attendance, otherEditPersonDescriptor.attendance)
+                    && Objects.equals(participation, otherEditPersonDescriptor.participation)
+                    && Objects.equals(grade, otherEditPersonDescriptor.grade)
+                    && Objects.equals(note, otherEditPersonDescriptor.note);
         }
 
         @Override
@@ -230,6 +326,10 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("course", course)
+                    .add("attendance", attendance)
+                    .add("participation", participation)
+                    .add("grade", grade)
+                    .add("note", note)
                     .toString();
         }
     }

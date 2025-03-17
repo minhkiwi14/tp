@@ -48,8 +48,8 @@ public class PersonBuilder {
         course = new Course(DEFAULT_COURSE);
         attendance = new Attendance();
         participation = new Participation();
-        grade = new Grade();
-        notes = new ArrayList<>();
+        grade = new Grade(
+        notes = new ArrayList<>(
     }
 
     /**
@@ -63,8 +63,8 @@ public class PersonBuilder {
         course = personToCopy.getCourse();
         attendance = personToCopy.getAttendance();
         participation = personToCopy.getParticipation();
-        grade = personToCopy.getGrade();
-        notes = new ArrayList<>(personToCopy.getNotes());
+        grade = personToCopy.getGrade()
+        notes = new ArrayList<>(personToCopy.getNotes())
     }
 
     /**
