@@ -129,8 +129,9 @@ public class PersonBuilder {
         return this;
     }
 
-    // do for notes
-
+    /**
+     * Builds the person object.
+     */
     public Person build() {
         return new Person(id, name, phone, email, course);
     }
