@@ -23,6 +23,7 @@ public class Participation {
         participationMap.put("AVERAGE", ParticipationStatus.AVERAGE);
         participationMap.put("POOR", ParticipationStatus.POOR);
         participationMap.put("NONE", ParticipationStatus.NONE);
+        participationMap.put("UNMARKED", ParticipationStatus.UNMARKED);
     }
 
     public final ParticipationStatus status;

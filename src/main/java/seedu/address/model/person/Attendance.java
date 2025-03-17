@@ -14,6 +14,7 @@ public class Attendance {
     public static final String statusPresentMessage = "Present for Tutorial";
     public static final String statusAbsentMessage = "Absent for Tutorial";
     public static final String statusExcusedMessage = "Excused with Valid Reason";
+    public static final String statusUnmarkedMessage = "Unmarked";
     
     public static final String MESSAGE_CONSTRAINTS =
             "Attendance should only be PRESENT, ABSENT or EXCUSED.";
@@ -25,6 +26,7 @@ public class Attendance {
         attendanceMap.put("PRESENT", AttendanceStatus.PRESENT);
         attendanceMap.put("ABSENT", AttendanceStatus.ABSENT);
         attendanceMap.put("EXCUSED", AttendanceStatus.EXCUSED);
+        attendanceMap.put("UNMARKED", AttendanceStatus.UNMARKED);
     }
 
     public final AttendanceStatus status;
@@ -66,7 +68,7 @@ public class Attendance {
         case EXCUSED:
             return statusExcusedMessage;
         case UNMARKED:
-            return "";
+            return statusUnmarkedMessage;
         default:
             assert false : "Unreachable code";
             return null;

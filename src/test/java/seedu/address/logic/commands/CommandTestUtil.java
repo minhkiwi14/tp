@@ -39,9 +39,9 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_COURSE_AMY = "CS2103T";
-    public static final String VALID_COURSE_BOB = "CS2103T";
+    public static final String VALID_COURSE_BOB = "CS2101";
     public static final String VALID_ATTENDANCE_AMY = "EXCUSED";
-    public static final String VALID_ATTENDANCE_BOB = "PRESENT";
+    public static final String VALID_ATTENDANCE_BOB = "ABSENT";
     public static final String VALID_PARTICIPATION_AMY = "UNMARKED";
     public static final String VALID_PARTICIPATION_BOB = "AVERAGE";
     public static final int VALID_GRADE_AMY = 74;
@@ -49,29 +49,31 @@ public class CommandTestUtil {
     public static final String VALID_NOTE_AMY = "On Medical Leave";
     public static final String VALID_NOTE_BOB = "Disturbs other students";
 
-    public static final String ID_DESC_AMY = " " + PREFIX_ID + VALID_ID_AMY;
-    public static final String ID_DESC_BOB = " " + PREFIX_ID + VALID_ID_BOB;
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
-    public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
-    public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
-    public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
-    public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
-    public static final String COURSE_DESC_AMY = " " + PREFIX_COURSE + VALID_COURSE_AMY;
-    public static final String COURSE_DESC_BOB = " " + PREFIX_COURSE + VALID_COURSE_BOB;
-    public static final String ATTENDANCE_DESC_AMY = " " + PREFIX_ATTENDANCE + VALID_ATTENDANCE_AMY;
-    public static final String ATTENDANCE_DESC_BOB = " " + PREFIX_ATTENDANCE + VALID_ATTENDANCE_BOB;
-    public static final String PARTICIPATION_DESC_AMY = " " + PREFIX_PARTICIPATION + VALID_PARTICIPATION_AMY;
-    public static final String PARTICIPATION_DESC_BOB = " " + PREFIX_PARTICIPATION + VALID_PARTICIPATION_BOB;
-    public static final String GRADE_DESC_AMY = " " + PREFIX_GRADE + VALID_GRADE_AMY;
-    public static final String GRADE_DESC_BOB = " " + PREFIX_GRADE + VALID_GRADE_BOB;
-    public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + VALID_NOTE_AMY;
-    public static final String NOTE_DESC_BOB = " " + PREFIX_NOTE + VALID_NOTE_BOB;
+    public static final String ID_DESC_AMY = " " + PREFIX_ID + " " + VALID_ID_AMY;
+    public static final String ID_DESC_BOB = " " + PREFIX_ID + " " + VALID_ID_BOB;
+    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + " " + VALID_NAME_AMY;
+    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + " " + VALID_NAME_BOB;
+    public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + " " + VALID_PHONE_AMY;
+    public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + " " + VALID_PHONE_BOB;
+    public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + " " + VALID_EMAIL_AMY;
+    public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + " " + VALID_EMAIL_BOB;
+    public static final String COURSE_DESC_AMY = " " + PREFIX_COURSE + " " + VALID_COURSE_AMY;
+    public static final String COURSE_DESC_BOB = " " + PREFIX_COURSE + " " + VALID_COURSE_BOB;
+    public static final String ATTENDANCE_DESC_AMY = " " + PREFIX_ATTENDANCE + " " + VALID_ATTENDANCE_AMY;
+    public static final String ATTENDANCE_DESC_BOB = " " + PREFIX_ATTENDANCE + " " + VALID_ATTENDANCE_BOB;
+    public static final String PARTICIPATION_DESC_AMY = " " + PREFIX_PARTICIPATION + " " +
+            VALID_PARTICIPATION_AMY;
+    public static final String PARTICIPATION_DESC_BOB = " " + PREFIX_PARTICIPATION + " " +
+            VALID_PARTICIPATION_BOB;
+    public static final String GRADE_DESC_AMY = " " + PREFIX_GRADE + " " + VALID_GRADE_AMY;
+    public static final String GRADE_DESC_BOB = " " + PREFIX_GRADE + " " + VALID_GRADE_BOB;
+    public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + " " + VALID_NOTE_AMY;
+    public static final String NOTE_DESC_BOB = " " + PREFIX_NOTE + " " + VALID_NOTE_BOB;
 
     public static final String INVALID_ID_DESC = " " + PREFIX_ID + "";
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
-    public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
-    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
+    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + " James&"; // '&' not allowed in names
+    public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + " 911a"; // 'a' not allowed in phones
+    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + " bob!yahoo"; // missing '@' symbol
     public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + "";
     public static final String INVALID_ATTENDANCE_DESC = " " + PREFIX_ATTENDANCE + "";
     public static final String INVALID_PARTICIPATION_DESC = " " + PREFIX_PARTICIPATION + "";
