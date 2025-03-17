@@ -39,9 +39,9 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_COURSE_AMY = "CS2103T";
-    public static final String VALID_COURSE_BOB = "CS2101";
+    public static final String VALID_COURSE_BOB = "CS2103T";
     public static final String VALID_ATTENDANCE_AMY = "EXCUSED";
-    public static final String VALID_ATTENDANCE_BOB = "ABSENT";
+    public static final String VALID_ATTENDANCE_BOB = "PRESENT";
     public static final String VALID_PARTICIPATION_AMY = "UNMARKED";
     public static final String VALID_PARTICIPATION_BOB = "AVERAGE";
     public static final int VALID_GRADE_AMY = 74;

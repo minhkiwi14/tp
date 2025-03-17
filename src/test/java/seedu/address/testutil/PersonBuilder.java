@@ -1,8 +1,6 @@
 package seedu.address.testutil;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import seedu.address.model.person.Attendance;
@@ -35,7 +33,7 @@ public class PersonBuilder {
     private Attendance attendance;
     private Participation participation;
     private Grade grade;
-    private List<Note> notes;
+    private Set<Note> notes;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -49,7 +47,7 @@ public class PersonBuilder {
         attendance = new Attendance();
         participation = new Participation();
         grade = new Grade();
-        notes = new ArrayList<>();
+        notes = new HashSet<>();
     }
 
     /**
@@ -64,7 +62,7 @@ public class PersonBuilder {
         attendance = personToCopy.getAttendance();
         participation = personToCopy.getParticipation();
         grade = personToCopy.getGrade();
-        notes = new ArrayList<>(personToCopy.getNotes());
+        //notes = personToCopy.getNotes();
     }
 
     /**
@@ -135,6 +133,6 @@ public class PersonBuilder {
      * Builds the person object.
      */
     public Person build() {
-        return new Person(id, name, phone, email, course, attendance, participation, grade, notes);
+        return new Person(id, name, phone, email, course);
     }
 }
