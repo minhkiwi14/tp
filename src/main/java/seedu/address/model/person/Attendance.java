@@ -25,6 +25,7 @@ public class Attendance {
         attendanceMap.put("PRESENT", AttendanceStatus.PRESENT);
         attendanceMap.put("ABSENT", AttendanceStatus.ABSENT);
         attendanceMap.put("EXCUSED", AttendanceStatus.EXCUSED);
+        attendanceMap.put("UNMARKED", AttendanceStatus.UNMARKED);
     }
 
     public final AttendanceStatus status;
