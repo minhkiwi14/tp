@@ -26,6 +26,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
         return keywords.stream().anyMatch(keyword ->
                 person.getName().fullName.toLowerCase().contains(keyword.toLowerCase())
                         || person.getId().id.toLowerCase().contains(keyword.toLowerCase())
+                        || person.getCourse().course.toLowerCase().contains(keyword.toLowerCase())
         );
     }
 

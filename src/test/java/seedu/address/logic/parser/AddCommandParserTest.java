@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -53,10 +52,10 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing name prefix
-        assertParseFailure(parser, "add /id A0123456N", expectedMessage);
+        assertParseFailure(parser, " /id A0123456N", expectedMessage);
 
         // missing id prefix
-        assertParseFailure(parser, "add /name Alice", expectedMessage);
+        assertParseFailure(parser, " /name Alice", expectedMessage);
     }
 
     @Test
