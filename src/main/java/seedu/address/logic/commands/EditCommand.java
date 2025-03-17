@@ -9,9 +9,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import javafx.util.Pair;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -89,7 +92,11 @@ public class EditCommand extends Command {
 
             model.setPerson(personToEdit, editedPerson);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+
+            List<Pair<String, String>> updatedFields = getUpdatedFields(personToEdit, editedPerson);
+
+            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
+                    Messages.editFormat(personToEdit.getId(), updatedFields)));
         } catch (PersonNotFoundException e) {
             throw new CommandException(e.getMessage());
         }
@@ -111,6 +118,36 @@ public class EditCommand extends Command {
         return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse, 
                 personToEdit.getAttendance(), personToEdit.getParticipation(), personToEdit.getGrade(),
                 personToEdit.getNotes());
+    }
+
+    /**
+     * Returns the list of changed fields between {@code personToEdit} and
+     * {@code editedPerson} and their values.
+     */
+    private List<Pair<String, String>> getUpdatedFields(Person personToEdit, Person editedPerson) {
+        List<Pair<String, String>> updatedFields = new ArrayList<>();
+
+        if (!personToEdit.getId().equals(editedPerson.getId())) {
+            updatedFields.add(new Pair<>("New Id", editedPerson.getId().toString()));
+        }
+
+        if (!personToEdit.getName().equals(editedPerson.getName())) {
+            updatedFields.add(new Pair<>("Name", editedPerson.getName().toString()));
+        }
+
+        if (!personToEdit.getPhone().equals(editedPerson.getPhone())) {
+            updatedFields.add(new Pair<>("Phone", editedPerson.getPhone().toString()));
+        }
+
+        if (!personToEdit.getEmail().equals(editedPerson.getEmail())) {
+            updatedFields.add(new Pair<>("Email", editedPerson.getEmail().toString()));
+        }
+
+        if (!personToEdit.getCourse().equals(editedPerson.getCourse())) {
+            updatedFields.add(new Pair<>("Course", editedPerson.getCourse().toString()));
+        }
+
+        return updatedFields;
     }
 
     @Override

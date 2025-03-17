@@ -38,7 +38,7 @@ public class Grade {
      * A valid grade is an integer between 0 and 100, inclusive.
      */
     public static boolean isValidGrade(int test) {
-        return test >= 0 && test <= 100;
+        return test >= -1 && test <= 100;
     }
 
     @Override
