@@ -127,7 +127,7 @@ class JsonAdaptedPerson {
         if (attendance == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Attendance.class.getSimpleName()));
         }
-        if (!Attendance.isValidAttendance(attendance)) {
+        if (!Attendance.isValidStatus(attendance)) {
             throw new IllegalValueException(Attendance.MESSAGE_CONSTRAINTS);
         }
         final Attendance modelAttendance = new Attendance(attendance);
@@ -135,7 +135,7 @@ class JsonAdaptedPerson {
         if (participation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Participation.class.getSimpleName()));
         }
-        if (!Participation.isValidParticipation(participation)) {
+        if (!Participation.isValidStatus(participation)) {
             throw new IllegalValueException(Participation.MESSAGE_CONSTRAINTS);
         }
         final Participation modelParticipation = new Participation(participation);

@@ -38,6 +38,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String id} into a {@code id}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code id} is invalid.
+     */
+    public static Id parseId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!Id.isValidId(trimmedId)) {
+            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+        }
+        return new Id(trimmedId);
+    }
+
+    /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -83,21 +98,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String id} into a {@code id}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code id} is invalid.
-     */
-    public static Id parseId(String id) throws ParseException {
-        requireNonNull(id);
-        String trimmedId = id.trim();
-        if (!Id.isValidId(trimmedId)) {
-            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
-        }
-        return new Id(trimmedId);
-    }
-
-    /**
      * Parses a {@code String course} into a {@code Course}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -121,7 +121,7 @@ public class ParserUtil {
     public static Attendance parseAttendance(String attendance) throws ParseException {
         requireNonNull(attendance);
         String trimmedAttendance = attendance.trim();
-        if (!Attendance.isValidAttendance(trimmedAttendance)) {
+        if (!Attendance.isValidStatus(trimmedAttendance)) {
             throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
         }
         return new Attendance(trimmedAttendance);
@@ -136,13 +136,11 @@ public class ParserUtil {
     public static Participation parseParticipation(String participation) throws ParseException {
         requireNonNull(participation);
         String trimmedParticipation = participation.trim();
-        if (!Participation.isValidParticipation(trimmedParticipation)) {
+        if (!Participation.isValidStatus(trimmedParticipation)) {
             throw new ParseException(Participation.MESSAGE_CONSTRAINTS);
         }
         return new Participation(trimmedParticipation);
     }
-
-    // Not yet implemented
 
     /**
      * Parses a {@code String grade} into a {@code Grade}.
@@ -151,8 +149,20 @@ public class ParserUtil {
      * @throws ParseException if the given {@code grade} is invalid.
      */
     public static Grade parseGrade(String grade) throws ParseException {
-        return new Grade();
+        requireNonNull(grade);
+        String trimmedGrade = grade.trim();
+        try {
+            int intGrade = Integer.parseInt(trimmedGrade);
+            if (!Grade.isValidGrade(intGrade)) {
+                throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
+            }
+            return new Grade(intGrade);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
+        }
     }
+
+    // Not yet implemented
 
     /**
      * Parses a {@code String notes} into a list of {@code Note}.

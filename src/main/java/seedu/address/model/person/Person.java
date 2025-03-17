@@ -25,17 +25,6 @@ public class Person {
     private final List<Note> notes;
 
     /**
-     * Overloaded Constructor for Person.
-     * Used when initializing a new Person object with minimal details.
-     *
-     * @param id   The id of the person.
-     * @param name The name of the person.
-     */
-    public Person(Id id, Name name) {
-        this(id, name, new Phone(""), new Email(""), new Course(""));
-    }
-
-    /**
      * Constructor for Person.
      * Used when initializing a new Person object with full details.
      *
@@ -61,7 +50,7 @@ public class Person {
     /**
      * Constructor for Person.
      * Used when setting all fields of a Person object.
-     * 
+     *
      * @param id            The student ID of the person.
      * @param name          The name of the person.
      * @param phone         The phone number of the person.
@@ -289,7 +278,12 @@ public class Person {
         return this.id.equals(otherPerson.id)
                 && this.name.equals(otherPerson.name)
                 && this.phone.equals(otherPerson.phone)
-                && this.email.equals(otherPerson.email);
+                && this.email.equals(otherPerson.email)
+                && this.course.equals(otherPerson.course)
+                && this.attendance.equals(otherPerson.attendance)
+                && this.participation.equals(otherPerson.participation)
+                && this.grade.equals(otherPerson.grade);
+                //&& this.notes.equals(otherPerson.notes);
     }
 
     /**
@@ -316,6 +310,10 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("course", course)
+                .add("attendance", attendance)
+                .add("participation", participation)
+                .add("grade", grade)
+                //.add("notes", notes)
                 .toString();
     }
 }
