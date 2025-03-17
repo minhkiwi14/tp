@@ -132,7 +132,6 @@ public class PersonBuilder {
     // do for notes
 
     public Person build() {
-        return null;
-        // return new Person(name, phone, email, address, tags);
+        return new Person(id, name, phone, email, course);
     }
 }
