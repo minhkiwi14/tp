@@ -1,10 +1,13 @@
 package seedu.address.logic;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javafx.util.Pair;
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Person;
 
 /**
@@ -58,4 +61,20 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code updatedFields} to be displayed as output for Edit command.
+     * 
+     * @param oldId original ID to identify person edited.
+     */
+    public static String editFormat(Id oldId, List<Pair<String, String>> updatedFields) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Original Id: " + oldId + ", ");
+
+        for (Pair<String, String> p : updatedFields) {
+            sb.append(p.getKey() + ": " + p.getValue() + ", ");
+        }
+        sb.delete(sb.length() - 2, sb.length()); // remove last comma
+
+        return sb.toString();
+    }
 }

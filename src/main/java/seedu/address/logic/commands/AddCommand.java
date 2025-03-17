@@ -33,8 +33,8 @@ public class AddCommand extends Command {
             %s COURSE
 
             Example:
-            add /name Walter White /id A1234567B
-            add /name Jesse Pinkman /id A1234567C /phone 98765432 /email jesse@nus.edu.sg /course CS2103T
+            add /name Walter White /id A1234567N
+            add /name Jesse Pinkman /id HT1234567U /phone 98765432 /email jesse@nus.edu.sg /course CS2103T
             """;
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD,
