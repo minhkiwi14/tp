@@ -32,9 +32,15 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder(Person person) {
         descriptor = new EditPersonDescriptor();
+        descriptor.setNewId(person.getId());
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
+        descriptor.setCourse(person.getCourse());
+        descriptor.setAttendance(person.getAttendance());
+        descriptor.setParticipation(person.getParticipation());
+        descriptor.setGrade(person.getGrade());
+        //descriptor.setNote(person.getNotes());
     }
 
     /**
