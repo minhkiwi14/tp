@@ -3,8 +3,10 @@ package seedu.address.model.person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
 import java.util.Arrays;
@@ -13,6 +15,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.person.exceptions.DuplicateIdException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.testutil.PersonBuilder;
@@ -42,6 +45,23 @@ public class UniquePersonListTest {
         uniquePersonList.add(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).build();
         assertTrue(uniquePersonList.contains(editedAlice));
+    }
+
+    @Test
+    public void get_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniquePersonList.getPerson(null));
+    }
+
+    @Test
+    public void get_personNotInList_returnsNull() {
+        assertEquals(null, uniquePersonList.getPerson(new Id("A0123456N")));
+    }
+
+    @Test
+    public void get_personInList_returnsPerson() {
+        uniquePersonList.add(AMY);
+        Person alice = uniquePersonList.getPerson(new Id(VALID_ID_AMY));
+        assertTrue(alice.equals(AMY));
     }
 
     @Test
@@ -155,13 +175,35 @@ public class UniquePersonListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Person> listWithDuplicatePersons = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniquePersonList.setPersons(listWithDuplicatePersons));
+        assertThrows(DuplicateIdException.class, () -> uniquePersonList.setPersons(listWithDuplicatePersons));
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniquePersonList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void equals_sameUniquePersonLists_returnsTrue() {
+        UniquePersonList firstList = new UniquePersonList();
+        UniquePersonList secondList = new UniquePersonList();
+
+        firstList.add(AMY);
+        secondList.add(AMY);
+
+        assertTrue(firstList.equals(secondList));
+    }
+
+    @Test
+    public void equals_differentUniquePersonLists_returnsFalse() {
+        UniquePersonList firstList = new UniquePersonList();
+        UniquePersonList secondList = new UniquePersonList();
+
+        firstList.add(AMY);
+        secondList.add(BOB);
+
+        assertFalse(firstList.equals(secondList));
     }
 
     @Test
