@@ -162,12 +162,14 @@ public class EditCommand extends Command {
         }
 
         EditCommand otherEditCommand = (EditCommand) other;
-        return editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+        return id.equals(otherEditCommand.id)
+                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .add("id", id)
                 .add("editPersonDescriptor", editPersonDescriptor)
                 .toString();
     }
