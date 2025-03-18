@@ -75,6 +75,13 @@ public class Attendance {
         }
     }
 
+    /**
+     * Returns the String representation of the attendance status.
+     */
+    public String getStatus() {
+        return status.name();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
