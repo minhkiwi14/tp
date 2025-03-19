@@ -98,7 +98,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Person getPerson(Id id) throws PersonNotFoundException{
+    public Person getPerson(Id id) throws PersonNotFoundException {
         requireNonNull(id);
         Person person = addressBook.getPerson(id);
 
