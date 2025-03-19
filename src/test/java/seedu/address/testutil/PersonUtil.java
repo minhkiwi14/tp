@@ -42,18 +42,16 @@ public class PersonUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getNewId().ifPresent(id -> sb.append(PREFIX_ID).append(id.id).append(" "));
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
-        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getCourse().ifPresent(course ->
-                sb.append(PREFIX_COURSE).append(course.course).append(" "));
-        descriptor.getAttendance().ifPresent(attendance ->
-                sb.append(PREFIX_ATTENDANCE).append(attendance.status).append(" "));
-        descriptor.getParticipation().ifPresent(participation ->
-                sb.append(PREFIX_PARTICIPATION).append(participation.status).append(" "));
-        descriptor.getGrade().ifPresent(grade ->sb.append(PREFIX_GRADE).append(grade.grade).append(" "));
-        descriptor.getNote().ifPresent(note -> sb.append(PREFIX_NOTE).append(note.message).append(" "));
+        descriptor.getNewId().ifPresent(id -> sb.append(PREFIX_ID).append(" ").append(id.id)
+                .append(" "));
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(" ").append(name.fullName)
+                .append(" "));
+        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(" ").append(phone.value)
+                .append(" "));
+        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(" ").append(email.value)
+                .append(" "));
+        descriptor.getCourse().ifPresent(course -> sb.append(PREFIX_COURSE).append(" ")
+                .append(course.course).append(" "));
         return sb.toString();
     }
 }
