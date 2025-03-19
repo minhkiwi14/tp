@@ -42,7 +42,7 @@ public class EditCommandTest {
     public void execute_oneFieldSpecified_success() {
         Person originalPerson = new PersonBuilder(TypicalPersons.ALICE).build();
         Id originalId = originalPerson.getId();
-        
+
         PersonBuilder personInList = new PersonBuilder(originalPerson);
         Person editedPerson = personInList.withId(VALID_ID_BOB).build();
 
@@ -63,7 +63,7 @@ public class EditCommandTest {
     public void execute_someFieldsSpecified_success() {
         Person originalPerson = new PersonBuilder(TypicalPersons.ALICE).build();
         Id originalId = originalPerson.getId();
-        
+
         PersonBuilder personInList = new PersonBuilder(originalPerson);
         Person editedPerson = personInList.withId(VALID_ID_BOB).withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_BOB).build();
@@ -74,7 +74,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.editFormat(originalId, List.of(new Pair<>("New Id", VALID_ID_BOB),
-                new Pair<>("Phone", VALID_PHONE_BOB), new Pair<>("Email", VALID_EMAIL_BOB))));
+                                new Pair<>("Phone", VALID_PHONE_BOB),
+                                new Pair<>("Email", VALID_EMAIL_BOB))));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(TypicalPersons.ALICE, editedPerson);
@@ -86,16 +87,14 @@ public class EditCommandTest {
     public void execute_duplicatePerson_failure() {
         Person originalPerson = new PersonBuilder(TypicalPersons.ALICE).build();
         String duplicateId = TypicalPersons.BENSON.getId().toString();
-        
+
         PersonBuilder personInList = new PersonBuilder(originalPerson);
         Person editedPerson = personInList.withId(duplicateId).build();
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
 
-        assertThrows(
-                DuplicatePersonException.class,
-                () -> expectedModel.setPerson(TypicalPersons.ALICE, editedPerson),
-                "DuplicatePersonException should have been thrown.");
+        assertThrows(DuplicatePersonException.class, () ->
+                        expectedModel.setPerson(TypicalPersons.ALICE, editedPerson));
     }
 
     @Test
