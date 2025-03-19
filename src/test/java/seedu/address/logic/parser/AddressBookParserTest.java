@@ -35,7 +35,14 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
+        Person person = new PersonBuilder()
+                .withId("A0123456N")
+                .withName("Amy Bee")
+                .withPhone("00000000")
+                .withEmail("amybee@u.nus.edu")
+                .withCourse("No course specified")
+                .build();
+
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
         assertEquals(new AddCommand(person), command);
     }
@@ -59,7 +66,8 @@ public class AddressBookParserTest {
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        //assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        descriptor.setNewId(null);
+        assertEquals(new EditCommand(person.getId(), descriptor), command);
     }
 
     @Test
@@ -90,8 +98,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE),
+                () -> parser.parseCommand(""));
     }
 
     @Test
