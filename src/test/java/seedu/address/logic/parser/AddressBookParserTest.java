@@ -36,7 +36,14 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
+        Person person = new PersonBuilder()
+                .withId("A0123456N")
+                .withName("Amy Bee")
+                .withPhone("00000000")
+                .withEmail("amybee@u.nus.edu")
+                .withCourse("No course specified")
+                .build();
+
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
         assertEquals(new AddCommand(person), command);
     }
@@ -56,11 +63,23 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        //assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        Person person = new PersonBuilder()
+                .withId("A0123456N")
+                .withName("Amy Bee")
+                .withPhone("00000000")
+                .withEmail("amybee@u.nus.edu")
+                .withCourse("No course specified")
+                .build();
+
+        String args = "/id A0123456N /newid A0123456R";
+
+        EditCommand command = (EditCommand) parser.parseCommand(String.format("%s %s", EditCommand.COMMAND_WORD, args));
+        assertEquals(
+                new EditCommand(
+                        new Id("A0123456N"),
+                        new EditPersonDescriptor(new EditPersonDescriptorBuilder(person).build())),
+                command);
+        // assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
     @Test
@@ -91,8 +110,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE),
+                () -> parser.parseCommand(""));
     }
 
     @Test
