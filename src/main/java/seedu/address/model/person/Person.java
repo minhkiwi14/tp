@@ -283,7 +283,6 @@ public class Person {
                 && this.attendance.equals(otherPerson.attendance)
                 && this.participation.equals(otherPerson.participation)
                 && this.grade.equals(otherPerson.grade);
-                //&& this.notes.equals(otherPerson.notes);
     }
 
     /**

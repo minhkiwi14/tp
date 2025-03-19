@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class GradeTest {
-    
+
     @Test
     public void defaultConstructor_fixedValue() {
         assertEquals(-1, new Grade().grade);
@@ -16,14 +16,14 @@ public class GradeTest {
 
     @Test
     public void constructor_invalidGrade_throwsIllegalArgumentException() {
-        int invalidGrade = -1;
+        int invalidGrade = -2;
         assertThrows(IllegalArgumentException.class, () -> new Grade(invalidGrade));
     }
 
     @Test
     public void isValidGrade() {
         // invalid grade
-        assertFalse(Grade.isValidGrade(-1)); // below 0
+        assertFalse(Grade.isValidGrade(-2)); // below -1
         assertFalse(Grade.isValidGrade(101)); // above 100
 
         // valid grade

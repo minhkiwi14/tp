@@ -8,10 +8,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidGrade(String)}
  */
 public class Grade {
-    
+
     public static final String MESSAGE_CONSTRAINTS =
             "Grades should only be an integer between 0 and 100, inclusive";
-    
+
     public final int grade;
 
     /**
@@ -24,7 +24,7 @@ public class Grade {
 
     /**
      * Constructs a {@code Grade}.
-     * 
+     *
      * @param grade A valid grade.
      */
     public Grade(int grade) {
@@ -38,7 +38,7 @@ public class Grade {
      * A valid grade is an integer between 0 and 100, inclusive.
      */
     public static boolean isValidGrade(int test) {
-        return test >= 0 && test <= 100;
+        return test >= -1 && test <= 100;
     }
 
     @Override

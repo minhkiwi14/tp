@@ -12,6 +12,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.person.Attendance;
+import seedu.address.model.person.Grade;
+import seedu.address.model.person.Note;
+import seedu.address.model.person.Participation;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditPersonDescriptorTest {
@@ -50,10 +54,16 @@ public class EditPersonDescriptorTest {
     @Test
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
+        String expected = EditPersonDescriptor.class.getCanonicalName() + "{new ID="
+                + editPersonDescriptor.getNewId().orElse(null) + ", name="
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", address=";
+                + editPersonDescriptor.getEmail().orElse(null) + ", course="
+                + editPersonDescriptor.getCourse().orElse(null) + ", attendance="
+                + editPersonDescriptor.getAttendance().orElse(new Attendance()) + ", participation="
+                + editPersonDescriptor.getParticipation().orElse(new Participation()) + ", grade="
+                + editPersonDescriptor.getGrade().orElse(new Grade()) + ", note="
+                + editPersonDescriptor.getNote().orElse(new Note("NA")) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

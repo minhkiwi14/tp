@@ -25,3 +25,4 @@ docs/_markbind/logs/
 src/main/main.iml
 src/test/test.iml
 node_modules
+bin/*
