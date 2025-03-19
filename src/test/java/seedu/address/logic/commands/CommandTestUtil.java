@@ -61,10 +61,10 @@ public class CommandTestUtil {
     public static final String COURSE_DESC_BOB = " " + PREFIX_COURSE + " " + VALID_COURSE_BOB;
     public static final String ATTENDANCE_DESC_AMY = " " + PREFIX_ATTENDANCE + " " + VALID_ATTENDANCE_AMY;
     public static final String ATTENDANCE_DESC_BOB = " " + PREFIX_ATTENDANCE + " " + VALID_ATTENDANCE_BOB;
-    public static final String PARTICIPATION_DESC_AMY = " " + PREFIX_PARTICIPATION + " " +
-            VALID_PARTICIPATION_AMY;
-    public static final String PARTICIPATION_DESC_BOB = " " + PREFIX_PARTICIPATION + " " +
-            VALID_PARTICIPATION_BOB;
+    public static final String PARTICIPATION_DESC_AMY = " " + PREFIX_PARTICIPATION + " "
+            + VALID_PARTICIPATION_AMY;
+    public static final String PARTICIPATION_DESC_BOB = " " + PREFIX_PARTICIPATION + " "
+            + VALID_PARTICIPATION_BOB;
     public static final String GRADE_DESC_AMY = " " + PREFIX_GRADE + " " + VALID_GRADE_AMY;
     public static final String GRADE_DESC_BOB = " " + PREFIX_GRADE + " " + VALID_GRADE_BOB;
     public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + " " + VALID_NOTE_AMY;

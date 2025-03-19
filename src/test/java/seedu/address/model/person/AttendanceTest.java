@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class AttendanceTest {
-    
+
     @Test
     public void defaultConstructor_fixedValue() {
         assertEquals(AttendanceStatus.UNMARKED, new Attendance().status);
