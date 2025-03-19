@@ -49,22 +49,14 @@ public class Messages {
                 .append("; Email: ")
                 .append(person.getEmail())
                 .append("; Course: ")
-                .append(person.getCourse())
-                .append("; Attendance: ")
-                .append(person.getAttendance())
-                .append("; Participation: ")
-                .append(person.getParticipation())
-                .append("; Grade: ")
-                .append(person.getGrade());
-                //.append("; Note: ")
-                //.append(person.getNote());
+                .append(person.getCourse());
 
         return builder.toString();
     }
 
     /**
      * Formats the {@code updatedFields} to be displayed as output for Edit command.
-     * 
+     *
      * @param oldId original ID to identify person edited.
      */
     public static String editFormat(Id oldId, List<Pair<String, String>> updatedFields) {

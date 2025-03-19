@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Id {
 
-    public static final String MESSAGE_CONSTRAINTS = 
+    public static final String MESSAGE_CONSTRAINTS =
             "The inputted ID has an incorrect format. "
             + "Please refer to the User Guide for the accepted formats.";
 
@@ -23,7 +23,7 @@ public class Id {
 
     /**
      * Constructs a {@code Id}.
-     * 
+     *
      * @param id A valid id.
      */
     public Id(String id) {

@@ -83,7 +83,7 @@ public interface Model {
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
     void setPerson(Person target, Person editedPerson);
-    
+
     /** Returns an unmodifiable view of the person list */
     ObservableList<Person> getPersonList();
 
