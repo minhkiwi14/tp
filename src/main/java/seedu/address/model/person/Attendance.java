@@ -11,22 +11,22 @@ import java.util.HashMap;
  */
 public class Attendance {
 
-    public static final String statusPresentMessage = "Present for Tutorial";
-    public static final String statusAbsentMessage = "Absent for Tutorial";
-    public static final String statusExcusedMessage = "Excused with Valid Reason";
-    public static final String statusUnmarkedMessage = "Unmarked";
-    
+    public static final String STATUS_PRESENT_MESSAGE = "Present for Tutorial";
+    public static final String STATUS_ABSENT_MESSAGE = "Absent for Tutorial";
+    public static final String STATUS_EXCUSED_MESSAGE = "Excused with Valid Reason";
+    public static final String STATUS_UNMARKED_MESSAGE = "Unmarked";
+
     public static final String MESSAGE_CONSTRAINTS =
             "Attendance should only be PRESENT, ABSENT or EXCUSED.";
-    
-    public static final HashMap<String, AttendanceStatus> attendanceMap = new HashMap<>();
 
-    // Initialise the attendanceMap
+    public static final HashMap<String, AttendanceStatus> ATTENDANCE_MAP = new HashMap<>();
+
+    // Initialise the ATTENDANCE_MAP
     static {
-        attendanceMap.put("PRESENT", AttendanceStatus.PRESENT);
-        attendanceMap.put("ABSENT", AttendanceStatus.ABSENT);
-        attendanceMap.put("EXCUSED", AttendanceStatus.EXCUSED);
-        attendanceMap.put("UNMARKED", AttendanceStatus.UNMARKED);
+        ATTENDANCE_MAP.put("PRESENT", AttendanceStatus.PRESENT);
+        ATTENDANCE_MAP.put("ABSENT", AttendanceStatus.ABSENT);
+        ATTENDANCE_MAP.put("EXCUSED", AttendanceStatus.EXCUSED);
+        ATTENDANCE_MAP.put("UNMARKED", AttendanceStatus.UNMARKED);
     }
 
     public final AttendanceStatus status;
@@ -42,33 +42,33 @@ public class Attendance {
     /**
      * Constructs a {@code Attendance}.
      * Used when updating a Person's attendance.
-     * 
+     *
      * @param status A valid attendance status.
      */
     public Attendance(String status) {
         requireNonNull(status);
         checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
-        this.status = attendanceMap.get(status.toUpperCase());
+        this.status = ATTENDANCE_MAP.get(status.toUpperCase());
     }
 
     /**
      * Returns true if a given string is a valid attendance status.
      */
     public static boolean isValidStatus(String test) {
-        return attendanceMap.containsKey(test.toUpperCase());
+        return ATTENDANCE_MAP.containsKey(test.toUpperCase());
     }
 
     @Override
     public String toString() {
         switch (this.status) {
         case PRESENT:
-            return statusPresentMessage;
+            return STATUS_PRESENT_MESSAGE;
         case ABSENT:
-            return statusAbsentMessage;
+            return STATUS_ABSENT_MESSAGE;
         case EXCUSED:
-            return statusExcusedMessage;
+            return STATUS_EXCUSED_MESSAGE;
         case UNMARKED:
-            return statusUnmarkedMessage;
+            return STATUS_UNMARKED_MESSAGE;
         default:
             assert false : "Unreachable code";
             return null;

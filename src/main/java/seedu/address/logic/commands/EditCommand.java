@@ -1,9 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -43,10 +43,10 @@ public class EditCommand extends Command {
             %s: Edits the details of the person identified by the student ID.
             Parameters:
             %s ID (Student ID)
-            
+
             Optional Parameters:
             (Must choose at least 1. Cannot have duplicate parameters)
-            %s NEW_ID
+            %s newId
             %s NAME
             %s PHONE
             %s EMAIL
@@ -81,7 +81,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        
+
         try {
             Person personToEdit = model.getPerson(id);
             Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
@@ -115,7 +115,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
 
-        return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse, 
+        return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse,
                 personToEdit.getAttendance(), personToEdit.getParticipation(), personToEdit.getGrade(),
                 personToEdit.getNotes());
     }
@@ -179,7 +179,7 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Id new_id;
+        private Id newId;
         private Name name;
         private Phone phone;
         private Email email;
@@ -188,7 +188,7 @@ public class EditCommand extends Command {
         private Participation participation;
         private Grade grade;
         private Note note;
-        
+
         /**
          * Default constructor.
          * Sets {@code attendance}, {@code participation}, {@code grade} and {@code note} to their default
@@ -205,7 +205,7 @@ public class EditCommand extends Command {
          * Copy constructor.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setNewId(toCopy.new_id);
+            setNewId(toCopy.newId);
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
@@ -220,15 +220,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(new_id, name, phone, email, course);
+            return CollectionUtil.isAnyNonNull(newId, name, phone, email, course);
         }
 
-        public void setNewId(Id new_id) {
-            this.new_id = new_id;
+        public void setNewId(Id newId) {
+            this.newId = newId;
         }
 
         public Optional<Id> getNewId() {
-            return Optional.ofNullable(new_id);
+            return Optional.ofNullable(newId);
         }
 
         public void setName(Name name) {
@@ -307,7 +307,7 @@ public class EditCommand extends Command {
             }
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(new_id, otherEditPersonDescriptor.new_id)
+            return Objects.equals(newId, otherEditPersonDescriptor.newId)
                     && Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
@@ -321,7 +321,7 @@ public class EditCommand extends Command {
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("new ID", new_id)
+                    .add("new ID", newId)
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
