@@ -56,7 +56,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + (new Id("A1237654E")));
+                DeleteCommand.COMMAND_WORD + " /id " + (new Id("A1237654E")));
         assertEquals(new DeleteCommand(new Id("A1237654E")), command);
     }
 
