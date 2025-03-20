@@ -61,7 +61,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete A0000000A";
+        String deleteCommand = "delete /id A0000000A";
         assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_ID);
     }
 
