@@ -16,4 +16,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_PARTICIPATION = new Prefix("/participation");
     public static final Prefix PREFIX_GRADE = new Prefix("/grade");
     public static final Prefix PREFIX_NOTE = new Prefix("/note");
+    public static final Prefix PREFIX_FILE_LOAD = new Prefix("/load");
+    public static final Prefix PREFIX_FILE_SAVE = new Prefix("/save");
+    public static final Prefix PREFIX_FILE_APPEND = new Prefix("/append");
 }
