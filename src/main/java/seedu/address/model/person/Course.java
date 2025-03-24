@@ -9,8 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Course {
 
-    public static final String MESSAGE_CONSTRAINTS = "Course names should only contain alphanumeric"
-            + " characters and spaces, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "The inputted course has an incorrect format. "
+            + "Please refer to the User Guide for the accepted formats.";
 
     // Check if want course codes only
 
@@ -18,7 +19,7 @@ public class Course {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[A-Z]{2,3}\\d{4}[A-Z]{0,2}$";
 
     public final String course;
 
