@@ -46,9 +46,9 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Course
-Person *--> Attendance
-Person *--> Participation
-Person *--> Grade
+Person *--> "0..1" Attendance
+Person *--> "0..1" Participation
+Person *--> "0..1" Grade
 Person *--> "*" Note
 
 Person -[hidden]up--> I
