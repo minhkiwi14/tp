@@ -50,16 +50,16 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `add /id ID /name NAME`, `NAME` is a parameter which can be used as `add /id A0123456N /name John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `add /id ID /name NAME [/phone PHONE_NUMBER]` can be used as `add /id A0123456N /name John Doe /phone 83746574` or as `add /id A0123456N /name John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[/note NOTE]…​` can be used as ` ` (i.e. 0 times), `/note Hi`, `/note Hi /note Bye` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `/id ID /name NAME`, `/name NAME /id ID` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -80,7 +80,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add /id ID /name NAME /phone PHONE_NUMBER /email EMAIL /course COURSE​`
 
 <box type="tip" seamless>
 
