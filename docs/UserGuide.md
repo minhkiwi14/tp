@@ -225,5 +225,5 @@ Action     | Format, Examples
 
 ## Glossary
 
-**TA** - teaching assistant<br>
+**TA** - Teaching Assistant<br>
 Assists the instructor in teaching a course.
