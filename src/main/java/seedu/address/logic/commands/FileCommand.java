@@ -9,7 +9,13 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
+/**
+ * Represents a FileCommand which can load, save or append data to a file.
+ */
 public class FileCommand extends Command {
+    /**
+     * Represents the operation of the FileCommand.
+     */
     public enum FileOperation {
         LOAD, SAVE, APPEND
     }
@@ -45,19 +51,26 @@ public class FileCommand extends Command {
         this.fileName = filePath;
     }
 
+    /**
+     * Executes the FileCommand.
+     *
+     * @param model Model
+     * @return CommandResult
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         switch (operation) {
-            case LOAD:
-                return load(model);
-            case SAVE:
-                return save(model);
-            case APPEND:
-                return append(model);
-            default:
-                throw new CommandException(String.format(MESSAGE_ERROR, "Invalid file operation"));
+        case LOAD:
+            return load(model);
+        case SAVE:
+            return save(model);
+        case APPEND:
+            return append(model);
+        default:
+            throw new CommandException(String.format(MESSAGE_ERROR, "Invalid file operation"));
         }
     }
 
@@ -95,25 +108,45 @@ public class FileCommand extends Command {
         return fileName;
     }
 
+    /**
+     * Executes the load operation.
+     *
+     * @param model Model
+     * @return CommandResult
+     */
     public CommandResult load(Model model) {
         Boolean status = false;
-        if (status == false)
+        if (status == false) {
             return new CommandResult(String.format(MESSAGE_ERROR, "Failed to load data from " + fileName));
+        }
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Loaded data from " + fileName));
     }
 
+    /**
+     * Executes the save operation.
+     *
+     * @param model Model
+     * @return CommandResult
+     */
     public CommandResult save(Model model) {
         Boolean status = false;
-        if (status == false)
+        if (status == false) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, "Failed to save data to " + fileName));
+        }
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Saved data to " + fileName));
     }
 
+    /**
+     * Executes the append operation.
+     *
+     * @param model Model
+     * @return CommandResult
+     */
     public CommandResult append(Model model) {
         Boolean status = false;
-        if (status == false)
+        if (status == false) {
             return new CommandResult(String.format(MESSAGE_ERROR, "Failed to append data to " + fileName));
+        }
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Appended data to " + fileName));
     }
-
 }
