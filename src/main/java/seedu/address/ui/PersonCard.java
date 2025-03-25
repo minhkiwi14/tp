@@ -40,6 +40,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label attendance;
     @FXML
+    private Label participation;
+    @FXML
     private Label grade;
 
     /**
@@ -55,6 +57,7 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         course.setText(person.getCourse().course);
         attendance.setText(person.getAttendance().toString());
+        participation.setText(person.getParticipation().toString());
         int gradeValue = person.getGrade().grade;
         if (gradeValue == -1) {
             grade.setText("Grade: N/A");
