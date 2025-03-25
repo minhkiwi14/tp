@@ -207,7 +207,6 @@ public class EditCommand extends Command {
          * values.
          */
         public EditPersonDescriptor() {
-            // setAttendance(new Attendance());
             setParticipation(new Participation());
             setNote(new Note("NA"));
         }
