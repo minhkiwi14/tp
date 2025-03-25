@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMA
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
@@ -9,7 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GRAD
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -29,11 +29,11 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE
+                ArgumentTokenizer.tokenize(args, PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
                         PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_GRADE);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
-                PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_GRADE)
+                PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_GRADE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
