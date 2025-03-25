@@ -32,7 +32,7 @@ public class FileCommand extends Command {
     public static final String MESSAGE_SUCCESS = "File operation successful: %1$s";
     public static final String MESSAGE_ERROR = "File operation failed: %1$s";
     public static final String MESSAGE_STRING_UNFORMATTED = """
-            %s: Loads, saves or appends data to a file.
+            %s: List, Load and save addressbook data to a file in the 'data' directory.
             Parameters:
             %s FILE_PATH
             %s FILE_PATH
