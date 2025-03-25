@@ -99,7 +99,12 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-
+    /**
+     * Sorts the filtered list of persons according to the specified {@link Comparator}.
+     * The sort is applied to the internal filtered list that is currently being displayed.
+     *
+     * @param comparator The comparator defining the order of the persons.
+     */
     void sortFilteredPersonList(Comparator<Person> comparator);
 
 }
