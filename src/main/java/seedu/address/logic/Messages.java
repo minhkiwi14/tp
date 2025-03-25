@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESAGE_MISSING_PREFIX = "Missing prefix: %1$s";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -71,6 +72,11 @@ public class Messages {
         return sb.toString();
     }
 
+    /**
+     * Returns an error message indicating the multiple prefixes.
+     *
+     * @param presentPrefixes the prefixes that are present multiple times
+     */
     public static String getErrorMessageForMultiplePrefixes(Prefix[] presentPrefixes) {
         assert presentPrefixes.length > 1;
 
@@ -79,5 +85,14 @@ public class Messages {
 
         return MESSAGE_DUPLICATE_FIELDS
                 + String.join(" ", presentFields);
+    }
+
+    /**
+     * Returns an error message indicating the missing prefix.
+     *
+     * @param prefix the prefix that is missing
+     */
+    public static String getErrorMessageForMissingPrefix(Prefix prefix) {
+        return String.format(MESAGE_MISSING_PREFIX, prefix);
     }
 }

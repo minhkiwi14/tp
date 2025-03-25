@@ -36,7 +36,7 @@ public class FileCommand extends Command {
             Parameters:
             %s FILE_PATH
             %s FILE_PATH
-            %s
+            %s all
 
             Example:
             file /load data.json

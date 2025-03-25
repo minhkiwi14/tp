@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_APPEND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LOAD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
@@ -24,18 +23,20 @@ public class FileCommandParser implements Parser<FileCommand> {
     public FileCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
-                PREFIX_FILE_APPEND, PREFIX_FILE_LIST);
+                PREFIX_FILE_LIST);
+
+        System.out.println(argMultimap.getPreamble());
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
-                PREFIX_FILE_APPEND, PREFIX_FILE_LIST);
+                PREFIX_FILE_LIST);
         argMultimap.verifyOnlyOnePrefix(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
-                PREFIX_FILE_APPEND, PREFIX_FILE_LIST);
+                PREFIX_FILE_LIST);
 
         if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.LOAD, argMultimap.getValue(PREFIX_FILE_LOAD).get());
         } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.SAVE, argMultimap.getValue(PREFIX_FILE_SAVE).get());
-        } else if (argMultimap.getPreamble().contains(PREFIX_FILE_LIST.getPrefix())) {
+        } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.LIST, "");
         }
         throw new ParseException(FileCommand.MESSAGE_USAGE);

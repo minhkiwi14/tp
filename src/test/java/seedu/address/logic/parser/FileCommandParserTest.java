@@ -21,6 +21,13 @@ public class FileCommandParserTest {
     }
 
     @Test
+    public void parse_listFiles_returnsFileCommand() {
+        String args = " /list all";
+        FileCommand expectedFileCommand = new FileCommand(FileOperation.LIST, "");
+        assertParseSuccess(parser, args, expectedFileCommand);
+    }
+
+    @Test
     public void parse_missingArgValue_throwsParseException() {
         String args = " /load";
         assertParseFailure(parser, args, FileCommand.MESSAGE_USAGE);
