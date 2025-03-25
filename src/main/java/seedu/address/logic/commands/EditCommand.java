@@ -117,9 +117,10 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
         Attendance updatedAttendance = editPersonDescriptor.getAttendance().orElse(personToEdit.getAttendance());
+        Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
 
         return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse,
-                updatedAttendance, personToEdit.getParticipation(), personToEdit.getGrade(),
+                updatedAttendance, personToEdit.getParticipation(), updatedGrade,
                 personToEdit.getNotes());
     }
 
@@ -152,6 +153,10 @@ public class EditCommand extends Command {
 
         if (!personToEdit.getAttendance().equals(editedPerson.getAttendance())) {
             updatedFields.add(new Pair<>("Attendance", editedPerson.getAttendance().toString()));
+        }
+
+        if (!personToEdit.getGrade().equals(editedPerson.getGrade())) {
+            updatedFields.add(new Pair<>("Grade", editedPerson.getGrade().toString()));
         }
 
         return updatedFields;
@@ -204,7 +209,6 @@ public class EditCommand extends Command {
         public EditPersonDescriptor() {
             // setAttendance(new Attendance());
             setParticipation(new Participation());
-            setGrade(new Grade());
             setNote(new Note("NA"));
         }
 
@@ -227,7 +231,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(newId, name, phone, email, course, attendance);
+            return CollectionUtil.isAnyNonNull(newId, name, phone, email, course, attendance, grade);
         }
 
         public void setNewId(Id newId) {
