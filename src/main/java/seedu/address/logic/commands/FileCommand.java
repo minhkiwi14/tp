@@ -153,7 +153,6 @@ public class FileCommand extends Command {
      * @return CommandResult indicating the result of the save operation
      */
     public CommandResult save(Model model) {
-        Boolean status = true;
 
         model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
 
