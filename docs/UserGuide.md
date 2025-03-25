@@ -45,13 +45,140 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ## Person
 
-(add image)
+![Person descriptor](images/person.png)
 
 <box type="info" seamless>
 
-**Properties**<br>
+### **Properties**<br>
 
+#### `ID` - The unique identifier for your student
 
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Format for ID</b><br>
+    <t>Follows format used by NUS for Student ID</t>
+    <ol>
+      <li>It must start with <code>A, U, HT, or NT</code></li>
+      <li>The starting letters must be followed by <u>7 digits</u></li>
+      <li>It must end with one of the letters <code>A, B, E, H, J, L, M, N, R, U, W, X or Y</code></li>
+    </ol>
+</div><br>
+
+Examples:
+* A0738475N
+* HT0347856U
+
+___
+#### `Name` - Your student's name
+
+There can be duplicate student names, as that is something that <b>can</b> happen!
+
+___
+#### `Phone` - Your student's phone number
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Format for Phone</b><br>
+    <ol>
+      <li>Must <u>only contain numbers</u></li>
+      <li>Must be at least <u>3 digits long</u></li>
+    </ol>
+</div><br>
+
+The default Phone for newly created contacts is `00000000`.
+
+Example:
+* 6565166666
+
+___
+#### `Email` - Your student's email
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Format for Email</b><br>
+    <t> Must be of format local-part@domain and follow the following constraints:
+    </t>
+    <ol>
+      <li>The local-part must <u>only contain alphanumeric characters</u>, excluding these special characters</li>
+      <ul>
+        <li>+</li>
+        <li>_</li>
+        <li>.</li>
+        <li>-</li>
+      </ul>
+      <li>The local-part must not <u>start or end</u> with any special characters</li>
+      <li>The domain name must end with a domain label at least <u>2 characters
+      </u> long</li>
+      <li>The domain name must have each domain label start and end <u>with alphanumeric characters</u>
+      <li>The domain name must have each domain label <u>consist of alphanumeric characters</u>, separated only by hyphens, if any
+    </ol>
+</div><br>
+
+The default Email for newly created contacts is `ab@u.nus.edu`.
+
+Examples:
+* e123456@u.nus.edu
+* example32@gmail.com
+
+___
+#### `Course` - The course you assist in that the student is taking
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Format for Course</b><br>
+    <t>Follows format used by NUS for Courses</t>
+    <ol>
+      <li>It must start with <u>2 or 3 letters</u></li>
+      <li>The starting letters must be followed by <u>4 digits</u></li>
+      <li>(Optional) It can end with <u>up to two letters</u></li>
+    </ol>
+</div><br>
+
+The default Course for newly created contacts is `AAA0000AA`.
+
+Examples:
+* CS2103T
+* IS1108
+
+___
+#### `Attendance` - The attendance status of your student in the most recent Tutorial or Lab
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Valid Attendance statuses</b><br>
+    <t>Only the following strings will be valid</t>
+    <ul>
+      <li>PRESENT</li>
+      <li>ABSENT</li>
+      <li>EXCUSED</li>
+    </ul>
+    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
+</div><br>
+
+The default Attendance status for newly created contacts is `UNMARKED`.
+
+___
+#### `Participation` - The participation status of your student in the most recent Tutorial or Lab
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Valid Participation statuses</b><br>
+    <t>Only the following strings will be valid</t>
+    <ul>
+      <li>EXCELLENT</li>
+      <li>GOOD</li>
+      <li>AVERAGE</li>
+      <li>POOR</li>
+      <li>NONE</li>
+    </ul>
+    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
+</div><br>
+
+The default Participation status for newly created contacts is `UNMARKED`.
+
+___
+#### `Grade` - The predicted grade of your student based on their previous graded assignments
+
+*  You can only enter an integer from `0` to `100` (inclusive) for a grade.
+
+___
+#### `Notes` - Additional details that you may want to keep about individual students
+
+You can attach any number of notes to each student.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -131,16 +258,30 @@ Finds persons whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>The search is case-insensitive, e.g <code>hans</code> will match <code>Hans</code></li>
+      <li>The order of the keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></li>
+      <li>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
+      e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code> , <code>Bo Yang</code></li>
+    </ul>
+</div><br>
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>Only the name is searched</li>
+      <li>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></li>
+    </ul>
+</div><br>
 
 Examples:
 * `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find alex david` returns `Alex Yeoh`, `David Li`
+
+<br>
+
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
@@ -151,10 +292,6 @@ Format: `delete /id ID`
 
 * Deletes the person with the specified `ID`.
 * The ID refers to the ID belonging to the person in the person list.
-* The ID **must be a valid ID** i.e.:
-  1. It must start with `A`, `U`, `HT`, or `NT`.
-  2. The starting letters must be followed by 7 digits.
-  3. It must end with one of the letters in `ABEHJLMNRUWXY`.
 
 Examples:
 * `delete /id A1234567N` deletes the person with the ID `A1234567N` in the address book.
@@ -223,5 +360,5 @@ Action     | Format, Examples
 
 ## Glossary
 
-**TA** - Teaching Assistant<br>
+`TA` - Teaching Assistant<br>
 Assists the instructor in teaching a course.
