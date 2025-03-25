@@ -3,8 +3,12 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LOAD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LIST;
 
+import java.io.File;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.ToStringBuilder;
@@ -21,7 +25,7 @@ public class FileCommand extends Command {
      * Represents the operation of the FileCommand.
      */
     public enum FileOperation {
-        LOAD, SAVE
+        LOAD, SAVE, LIST
     }
 
     public static final String COMMAND_WORD = "file";
@@ -32,14 +36,16 @@ public class FileCommand extends Command {
             Parameters:
             %s FILE_PATH
             %s FILE_PATH
+            %s
 
             Example:
             file /load data.json
             file /save data.json
+            file /list
             """;
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_STRING_UNFORMATTED, COMMAND_WORD, PREFIX_FILE_LOAD,
-            PREFIX_FILE_SAVE);
+            PREFIX_FILE_SAVE, PREFIX_FILE_LIST);
 
     private static final String ADDRESSBOOK_FILE_DIR = "data";
 
@@ -71,6 +77,8 @@ public class FileCommand extends Command {
             return load(model);
         case SAVE:
             return save(model);
+        case LIST:
+            return list();
         default:
             throw new CommandException(String.format(MESSAGE_ERROR, "Invalid file operation"));
         }
@@ -121,7 +129,7 @@ public class FileCommand extends Command {
         Path filePath = Path.of(ADDRESSBOOK_FILE_DIR, fileName);
 
         // Check if file exists
-        if (!filePath.toFile().exists()) {
+        if (!filePath.toFile().exists() && !filePath.toFile().isFile()) {
             return new CommandResult(String.format(MESSAGE_ERROR, "File does not exist: " + fileName));
         }
 
@@ -149,9 +157,23 @@ public class FileCommand extends Command {
 
         model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
 
-        if (status == false) {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, "Failed to save data to " + fileName));
-        }
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Change saved file to " + fileName));
+    }
+
+    /**
+     * Lists all files in the data directory, storing addressbook data.
+     *
+     * @return CommandResult indicating the result of the list operation
+     */
+    public CommandResult list() {
+
+        File dataDir = new File(Path.of(ADDRESSBOOK_FILE_DIR).toString());
+        ArrayList<String> fileNames = new ArrayList<>(Arrays.asList(dataDir.list()));
+        StringBuilder sb = new StringBuilder();
+        for (String fileName : fileNames) {
+            sb.append(fileName).append("\n");
+        }
+
+        return new CommandResult(String.format("Listing all files: \n%s", sb.toString()));
     }
 }
