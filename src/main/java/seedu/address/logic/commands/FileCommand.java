@@ -17,7 +17,7 @@ public class FileCommand extends Command {
      * Represents the operation of the FileCommand.
      */
     public enum FileOperation {
-        LOAD, SAVE, APPEND
+        LOAD, SAVE
     }
 
     public static final String COMMAND_WORD = "file";
@@ -31,13 +31,12 @@ public class FileCommand extends Command {
             %s FILE_PATH
 
             Example:
-            file /load data.txt
-            file /save data.txt
-            file /append data.txt
+            file /load data.json
+            file /save data.json
             """;
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_STRING_UNFORMATTED, COMMAND_WORD, PREFIX_FILE_LOAD,
-            PREFIX_FILE_SAVE, PREFIX_FILE_APPEND);
+            PREFIX_FILE_SAVE);
 
     private final FileOperation operation;
 
@@ -67,8 +66,6 @@ public class FileCommand extends Command {
             return load(model);
         case SAVE:
             return save(model);
-        case APPEND:
-            return append(model);
         default:
             throw new CommandException(String.format(MESSAGE_ERROR, "Invalid file operation"));
         }
@@ -130,23 +127,10 @@ public class FileCommand extends Command {
      */
     public CommandResult save(Model model) {
         Boolean status = false;
+
         if (status == false) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, "Failed to save data to " + fileName));
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Saved data to " + fileName));
-    }
-
-    /**
-     * Executes the append operation.
-     *
-     * @param model Model
-     * @return CommandResult
-     */
-    public CommandResult append(Model model) {
-        Boolean status = false;
-        if (status == false) {
-            return new CommandResult(String.format(MESSAGE_ERROR, "Failed to append data to " + fileName));
-        }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, "Appended data to " + fileName));
     }
 }

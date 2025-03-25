@@ -32,8 +32,6 @@ public class FileCommandParser {
             return new FileCommand(FileCommand.FileOperation.LOAD, argMultimap.getValue(PREFIX_FILE_LOAD).get());
         } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.SAVE, argMultimap.getValue(PREFIX_FILE_SAVE).get());
-        } else if (argMultimap.getValue(PREFIX_FILE_APPEND).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.APPEND, argMultimap.getValue(PREFIX_FILE_APPEND).get());
         }
         throw new ParseException(FileCommand.MESSAGE_USAGE);
     }
