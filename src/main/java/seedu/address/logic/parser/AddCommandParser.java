@@ -1,15 +1,23 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Course;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Id;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -29,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                PREFIX_ID, PREFIX_COURSE, PREFIX_GRADE);
+                PREFIX_ID, PREFIX_COURSE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -44,12 +52,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
                 .orElse(String.format(EMAIL_PLACEHOLDER, name.toString().toLowerCase().strip().replace(" ", ""))));
         Course course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).orElse(COURSE_PLACEHOLDER));
-        Optional<String> gradeString = argMultimap.getValue(PREFIX_GRADE);
-        Grade grade = gradeString.map(s -> new Grade(Integer.parseInt(s))).orElse(new Grade());
 
-
-        Person person = new Person(id, name, phone, email, course, new Attendance(), new Participation(), grade, List.of());
-
+        Person person = new Person(id, name, phone, email, course);
 
         return new AddCommand(person);
     }
