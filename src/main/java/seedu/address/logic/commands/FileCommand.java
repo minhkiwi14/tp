@@ -1,9 +1,10 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_APPEND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LOAD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
+
+import java.nio.file.Path;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -26,7 +27,6 @@ public class FileCommand extends Command {
     public static final String MESSAGE_STRING_UNFORMATTED = """
             %s: Loads, saves or appends data to a file.
             Parameters:
-            %s FILE_PATH
             %s FILE_PATH
             %s FILE_PATH
 
@@ -112,7 +112,8 @@ public class FileCommand extends Command {
      * @return CommandResult
      */
     public CommandResult load(Model model) {
-        Boolean status = false;
+        Boolean status = true;
+
         if (status == false) {
             return new CommandResult(String.format(MESSAGE_ERROR, "Failed to load data from " + fileName));
         }
@@ -120,17 +121,19 @@ public class FileCommand extends Command {
     }
 
     /**
-     * Executes the save operation.
+     * Changes the address book file path to the specified file path.
      *
-     * @param model Model
-     * @return CommandResult
+     * @param model Model to save
+     * @return CommandResult indicating the result of the save operation
      */
     public CommandResult save(Model model) {
-        Boolean status = false;
+        Boolean status = true;
+
+        model.setAddressBookFilePath(Path.of("data", fileName));
 
         if (status == false) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, "Failed to save data to " + fileName));
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, "Saved data to " + fileName));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Change saved file to " + fileName));
     }
 }
