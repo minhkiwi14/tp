@@ -1,24 +1,35 @@
----
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
----
 
-# AB-3 User Guide
+# Better Call TA User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+**BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
 
-<!-- * Table of Contents -->
-<page-nav-print />
+## Table of Contents
+
+1. [Quick start](#quick-start)
+2. [Features](#features)
+   - [Viewing help: `help`](#viewing-help-help)
+   - [Adding a person: `add`](#adding-a-person-add)
+   - [Listing all persons : `list`](#listing-all-persons--list)
+   - [Editing a person : `edit`](#editing-a-person-edit)
+   - [Locating persons by name: `find`](#locating-persons-by-name-find)
+   - [Deleting a person : `delete`](#deleting-a-person--delete)
+   - [Clearing all entries : `clear`](#clearing-all-entries--clear)
+   - [Exiting the program : `exit`](#exiting-the-program--exit)
+3. [Saving the data](#saving-the-data)
+4. [Editing the data file](#editing-the-data-file)
+5. [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+6. [FAQ](#faq)
+7. [Known issues](#known-issues)
+8. [Command summary](#command-summary)
+9. [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
 
 1. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
 
@@ -29,163 +40,181 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
-
-   * `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete /id A1234567B` : Deletes the contact with ID `A1234567B` in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
+| Command                                      | Description                                               |
+|----------------------------------------------|-----------------------------------------------------------|
+| `list`                                       | Lists all contacts.                                       |
+| `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
+| `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
+| `clear`                                      | Deletes all contacts.                                     |
+| `exit`                                       | Exits the app.                                            |
 
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Person
-
-(add image)
-
-<box type="info" seamless>
-
-**Properties**<br>
-
-
-
---------------------------------------------------------------------------------------------------------------------
-
 ## Features
 
-<box type="info" seamless>
+**Notes about the Command Format**
+- **Words in `UPPER_CASE`**:  
+  These represent parameters that must be supplied by the user.  
+  Example: In `add /id ID /name NAME`, `NAME` is a parameter that can be used as `add /id A0123456N /name John Doe`.
 
-**Notes about the command format:**<br>
+- **Items in square brackets (`[ ]`)**:  
+  These are optional parameters.  
+  Example: `add /id ID /name NAME [/phone PHONE_NUMBER]` can be used as:  
+  `add /id A0123456N /name John Doe /phone 83746574` or as `add /id A0123456N /name John Doe`.
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add /id ID /name NAME`, `NAME` is a parameter which can be used as `add /id A0123456N /name John Doe`.
+- **Items with `...` after them**:  
+  These parameters can be used multiple times, including zero times.  
+  Example: `[/note NOTE]...` can be used as:  
+  `add /id A0123456N /name John Doe /note Hi`  
+  or even as `add /id A0123456N /name John Doe /note Hi /note Bye`.
 
-* Items in square brackets are optional.<br>
-  e.g `add /id ID /name NAME [/phone PHONE_NUMBER]` can be used as `add /id A0123456N /name John Doe /phone 83746574` or as `add /id A0123456N /name John Doe`.
+- **Parameters can appear in any order**:  
+  The order of parameters does not matter.  
+  Example: Both of the following are valid commands:  
+  `add /id A0123456N /name John Doe`  
+  and `add /name John Doe /id A0123456N`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[/note NOTE]…​` can be used as ` ` (i.e. 0 times), `/note Hi`, `/note Hi /note Bye` etc.
+- **Extraneous parameters will be ignored**:  
+  For commands that do not take any parameters (such as `help`, `list`, `exit`, `clear`), any extra parameters will be ignored.  
+  Example: If the command is `help`, typing `help 123` will be interpreted as `help`.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `/id ID /name NAME`, `/name NAME /id ID` is also acceptable.
+- **Copy-pasting issues in PDFs**:  
+  When copying commands from a PDF version of this document, be cautious of space characters surrounding line-breaks. These may be omitted when pasted into the application, causing errors. Ensure the format remains correct when transferring the command.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+## Commands Overview
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+### Viewing Help: `help`
 
-### Viewing help : `help`
+Shows a message explaining how to access the help page.
 
-Shows a message explaning how to access the help page.
+**Format**: `help`
 
-![help message](images/helpMessage.png)
+![Help Message](images/helpMessage.png)
 
-Format: `help`
+---
 
-
-### Adding a person: `add`
+### Adding a Person: `add`
 
 Adds a person to the address book.
 
-Format: `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]​`
+**Format**:  
+`add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-Examples:
-* `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com`
-* `add /id A4045018Y /name Betsy Crowe /email betsycrowe@example.com /phone 1234567 /course CS4215`
+**Examples**:
+- `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com`
+- `add /id A4045018Y /name Betsy Crowe /email betsycrowe@example.com /phone 1234567 /course CS4215`
 
-### Listing all persons : `list`
+---
+
+### Listing All Persons: `list`
 
 Shows a list of all persons in the address book.
 
-Format: `list`
+**Format**:  
+`list`
 
-### Editing a person : `edit`
+---
+
+### Editing a Person: `edit`
 
 Edits an existing person in the address book.
 
-Format: `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]​`
+**Format**:  
+`edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-* Edits the person with the specified `ID`.
-* Only the specified properties will be changed. Other properties will remain as they were previously.
+**Notes**:  
+- Edits the person with the specified `ID`.
+- Only the specified properties will be updated. Other properties will remain as they were previously.
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
-    <ul>
-      <li>At least one optional field must be provided</li>
-      <li>Not more than one of each optional field should be provided</li>
-      <li>The new ID must not already be used by a different person</li>
-    </ul>
-</div><br>
+#### **Warning**:  
+- At least one optional field must be provided.
+- Not more than one of each optional field should be provided.
+- The new ID must not already be used by a different person.
 
-Examples:
-*  `edit /id A0123456N /phone 91234567 /email johndoe@example.com` Edits the phone number and email address of the person with the ID `A0123456N` to be `91234567` and `johndoe@example.com` respectively.
+**Example**:  
+`edit /id A0123456N /phone 91234567 /email johndoe@example.com`  
+This will update the phone number and email of the person with ID `A0123456N` to `91234567` and `johndoe@example.com` respectively.
 
-### Locating persons by name: `find`
+---
+
+### Locating Persons by Name: `find`
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+**Format**:  
+`find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- The search is **case-insensitive** (e.g., `hans` will match `Hans`).
+- The order of keywords does not matter (e.g., `Hans Bo` will match `Bo Hans`).
+- Only the name field is searched.
+- Only **full words** will be matched (e.g., `Han` will not match `Hans`).
+- Persons matching at least one keyword will be returned (i.e., **OR** search).
 
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+**Examples**:
+- `find John` returns `john` and `John Doe`.
+- `find alex david` returns `Alex Yeoh`, `David Li`.
 
-### Deleting a person : `delete`
+![Find Example](images/findAlexDavidResult.png)
+
+---
+
+### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
 
-Format: `delete /id ID`
+**Format**:  
+`delete /id ID`
 
-* Deletes the person with the specified `ID`.
-* The ID refers to the ID belonging to the person in the person list.
-* The ID **must be a valid ID** i.e.:
+- Deletes the person with the specified `ID`.
+- The ID must be valid:
   1. It must start with `A`, `U`, `HT`, or `NT`.
   2. The starting letters must be followed by 7 digits.
   3. It must end with one of the letters in `ABEHJLMNRUWXY`.
 
-Examples:
-* `delete /id A1234567N` deletes the person with the ID `A1234567N` in the address book.
-* `delete /id A7654321B` deletes the person with the ID `A7654321B` in the address book.
+**Examples**:
+- `delete /id A1234567N` deletes the person with ID `A1234567N`.
+- `delete /id A7654321B` deletes the person with ID `A7654321B`.
 
-### Clearing all entries : `clear`
+---
+
+### Clearing All Entries: `clear`
 
 Clears all entries from the address book.
 
-Format: `clear`
+**Format**:  
+`clear`
 
-### Exiting the program : `exit`
+---
+
+### Exiting the Program: `exit`
 
 Exits the program.
 
-Format: `exit`
+**Format**:  
+`exit`
 
-### Saving the data
+---
 
-BetterCallTA data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+### Saving the Data
 
-### Editing the data file
+BetterCallTA data is automatically saved to the hard disk after any command that changes the data. There is **no need** to save manually.
 
-BetterCallTA data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+---
 
-<box type="warning" seamless>
+### Editing the Data File
 
-**Caution:**
-If your changes to the data file makes its format invalid, BetterCallTA will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause BetterCallTA to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+BetterCallTA data is saved automatically as a JSON file located at:  
+`[JAR file location]/data/addressbook.json`
+
+**Warning for Advanced Users**:  
+You can update the data directly by editing the file, but be cautious.
+
+#### **Caution**:  
+- If your changes make the file's format invalid, BetterCallTA will discard all data and start with an empty file the next time it is run.
+- **Backup** the data file before editing it to prevent data loss.
+- Incorrect edits could cause unexpected behavior (e.g., invalid values or
 
 ### Archiving data files `[coming in v2.0]`
 
