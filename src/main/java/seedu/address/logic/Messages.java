@@ -70,4 +70,14 @@ public class Messages {
 
         return sb.toString();
     }
+
+    public static String getErrorMessageForMultiplePrefixes(Prefix[] presentPrefixes) {
+        assert presentPrefixes.length > 1;
+
+        Set<String> presentFields =
+                Stream.of(presentPrefixes).map(Prefix::toString).collect(Collectors.toSet());
+
+        return MESSAGE_DUPLICATE_FIELDS
+                + String.join(" ", presentFields);
+    }
 }

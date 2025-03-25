@@ -86,12 +86,12 @@ public class ArgumentMultimap {
      * once among the arguments.
      */
     public void verifyOnlyOnePrefix(Prefix... prefixes) throws ParseException {
-        Prefix[] duplicatedPrefixes = Stream.of(prefixes)
-                .filter(prefix -> argMultimap.getOrDefault(prefix, List.of()).size() > 1)
+        Prefix[] presentPrefixes = Stream.of(prefixes)
+                .filter(prefix -> !argMultimap.getOrDefault(prefix, List.of()).isEmpty())
                 .toArray(Prefix[]::new);
 
-        if (duplicatedPrefixes.length > 0) {
-            throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
+        if (presentPrefixes.length > 1) {
+            throw new ParseException(Messages.getErrorMessageForMultiplePrefixes(presentPrefixes));
         }
     }
 }

@@ -1,9 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LOAD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LIST;
 
 import java.io.File;
 import java.nio.file.Path;
