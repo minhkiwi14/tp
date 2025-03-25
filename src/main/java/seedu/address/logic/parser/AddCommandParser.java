@@ -27,7 +27,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     // Placeholder values for optional fields
     private static final String PHONE_PLACEHOLDER = "00000000";
     private static final String EMAIL_PLACEHOLDER = "%s@u.nus.edu";
-    private static final String COURSE_PLACEHOLDER = "No course specified";
+    private static final String COURSE_PLACEHOLDER = "AAA0000AA";
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
