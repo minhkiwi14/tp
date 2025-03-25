@@ -6,9 +6,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
 
 import java.nio.file.Path;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.storage.JsonAddressBookStorage;
 
 /**
  * Represents a FileCommand which can load, save or append data to a file.
@@ -37,6 +40,8 @@ public class FileCommand extends Command {
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_STRING_UNFORMATTED, COMMAND_WORD, PREFIX_FILE_LOAD,
             PREFIX_FILE_SAVE);
+
+    private static final String ADDRESSBOOK_FILE_DIR = "data";
 
     private final FileOperation operation;
 
@@ -108,15 +113,28 @@ public class FileCommand extends Command {
     /**
      * Executes the load operation.
      *
-     * @param model Model
-     * @return CommandResult
+     * @param model representing the current address book
+     * @return CommandResult indicating the result of the load operation
      */
     public CommandResult load(Model model) {
-        Boolean status = true;
 
-        if (status == false) {
+        Path filePath = Path.of(ADDRESSBOOK_FILE_DIR, fileName);
+
+        // Check if file exists
+        if (!filePath.toFile().exists()) {
+            return new CommandResult(String.format(MESSAGE_ERROR, "File does not exist: " + fileName));
+        }
+
+        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
+
+        // Load data from file
+        try {
+            ((AddressBook) model.getAddressBook())
+                    .resetData(new JsonAddressBookStorage(filePath).readAddressBook().get());
+        } catch (DataLoadingException e) {
             return new CommandResult(String.format(MESSAGE_ERROR, "Failed to load data from " + fileName));
         }
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, "Loaded data from " + fileName));
     }
 
@@ -129,7 +147,7 @@ public class FileCommand extends Command {
     public CommandResult save(Model model) {
         Boolean status = true;
 
-        model.setAddressBookFilePath(Path.of("data", fileName));
+        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
 
         if (status == false) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, "Failed to save data to " + fileName));
