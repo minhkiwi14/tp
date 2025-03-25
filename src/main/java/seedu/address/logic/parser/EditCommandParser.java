@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import seedu.address.logic.commands.EditCommand;
@@ -28,10 +29,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
-                        PREFIX_EMAIL, PREFIX_COURSE);
+                        PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
-                PREFIX_EMAIL, PREFIX_COURSE);
+                PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -54,6 +55,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
             editPersonDescriptor.setCourse(ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_ATTENDANCE).isPresent()) {
+            editPersonDescriptor.setAttendance(ParserUtil.parseAttendance(argMultimap.getValue(PREFIX_ATTENDANCE).get()));
         }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
