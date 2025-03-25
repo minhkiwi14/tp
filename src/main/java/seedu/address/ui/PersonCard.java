@@ -37,9 +37,9 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private Label course;
-    @FXML
+    @FXM
     private Label attendance;
-    @FXML
+    @FXM
     private Label grade;
 
     /**
