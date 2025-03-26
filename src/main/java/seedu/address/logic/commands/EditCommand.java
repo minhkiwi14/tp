@@ -46,7 +46,7 @@ public class EditCommand extends Command {
             %s: Edits the details of the person identified by the student ID.
             Parameters:
             %s ID (Student ID)
-            
+
             Optional Parameters:
             (Must choose at least 1. Cannot have duplicate parameters)
             %s newId
