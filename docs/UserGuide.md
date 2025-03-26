@@ -52,6 +52,8 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
+
+
 ## Person
 
 ![Person descriptor](images/person.png)
@@ -78,42 +80,44 @@
 - `A0738475N`
 - `HT0347856U`
 
---------
+---
 
 #### `Name` - Your student's name
 
 Duplicate names are allowed, as that is something that **can** happen!
 
---------
+---
 
-#### 📞 **Phone** - Student's phone number
+#### 📞 **`Phone`** - Student's phone number
 
-**Format Rules**:  
-1. Must only contain numbers (0-9)  
-2. Must be at least 3 digits long  
+> **Phone Number Format Rules**:  
+> 1. Must only contain numbers (0-9)  
+> 2. Must be at least 3 digits long  
 
 **Default**: `00000000`  
 
 **Example**:  
 - 86566289
 
---------
+---
 
-#### 📧 **Email** - Student's email address
+#### 📧 **`Email`** - Student's email address
 
-**Format**: `local-part@domain`  
-**Requirements**:
-
-**Local-part**:
-- Only alphanumeric characters (a-z, A-Z, 0-9)
-- Cannot contain these special characters: `+`, `_`, `.`, `-`
-- Cannot start or end with special characters
-
-**Domain**:
-- Must end with domain label of at least 2 characters
-- Each label must:
-  - Start and end with alphanumeric characters
-  - Contain only alphanumerics and hyphens
+> **Email Format Rules - Student's Email**
+>
+> **Format**: `local-part@domain`  
+> **Requirements**:
+>
+> **Local-part**:
+> - Only alphanumeric characters (a-z, A-Z, 0-9)
+> - Cannot contain these special characters: `+`, `_`, `.`, `-`
+> - Cannot start or end with special characters
+>
+> **Domain**:
+> - Must end with domain label of at least 2 characters
+> - Each label must:
+>  - Start and end with alphanumeric characters
+>  - Contain only alphanumerics and hyphens
 
 **Default**: `studentname@u.nus.edu`
 
@@ -121,15 +125,16 @@ Duplicate names are allowed, as that is something that **can** happen!
 - `johndoe@u.nus.edu`
 - `example32@gmail.com`
 
-___
-#### 🎓 **Course** - NUS course code
+---
 
-**Format Rules**:
-1. Must start with 2 or 3 letters
-2. Followed by exactly 4 digits
-3. May optionally end with up to 2 letters
+#### 🎓 **`Course`** - NUS course code
 
-**Pattern**: `[A-Z]{2,3}[0-9]{4}[A-Z]{0,2}`
+> **Format Rules**:
+> 1. Must start with 2 or 3 letters
+> 2. Followed by exactly 4 digits
+> 3. May optionally end with up to 2 letters
+>
+> **Pattern**: `[A-Z]{2,3}[0-9]{4}[A-Z]{0,2}`
 
 **Default**: `No course`
 
@@ -140,11 +145,11 @@ ___
 
 ---
 
-#### ✅ **Attendance** - Student's class participation status
+#### ✅ **`Attendance`** - Student's class participation status
 
 **Valid Status Values**:
 - `PRESENT`
-- `ABSENT` 
+- `ABSENT`
 - `EXCUSED`
 
 **Notes**:
@@ -155,7 +160,7 @@ ___
 
 ---
 
-#### 🗣️ **Participation** - Student's engagement level
+#### 🗣️ **`Participation`** - Student's engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -165,10 +170,10 @@ ___
 | `POOR`      | Minimal or insufficient engagement   | Case-insensitive |
 | `NONE`      | No observable participation          | Case-insensitive |
 
-**Key Rules**:
-- Only the above status values are valid
-- Matches must be exact (e.g., "Good" not "Good enough")
-- Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")
+> **Format Rules**:
+> - Only the above status values are valid
+> - Matches must be exact (e.g., "Good" not "Good enough")
+> - Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")
 
 **Default**: `UNMARKED`
 
@@ -176,7 +181,8 @@ ___
 
 #### `Grade` - The predicted grade of your student based on their previous graded assignments
 
--  You can only enter an integer from `0` to `100` (inclusive) for a grade.
+> **Format Rules**
+> -  You can only enter an integer from `0` to `100` (inclusive) for a grade.
 
 ---
 
