@@ -7,7 +7,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PARTICIPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -28,10 +31,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
-                        PREFIX_EMAIL, PREFIX_COURSE);
+                        PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE,
-                PREFIX_EMAIL, PREFIX_COURSE);
+                PREFIX_EMAIL, PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -55,6 +58,19 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_COURSE).isPresent()) {
             editPersonDescriptor.setCourse(ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).get()));
         }
+        if (argMultimap.getValue(PREFIX_ATTENDANCE).isPresent()) {
+            editPersonDescriptor.setAttendance(
+                    ParserUtil.parseAttendance(argMultimap.getValue(PREFIX_ATTENDANCE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_PARTICIPATION).isPresent()) {
+            editPersonDescriptor.setParticipation(
+                    ParserUtil.parseParticipation(argMultimap.getValue(PREFIX_PARTICIPATION).get()));
+        }
+        if (argMultimap.getValue(PREFIX_GRADE).isPresent()) {
+            int gradeValue = Integer.parseInt(argMultimap.getValue(PREFIX_GRADE).get());
+            editPersonDescriptor.setGrade(new seedu.address.model.person.Grade(gradeValue));
+        }
+
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

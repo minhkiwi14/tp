@@ -1,11 +1,14 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PARTICIPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -51,13 +54,17 @@ public class EditCommand extends Command {
             %s PHONE
             %s EMAIL
             %s COURSE
-
+            %s ATTENDANCE
+            %s PARTICIPATION
+            %s GRADE
+            
             Example:
             edit /id A1234567B /newid A1234567C /name Walter White
             edit /id A0348275N /phone 98765432 /email jessy@gmail.com /course CS2103T
             """;
     public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD,
-            PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_COURSE);
+            PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+            PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE);
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -67,7 +74,7 @@ public class EditCommand extends Command {
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param id of the person to edit
+     * @param id                   of the person to edit
      * @param editPersonDescriptor details to edit the person with
      */
     public EditCommand(Id id, EditPersonDescriptor editPersonDescriptor) {
@@ -114,9 +121,14 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Course updatedCourse = editPersonDescriptor.getCourse().orElse(personToEdit.getCourse());
+        Attendance updatedAttendance = editPersonDescriptor.getAttendance()
+                .orElse(personToEdit.getAttendance());
+        Participation updatedParticipation = editPersonDescriptor.getParticipation()
+                .orElse(personToEdit.getParticipation());
+        Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
 
         return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse,
-                personToEdit.getAttendance(), personToEdit.getParticipation(), personToEdit.getGrade(),
+                updatedAttendance, updatedParticipation, updatedGrade,
                 personToEdit.getNotes());
     }
 
@@ -145,6 +157,18 @@ public class EditCommand extends Command {
 
         if (!personToEdit.getCourse().equals(editedPerson.getCourse())) {
             updatedFields.add(new Pair<>("Course", editedPerson.getCourse().toString()));
+        }
+
+        if (!personToEdit.getAttendance().equals(editedPerson.getAttendance())) {
+            updatedFields.add(new Pair<>("Attendance", editedPerson.getAttendance().toString()));
+        }
+
+        if (!personToEdit.getParticipation().equals(editedPerson.getParticipation())) {
+            updatedFields.add(new Pair<>("Participation", editedPerson.getParticipation().toString()));
+        }
+
+        if (!personToEdit.getGrade().equals(editedPerson.getGrade())) {
+            updatedFields.add(new Pair<>("Grade", editedPerson.getGrade().toString()));
         }
 
         return updatedFields;
@@ -195,9 +219,6 @@ public class EditCommand extends Command {
          * values.
          */
         public EditPersonDescriptor() {
-            setAttendance(new Attendance());
-            setParticipation(new Participation());
-            setGrade(new Grade());
             setNote(new Note("NA"));
         }
 
@@ -220,7 +241,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(newId, name, phone, email, course);
+            return CollectionUtil.isAnyNonNull(newId, name, phone, email,
+                    course, attendance, participation, grade);
         }
 
         public void setNewId(Id newId) {
