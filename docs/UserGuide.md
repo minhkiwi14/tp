@@ -211,6 +211,8 @@ Duplicate names are allowed, as that is something that **can** happen!
 | `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
 | `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
 | `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
+
+
 **Command Syntax Rules**
 
 | Rule                      | Description                                                                 | Example                                                                 |
@@ -218,6 +220,8 @@ Duplicate names are allowed, as that is something that **can** happen!
 | Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
 | Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
 | PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
+
+
 **Recommended Best Practices for Command Syntax**
 
 1. **Required Parameters**  
