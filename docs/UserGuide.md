@@ -36,7 +36,7 @@
 7. [Command Summary](#command-summary)
 8. [Glossary](#glossary)
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Quick start
 
@@ -50,27 +50,42 @@
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
-   Here are some example commands you can try:
 
-| Command                                      | Description                                               |
-|----------------------------------------------|-----------------------------------------------------------|
-| `list`                                       | Lists all contacts.                                       |
-| `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
-| `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
-| `clear`                                      | Deletes all contacts.                                     |
-| `exit`                                       | Exits the app.                                            |
+   > Here are some example commands you can try:
+   >
+   > | Command                                      | Description                                               |
+   > |----------------------------------------------|-----------------------------------------------------------|
+   > | `list`                                       | Lists all contacts.                                       |
+   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
+   > | `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
+   > | `clear`                                      | Deletes all contacts.                                     |
+   > | `exit`                                       | Exits the app.                                            |
 
-1. Refer to the [Features](#features) below for details of each command.
+Do refer to the [Features](#features) below for details of each command!
 
 --------------------------------------------------------------------------------------------------------------------
 ## Person
+
+This section covers a `Person`, which encapsulates a person's contact details in BetterCallTA. 
 
 > ![Person descriptor](images/person.png)
 
 ---
 ### Properties
 
-#### 🆔 **ID** - Unique student identifier
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+
+---
+
+#### 🆔 **`ID`** - Unique student identifier
 
 **Format**:
 ```
@@ -201,8 +216,25 @@ Duplicate names are allowed, as that is something that **can** happen!
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
+
+- [Command Syntax Notes](#command-syntax-notes)
+- [Viewing Help](#viewing-help-help)
+- [Adding a Person](#adding-a-person-add)
+- [Listing All Persons](#listing-all-persons-list)
+- [Editing a Person](#editing-a-person-edit)
+- [Locating Persons by Name](#locating-persons-by-name-find)
+- [Deleting a Person](#deleting-a-person-delete)
+- [Clearing All Entries](#clearing-all-entries-clear)
+- [Exiting the Program](#exiting-the-program-exit)
+- [Saving the Data](#saving-the-data)
+- [Editing the Data File](#editing-the-data-file)
+- [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
+
+---
 
 ### Command Syntax Notes
+This section covers the Command Syntax Notes you should be aware of when you are using BetterCallTA
 
 **Command Syntax Notation**
 
@@ -240,6 +272,7 @@ Duplicate names are allowed, as that is something that **can** happen!
    - Maintain exact spacing when copying commands
    - Test commands after pasting from external sources
 
+---
 
 ### Viewing Help: `help`
 
@@ -332,6 +365,8 @@ Examples:
 
   >![result for 'find alex david'](images/findAlexDavidResult.png)
 
+---
+
 ### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
@@ -392,6 +427,7 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
+This section covers common questions that BetterCallTA users face. 
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous BetterCallTA home folder.
@@ -399,6 +435,7 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
+This section covers the current known issues with BetterCallTA. 
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
@@ -406,6 +443,7 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
+This section covers the summary of commands in BetterCallTA.
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -420,6 +458,7 @@ Action     | Format, Examples
 --------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
+This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentations. 
 
 | Term | Definition |
 |------|------------|
