@@ -6,23 +6,35 @@
 
 ## Table of Contents
 
-1. [Quick start](#quick-start)
-2. [Features](#features)
-   - [Viewing help: `help`](#viewing-help-help)
-   - [Adding a person: `add`](#adding-a-person-add)
-   - [Listing all persons : `list`](#listing-all-persons--list)
-   - [Editing a person : `edit`](#editing-a-person-edit)
-   - [Locating persons by name: `find`](#locating-persons-by-name-find)
-   - [Deleting a person : `delete`](#deleting-a-person--delete)
-   - [Clearing all entries : `clear`](#clearing-all-entries--clear)
-   - [Exiting the program : `exit`](#exiting-the-program--exit)
-3. [Saving the data](#saving-the-data)
-4. [Editing the data file](#editing-the-data-file)
-5. [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
-6. [FAQ](#faq)
-7. [Known issues](#known-issues)
-8. [Command summary](#command-summary)
-9. [Glossary](#glossary)
+1. [Better Call TA User Guide](#better-call-ta-user-guide)
+2. [Quick start](#quick-start)
+3. [Person](#person)
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+4. [Features](#features)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Person](#adding-a-person-add)
+   - [Listing All Persons](#listing-all-persons-list)
+   - [Editing a Person](#editing-a-person-edit)
+   - [Locating Persons by Name](#locating-persons-by-name-find)
+   - [Deleting a Person](#deleting-a-person-delete)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Exiting the Program](#exiting-the-program-exit)
+   - [Saving the Data](#saving-the-data)
+   - [Editing the Data File](#editing-the-data-file)
+   - [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
+5. [FAQ](#faq)
+6. [Known Issues](#known-issues)
+7. [Command Summary](#command-summary)
+8. [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +45,8 @@
 3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
-   ![Ui](images/Ui.png)
+
+   > ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
@@ -52,7 +65,7 @@
 --------------------------------------------------------------------------------------------------------------------
 ## Person
 
-![Person descriptor](images/person.png)
+> ![Person descriptor](images/person.png)
 
 ---
 ### Properties
@@ -189,6 +202,8 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 ## Features
 
+### Command Syntax Notes
+
 **Command Syntax Notation**
 
 | Notation               | Meaning                                                                 | Example                                                                 |
@@ -196,7 +211,6 @@ Duplicate names are allowed, as that is something that **can** happen!
 | `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
 | `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
 | `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
-
 **Command Syntax Rules**
 
 | Rule                      | Description                                                                 | Example                                                                 |
@@ -204,18 +218,24 @@ Duplicate names are allowed, as that is something that **can** happen!
 | Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
 | Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
 | PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
-
 **Recommended Best Practices for Command Syntax**
 
-| Parameter Type | Description | Example |
-|----------------|-------------|---------|
-| **Required** | Must be provided for the command to work | `delete /id ID` (must include an ID) |
-| **Optional** | Can be omitted when not needed | `add /name NAME [/phone PHONE]` (phone can be skipped) |
-| **Repeatable** | Can be used multiple times in the same command | `/note NOTE...` (can add multiple notes) |
-| **Format-Sensitive** | Requires exact spacing and syntax | `add /id A1234567X` (not `add/idA1234567X`) |
+1. **Required Parameters**  
+   - Must always be provided for commands that require them
+   - Example: `ID` in `delete /id ID`
 
+2. **Optional Parameters**  
+   - Can be omitted if not needed
+   - Example: Phone number in contact creation
 
-## Commands Overview
+3. **Repeated Parameters**  
+   - Can add multiple instances where supported
+   - Example: Multiple notes for a student
+
+4. **Format Preservation**  
+   - Maintain exact spacing when copying commands
+   - Test commands after pasting from external sources
+
 
 ### Viewing Help: `help`
 
@@ -223,7 +243,7 @@ Shows a message explaining how to access the help page.
 
 **Format**: `help`
 
-![Help Message](images/helpMessage.png)
+> ![Help Message](images/helpMessage.png)
 
 ---
 
@@ -306,7 +326,7 @@ Examples:
 
 <br>
 
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  >![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a Person: `delete`
 
