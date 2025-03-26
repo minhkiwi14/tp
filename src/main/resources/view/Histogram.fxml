@@ -18,7 +18,8 @@
             <CategoryAxis fx:id="xAxis" label="Grade"/>
         </xAxis>
         <yAxis>
-            <NumberAxis fx:id="yAxis" label="Frequency"/>
+            <NumberAxis fx:id="yAxis" label="Frequency" tickUnit="1" minorTickCount="0"
+                    lowerBound="0" upperBound="5"/>
         </yAxis>
     </BarChart>
 </StackPane>

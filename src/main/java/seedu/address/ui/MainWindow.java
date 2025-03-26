@@ -1,7 +1,10 @@
 package seedu.address.ui;
 
+import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -17,6 +20,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Grade;
+import seedu.address.model.person.Person;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -67,9 +71,7 @@ public class MainWindow extends UiPart<Stage> {
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
-
         setAccelerators();
-
         helpWindow = new HelpWindow();
     }
 
@@ -131,15 +133,24 @@ public class MainWindow extends UiPart<Stage> {
         histogramPlaceholder.getChildren().add(histogram.getRoot());
 
         updateHistogramWithGrades();
+
+        logic.getFilteredPersonList().addListener((ListChangeListener<Person>) change -> {
+            updateHistogramWithGrades();
+        });
     }
 
+    /**
+     * Updates the histogram with the grades of the students in the current list.
+     */
     private void updateHistogramWithGrades() {
-        Grade[] array = logic.getFilteredPersonList().stream()
-                .map(person -> person.getGrade()).toArray(Grade[]::new);
-        if (array.length == 0) {
-            histogram.updateHistogram(new Grade[0], 10);
+        List<Grade> gradeList = logic.getFilteredPersonList().stream()
+                .map(person -> person.getGrade())
+                .filter(grade -> grade.grade != -1)
+                .collect(Collectors.toList());
+        if (gradeList.size() == 0) {
+            histogram.updateHistogram(List.of(), 10);
         } else {
-            histogram.updateHistogram(array, 10);
+            histogram.updateHistogram(gradeList, 10);
         }
     }
 
