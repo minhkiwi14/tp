@@ -60,167 +60,167 @@
 
 ### **Properties**<br>
 
-#### `ID` - The unique identifier for your student
+#### 🆔 **ID** - Unique student identifier
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for ID</b><br>
-    <t>Follows format used by NUS for Student ID</t>
-    <ol>
-      <li>It must start with <code>A, U, HT, or NT</code></li>
-      <li>The starting letters must be followed by <u>7 digits</u></li>
-      <li>It must end with one of the letters <code>A, B, E, H, J, L, M, N, R, U, W, X or Y</code></li>
-    </ol>
-</div><br>
+**Format**:
+```
+[A/U/HT/NT] + 7 digits + [A,B,E,H,J,L,M,N,R,U,W,X,Y]
+```
 
-Examples:
-* A0738475N
-* HT0347856U
+> **📌 ID Format Rules**  
+> Follows NUS Student ID format:
+> 1. Must start with `A`, `U`, `HT`, or `NT`
+> 2. Starting letters must be followed by **7 digits**
+> 3. Must end with one of:  
+>    `A, B, E, H, J, L, M, N, R, U, W, X, Y`
 
-___
+**Examples**:
+- `A0738475N`
+- `HT0347856U`
+
+--------
+
 #### `Name` - Your student's name
 
-There can be duplicate student names, as that is something that <b>can</b> happen!
+Duplicate names are allowed, as that is something that **can** happen!
+
+--------
+
+#### 📞 **Phone** - Student's phone number
+
+**Format Rules**:  
+1. Must only contain numbers (0-9)  
+2. Must be at least 3 digits long  
+
+**Default**: `00000000`  
+
+**Example**:  
+- 86566289
+
+--------
+
+#### 📧 **Email** - Student's email address
+
+**Format**: `local-part@domain`  
+**Requirements**:
+
+**Local-part**:
+- Only alphanumeric characters (a-z, A-Z, 0-9)
+- Cannot contain these special characters: `+`, `_`, `.`, `-`
+- Cannot start or end with special characters
+
+**Domain**:
+- Must end with domain label of at least 2 characters
+- Each label must:
+  - Start and end with alphanumeric characters
+  - Contain only alphanumerics and hyphens
+
+**Default**: `studentname@u.nus.edu`
+
+**Valid Examples**:
+- `johndoe@u.nus.edu`
+- `example32@gmail.com`
 
 ___
-#### `Phone` - Your student's phone number
+#### 🎓 **Course** - NUS course code
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Phone</b><br>
-    <ol>
-      <li>Must <u>only contain numbers</u></li>
-      <li>Must be at least <u>3 digits long</u></li>
-    </ol>
-</div><br>
+**Format Rules**:
+1. Must start with 2 or 3 letters
+2. Followed by exactly 4 digits
+3. May optionally end with up to 2 letters
 
-The default Phone for newly created contacts is `00000000`.
+**Pattern**: `[A-Z]{2,3}[0-9]{4}[A-Z]{0,2}`
 
-Example:
-* 6565166666
+**Default**: `No course`
 
-___
-#### `Email` - Your student's email
+**Valid Examples**:
+- `CS2103T`
+- `IS1108`
+- `MA1101R`
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Email</b><br>
-    <t> Must be of format local-part@domain and follow the following constraints:
-    </t>
-    <ol>
-      <li>The local-part must <u>only contain alphanumeric characters</u>, excluding these special characters</li>
-      <ul>
-        <li>+</li>
-        <li>_</li>
-        <li>.</li>
-        <li>-</li>
-      </ul>
-      <li>The local-part must not <u>start or end</u> with any special characters</li>
-      <li>The domain name must end with a domain label at least <u>2 characters
-      </u> long</li>
-      <li>The domain name must have each domain label start and end <u>with alphanumeric characters</u>
-      <li>The domain name must have each domain label <u>consist of alphanumeric characters</u>, separated only by hyphens, if any
-    </ol>
-</div><br>
+---
 
-The default Email for newly created contacts is `ab@u.nus.edu`.
+#### ✅ **Attendance** - Student's class participation status
 
-Examples:
-* e123456@u.nus.edu
-* example32@gmail.com
+**Valid Status Values**:
+- `PRESENT`
+- `ABSENT` 
+- `EXCUSED`
 
-___
-#### `Course` - The course you assist in that the student is taking
+**Notes**:
+- Case-insensitive (e.g., "Present" or "present" are accepted)
+- Must match one of the values exactly
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Course</b><br>
-    <t>Follows format used by NUS for Courses</t>
-    <ol>
-      <li>It must start with <u>2 or 3 letters</u></li>
-      <li>The starting letters must be followed by <u>4 digits</u></li>
-      <li>(Optional) It can end with <u>up to two letters</u></li>
-    </ol>
-</div><br>
+**Default**: `UNMARKED`
 
-The default Course for newly created contacts is `AAA0000AA`.
+---
 
-Examples:
-* CS2103T
-* IS1108
+#### 🗣️ **Participation** - Student's engagement level
 
-___
-#### `Attendance` - The attendance status of your student in the most recent Tutorial or Lab
+| Status      | Description                          | Case Sensitivity |
+|-------------|--------------------------------------|------------------|
+| `EXCELLENT` | Outstanding contribution             | Case-insensitive |
+| `GOOD`      | Above average participation          | Case-insensitive |
+| `AVERAGE`   | Meets basic expectations             | Case-insensitive |
+| `POOR`      | Minimal or insufficient engagement   | Case-insensitive |
+| `NONE`      | No observable participation          | Case-insensitive |
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Valid Attendance statuses</b><br>
-    <t>Only the following strings will be valid</t>
-    <ul>
-      <li>PRESENT</li>
-      <li>ABSENT</li>
-      <li>EXCUSED</li>
-    </ul>
-    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
-</div><br>
+**Key Rules**:
+- Only the above status values are valid
+- Matches must be exact (e.g., "Good" not "Good enough")
+- Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")
 
-The default Attendance status for newly created contacts is `UNMARKED`.
+**Default**: `UNMARKED`
 
-___
-#### `Participation` - The participation status of your student in the most recent Tutorial or Lab
+---
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Valid Participation statuses</b><br>
-    <t>Only the following strings will be valid</t>
-    <ul>
-      <li>EXCELLENT</li>
-      <li>GOOD</li>
-      <li>AVERAGE</li>
-      <li>POOR</li>
-      <li>NONE</li>
-    </ul>
-    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
-</div><br>
-
-The default Participation status for newly created contacts is `UNMARKED`.
-
-___
 #### `Grade` - The predicted grade of your student based on their previous graded assignments
 
-*  You can only enter an integer from `0` to `100` (inclusive) for a grade.
+-  You can only enter an integer from `0` to `100` (inclusive) for a grade.
 
-___
+---
+
 #### `Notes` - Additional details that you may want to keep about individual students
 
-You can attach any number of notes to each student.
+- You can attach any number of notes to each student.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
-**Notes about the Command Format**
-- **Words in `UPPER_CASE`**:  
-  These represent parameters that must be supplied by the user.  
-  Example: In `add /id ID /name NAME`, `NAME` is a parameter that can be used as `add /id A0123456N /name John Doe`.
+### Syntax Notation
 
-- **Items in square brackets (`[ ]`)**:  
-  These are optional parameters.  
-  Example: `add /id ID /name NAME [/phone PHONE_NUMBER]` can be used as:  
-  `add /id A0123456N /name John Doe /phone 83746574` or as `add /id A0123456N /name John Doe`.
+| Notation               | Meaning                                                                 | Example                                                                 |
+|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
+| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
+| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
 
-- **Items with `...` after them**:  
-  These parameters can be used multiple times, including zero times.  
-  Example: `[/note NOTE]...` can be used as:  
-  `add /id A0123456N /name John Doe /note Hi`  
-  or even as `add /id A0123456N /name John Doe /note Hi /note Bye`.
+### Key Rules
 
-- **Parameters can appear in any order**:  
-  The order of parameters does not matter.  
-  Example: Both of the following are valid commands:  
-  `add /id A0123456N /name John Doe`  
-  and `add /name John Doe /id A0123456N`.
+| Rule                      | Description                                                                 | Example                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
+| Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
+| PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
 
-- **Extraneous parameters will be ignored**:  
-  For commands that do not take any parameters (such as `help`, `list`, `exit`, `clear`), any extra parameters will be ignored.  
-  Example: If the command is `help`, typing `help 123` will be interpreted as `help`.
+### Best Practices
 
-- **Copy-pasting issues in PDFs**:  
-  When copying commands from a PDF version of this document, be cautious of space characters surrounding line-breaks. These may be omitted when pasted into the application, causing errors. Ensure the format remains correct when transferring the command.
+1. **Required Parameters**  
+   - Must always be provided for commands that require them
+   - Example: `ID` in `delete /id ID`
+
+2. **Optional Parameters**  
+   - Can be omitted if not needed
+   - Example: Phone number in contact creation
+
+3. **Repeated Parameters**  
+   - Can add multiple instances where supported
+   - Example: Multiple notes for a student
+
+4. **Format Preservation**  
+   - Maintain exact spacing when copying commands
+   - Test commands after pasting from external sources
 
 ## Commands Overview
 
