@@ -1,4 +1,5 @@
 
+
 # Better Call TA User Guide
 
 **BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
@@ -27,18 +28,16 @@
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-
-1. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
-
-1. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
-
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+1. Ensure you have Java `17` or above installed in your Computer.
+2. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
+3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
+
+   Here are some example commands you can try:
 
 | Command                                      | Description                                               |
 |----------------------------------------------|-----------------------------------------------------------|
@@ -51,16 +50,12 @@
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-
-
-
 ## Person
 
 ![Person descriptor](images/person.png)
 
-<box type="info" seamless>
-
-### **Properties**<br>
+---
+### Properties
 
 #### 🆔 **ID** - Unique student identifier
 
@@ -194,7 +189,7 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 ## Features
 
-### Syntax Notation
+**Command Syntax Notation**
 
 | Notation               | Meaning                                                                 | Example                                                                 |
 |------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
@@ -202,7 +197,7 @@ Duplicate names are allowed, as that is something that **can** happen!
 | `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
 | `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
 
-### Key Rules
+**Command Syntax Rules**
 
 | Rule                      | Description                                                                 | Example                                                                 |
 |---------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
@@ -210,23 +205,15 @@ Duplicate names are allowed, as that is something that **can** happen!
 | Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
 | PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
 
-### Best Practices
+**Recommended Best Practices for Command Syntax**
 
-1. **Required Parameters**  
-   - Must always be provided for commands that require them
-   - Example: `ID` in `delete /id ID`
+| Parameter Type | Description | Example |
+|----------------|-------------|---------|
+| **Required** | Must be provided for the command to work | `delete /id ID` (must include an ID) |
+| **Optional** | Can be omitted when not needed | `add /name NAME [/phone PHONE]` (phone can be skipped) |
+| **Repeatable** | Can be used multiple times in the same command | `/note NOTE...` (can add multiple notes) |
+| **Format-Sensitive** | Requires exact spacing and syntax | `add /id A1234567X` (not `add/idA1234567X`) |
 
-2. **Optional Parameters**  
-   - Can be omitted if not needed
-   - Example: Phone number in contact creation
-
-3. **Repeated Parameters**  
-   - Can add multiple instances where supported
-   - Example: Multiple notes for a student
-
-4. **Format Preservation**  
-   - Maintain exact spacing when copying commands
-   - Test commands after pasting from external sources
 
 ## Commands Overview
 
@@ -410,5 +397,10 @@ Action     | Format, Examples
 
 ## Glossary
 
-`TA` - Teaching Assistant<br>
-Assists the instructor in teaching a course.
+| Term | Definition |
+|------|------------|
+| **TA** | Teaching Assistant - Supports the instructor in teaching a course by conducting tutorials, grading assignments, and assisting students |
+| **CLI** | Command Line Interface - Text-based interface for interacting with software |
+| **GUI** | Graphical User Interface - Visual interface with graphical elements |
+| **NUS** | National University of Singapore - Institution where this system is primarily used |
+| **ID** | Student Identification Number - Unique identifier following NUS format |
