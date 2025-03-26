@@ -315,8 +315,6 @@ Examples:
 
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
----
-
 ### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
