@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Grade;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -33,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
+    private Histogram histogram;
     private HelpWindow helpWindow;
 
     @FXML
@@ -46,6 +48,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane histogramPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -121,6 +126,21 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        histogram = new Histogram();
+        histogramPlaceholder.getChildren().add(histogram.getRoot());
+
+        updateHistogramWithGrades();
+    }
+
+    private void updateHistogramWithGrades() {
+        Grade[] array = logic.getFilteredPersonList().stream()
+                .map(person -> person.getGrade()).toArray(Grade[]::new);
+        if (array.length == 0) {
+            histogram.updateHistogram(new Grade[0], 10);
+        } else {
+            histogram.updateHistogram(array, 10);
+        }
     }
 
     /**

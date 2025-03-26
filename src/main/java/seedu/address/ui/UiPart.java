@@ -69,6 +69,7 @@ public abstract class UiPart<T> {
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(root);
         try {
+            System.out.println(location);
             fxmlLoader.load();
         } catch (IOException e) {
             throw new AssertionError(e);
