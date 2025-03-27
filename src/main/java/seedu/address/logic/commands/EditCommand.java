@@ -57,7 +57,7 @@ public class EditCommand extends Command {
             %s ATTENDANCE
             %s PARTICIPATION
             %s GRADE
-            
+
             Example:
             edit /id A1234567B /newid A1234567C /name Walter White
             edit /id A0348275N /phone 98765432 /email jessy@gmail.com /course CS2103T

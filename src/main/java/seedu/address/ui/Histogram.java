@@ -12,6 +12,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Grade;
 
+/**
+ * A UI component that displays the histogram of the grades of all students in the current displayed list.
+ */
 public class Histogram extends UiPart<Region> {
 
     private static final String FXML = "Histogram.fxml";
@@ -31,6 +34,9 @@ public class Histogram extends UiPart<Region> {
     @FXML
     private NumberAxis yAxis;
 
+    /**
+     * Creates a new Histogram.
+     */
     public Histogram() {
         super(FXML);
 
@@ -42,8 +48,8 @@ public class Histogram extends UiPart<Region> {
         xAxis.setLabel("Frequency");
 
         // Configure x-axis
-        xAxis.setCategories(FXCollections.observableArrayList("0-9", "10-19", "20-29", "30-39"
-                , "40-49", "50-59", "60-69", "70-79", "80-89", "90-100"));
+        xAxis.setCategories(FXCollections.observableArrayList("0-9", "10-19", "20-29", "30-39",
+                "40-49", "50-59", "60-69", "70-79", "80-89", "90-100"));
 
         yAxis.setLowerBound(LOWER_BOUND_FREQUENCY);
         yAxis.setUpperBound(DEFAULT_MAX_FREQUENCY);
@@ -55,7 +61,13 @@ public class Histogram extends UiPart<Region> {
         barChart.setCategoryGap(0);
         barChart.setBarGap(1);
     }
-    
+
+    /**
+     * Updates the histogram with the new data.
+     *
+     * @param data list of Grade data.
+     * @param numBins number of bins to display.
+     */
     public void updateHistogram(List<Grade> data, int numBins) {
         if (data == null || data.size() == 0) {
             barChart.getData().clear();
