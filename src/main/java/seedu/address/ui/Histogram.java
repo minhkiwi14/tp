@@ -97,11 +97,16 @@ public class Histogram extends UiPart<Region> {
      */
     private void setMaxFrequency(int[] bins) {
         int maxFrequency = Arrays.stream(bins).max().orElse(DEFAULT_MAX_FREQUENCY);
-        yAxis.setUpperBound(Math.max(DEFAULT_MAX_FREQUENCY, maxFrequency));
+        int upperBound = Math.max(DEFAULT_MAX_FREQUENCY, maxFrequency);
+
+        yAxis.setLowerBound(LOWER_BOUND_FREQUENCY);
+        yAxis.setUpperBound(upperBound);
         yAxis.setTickUnit(TICK_UNIT);
+        yAxis.setMinorTickCount(0);
         yAxis.setAutoRanging(false);
 
         yAxis.layout();
+        barChart.layout();
     }
 
     /**
