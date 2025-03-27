@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -170,7 +172,24 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code notes} is invalid.
      */
-    public static List<Note> parseNotes(String notes) throws ParseException {
-        return List.of();
+    public static Note parseNote(String note) throws ParseException {
+        requireNonNull(note);
+        String trimmedNote = note.trim();
+        if (!Note.isValidNote(trimmedNote)) {
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
+        }
+        return new Note(trimmedNote);
+    }
+
+    /**
+     * Parses {@code Collection<String> notes} into a {@code List<Note>}.
+     */
+    public static List<Note> parseNotes(Collection<String> notes) throws ParseException {
+        requireNonNull(notes);
+        final List<Note> noteList = new ArrayList<>();
+        for (String note : notes) {
+            noteList.add(parseNote(note));
+        }
+        return noteList;
     }
 }

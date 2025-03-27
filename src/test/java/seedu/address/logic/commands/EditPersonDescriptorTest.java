@@ -9,6 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -63,7 +64,7 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getAttendance().orElse(new Attendance()) + ", participation="
                 + editPersonDescriptor.getParticipation().orElse(new Participation()) + ", grade="
                 + editPersonDescriptor.getGrade().orElse(new Grade()) + ", note="
-                + editPersonDescriptor.getNote().orElse(new Note("NA")) + "}";
+                + editPersonDescriptor.getNotes().orElse(new ArrayList<Note>()) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }
