@@ -1,9 +1,12 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PARTICIPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import seedu.address.logic.commands.AddCommand;
@@ -48,6 +51,12 @@ public class PersonUtil {
                 .append(" "));
         descriptor.getCourse().ifPresent(course -> sb.append(PREFIX_COURSE).append(" ")
                 .append(course.course).append(" "));
+        descriptor.getAttendance().ifPresent(attendance -> sb.append(PREFIX_ATTENDANCE).append(" ")
+                .append(attendance.status).append(" "));
+        descriptor.getParticipation().ifPresent(participation -> sb.append(PREFIX_PARTICIPATION)
+                .append(" ").append(participation.status).append(" "));
+        descriptor.getGrade().ifPresent(grade -> sb.append(PREFIX_GRADE).append(" ").append(grade.grade)
+                .append(" "));
         return sb.toString();
     }
 }

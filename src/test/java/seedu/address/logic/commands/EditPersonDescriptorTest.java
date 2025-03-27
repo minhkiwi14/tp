@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Attendance;
-import seedu.address.model.person.Grade;
 import seedu.address.model.person.Note;
-import seedu.address.model.person.Participation;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditPersonDescriptorTest {
@@ -61,9 +58,9 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", course="
                 + editPersonDescriptor.getCourse().orElse(null) + ", attendance="
-                + editPersonDescriptor.getAttendance().orElse(new Attendance()) + ", participation="
-                + editPersonDescriptor.getParticipation().orElse(new Participation()) + ", grade="
-                + editPersonDescriptor.getGrade().orElse(new Grade()) + ", note="
+                + editPersonDescriptor.getAttendance().orElse(null) + ", participation="
+                + editPersonDescriptor.getParticipation().orElse(null) + ", grade="
+                + editPersonDescriptor.getGrade().orElse(null) + ", note="
                 + editPersonDescriptor.getNotes().orElse(new ArrayList<Note>()) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }

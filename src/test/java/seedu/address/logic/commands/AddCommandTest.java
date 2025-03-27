@@ -168,13 +168,11 @@ public class AddCommandTest {
 
         @Override
         public Person getPerson(Id id) throws PersonNotFoundException {
-            // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'getPerson'");
         }
 
         @Override
         public ObservableList<Person> getPersonList() {
-            // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'getPersonList'");
         }
     }
