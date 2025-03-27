@@ -256,19 +256,19 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 **Recommended Best Practices for Command Syntax**
 
-1. **Required Parameters**  
+1. **Required Parameters**
    - Must always be provided for commands that require them
    - Example: `ID` in `delete /id ID`
 
-2. **Optional Parameters**  
+2. **Optional Parameters**
    - Can be omitted if not needed
    - Example: Phone number in contact creation
 
-3. **Repeated Parameters**  
+3. **Repeated Parameters**
    - Can add multiple instances where supported
    - Example: Multiple notes for a student
 
-4. **Format Preservation**  
+4. **Format Preservation**
    - Maintain exact spacing when copying commands
    - Test commands after pasting from external sources
 
@@ -288,7 +288,7 @@ Shows a message explaining how to access the help page.
 
 Adds a person to the address book.
 
-**Format**:  
+**Format**:
 `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
 **Examples**:
@@ -301,7 +301,7 @@ Adds a person to the address book.
 
 Shows a list of all persons in the address book.
 
-**Format**:  
+**Format**:
 `list`
 
 ---
@@ -310,10 +310,10 @@ Shows a list of all persons in the address book.
 
 Edits an existing person in the address book.
 
-**Format**:  
+**Format**:
 `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-**Notes**:  
+**Notes**:
 - Edits the person with the specified `ID`.
 - Only the specified properties will be updated. Other properties will remain as they were previously.
 
@@ -326,8 +326,8 @@ Edits an existing person in the address book.
     </ul>
 </div><br>
 
-**Example**:  
-`edit /id A0123456N /phone 91234567 /email johndoe@example.com`  
+**Example**:
+`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 This will update the phone number and email of the person with ID `A0123456N` to `91234567` and `johndoe@example.com` respectively.
 
 ---
@@ -336,7 +336,7 @@ This will update the phone number and email of the person with ID `A0123456N` to
 
 Finds persons whose names contain any of the given keywords.
 
-**Format**:  
+**Format**:
 `find KEYWORD [MORE_KEYWORDS]`
 
 <div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
@@ -371,7 +371,7 @@ Examples:
 
 Deletes the specified person from the address book.
 
-**Format**:  
+**Format**:
 `delete /id ID`
 
 * Deletes the person with the specified `ID`.
@@ -387,7 +387,7 @@ Deletes the specified person from the address book.
 
 Clears all entries from the address book.
 
-**Format**:  
+**Format**:
 `clear`
 
 ---
@@ -396,7 +396,7 @@ Clears all entries from the address book.
 
 Exits the program.
 
-**Format**:  
+**Format**:
 `exit`
 
 ---
