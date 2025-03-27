@@ -409,13 +409,13 @@ BetterCallTA data is automatically saved to the hard disk after any command that
 
 ### Editing the Data File
 
-BetterCallTA data is saved automatically as a JSON file located at:  
+BetterCallTA data is saved automatically as a JSON file located at:
 `[JAR file location]/data/addressbook.json`
 
-**Warning for Advanced Users**:  
+**Warning for Advanced Users**:
 You can update the data directly by editing the file, but be cautious.
 
-#### **Caution**:  
+#### **Caution**:
 - If your changes make the file's format invalid, BetterCallTA will discard all data and start with an empty file the next time it is run.
 - **Backup** the data file before editing it to prevent data loss.
 - Incorrect edits could cause unexpected behavior (e.g., invalid values or
@@ -427,7 +427,7 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
-This section covers common questions that BetterCallTA users face. 
+This section covers common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous BetterCallTA home folder.
@@ -435,7 +435,7 @@ This section covers common questions that BetterCallTA users face.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
-This section covers the current known issues with BetterCallTA. 
+This section covers the current known issues with BetterCallTA.
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
@@ -458,7 +458,7 @@ Action     | Format, Examples
 --------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
-This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentations. 
+This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentations.
 
 | Term | Definition |
 |------|------------|
