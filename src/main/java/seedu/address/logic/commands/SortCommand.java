@@ -2,9 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
+
 import seedu.address.model.Model;
 
-import java.util.Comparator;
 
 /**
  * Sorts all persons in the address book by name in alphabetical order.

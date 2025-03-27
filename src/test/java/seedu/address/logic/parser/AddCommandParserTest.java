@@ -41,7 +41,7 @@ public class AddCommandParserTest {
                         .withId("A0123456N")
                         .withPhone("00000000")
                         .withEmail("alice@u.nus.edu")
-                        .withCourse("No course specified")
+                        .withCourse("AAA0000AA")
                         .build());
 
         assertParseSuccess(parser, args, expectedCommand);
