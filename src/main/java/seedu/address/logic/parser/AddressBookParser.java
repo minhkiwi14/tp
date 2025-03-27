@@ -74,11 +74,11 @@ public class AddressBookParser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
-        case DisplayCommand.COMMAND_WORD:
-            return new DisplayCommand();
-
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
+
+        case DisplayCommand.COMMAND_WORD:
+            return new DisplayCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
