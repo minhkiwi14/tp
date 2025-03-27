@@ -8,11 +8,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PARTICIPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,14 +59,15 @@ public class EditCommand extends Command {
             %s ATTENDANCE
             %s PARTICIPATION
             %s GRADE
-            
+            %s NOTES
+
             Example:
             edit /id A1234567B /newid A1234567C /name Walter White
             edit /id A0348275N /phone 98765432 /email jessy@gmail.com /course CS2103T
             """;
     public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD,
             PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-            PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE);
+            PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE, PREFIX_NOTE);
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -126,10 +129,11 @@ public class EditCommand extends Command {
         Participation updatedParticipation = editPersonDescriptor.getParticipation()
                 .orElse(personToEdit.getParticipation());
         Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
+        List<Note> updatedNotes = editPersonDescriptor.getNotes().orElse(personToEdit.getNotes());
 
         return new Person(updatedId, updatedName, updatedPhone, updatedEmail, updatedCourse,
                 updatedAttendance, updatedParticipation, updatedGrade,
-                personToEdit.getNotes());
+                updatedNotes);
     }
 
     /**
@@ -137,6 +141,8 @@ public class EditCommand extends Command {
      * {@code editedPerson} and their values.
      */
     private List<Pair<String, String>> getUpdatedFields(Person personToEdit, Person editedPerson) {
+        assert personToEdit != null;
+
         List<Pair<String, String>> updatedFields = new ArrayList<>();
 
         if (!personToEdit.getId().equals(editedPerson.getId())) {
@@ -169,6 +175,10 @@ public class EditCommand extends Command {
 
         if (!personToEdit.getGrade().equals(editedPerson.getGrade())) {
             updatedFields.add(new Pair<>("Grade", editedPerson.getGrade().toString()));
+        }
+
+        if (!personToEdit.getNotes().equals(editedPerson.getNotes())) {
+            updatedFields.add(new Pair<>("Notes", editedPerson.getNotes().toString()));
         }
 
         return updatedFields;
@@ -211,7 +221,7 @@ public class EditCommand extends Command {
         private Attendance attendance;
         private Participation participation;
         private Grade grade;
-        private Note note;
+        private List<Note> notes;
 
         /**
          * Default constructor.
@@ -219,7 +229,7 @@ public class EditCommand extends Command {
          * values.
          */
         public EditPersonDescriptor() {
-            setNote(new Note("NA"));
+            //setNotes(new Note("NA"));
         }
 
         /**
@@ -234,7 +244,7 @@ public class EditCommand extends Command {
             setAttendance(toCopy.attendance);
             setParticipation(toCopy.participation);
             setGrade(toCopy.grade);
-            setNote(toCopy.note);
+            setNotes(toCopy.notes);
         }
 
         /**
@@ -242,7 +252,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(newId, name, phone, email,
-                    course, attendance, participation, grade);
+                    course, attendance, participation, grade, notes);
         }
 
         public void setNewId(Id newId) {
@@ -309,12 +319,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(grade);
         }
 
-        public void setNote(Note note) {
-            this.note = note;
+        public void setNotes(List<Note> notes) {
+            this.notes = (notes != null) ? new ArrayList<>(notes) : null;
         }
 
-        public Optional<Note> getNote() {
-            return Optional.ofNullable(note);
+        public Optional<List<Note>> getNotes() {
+            return (notes != null) ? Optional.of(Collections.unmodifiableList(notes)) : Optional.empty();
         }
 
         @Override
@@ -337,7 +347,7 @@ public class EditCommand extends Command {
                     && Objects.equals(attendance, otherEditPersonDescriptor.attendance)
                     && Objects.equals(participation, otherEditPersonDescriptor.participation)
                     && Objects.equals(grade, otherEditPersonDescriptor.grade)
-                    && Objects.equals(note, otherEditPersonDescriptor.note);
+                    && Objects.equals(notes, otherEditPersonDescriptor.notes);
         }
 
         @Override
@@ -351,7 +361,7 @@ public class EditCommand extends Command {
                     .add("attendance", attendance)
                     .add("participation", participation)
                     .add("grade", grade)
-                    .add("note", note)
+                    .add("notes", notes)
                     .toString();
         }
     }
