@@ -12,7 +12,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Note;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditPersonDescriptorTest {
@@ -59,8 +58,8 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getCourse().orElse(null) + ", attendance="
                 + editPersonDescriptor.getAttendance().orElse(null) + ", participation="
                 + editPersonDescriptor.getParticipation().orElse(null) + ", grade="
-                + editPersonDescriptor.getGrade().orElse(null) + ", note="
-                + editPersonDescriptor.getNote().orElse(new Note("NA")) + "}";
+                + editPersonDescriptor.getGrade().orElse(null) + ", notes="
+                + editPersonDescriptor.getNotes().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }
