@@ -66,7 +66,7 @@ Do refer to the [Features](#features) below for details of each command!
 --------------------------------------------------------------------------------------------------------------------
 ## Person
 
-This section covers a `Person`, which encapsulates a person's contact details in BetterCallTA. 
+This section covers a `Person`, which encapsulates a person's contact details in BetterCallTA.
 
 > ![Person descriptor](images/person.png)
 
@@ -92,11 +92,11 @@ This section covers a `Person`, which encapsulates a person's contact details in
 [A/U/HT/NT] + 7 digits + [A,B,E,H,J,L,M,N,R,U,W,X,Y]
 ```
 
-> **📌 ID Format Rules**  
+> **📌 ID Format Rules**
 > Follows NUS Student ID format:
 > 1. Must start with `A`, `U`, `HT`, or `NT`
 > 2. Starting letters must be followed by **7 digits**
-> 3. Must end with one of:  
+> 3. Must end with one of:
 >    `A, B, E, H, J, L, M, N, R, U, W, X, Y`
 
 **Examples**:
@@ -113,13 +113,13 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 #### 📞 **`Phone`** - Student's phone number
 
-> **Phone Number Format Rules**:  
-> 1. Must only contain numbers (0-9)  
-> 2. Must be at least 3 digits long  
+> **Phone Number Format Rules**:
+> 1. Must only contain numbers (0-9)
+> 2. Must be at least 3 digits long 
 
-**Default**: `00000000`  
+**Default**: `00000000`
 
-**Example**:  
+**Example**:
 - 86566289
 
 ---
@@ -128,7 +128,7 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 > **Email Format Rules - Student's Email**
 >
-> **Format**: `local-part@domain`  
+> **Format**: `local-part@domain`
 > **Requirements**:
 >
 > **Local-part**:
