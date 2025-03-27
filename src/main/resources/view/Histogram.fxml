@@ -7,18 +7,13 @@
 
 <StackPane styleClass="stack-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
-    <BarChart fx:id="barChart"
-              title="Grades of Students in Current List"
-              animated="false"
-              legendVisible="false"
-              categoryGap="0"
-              barGap="1">
+    <BarChart fx:id="barChart" animated="false" barGap="1" categoryGap="0" legendVisible="false" title="Grades of Students in Current List">
               
         <xAxis>
-            <CategoryAxis fx:id="xAxis" label="Grade"/>
+            <CategoryAxis label="Grade" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-            <NumberAxis fx:id="yAxis" label="Frequency"/>
+            <NumberAxis fx:id="yAxis" autoRanging="false" label="Frequency" lowerBound="0" minorTickCount="0" tickUnit="1" upperBound="5" />
         </yAxis>
     </BarChart>
 </StackPane>
