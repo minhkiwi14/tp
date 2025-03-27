@@ -10,7 +10,7 @@
     <BarChart fx:id="barChart" animated="false" barGap="1" categoryGap="0" legendVisible="false" title="Grades of Students in Current List">
               
         <xAxis>
-            <CategoryAxis endMargin="0.0" label="Grade" startMargin="0.0" fx:id="xAxis" />
+            <CategoryAxis label="Grade" fx:id="xAxis" />
         </xAxis>
         <yAxis>
             <NumberAxis fx:id="yAxis" autoRanging="false" label="Frequency" lowerBound="0" minorTickCount="0" tickUnit="1" upperBound="5" />

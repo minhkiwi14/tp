@@ -122,6 +122,11 @@ public class Histogram extends UiPart<Region> {
         for (int i = 0; i < numBins; i++) {
             int lowerBound = i * binWidth;
             int upperBound = (i + 1) * binWidth - 1;
+            // Handle different upperbound for the last bin
+            if (upperBound == 99) {
+                upperBound = 100;
+            }
+
             String binLabel = lowerBound + TO_SEPARATOR + upperBound;
             series.getData().add(new XYChart.Data<>(binLabel, bins[i]));
         }
