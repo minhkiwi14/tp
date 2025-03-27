@@ -40,7 +40,7 @@ public class AddressBookParserTest {
                 .withName("Amy Bee")
                 .withPhone("00000000")
                 .withEmail("amybee@u.nus.edu")
-                .withCourse("No course specified")
+                .withCourse("AAA0000AA")
                 .build();
 
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));

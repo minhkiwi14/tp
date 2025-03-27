@@ -60,9 +60,9 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", course="
                 + editPersonDescriptor.getCourse().orElse(null) + ", attendance="
-                + editPersonDescriptor.getAttendance().orElse(new Attendance()) + ", participation="
-                + editPersonDescriptor.getParticipation().orElse(new Participation()) + ", grade="
-                + editPersonDescriptor.getGrade().orElse(new Grade()) + ", note="
+                + editPersonDescriptor.getAttendance().orElse(null) + ", participation="
+                + editPersonDescriptor.getParticipation().orElse(null) + ", grade="
+                + editPersonDescriptor.getGrade().orElse(null) + ", note="
                 + editPersonDescriptor.getNote().orElse(new Note("NA")) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
