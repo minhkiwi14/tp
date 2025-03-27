@@ -137,6 +137,8 @@ public class EditCommand extends Command {
      * {@code editedPerson} and their values.
      */
     private List<Pair<String, String>> getUpdatedFields(Person personToEdit, Person editedPerson) {
+        assert personToEdit != null;
+
         List<Pair<String, String>> updatedFields = new ArrayList<>();
 
         if (!personToEdit.getId().equals(editedPerson.getId())) {
