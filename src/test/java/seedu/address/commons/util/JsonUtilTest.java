@@ -32,20 +32,36 @@ public class JsonUtilTest {
 
     // Simple test class for JSON serialization
     private static class TestObject {
-        public String name;
-        public int value;
-        
-        public TestObject() {} // Required for Jackson
-        
+        private String name;
+        private int value;
+
         public TestObject(String name, int value) {
             this.name = name;
             this.value = value;
         }
 
+        public TestObject() {
+            // Required for Jackson
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+
+
         @Override
         public boolean equals(Object other) {
-            if (other == this) return true;
-            if (!(other instanceof TestObject)) return false;
+            if (other == this) {
+                return true;
+            }
+            if (!(other instanceof TestObject)) {
+                return false;
+            }
             TestObject that = (TestObject) other;
             return this.name.equals(that.name) && this.value == that.value;
         }
@@ -117,7 +133,7 @@ public class JsonUtilTest {
         Path invalidJsonFile = tempDir.resolve("invalid.json");
         Files.writeString(invalidJsonFile, "{invalid json}");
 
-        assertThrows(DataLoadingException.class, () -> 
+        assertThrows(DataLoadingException.class, () ->
             JsonUtil.readJsonFile(invalidJsonFile, TestObject.class));
     }
 
