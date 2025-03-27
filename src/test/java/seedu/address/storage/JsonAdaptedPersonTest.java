@@ -29,7 +29,6 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_ATTENDANCE = "NORMAL";
     private static final String INVALID_PARTICIPATION = "ACTIVE";
     private static final Integer INVALID_GRADE = 101;
-    private static final String INVALID_NOTE = "";
 
     private static final String VALID_ID = BENSON.getId().toString();
     private static final String VALID_NAME = BENSON.getName().toString();
