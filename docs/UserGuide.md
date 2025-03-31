@@ -484,7 +484,7 @@ Action     | Format, Examples
 **List all users**   | `list`
 **Show Usage**   | `help`
 **Save Data**   | `file /save SAVE_FILE.json`
-**Load Data**   | `file /load SAVE_FILE.son`
+**Load Data**   | `file /load SAVE_FILE.json`
 **List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
