@@ -5,7 +5,6 @@
 **BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
 
 ## Table of Contents
-
 1. [Better Call TA User Guide](#better-call-ta-user-guide)
 2. [Quick start](#quick-start)
 3. [Person](#person)
@@ -26,11 +25,11 @@
    - [Editing a Person](#editing-a-person-edit)
    - [Locating Persons by Name](#locating-persons-by-name-find)
    - [Deleting a Person](#deleting-a-person-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list)
    - [Clearing All Entries](#clearing-all-entries-clear)
    - [Exiting the Program](#exiting-the-program-exit)
-   - [Saving the Data](#saving-the-data)
-   - [Editing the Data File](#editing-the-data-file)
-   - [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
 5. [FAQ](#faq)
 6. [Known Issues](#known-issues)
 7. [Command Summary](#command-summary)
