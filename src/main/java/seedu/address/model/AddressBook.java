@@ -127,7 +127,7 @@ public class AddressBook implements ReadOnlyAddressBook {
                 new Grade(),
                 person.getNotes()
             );
-            
+
             resetPersons.add(resetPerson);
         }
 
