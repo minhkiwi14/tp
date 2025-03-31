@@ -1,5 +1,27 @@
 # Better Call TA Developer Guide
 
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of Contents
+
+- [Acknowledgements](#acknowledgements)
+- [Setting up, getting started](#setting-up-getting-started)
+- [Design](#design)
+  - [Architecture](#architecture)
+  - [UI Component](#ui-component)
+  - [Logic Component](#logic-component)
+  - [Model Component](#model-component)
+  - [Storage Component](#storage-component)
+  - [Common Classes](#common-classes)
+- [Implementation](#implementation)
+- [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
+- [Appendix: Requirements](#appendix-requirements)
+  - [Product Scope](#product-scope)
+  - [User Stories](#user-stories)
+  - [Use Cases](#use-cases)
+  - [Non-Functional Requirements](#non-functional-requirements)
+  - [Glossary](#glossary)
+- [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 
 --------------------------------------------------------------------------------------------------------------------
 
