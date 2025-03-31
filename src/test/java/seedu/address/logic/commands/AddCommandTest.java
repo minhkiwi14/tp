@@ -167,6 +167,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void resetRecords() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Person getPerson(Id id) throws PersonNotFoundException {
             throw new UnsupportedOperationException("Unimplemented method 'getPerson'");
         }
