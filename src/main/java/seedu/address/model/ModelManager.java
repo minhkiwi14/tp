@@ -130,6 +130,12 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void resetRecords() {
+        List<Person> updatedPersons = addressBook.resetAllRecords();
+        addressBook.setPersons(updatedPersons);
+    }
+
     //=========== Person List Accessors ======================================================================
 
     @Override
@@ -161,8 +167,6 @@ public class ModelManager implements Model {
         sorted.sort(comparator);
         addressBook.setPersons(sorted);
     }
-
-
 
     @Override
     public boolean equals(Object other) {
