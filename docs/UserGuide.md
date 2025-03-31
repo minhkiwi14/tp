@@ -5,7 +5,6 @@
 **BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
 
 ## Table of Contents
-
 1. [Better Call TA User Guide](#better-call-ta-user-guide)
 2. [Quick start](#quick-start)
 3. [Person](#person)
@@ -26,11 +25,11 @@
    - [Editing a Person](#editing-a-person-edit)
    - [Locating Persons by Name](#locating-persons-by-name-find)
    - [Deleting a Person](#deleting-a-person-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list)
    - [Clearing All Entries](#clearing-all-entries-clear)
    - [Exiting the Program](#exiting-the-program-exit)
-   - [Saving the Data](#saving-the-data)
-   - [Editing the Data File](#editing-the-data-file)
-   - [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
 5. [FAQ](#faq)
 6. [Known Issues](#known-issues)
 7. [Command Summary](#command-summary)
@@ -115,7 +114,7 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 > **Phone Number Format Rules**:
 > 1. Must only contain numbers (0-9)
-> 2. Must be at least 3 digits long 
+> 2. Must be at least 3 digits long
 
 **Default**: `00000000`
 
@@ -383,6 +382,51 @@ Deletes the specified person from the address book.
 
 ---
 
+### Saving Contact Data: `file /save`
+
+BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
+
+Change the save file that the address book will store data to with `file /save`.
+
+**Format**
+`file /save SAVE_FILE.json`
+
+* Modify the save file location as specified with `SAVE_FILE.json` in `[JAR file location]/data/`.
+
+**Examples**:
+- `file /save CS2103T-T10-3.json`
+
+---
+
+### Loading Contact Data: `file /load`
+
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
+
+Change the save file that the address book will read/save from with `file /load`.
+
+**Format**
+`file /load SAVE_FILE.json`
+
+* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+**Examples**:
+- `file /load CS2103T-T10-3.json`
+
+---
+
+### Listing Save Files: `file /list`
+
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+
+**Format**
+`file /list all`
+
+* List out all the save files stored by the application.
+
+**Examples**:
+- `file /list all`
+
+---
+
 ### Clearing All Entries: `clear`
 
 Clears all entries from the address book.
@@ -401,36 +445,20 @@ Exits the program.
 
 ---
 
-### Saving the Data
-
-BetterCallTA data is automatically saved to the hard disk after any command that changes the data. There is **no need** to save manually.
-
----
-
-### Editing the Data File
-
-BetterCallTA data is saved automatically as a JSON file located at:
-`[JAR file location]/data/addressbook.json`
-
 **Warning for Advanced Users**:
 You can update the data directly by editing the file, but be cautious.
 
 #### **Caution**:
-- If your changes make the file's format invalid, BetterCallTA will discard all data and start with an empty file the next time it is run.
-- **Backup** the data file before editing it to prevent data loss.
-- Incorrect edits could cause unexpected behavior (e.g., invalid values or
+- Saving the application data with the `file /save FILE.json` command will overwrite `FILE.json` if the file already exists.
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 This section covers common questions that BetterCallTA users face.
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous BetterCallTA home folder.
+**Q**: How do I transfer my data to another Computer?
+**A**: Copy the save files stored in `[JAR file location]/data/` over to the new Computer's `[JAR file location]/data/` location. `[JAR file location]` indicates the root directory of the repository.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -452,8 +480,11 @@ Action     | Format, Examples
 **Delete** | `delete /id ID`<br> e.g., `delete /id A3456712E`
 **Edit**   | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​`<br> e.g.,`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+**List all users**   | `list`
+**Show Usage**   | `help`
+**Save Data**   | `file /save SAVE_FILE.json`
+**Load Data**   | `file /load SAVE_FILE.json`
+**List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
 
