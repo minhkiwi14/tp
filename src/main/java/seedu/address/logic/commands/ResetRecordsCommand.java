@@ -4,6 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.model.Model;
 
+/**
+ * Resets all attendance and participation records in the address book to their default state.
+ * This command preserves all personal information and only clears the attendance, participation
+ * and grade for all students in the system.
+ */
 public class ResetRecordsCommand extends Command {
     public static final String COMMAND_WORD = "resetRecords";
 
