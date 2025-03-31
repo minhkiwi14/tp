@@ -1,19 +1,11 @@
----
-  layout: default.md
-  title: "Better Call TA"
-  pageNav: 3
----
-
 # Better Call TA Developer Guide
 
-<!-- * Table of Contents -->
-<page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+[AddressBook Level-3](https://se-education.org/addressbook-level3), of which we modified our application from.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -322,8 +314,6 @@ _{Explain here how the data archiving feature will be implemented}_
 
 
 
-*{More to be added}*
-
 ### Use cases
 
 (For all use cases below, the **System** is the `BetterCallTA` and the **Actor** is the `user`, unless specified otherwise)
@@ -419,7 +409,6 @@ _{Explain here how the data archiving feature will be implemented}_
 
 <br>
 
-*{More to be added}*
 
 ### Non-Functional Requirements
 
@@ -427,7 +416,6 @@ _{Explain here how the data archiving feature will be implemented}_
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-*{More to be added}*
 
 ### Glossary
 
@@ -462,7 +450,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -470,21 +457,11 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `delete /id A0237297R`<br>
+      Expected: Contact with `Id` of `A0237297R` is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Test case: `delete /id A9999999R`<br>
+      Expected: Assume contact with `Id` of `A9999999R` does not exist. No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect delete commands to try: `delete`, `delete 69`,
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
