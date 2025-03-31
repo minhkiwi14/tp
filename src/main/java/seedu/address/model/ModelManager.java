@@ -134,7 +134,7 @@ public class ModelManager implements Model {
 
     @Override
     public void resetRecords() {
-        List<Person> updatedPersons = addressBook.resetAllRecords();        
+        List<Person> updatedPersons = addressBook.resetAllRecords();
         addressBook.setPersons(updatedPersons);
     }
 
