@@ -407,8 +407,7 @@ Change the save file that the address book will read/save from with `file /load`
 **Format**
 `file /load SAVE_FILE.json`
 
-* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_JSON` file.
-
+* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
 **Examples**:
 - `file /load CS2103T-T10-3.json`
 
