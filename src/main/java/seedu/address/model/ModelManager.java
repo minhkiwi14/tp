@@ -14,7 +14,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Id;
+import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -130,6 +132,12 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void resetRecords() {
+        List<Person> updatedPersons = addressBook.resetAllRecords();        
+        addressBook.setPersons(updatedPersons);
+    }
+
     //=========== Person List Accessors ======================================================================
 
     @Override
@@ -161,8 +169,6 @@ public class ModelManager implements Model {
         sorted.sort(comparator);
         addressBook.setPersons(sorted);
     }
-
-
 
     @Override
     public boolean equals(Object other) {
