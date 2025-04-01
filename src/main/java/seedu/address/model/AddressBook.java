@@ -8,7 +8,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Attendance;
-import seedu.address.model.person.Grade;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
