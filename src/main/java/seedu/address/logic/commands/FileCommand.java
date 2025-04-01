@@ -51,23 +51,17 @@ public class FileCommand extends Command {
 
     private final FileOperation operation;
 
-    private final String fileName;
+    private final String arg;
 
     /**
      * Creates a FileCommand to load, save or append data to a file.
      *
-     * @param operation    The operation to be performed (LOAD, SAVE, LIST).
-     * @param fullFileName The name of the file to be loaded or saved. Without file
-     *                     type.
-     *                     If the operation is LIST, this parameter is ignored.
-     *                     If the operation is LOAD, this parameter is the name of
-     *                     the file to be loaded.
-     *                     If the operation is SAVE, this parameter is the name of
-     *                     the file to be saved.
+     * @param operation The operation to be performed (LOAD, SAVE, LIST).
+     * @param arg       The file path or name to be used for the operation.
      */
-    public FileCommand(FileOperation operation, String fileName) {
+    public FileCommand(FileOperation operation, String arg) {
         this.operation = operation;
-        this.fileName = fileName;
+        this.arg = arg;
     }
 
     /**
@@ -98,14 +92,14 @@ public class FileCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof FileCommand // instanceof handles nulls
                         && operation.equals(((FileCommand) other).operation)
-                        && fileName.equals(((FileCommand) other).fileName)); // state check
+                        && arg.equals(((FileCommand) other).arg)); // state check
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("operation", operation)
-                .add("fileName", fileName)
+                .add("arg", arg)
                 .toString();
     }
 
@@ -124,7 +118,7 @@ public class FileCommand extends Command {
      * @return String
      */
     public String getFileName() {
-        return fileName;
+        return arg;
     }
 
     /**
@@ -135,7 +129,7 @@ public class FileCommand extends Command {
      */
     private CommandResult load(Model model) {
 
-        String fullFileName = String.format("%s.json", fileName);
+        String fullFileName = String.format("%s.json", arg);
         Path filePath = Path.of(ADDRESSBOOK_FILE_DIR, fullFileName);
 
         // Check if file exists
@@ -166,12 +160,12 @@ public class FileCommand extends Command {
      */
     private CommandResult save(Model model) {
 
-        String fullFileName = String.format("%s.json", fileName);
+        String fullFileName = String.format("%s.json", arg);
 
         model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName));
 
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, "File saved. Current save file: " + fileName));
+                String.format(MESSAGE_SUCCESS, "File saved. Current save file: " + arg));
     }
 
     /**
@@ -181,6 +175,20 @@ public class FileCommand extends Command {
      */
     private CommandResult list(Model model) {
 
+        // Check if the argument is "all"
+        if (arg.equals("all")) {
+            return listAll(model);
+        }
+
+        return new CommandResult(MESSAGE_USAGE);
+    }
+
+    /**
+     * Lists all files in the data directory, storing addressbook data.
+     *
+     * @return CommandResult indicating the result of the list operation
+     */
+    private CommandResult listAll(Model model) {
         File dataDir = new File(Path.of(ADDRESSBOOK_FILE_DIR).toString());
         ArrayList<String> fileNames = new ArrayList<>(Arrays.asList(dataDir.list()));
 

@@ -66,7 +66,7 @@ public class FileCommandTest {
     @Test
     public void toStringMethod() {
         FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data");
-        String expected = FileCommand.class.getCanonicalName() + "{operation=LOAD, fileName=data}";
+        String expected = FileCommand.class.getCanonicalName() + "{operation=LOAD, arg=data}";
         assertEquals(fileCommand.toString(), expected);
     }
 }
