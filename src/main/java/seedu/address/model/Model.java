@@ -107,4 +107,8 @@ public interface Model {
      */
     void sortFilteredPersonList(Comparator<Person> comparator);
 
+    /**
+     * Resets all attendance and participation records to unmarked state.
+     */
+    void resetRecords();
 }

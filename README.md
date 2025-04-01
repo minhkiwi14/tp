@@ -10,7 +10,7 @@ BetterCallTA introduces an improved student management system with the ability t
 - **Add** new students ➕
 - **Edit** student details ✏️
 - **Delete** students 🗑️
-- **Clear** the entire contact list 
+- **Clear** the entire contact list
 
 ### **Student Fields**
 The following fields are available for student records:
@@ -73,7 +73,7 @@ This will remove all student records from the system. 🧹
 
 ---
 
-## Known Issues 
+## Known Issues
 The following issues will be addressed in future updates:
 - Attendance, participation, and grades are not yet recorded. 📊
 - Each student can only be attached to a single course. 🎒

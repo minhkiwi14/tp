@@ -1,228 +1,277 @@
 
+
 # Better Call TA User Guide
 
 **BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
 
 ## Table of Contents
+1. [Better Call TA User Guide](#better-call-ta-user-guide)
+2. [Quick start](#quick-start)
+3. [Person](#person)
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+4. [Features](#features)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Person](#adding-a-person-add)
+   - [Listing All Persons](#listing-all-persons-list)
+   - [Editing a Person](#editing-a-person-edit)
+   - [Locating Persons by Name](#locating-persons-by-name-find)
+   - [Deleting a Person](#deleting-a-person-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Exiting the Program](#exiting-the-program-exit)
+5. [FAQ](#faq)
+6. [Known Issues](#known-issues)
+7. [Command Summary](#command-summary)
+8. [Glossary](#glossary)
 
-1. [Quick start](#quick-start)
-2. [Features](#features)
-   - [Viewing help: `help`](#viewing-help-help)
-   - [Adding a person: `add`](#adding-a-person-add)
-   - [Listing all persons : `list`](#listing-all-persons--list)
-   - [Editing a person : `edit`](#editing-a-person-edit)
-   - [Locating persons by name: `find`](#locating-persons-by-name-find)
-   - [Deleting a person : `delete`](#deleting-a-person--delete)
-   - [Clearing all entries : `clear`](#clearing-all-entries--clear)
-   - [Exiting the program : `exit`](#exiting-the-program--exit)
-3. [Saving the data](#saving-the-data)
-4. [Editing the data file](#editing-the-data-file)
-5. [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
-6. [FAQ](#faq)
-7. [Known issues](#known-issues)
-8. [Command summary](#command-summary)
-9. [Glossary](#glossary)
-
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
+1. Ensure you have Java `17` or above installed in your Computer.
+2. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
+3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
 
-1. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
+   > ![Ui](images/Ui.png)
 
-1. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+   > Here are some example commands you can try:
+   >
+   > | Command                                      | Description                                               |
+   > |----------------------------------------------|-----------------------------------------------------------|
+   > | `list`                                       | Lists all contacts.                                       |
+   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
+   > | `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
+   > | `clear`                                      | Deletes all contacts.                                     |
+   > | `exit`                                       | Exits the app.                                            |
 
-| Command                                      | Description                                               |
-|----------------------------------------------|-----------------------------------------------------------|
-| `list`                                       | Lists all contacts.                                       |
-| `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
-| `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
-| `clear`                                      | Deletes all contacts.                                     |
-| `exit`                                       | Exits the app.                                            |
-
-1. Refer to the [Features](#features) below for details of each command.
+Do refer to the [Features](#features) below for details of each command!
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## Person
 
-![Person descriptor](images/person.png)
+This section covers a `Person`, which encapsulates a person's contact details in BetterCallTA.
 
-<box type="info" seamless>
+> ![Person descriptor](images/person.png)
 
-### **Properties**<br>
+---
+### Properties
 
-#### `ID` - The unique identifier for your student
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for ID</b><br>
-    <t>Follows format used by NUS for Student ID</t>
-    <ol>
-      <li>It must start with <code>A, U, HT, or NT</code></li>
-      <li>The starting letters must be followed by <u>7 digits</u></li>
-      <li>It must end with one of the letters <code>A, B, E, H, J, L, M, N, R, U, W, X or Y</code></li>
-    </ol>
-</div><br>
+---
 
-Examples:
-* A0738475N
-* HT0347856U
+#### 🆔 **`ID`** - Unique student identifier
 
-___
+**Format**:
+```
+[A/U/HT/NT] + 7 digits + [A,B,E,H,J,L,M,N,R,U,W,X,Y]
+```
+
+> **📌 ID Format Rules**
+> Follows NUS Student ID format:
+> 1. Must start with `A`, `U`, `HT`, or `NT`
+> 2. Starting letters must be followed by **7 digits**
+> 3. Must end with one of:
+>    `A, B, E, H, J, L, M, N, R, U, W, X, Y`
+
+**Examples**:
+- `A0738475N`
+- `HT0347856U`
+
+---
+
 #### `Name` - Your student's name
 
-There can be duplicate student names, as that is something that <b>can</b> happen!
+Duplicate names are allowed, as that is something that **can** happen!
 
-___
-#### `Phone` - Your student's phone number
+---
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Phone</b><br>
-    <ol>
-      <li>Must <u>only contain numbers</u></li>
-      <li>Must be at least <u>3 digits long</u></li>
-    </ol>
-</div><br>
+#### 📞 **`Phone`** - Student's phone number
 
-The default Phone for newly created contacts is `00000000`.
+> **Phone Number Format Rules**:
+> 1. Must only contain numbers (0-9)
+> 2. Must be at least 3 digits long
 
-Example:
-* 6565166666
+**Default**: `00000000`
 
-___
-#### `Email` - Your student's email
+**Example**:
+- 86566289
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Email</b><br>
-    <t> Must be of format local-part@domain and follow the following constraints:
-    </t>
-    <ol>
-      <li>The local-part must <u>only contain alphanumeric characters</u>, excluding these special characters</li>
-      <ul>
-        <li>+</li>
-        <li>_</li>
-        <li>.</li>
-        <li>-</li>
-      </ul>
-      <li>The local-part must not <u>start or end</u> with any special characters</li>
-      <li>The domain name must end with a domain label at least <u>2 characters
-      </u> long</li>
-      <li>The domain name must have each domain label start and end <u>with alphanumeric characters</u>
-      <li>The domain name must have each domain label <u>consist of alphanumeric characters</u>, separated only by hyphens, if any
-    </ol>
-</div><br>
+---
 
-The default Email for newly created contacts is `ab@u.nus.edu`.
+#### 📧 **`Email`** - Student's email address
 
-Examples:
-* e123456@u.nus.edu
-* example32@gmail.com
+> **Email Format Rules - Student's Email**
+>
+> **Format**: `local-part@domain`
+> **Requirements**:
+>
+> **Local-part**:
+> - Only alphanumeric characters (a-z, A-Z, 0-9)
+> - Cannot contain these special characters: `+`, `_`, `.`, `-`
+> - Cannot start or end with special characters
+>
+> **Domain**:
+> - Must end with domain label of at least 2 characters
+> - Each label must:
+>  - Start and end with alphanumeric characters
+>  - Contain only alphanumerics and hyphens
 
-___
-#### `Course` - The course you assist in that the student is taking
+**Default**: `studentname@u.nus.edu`
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Format for Course</b><br>
-    <t>Follows format used by NUS for Courses</t>
-    <ol>
-      <li>It must start with <u>2 or 3 letters</u></li>
-      <li>The starting letters must be followed by <u>4 digits</u></li>
-      <li>(Optional) It can end with <u>up to two letters</u></li>
-    </ol>
-</div><br>
+**Valid Examples**:
+- `johndoe@u.nus.edu`
+- `example32@gmail.com`
 
-The default Course for newly created contacts is `AAA0000AA`.
+---
 
-Examples:
-* CS2103T
-* IS1108
+#### 🎓 **`Course`** - NUS course code
 
-___
-#### `Attendance` - The attendance status of your student in the most recent Tutorial or Lab
+> **Format Rules**:
+> 1. Must start with 2 or 3 letters
+> 2. Followed by exactly 4 digits
+> 3. May optionally end with up to 2 letters
+>
+> **Pattern**: `[A-Z]{2,3}[0-9]{4}[A-Z]{0,2}`
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Valid Attendance statuses</b><br>
-    <t>Only the following strings will be valid</t>
-    <ul>
-      <li>PRESENT</li>
-      <li>ABSENT</li>
-      <li>EXCUSED</li>
-    </ul>
-    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
-</div><br>
+**Default**: `No course`
 
-The default Attendance status for newly created contacts is `UNMARKED`.
+**Valid Examples**:
+- `CS2103T`
+- `IS1108`
+- `MA1101R`
 
-___
-#### `Participation` - The participation status of your student in the most recent Tutorial or Lab
+---
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Valid Participation statuses</b><br>
-    <t>Only the following strings will be valid</t>
-    <ul>
-      <li>EXCELLENT</li>
-      <li>GOOD</li>
-      <li>AVERAGE</li>
-      <li>POOR</li>
-      <li>NONE</li>
-    </ul>
-    <t>You can enter the strings in any capitalisation, as long as it matches the word.</t>
-</div><br>
+#### ✅ **`Attendance`** - Student's class participation status
 
-The default Participation status for newly created contacts is `UNMARKED`.
+**Valid Status Values**:
+- `PRESENT`
+- `ABSENT`
+- `EXCUSED`
 
-___
+**Notes**:
+- Case-insensitive (e.g., "Present" or "present" are accepted)
+- Must match one of the values exactly
+
+**Default**: `UNMARKED`
+
+---
+
+#### 🗣️ **`Participation`** - Student's engagement level
+
+| Status      | Description                          | Case Sensitivity |
+|-------------|--------------------------------------|------------------|
+| `EXCELLENT` | Outstanding contribution             | Case-insensitive |
+| `GOOD`      | Above average participation          | Case-insensitive |
+| `AVERAGE`   | Meets basic expectations             | Case-insensitive |
+| `POOR`      | Minimal or insufficient engagement   | Case-insensitive |
+| `NONE`      | No observable participation          | Case-insensitive |
+
+> **Format Rules**:
+> - Only the above status values are valid
+> - Matches must be exact (e.g., "Good" not "Good enough")
+> - Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")
+
+**Default**: `UNMARKED`
+
+---
+
 #### `Grade` - The predicted grade of your student based on their previous graded assignments
 
-*  You can only enter an integer from `0` to `100` (inclusive) for a grade.
+> **Format Rules**
+> -  You can only enter an integer from `0` to `100` (inclusive) for a grade.
 
-___
+---
+
 #### `Notes` - Additional details that you may want to keep about individual students
 
-You can attach any number of notes to each student.
+- You can attach any number of notes to each student.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
 
-**Notes about the Command Format**
-- **Words in `UPPER_CASE`**:  
-  These represent parameters that must be supplied by the user.  
-  Example: In `add /id ID /name NAME`, `NAME` is a parameter that can be used as `add /id A0123456N /name John Doe`.
+- [Command Syntax Notes](#command-syntax-notes)
+- [Viewing Help](#viewing-help-help)
+- [Adding a Person](#adding-a-person-add)
+- [Listing All Persons](#listing-all-persons-list)
+- [Editing a Person](#editing-a-person-edit)
+- [Locating Persons by Name](#locating-persons-by-name-find)
+- [Deleting a Person](#deleting-a-person-delete)
+- [Clearing All Entries](#clearing-all-entries-clear)
+- [Exiting the Program](#exiting-the-program-exit)
+- [Saving the Data](#saving-the-data)
+- [Editing the Data File](#editing-the-data-file)
+- [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
 
-- **Items in square brackets (`[ ]`)**:  
-  These are optional parameters.  
-  Example: `add /id ID /name NAME [/phone PHONE_NUMBER]` can be used as:  
-  `add /id A0123456N /name John Doe /phone 83746574` or as `add /id A0123456N /name John Doe`.
+---
 
-- **Items with `...` after them**:  
-  These parameters can be used multiple times, including zero times.  
-  Example: `[/note NOTE]...` can be used as:  
-  `add /id A0123456N /name John Doe /note Hi`  
-  or even as `add /id A0123456N /name John Doe /note Hi /note Bye`.
+### Command Syntax Notes
+This section covers the Command Syntax Notes you should be aware of when you are using BetterCallTA
 
-- **Parameters can appear in any order**:  
-  The order of parameters does not matter.  
-  Example: Both of the following are valid commands:  
-  `add /id A0123456N /name John Doe`  
-  and `add /name John Doe /id A0123456N`.
+**Command Syntax Notation**
 
-- **Extraneous parameters will be ignored**:  
-  For commands that do not take any parameters (such as `help`, `list`, `exit`, `clear`), any extra parameters will be ignored.  
-  Example: If the command is `help`, typing `help 123` will be interpreted as `help`.
+| Notation               | Meaning                                                                 | Example                                                                 |
+|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
+| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
+| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
 
-- **Copy-pasting issues in PDFs**:  
-  When copying commands from a PDF version of this document, be cautious of space characters surrounding line-breaks. These may be omitted when pasted into the application, causing errors. Ensure the format remains correct when transferring the command.
 
-## Commands Overview
+**Command Syntax Rules**
+
+| Rule                      | Description                                                                 | Example                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
+| Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
+| PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
+
+
+**Recommended Best Practices for Command Syntax**
+
+1. **Required Parameters**
+   - Must always be provided for commands that require them
+   - Example: `ID` in `delete /id ID`
+
+2. **Optional Parameters**
+   - Can be omitted if not needed
+   - Example: Phone number in contact creation
+
+3. **Repeated Parameters**
+   - Can add multiple instances where supported
+   - Example: Multiple notes for a student
+
+4. **Format Preservation**
+   - Maintain exact spacing when copying commands
+   - Test commands after pasting from external sources
+
+---
 
 ### Viewing Help: `help`
 
@@ -230,7 +279,7 @@ Shows a message explaining how to access the help page.
 
 **Format**: `help`
 
-![Help Message](images/helpMessage.png)
+> ![Help Message](images/helpMessage.png)
 
 ---
 
@@ -238,7 +287,7 @@ Shows a message explaining how to access the help page.
 
 Adds a person to the address book.
 
-**Format**:  
+**Format**:
 `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
 **Examples**:
@@ -251,7 +300,7 @@ Adds a person to the address book.
 
 Shows a list of all persons in the address book.
 
-**Format**:  
+**Format**:
 `list`
 
 ---
@@ -260,10 +309,10 @@ Shows a list of all persons in the address book.
 
 Edits an existing person in the address book.
 
-**Format**:  
+**Format**:
 `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-**Notes**:  
+**Notes**:
 - Edits the person with the specified `ID`.
 - Only the specified properties will be updated. Other properties will remain as they were previously.
 
@@ -276,8 +325,8 @@ Edits an existing person in the address book.
     </ul>
 </div><br>
 
-**Example**:  
-`edit /id A0123456N /phone 91234567 /email johndoe@example.com`  
+**Example**:
+`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 This will update the phone number and email of the person with ID `A0123456N` to `91234567` and `johndoe@example.com` respectively.
 
 ---
@@ -286,7 +335,7 @@ This will update the phone number and email of the person with ID `A0123456N` to
 
 Finds persons whose names contain any of the given keywords.
 
-**Format**:  
+**Format**:
 `find KEYWORD [MORE_KEYWORDS]`
 
 <div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
@@ -313,13 +362,15 @@ Examples:
 
 <br>
 
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  >![result for 'find alex david'](images/findAlexDavidResult.png)
+
+---
 
 ### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
 
-**Format**:  
+**Format**:
 `delete /id ID`
 
 * Deletes the person with the specified `ID`.
@@ -331,11 +382,56 @@ Deletes the specified person from the address book.
 
 ---
 
+### Saving Contact Data: `file /save`
+
+BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
+
+Change the save file that the address book will store data to with `file /save`.
+
+**Format**
+`file /save SAVE_FILE.json`
+
+* Modify the save file location as specified with `SAVE_FILE.json` in `[JAR file location]/data/`.
+
+**Examples**:
+- `file /save CS2103T-T10-3.json`
+
+---
+
+### Loading Contact Data: `file /load`
+
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
+
+Change the save file that the address book will read/save from with `file /load`.
+
+**Format**
+`file /load SAVE_FILE.json`
+
+* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+**Examples**:
+- `file /load CS2103T-T10-3.json`
+
+---
+
+### Listing Save Files: `file /list`
+
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+
+**Format**
+`file /list all`
+
+* List out all the save files stored by the application.
+
+**Examples**:
+- `file /list all`
+
+---
+
 ### Clearing All Entries: `clear`
 
 Clears all entries from the address book.
 
-**Format**:  
+**Format**:
 `clear`
 
 ---
@@ -344,44 +440,30 @@ Clears all entries from the address book.
 
 Exits the program.
 
-**Format**:  
+**Format**:
 `exit`
 
 ---
 
-### Saving the Data
-
-BetterCallTA data is automatically saved to the hard disk after any command that changes the data. There is **no need** to save manually.
-
----
-
-### Editing the Data File
-
-BetterCallTA data is saved automatically as a JSON file located at:  
-`[JAR file location]/data/addressbook.json`
-
-**Warning for Advanced Users**:  
+**Warning for Advanced Users**:
 You can update the data directly by editing the file, but be cautious.
 
-#### **Caution**:  
-- If your changes make the file's format invalid, BetterCallTA will discard all data and start with an empty file the next time it is run.
-- **Backup** the data file before editing it to prevent data loss.
-- Incorrect edits could cause unexpected behavior (e.g., invalid values or
+#### **Caution**:
+- Saving the application data with the `file /save FILE.json` command will overwrite `FILE.json` if the file already exists.
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
+This section covers common questions that BetterCallTA users face.
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous BetterCallTA home folder.
+**Q**: How do I transfer my data to another Computer?
+**A**: Copy the save files stored in `[JAR file location]/data/` over to the new Computer's `[JAR file location]/data/` location. `[JAR file location]` indicates the root directory of the repository.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
+This section covers the current known issues with BetterCallTA.
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
@@ -389,6 +471,7 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
+This section covers the summary of commands in BetterCallTA.
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -397,12 +480,21 @@ Action     | Format, Examples
 **Delete** | `delete /id ID`<br> e.g., `delete /id A3456712E`
 **Edit**   | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​`<br> e.g.,`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+**List all users**   | `list`
+**Show Usage**   | `help`
+**Save Data**   | `file /save SAVE_FILE.json`
+**Load Data**   | `file /load SAVE_FILE.json`
+**List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
+This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentations.
 
-`TA` - Teaching Assistant<br>
-Assists the instructor in teaching a course.
+| Term | Definition |
+|------|------------|
+| **TA** | Teaching Assistant - Supports the instructor in teaching a course by conducting tutorials, grading assignments, and assisting students |
+| **CLI** | Command Line Interface - Text-based interface for interacting with software |
+| **GUI** | Graphical User Interface - Visual interface with graphical elements |
+| **NUS** | National University of Singapore - Institution where this system is primarily used |
+| **ID** | Student Identification Number - Unique identifier following NUS format |

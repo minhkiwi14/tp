@@ -2,12 +2,11 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import java.util.List;
-import java.util.ArrayList;
-
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -131,6 +130,12 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void resetRecords() {
+        List<Person> updatedPersons = addressBook.resetAllRecords();
+        addressBook.setPersons(updatedPersons);
+    }
+
     //=========== Person List Accessors ======================================================================
 
     @Override
@@ -162,8 +167,6 @@ public class ModelManager implements Model {
         sorted.sort(comparator);
         addressBook.setPersons(sorted);
     }
-
-
 
     @Override
     public boolean equals(Object other) {

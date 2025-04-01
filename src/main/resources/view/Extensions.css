@@ -18,3 +18,36 @@
 .tooltip-text {
     -fx-text-fill: white;
 }
+
+/* SplitPane styling */
+.split-pane {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.split-pane-divider {
+    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-padding: 0 1 0 1;
+}
+
+/* Histogram styling */
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+}
+.chart-content {
+    -fx-padding: 10px;
+}
+.chart-title {
+    -fx-font-size: 1.2em;
+    -fx-text-fill: #d8d8d8;
+}
+.axis-label {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #d8d8d8;
+}
+.axis {
+    -fx-tick-label-fill: #d8d8d8;
+}
+.default-color0.chart-bar {
+    -fx-bar-fill: #3e7b91;
+}
