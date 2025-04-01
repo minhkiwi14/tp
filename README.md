@@ -71,6 +71,12 @@ clear
 ```
 This will remove all student records from the system. 🧹
 
+#### **Resetting the attendance and participation records**
+```
+resetRecords
+```
+This will reset the attendance and participation of students to the unmarked state.
+
 ---
 
 ## Known Issues
