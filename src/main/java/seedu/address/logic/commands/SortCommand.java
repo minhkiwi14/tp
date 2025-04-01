@@ -10,6 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
+/**
+ * Sorts the filtered person list based on the specified criteria.
+ */
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
@@ -22,6 +25,9 @@ public class SortCommand extends Command {
 
     private final SortDescriptor descriptor;
 
+    /**
+     * Creates a SortCommand with the given sort descriptor.
+     */
     public SortCommand(SortDescriptor descriptor) {
         requireNonNull(descriptor);
         this.descriptor = descriptor;
@@ -59,27 +65,33 @@ public class SortCommand extends Command {
         return getClass().getCanonicalName() + "{descriptor=" + descriptor + "}";
     }
 
+    /**
+     * Stores which field to sort by.
+     */
     public static class SortDescriptor {
         private boolean sortByName;
         private boolean sortByGrade;
         private boolean sortByAttendance;
         private boolean sortByParticipation;
 
-        private static final Map<String, Integer> ATTENDANCE_PRIORITY = new HashMap<>() {{
-            put("PRESENT", 3);
-            put("EXCUSED", 2);
-            put("ABSENT", 1);
-            put("UNMARKED", 0);
-        }};
+        private static final Map<String, Integer> ATTENDANCE_PRIORITY;
+        private static final Map<String, Integer> PARTICIPATION_PRIORITY;
 
-        private static final Map<String, Integer> PARTICIPATION_PRIORITY = new HashMap<>() {{
-            put("EXCELLENT", 0);
-            put("GOOD", 1);
-            put("AVERAGE", 2);
-            put("POOR", 3);
-            put("NONE", 4);
-            put("UNMARKED", 5);
-        }};
+        static {
+            ATTENDANCE_PRIORITY = new HashMap<>();
+            ATTENDANCE_PRIORITY.put("PRESENT", 3);
+            ATTENDANCE_PRIORITY.put("EXCUSED", 2);
+            ATTENDANCE_PRIORITY.put("ABSENT", 1);
+            ATTENDANCE_PRIORITY.put("UNMARKED", 0);
+
+            PARTICIPATION_PRIORITY = new HashMap<>();
+            PARTICIPATION_PRIORITY.put("EXCELLENT", 0);
+            PARTICIPATION_PRIORITY.put("GOOD", 1);
+            PARTICIPATION_PRIORITY.put("AVERAGE", 2);
+            PARTICIPATION_PRIORITY.put("POOR", 3);
+            PARTICIPATION_PRIORITY.put("NONE", 4);
+            PARTICIPATION_PRIORITY.put("UNMARKED", 5);
+        }
 
         public void setSortByName() {
             reset();
@@ -109,6 +121,9 @@ public class SortCommand extends Command {
             return sortByParticipation;
         }
 
+        /**
+         * Returns a comparator to sort persons based on the active flag.
+         */
         public Comparator<Person> getComparator() {
             if (sortByName) {
                 return Comparator.comparing(p -> p.getName() != null ? p.getName().toString() : "");
@@ -130,10 +145,18 @@ public class SortCommand extends Command {
         }
 
         public String getSortFieldName() {
-            if (sortByName) return "name";
-            if (sortByGrade) return "grade";
-            if (sortByAttendance) return "attendance";
-            if (sortByParticipation) return "participation";
+            if (sortByName) {
+                return "name";
+            }
+            if (sortByGrade) {
+                return "grade";
+            }
+            if (sortByAttendance) {
+                return "attendance";
+            }
+            if (sortByParticipation) {
+                return "participation";
+            }
             return "unknown";
         }
 
@@ -146,7 +169,9 @@ public class SortCommand extends Command {
 
         @Override
         public boolean equals(Object other) {
-            if (!(other instanceof SortDescriptor)) return false;
+            if (!(other instanceof SortDescriptor)) {
+                return false;
+            }
             SortDescriptor o = (SortDescriptor) other;
             return this.sortByName == o.sortByName
                     && this.sortByGrade == o.sortByGrade
@@ -156,8 +181,10 @@ public class SortCommand extends Command {
 
         @Override
         public int hashCode() {
-            return Boolean.hashCode(sortByName) + Boolean.hashCode(sortByGrade)
-                    + Boolean.hashCode(sortByAttendance) + Boolean.hashCode(sortByParticipation);
+            return Boolean.hashCode(sortByName)
+                    + Boolean.hashCode(sortByGrade)
+                    + Boolean.hashCode(sortByAttendance)
+                    + Boolean.hashCode(sortByParticipation);
         }
 
         @Override
