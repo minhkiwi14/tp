@@ -1,12 +1,12 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL;
 
 import java.util.ArrayList;
 import java.util.List;
