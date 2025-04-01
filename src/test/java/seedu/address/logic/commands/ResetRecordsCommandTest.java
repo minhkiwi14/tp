@@ -35,7 +35,7 @@ public class ResetRecordsCommandTest {
 
             PersonBuilder personInList = new PersonBuilder(originalPerson);
             Person resetPerson = personInList.withAttendance("UNMARKED").withParticipation("UNMARKED")
-                    .withGrade(-1).build();
+                    .build();
 
             expectedModel.setPerson(person, resetPerson);
         }
