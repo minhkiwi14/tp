@@ -22,13 +22,9 @@ public class SortDescriptorTest {
         descriptorDifferent.setSortByGrade();
 
         assertTrue(descriptorA.equals(descriptorSame));
-
         assertTrue(descriptorA.equals(descriptorA));
-
         assertFalse(descriptorA.equals(null));
-
         assertFalse(descriptorA.equals(5));
-        
         assertFalse(descriptorA.equals(descriptorDifferent));
     }
 
