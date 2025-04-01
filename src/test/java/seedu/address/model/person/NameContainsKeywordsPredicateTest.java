@@ -115,7 +115,7 @@ public class NameContainsKeywordsPredicateTest {
                 .withName("Alice")
                 .withId("A7654321B")
                 .withCourse("CS2103T")
-                .withPhone("12345")
+                .withPhone("12345678")
                 .withEmail("alice@email")
                 .build()));
     }
