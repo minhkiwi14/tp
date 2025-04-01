@@ -70,14 +70,23 @@ public class CommandTestUtil {
     public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + " " + VALID_NOTE_AMY;
     public static final String NOTE_DESC_BOB = " " + PREFIX_NOTE + " " + VALID_NOTE_BOB;
 
-    public static final String INVALID_ID_DESC = " " + PREFIX_ID + "";
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + " James&"; // '&' not allowed in names
-    public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + " 911a"; // 'a' not allowed in phones
-    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + " bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + "";
-    public static final String INVALID_ATTENDANCE_DESC = " " + PREFIX_ATTENDANCE + "";
-    public static final String INVALID_PARTICIPATION_DESC = " " + PREFIX_PARTICIPATION + "";
-    public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + "";
+    public static final String INVALID_ID = "A1234567"; // No ending letter
+    public static final String INVALID_NAME = " "; // Name cannot be a blank space
+    public static final String INVALID_PHONE = "+65 1234"; // Cannot have spaces in between
+    public static final String INVALID_EMAIL = "kiwi.com"; // Missing '@' symbol
+    public static final String INVALID_COURSE = "1234"; // Course must have leading letters
+    public static final String INVALID_ATTENDANCE = "NORMAL"; // Not a valid attendance status
+    public static final String INVALID_PARTICIPATION = "ACTIVE"; // Not a valid participation status
+    public static final Integer INVALID_GRADE = 101; // Grade must be between 0 and 100 or NA
+
+    public static final String INVALID_ID_DESC = " " + PREFIX_ID + INVALID_ID;
+    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + INVALID_NAME;
+    public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + INVALID_PHONE;
+    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + INVALID_EMAIL;
+    public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + INVALID_COURSE;
+    public static final String INVALID_ATTENDANCE_DESC = " " + PREFIX_ATTENDANCE + INVALID_ATTENDANCE;
+    public static final String INVALID_PARTICIPATION_DESC = " " + PREFIX_PARTICIPATION + INVALID_PARTICIPATION;
+    public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + INVALID_GRADE;
     public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE + "";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
