@@ -27,6 +27,8 @@ public class SortCommand extends Command {
 
     /**
      * Creates a SortCommand with the given sort descriptor.
+     *
+     * @param descriptor The descriptor indicating which field to sort by.
      */
     public SortCommand(SortDescriptor descriptor) {
         requireNonNull(descriptor);
@@ -66,13 +68,9 @@ public class SortCommand extends Command {
     }
 
     /**
-     * Stores which field to sort by.
+     * Stores which field to sort by and provides the appropriate comparator.
      */
     public static class SortDescriptor {
-        private boolean sortByName;
-        private boolean sortByGrade;
-        private boolean sortByAttendance;
-        private boolean sortByParticipation;
 
         private static final Map<String, Integer> ATTENDANCE_PRIORITY;
         private static final Map<String, Integer> PARTICIPATION_PRIORITY;
@@ -92,6 +90,11 @@ public class SortCommand extends Command {
             PARTICIPATION_PRIORITY.put("NONE", 4);
             PARTICIPATION_PRIORITY.put("UNMARKED", 5);
         }
+
+        private boolean sortByName;
+        private boolean sortByGrade;
+        private boolean sortByAttendance;
+        private boolean sortByParticipation;
 
         public void setSortByName() {
             reset();
@@ -123,6 +126,8 @@ public class SortCommand extends Command {
 
         /**
          * Returns a comparator to sort persons based on the active flag.
+         *
+         * @return A comparator based on the selected sort field.
          */
         public Comparator<Person> getComparator() {
             if (sortByName) {
