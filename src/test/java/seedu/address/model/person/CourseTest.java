@@ -31,6 +31,7 @@ public class CourseTest {
 
         // valid course
         assertTrue(Course.isValidCourse("CS2103T")); // course code
+        assertTrue(Course.isValidCourse("cs2109")); // all lowercase
     }
 
     @Test
