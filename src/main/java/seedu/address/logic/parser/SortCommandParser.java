@@ -27,20 +27,20 @@ public class SortCommandParser implements Parser<SortCommand> {
         String field = tokens[0];
 
         switch (field) {
-            case "name":
-                descriptor.setSortByName();
-                break;
-            case "grade":
-                descriptor.setSortByGrade();
-                break;
-            case "attendance":
-                descriptor.setSortByAttendance();
-                break;
-            case "participation":
-                descriptor.setSortByParticipation();
-                break;
-            default:
-                throw new ParseException("Invalid sort field: '" + field + "'.\n" + SortCommand.MESSAGE_USAGE);
+        case "name":
+            descriptor.setSortByName();
+            break;
+        case "grade":
+            descriptor.setSortByGrade();
+            break;
+        case "attendance":
+            descriptor.setSortByAttendance();
+            break;
+        case "participation":
+            descriptor.setSortByParticipation();
+            break;
+        default:
+            throw new ParseException("Invalid sort field: '" + field + "'.\n" + SortCommand.MESSAGE_USAGE);
         }
 
         return new SortCommand(descriptor);
