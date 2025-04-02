@@ -39,7 +39,7 @@ public class AddressBookParserTest {
                 .withId("A0123456N")
                 .withName("Amy Bee")
                 .withPhone("00000000")
-                .withEmail("amybee@u.nus.edu")
+                .withEmail("example@u.nus.edu")
                 .withCourse("AAA0000AA")
                 .build();
 
