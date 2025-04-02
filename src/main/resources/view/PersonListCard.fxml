@@ -11,13 +11,15 @@
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <!-- Student Info Column -->
-      <ColumnConstraints minWidth="180" prefWidth="200" hgrow="SOMETIMES" />
+      <ColumnConstraints minWidth="180" prefWidth="400" halignment="LEFT" />
       <!-- Attendance Column -->
-      <ColumnConstraints minWidth="100" prefWidth="120" halignment="CENTER" />
+      <ColumnConstraints minWidth="100" prefWidth="150" halignment="LEFT" />
       <!-- Participation Column -->
-      <ColumnConstraints minWidth="100" prefWidth="120" halignment="CENTER" />
+      <ColumnConstraints minWidth="100" prefWidth="120" halignment="LEFT" />
       <!-- Grade Column -->
-      <ColumnConstraints minWidth="80" prefWidth="100" halignment="CENTER" />
+      <ColumnConstraints minWidth="80" prefWidth="100" halignment="LEFT" />
+      <!-- Notes Column -->
+      <ColumnConstraints minWidth="100" prefWidth="150" halignment="LEFT" />
     </columnConstraints>
 
     <!-- Student Info -->
@@ -37,8 +39,8 @@
     </VBox>
 
     <!-- Attendance -->
-    <VBox GridPane.columnIndex="1" alignment="CENTER" minHeight="60">
-      <Label fx:id="attendance" text="Unmarked" styleClass="cell_small_label" />
+    <VBox GridPane.columnIndex="1" alignment="CENTER_LEFT" minHeight="60">
+      <Label fx:id="attendance" text="Unmarked" styleClass="cell_small_label" wrapText="true" />
     </VBox>
 
     <!-- Participation -->
@@ -47,8 +49,18 @@
     </VBox>
 
     <!-- Grade -->
-    <VBox GridPane.columnIndex="3" alignment="CENTER" minHeight="60">
+    <VBox GridPane.columnIndex="3" alignment="CENTER_RIGHT" minHeight="60">
       <Label fx:id="grade" text="10" styleClass="cell_big_label" />
     </VBox>
+
+    <!-- Notes -->
+    <HBox GridPane.columnIndex="4" minHeight="60">
+      <VBox alignment="TOP_LEFT" minHeight="60">
+        <padding>
+          <Insets top="5" right="5" bottom="5" left="15" />
+        </padding>
+        <Label fx:id="notes" text="No notes" styleClass="cell_small_label" wrapText="true" />
+      </VBox>
+    </HBox>
   </GridPane>
 </HBox>
