@@ -1,9 +1,6 @@
 package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ATTENDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COURSE;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL;
@@ -12,6 +9,9 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_ID;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PARTICIPATION;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE;
+import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 
 import java.util.List;
 import java.util.stream.Collectors;

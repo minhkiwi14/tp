@@ -23,8 +23,14 @@ public class FileCommandParserTest {
     @Test
     public void parse_listFiles_returnsFileCommand() {
         String args = " /list all";
-        FileCommand expectedFileCommand = new FileCommand(FileOperation.LIST, "");
+        FileCommand expectedFileCommand = new FileCommand(FileOperation.LIST, "all");
         assertParseSuccess(parser, args, expectedFileCommand);
+    }
+
+    @Test
+    public void parse_listFiles_throwsParseException() {
+        String args = " /list";
+        assertParseFailure(parser, args, FileCommand.MESSAGE_USAGE);
     }
 
     @Test

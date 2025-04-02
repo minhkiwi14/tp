@@ -75,8 +75,7 @@ public class EditCommandParser implements Parser<EditCommand> {
                     ParserUtil.parseParticipation(argMultimap.getValue(PREFIX_PARTICIPATION).get()));
         }
         if (argMultimap.getValue(PREFIX_GRADE).isPresent()) {
-            int gradeValue = Integer.parseInt(argMultimap.getValue(PREFIX_GRADE).get());
-            editPersonDescriptor.setGrade(new seedu.address.model.person.Grade(gradeValue));
+            editPersonDescriptor.setGrade(ParserUtil.parseGrade(argMultimap.getValue(PREFIX_GRADE).get()));
         }
         parseNotesForEdit(argMultimap.getAllValues(PREFIX_NOTE)).ifPresent(editPersonDescriptor::setNotes);
 

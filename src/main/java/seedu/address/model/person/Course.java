@@ -13,11 +13,11 @@ public class Course {
             "The inputted course has an incorrect format. "
             + "Please refer to the User Guide for the accepted formats.";
 
-    // Check if want course codes only
-
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The course code should follow NUS's course code format:
+     * 1. The first two or three characters are uppercase letters.
+     * 2. The next four characters are digits.
+     * 3. The last two characters are optional and can be uppercase letters.
      */
     public static final String VALIDATION_REGEX = "^[A-Z]{2,3}\\d{4}[A-Z]{0,2}$";
 
@@ -30,15 +30,17 @@ public class Course {
      */
     public Course(String course) {
         requireNonNull(course);
-        checkArgument(isValidCourse(course), MESSAGE_CONSTRAINTS);
-        this.course = course;
+        String uppercaseCourse = course.toUpperCase();
+        checkArgument(isValidCourse(uppercaseCourse), MESSAGE_CONSTRAINTS);
+        this.course = uppercaseCourse;
     }
 
     /**
      * Returns true if a given string is a valid course.
      */
     public static boolean isValidCourse(String test) {
-        return test.matches(VALIDATION_REGEX);
+        String uppercaseTest = test.toUpperCase();
+        return uppercaseTest.matches(VALIDATION_REGEX);
     }
 
     @Override
