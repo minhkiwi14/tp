@@ -52,17 +52,4 @@ public class ResetRecordsCommand extends Command {
         model.resetRecords();
         return new CommandResult(MESSAGE_SUCCESS);
     }
-
-    // /**
-    //  * Checks if all students' attendance and participation records are unmarked.
-    //  *
-    //  * @param personList List of persons to check
-    //  * @return true if all records are unmarked, false otherwise
-    //  */
-    // private boolean areAllRecordsUnmarked(ObservableList<Person> personList) {
-    //     return personList.stream()
-    //             .allMatch(person ->
-    //                     person.getAttendance().getStatus().toUpperCase().equals("UNMARKED")
-    //                             && person.getParticipation().toString().toUpperCase().equals("UNMARKED"));
-    // }
 }
