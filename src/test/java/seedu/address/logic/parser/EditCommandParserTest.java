@@ -39,6 +39,8 @@ public class EditCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
 
+    private static final String INVALID_GRADE_DESC = " /grade -1"; // invalid grade
+
     private EditCommandParser parser = new EditCommandParser();
 
     @Test

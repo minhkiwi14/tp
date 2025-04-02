@@ -39,7 +39,7 @@ public class AddCommandParserTest {
                         .withName("Alice")
                         .withId("A0123456N")
                         .withPhone("00000000")
-                        .withEmail("alice@u.nus.edu")
+                        .withEmail("example@u.nus.edu")
                         .withCourse("AAA0000AA")
                         .build());
 

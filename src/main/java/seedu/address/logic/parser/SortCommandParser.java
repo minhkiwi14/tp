@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BY;
+
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.SortCommand.SortDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -11,20 +13,27 @@ public class SortCommandParser implements Parser<SortCommand> {
 
     @Override
     public SortCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim().toLowerCase();
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_BY);
 
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException("Missing sort field.\n" + SortCommand.MESSAGE_USAGE);
+        if (!argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException("Sort command must include the /by prefix.\n" + SortCommand.MESSAGE_USAGE);
         }
 
-        String[] tokens = trimmedArgs.split("\\s+");
+        if (!argMultimap.getValue(PREFIX_BY).isPresent()) {
+            throw new ParseException("Missing /by and sort field.\n" + SortCommand.MESSAGE_USAGE);
+        }
 
-        if (tokens.length > 1) {
+
+        String[] tokens = argMultimap.getValue(PREFIX_BY).get().trim().toLowerCase().split("\\s+");
+
+        if (tokens.length != 1) {
             throw new ParseException("Only one sort field is allowed.\n" + SortCommand.MESSAGE_USAGE);
         }
 
-        SortDescriptor descriptor = new SortDescriptor();
         String field = tokens[0];
+
+
+        SortDescriptor descriptor = new SortDescriptor();
 
         switch (field) {
         case "name":
