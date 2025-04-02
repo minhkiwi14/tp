@@ -8,7 +8,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Attendance;
-import seedu.address.model.person.Grade;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
@@ -124,7 +123,7 @@ public class AddressBook implements ReadOnlyAddressBook {
                 person.getCourse(),
                 new Attendance(),
                 new Participation(),
-                new Grade(),
+                person.getGrade(),
                 person.getNotes()
             );
 
@@ -166,5 +165,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    /**
+     * Checks if all students' attendance and participation records are unmarked.
+     *
+     * @return true if all records are unmarked, false otherwise
+     */
+    public boolean areAllRecordsUnmarked() {
+        List<Person> persons = new ArrayList<>();
+
+        for (Person person : this.persons) {
+            persons.add(person);
+        }
+
+        return persons.stream()
+                .allMatch(person ->
+                        person.getAttendance().getStatus().toUpperCase().equals("UNMARKED")
+                                && person.getParticipation().toString().toUpperCase().equals("UNMARKED"));
     }
 }

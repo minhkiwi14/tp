@@ -25,7 +25,6 @@ public class FileCommandParser implements Parser<FileCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
                 PREFIX_FILE_LIST);
 
-        System.out.println(argMultimap.getPreamble());
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
                 PREFIX_FILE_LIST);
@@ -37,7 +36,7 @@ public class FileCommandParser implements Parser<FileCommand> {
         } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.SAVE, argMultimap.getValue(PREFIX_FILE_SAVE).get());
         } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.LIST, "");
+            return new FileCommand(FileCommand.FileOperation.LIST, argMultimap.getValue(PREFIX_FILE_LIST).get());
         }
         throw new ParseException(FileCommand.MESSAGE_USAGE);
     }

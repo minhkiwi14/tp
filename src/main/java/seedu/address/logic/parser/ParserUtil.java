@@ -153,15 +153,7 @@ public class ParserUtil {
     public static Grade parseGrade(String grade) throws ParseException {
         requireNonNull(grade);
         String trimmedGrade = grade.trim();
-        try {
-            int intGrade = Integer.parseInt(trimmedGrade);
-            if (!Grade.isValidGrade(intGrade)) {
-                throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
-            }
-            return new Grade(intGrade);
-        } catch (NumberFormatException e) {
-            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
-        }
+        return new Grade(trimmedGrade);
     }
 
     // Not yet implemented
