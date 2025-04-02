@@ -77,7 +77,7 @@ public class CommandTestUtil {
     public static final String INVALID_COURSE = "1234"; // Course must have leading letters
     public static final String INVALID_ATTENDANCE = "NORMAL"; // Not a valid attendance status
     public static final String INVALID_PARTICIPATION = "ACTIVE"; // Not a valid participation status
-    public static final Integer INVALID_GRADE = -1; // Grade must be between 0 and 100 or NA
+    public static final Integer INVALID_GRADE = 101; // Grade must be between 0 and 100 or NA
 
     public static final String INVALID_ID_DESC = " " + PREFIX_ID + INVALID_ID;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + INVALID_NAME;
@@ -86,7 +86,7 @@ public class CommandTestUtil {
     public static final String INVALID_COURSE_DESC = " " + PREFIX_COURSE + INVALID_COURSE;
     public static final String INVALID_ATTENDANCE_DESC = " " + PREFIX_ATTENDANCE + INVALID_ATTENDANCE;
     public static final String INVALID_PARTICIPATION_DESC = " " + PREFIX_PARTICIPATION + INVALID_PARTICIPATION;
-    public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + " " + INVALID_GRADE;
+    public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + INVALID_GRADE;
     public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE + "";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

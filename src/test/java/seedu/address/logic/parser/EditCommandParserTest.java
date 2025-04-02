@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -52,6 +51,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         String startingId = " /id A0123456N";
+        String INVALID_GRADE_DESC = " /grade -1"; // invalid grade
 
         assertParseFailure(parser, startingId + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, startingId + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
