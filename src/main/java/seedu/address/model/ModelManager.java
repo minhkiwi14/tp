@@ -136,6 +136,11 @@ public class ModelManager implements Model {
         addressBook.setPersons(updatedPersons);
     }
 
+    @Override
+    public boolean areAllRecordsUnmarked() {
+        return addressBook.areAllRecordsUnmarked();
+    }
+
     //=========== Person List Accessors ======================================================================
 
     @Override

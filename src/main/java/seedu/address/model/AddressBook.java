@@ -166,4 +166,22 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return persons.hashCode();
     }
+
+    /**
+     * Checks if all students' attendance and participation records are unmarked.
+     *
+     * @return true if all records are unmarked, false otherwise
+     */
+    public boolean areAllRecordsUnmarked() {
+        List<Person> persons = new ArrayList<>();
+
+        for (Person person : this.persons) {
+            persons.add(person);
+        }
+
+        return persons.stream()
+                .allMatch(person ->
+                        person.getAttendance().getStatus().toUpperCase().equals("UNMARKED")
+                                && person.getParticipation().toString().toUpperCase().equals("UNMARKED"));
+    }
 }
