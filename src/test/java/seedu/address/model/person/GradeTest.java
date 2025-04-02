@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class GradeTest {
 
@@ -15,7 +17,24 @@ public class GradeTest {
     }
 
     @Test
-    public void constructor_invalidGrade_throwsIllegalArgumentException() {
+    public void stringConstructor_naGrade_success() {
+        String naGrade = "NA";
+        try {
+            Grade grade = new Grade(naGrade);
+            assertEquals(-1, grade.grade);
+        } catch (ParseException e) {
+            fail("ParseException should not be thrown for NA grade");
+        }
+    }
+
+    @Test
+    public void stringConstructor_invalidGrade_throwsIllegalArgumentException() {
+        String invalidGrade = "-1";
+        assertThrows(ParseException.class, () -> new Grade(invalidGrade));
+    }
+
+    @Test
+    public void intConstructor_invalidGrade_throwsIllegalArgumentException() {
         int invalidGrade = -2;
         assertThrows(IllegalArgumentException.class, () -> new Grade(invalidGrade));
     }
