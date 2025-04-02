@@ -28,6 +28,7 @@
    - [Loading Contact Data](#loading-contact-data-file-load)
    - [Listing Save Files](#listing-save-files-file-list)
    - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
    - [Exiting the Program](#exiting-the-program-exit)
 1. [FAQ](#faq)
 1. [Known Issues](#known-issues)
@@ -466,6 +467,15 @@ Clears all entries from the address book.
 
 **Format**:
 `clear`
+
+---
+
+### Resetting All Attendance and Participation Records: `resetRecords`
+
+Resets the attendance and participation status of all persons to `UNMARKED`.
+
+**Format**:
+`resetRecords`
 
 ---
 
