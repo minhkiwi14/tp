@@ -42,8 +42,10 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("id") String id, @JsonProperty("name") String name,
                              @JsonProperty("phone") String phone, @JsonProperty("email") String email,
-                             @JsonProperty("course") String course, @JsonProperty("attendance") String attendance,
-                             @JsonProperty("participation") String participation, @JsonProperty("grade") Integer grade,
+                             @JsonProperty("course") String course,
+                             @JsonProperty("attendance") String attendance,
+                             @JsonProperty("participation") String participation,
+                             @JsonProperty("grade") Integer grade,
                              @JsonProperty("notes") List<JsonAdaptedNote> notes) {
         this.id = id;
         this.name = name;
