@@ -18,8 +18,9 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons by the specified field.\n"
-            + "Parameters: name | grade | attendance | participation\n"
-            + "Example: " + COMMAND_WORD + " grade";
+            + "Parameters: /by FIELD\n"
+            + "FIELD can be: name | grade | attendance | participation\n"
+            + "Example: sort /by grade";
 
     public static final String MESSAGE_SUCCESS = "Persons sorted by %s.";
 

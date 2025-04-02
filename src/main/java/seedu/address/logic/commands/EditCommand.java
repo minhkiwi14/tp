@@ -69,7 +69,7 @@ public class EditCommand extends Command {
             PREFIX_ID, PREFIX_NEW_ID, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
             PREFIX_COURSE, PREFIX_ATTENDANCE, PREFIX_PARTICIPATION, PREFIX_GRADE, PREFIX_NOTE);
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person - %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 

@@ -39,6 +39,8 @@ public class EditCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
 
+    private static final String INVALID_GRADE_DESC = " /grade -1"; // invalid grade
+
     private EditCommandParser parser = new EditCommandParser();
 
     @Test
@@ -51,7 +53,6 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         String startingId = " /id A0123456N";
-        String INVALID_GRADE_DESC = " /grade -1"; // invalid grade
 
         assertParseFailure(parser, startingId + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, startingId + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
