@@ -59,7 +59,7 @@
         <padding>
           <Insets top="5" right="5" bottom="5" left="15" />
         </padding>
-        <Label fx:id="notes" text="No notes" styleClass="cell_small_label" wrapText="true" />
+        <Label fx:id="notes" text="\$notes" styleClass="cell_small_label" wrapText="true" />
       </VBox>
     </HBox>
   </GridPane>

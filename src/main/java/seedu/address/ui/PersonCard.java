@@ -76,6 +76,5 @@ public class PersonCard extends UiPart<Region> {
         } else {
             grade.setText("Grade: " + gradeValue);
         }
-        notes.setText(person.getNotes().toString());
     }
 }
