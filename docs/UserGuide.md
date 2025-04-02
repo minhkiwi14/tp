@@ -257,6 +257,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Listing All Persons](#listing-all-persons-list)
 - [Editing a Person](#editing-a-person-edit)
 - [Locating Persons by Name](#locating-persons-by-name-find)
+- [Sorting Your List](#sorting-your-list-sort)
 - [Deleting a Person](#deleting-a-person-delete)
 - [Clearing All Entries](#clearing-all-entries-clear)
 - [Exiting the Program](#exiting-the-program-exit)
