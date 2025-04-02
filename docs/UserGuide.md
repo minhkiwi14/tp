@@ -451,6 +451,14 @@ Change the save file that the address book will store data to with `file /save`.
 **Examples**:
 - `file /save CS2103T-T10-3`
 
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
+      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+    </ul>
+</div><br>
+
 ---
 
 ### Loading Contact Data: `file /load`
