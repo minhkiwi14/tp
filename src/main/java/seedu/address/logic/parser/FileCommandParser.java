@@ -30,7 +30,7 @@ public class FileCommandParser implements Parser<FileCommand> {
         argMultimap.verifyOnlyOnePrefix(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
                 PREFIX_FILE_LIST);
 
-        assert argMultimap != null;
+        assert argMultimap == null;
 
         if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) {
             return new FileCommand(FileCommand.FileOperation.LOAD, argMultimap.getValue(PREFIX_FILE_LOAD).get());
