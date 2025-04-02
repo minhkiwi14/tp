@@ -1,7 +1,15 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PARTICIPATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +57,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 || args.contains(PREFIX_PARTICIPATION.getPrefix())) {
             throw new ParseException(
                     "Grade, Attendance and Participation cannot be added with the add command. "
-                    + "Please add them using the edit command.");
+                            + "Please add them using the edit command.");
         }
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID)
