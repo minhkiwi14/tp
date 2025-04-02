@@ -51,12 +51,12 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         String startingId = " /id A0123456N";
-        String INVALID_GRADE_DESC = " /grade -1"; // invalid grade
+        final String invalidGrade = " /grade -1"; // invalid grade
 
         assertParseFailure(parser, startingId + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, startingId + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, startingId + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
-        assertParseFailure(parser, startingId + INVALID_GRADE_DESC, Grade.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, startingId + invalidGrade, Grade.MESSAGE_CONSTRAINTS);
 
         // invalid phone followed by valid email
         assertParseFailure(parser, startingId + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
