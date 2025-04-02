@@ -43,6 +43,8 @@ public class PersonCard extends UiPart<Region> {
     private Label participation;
     @FXML
     private Label grade;
+    @FXML
+    private Label notes;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -58,6 +60,7 @@ public class PersonCard extends UiPart<Region> {
         course.setText(person.getCourse().course);
         attendance.setText(person.getAttendance().toString());
         participation.setText(person.getParticipation().toString());
+        notes.setText(person.getNotes().toString());
         int gradeValue = person.getGrade().grade;
         if (gradeValue == -1) {
             grade.setText("Grade: N/A");
