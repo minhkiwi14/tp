@@ -137,7 +137,12 @@ public class FileCommand extends Command {
             return new CommandResult(String.format(MESSAGE_ERROR, "File does not exist: " + fullFileName));
         }
 
+        assert filePath.toFile().exists() : "File should exist";
+
         model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName));
+
+        assert model.getAddressBookFilePath().toString()
+                .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString()) : "File path should be set";
 
         // Load data from file
         try {
@@ -163,6 +168,9 @@ public class FileCommand extends Command {
         String fullFileName = String.format("%s.json", arg);
 
         model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName));
+
+        assert model.getAddressBookFilePath().toString()
+                .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString()) : "File path should be set";
 
         return new CommandResult(
                 String.format(MESSAGE_SUCCESS, "File saved. Current save file: " + arg));
@@ -192,9 +200,14 @@ public class FileCommand extends Command {
         File dataDir = new File(Path.of(ADDRESSBOOK_FILE_DIR).toString());
         ArrayList<String> fileNames = new ArrayList<>(Arrays.asList(dataDir.list()));
 
+        assert fileNames != null : "File names should not be null";
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0, n = fileNames.size(); i < n; i++) {
             String fullFileName = fileNames.get(i);
+
+            assert fullFileName != null : "File name should not be null";
+
             sb.append(String.format("%d) ", i + 1)).append(fullFileName.strip().replace(".json", ""));
             if (model.getAddressBookFilePath().toString()
                     .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString())) {
