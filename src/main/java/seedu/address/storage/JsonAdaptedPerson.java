@@ -42,8 +42,10 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("id") String id, @JsonProperty("name") String name,
                              @JsonProperty("phone") String phone, @JsonProperty("email") String email,
-                             @JsonProperty("course") String course, @JsonProperty("attendance") String attendance,
-                             @JsonProperty("participation") String participation, @JsonProperty("grade") int grade,
+                             @JsonProperty("course") String course,
+                             @JsonProperty("attendance") String attendance,
+                             @JsonProperty("participation") String participation,
+                             @JsonProperty("grade") Integer grade,
                              @JsonProperty("notes") List<JsonAdaptedNote> notes) {
         this.id = id;
         this.name = name;
@@ -125,7 +127,8 @@ class JsonAdaptedPerson {
         final Course modelCourse = new Course(course);
 
         if (attendance == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Attendance.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Attendance.class.getSimpleName()));
         }
         if (!Attendance.isValidStatus(attendance)) {
             throw new IllegalValueException(Attendance.MESSAGE_CONSTRAINTS);
@@ -133,7 +136,8 @@ class JsonAdaptedPerson {
         final Attendance modelAttendance = new Attendance(attendance);
 
         if (participation == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Participation.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Participation.class.getSimpleName()));
         }
         if (!Participation.isValidStatus(participation)) {
             throw new IllegalValueException(Participation.MESSAGE_CONSTRAINTS);

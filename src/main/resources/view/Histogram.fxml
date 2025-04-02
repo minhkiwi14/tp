@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane styleClass="stack-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+
+    <BarChart fx:id="barChart" animated="false" barGap="1" categoryGap="0" legendVisible="false" title="Grades of Students in Current List">
+        <xAxis>
+            <CategoryAxis label="Grade" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis fx:id="yAxis" autoRanging="false" label="Frequency" lowerBound="0" minorTickCount="0" tickUnit="1" upperBound="5" />
+        </yAxis>
+    </BarChart>
+</StackPane>

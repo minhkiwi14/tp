@@ -10,20 +10,20 @@ import java.util.HashMap;
  * Guarantees: immutable; is valid as declared in {@link #isValidParticipation(String)}
  */
 public class Participation {
-    
+
     public static final String MESSAGE_CONSTRAINTS =
             "Participation should only be EXCELLENT, GOOD, AVERAGE, POOR or NONE.";
 
-    public static final HashMap<String, ParticipationStatus> participationMap = new HashMap<>();
+    public static final HashMap<String, ParticipationStatus> PARTICIPATION_MAP = new HashMap<>();
 
-    // Initialise the participationMap
+    // Initialise the PARTICIPATION_MAP
     static {
-        participationMap.put("EXCELLENT", ParticipationStatus.EXCELLENT);
-        participationMap.put("GOOD", ParticipationStatus.GOOD);
-        participationMap.put("AVERAGE", ParticipationStatus.AVERAGE);
-        participationMap.put("POOR", ParticipationStatus.POOR);
-        participationMap.put("NONE", ParticipationStatus.NONE);
-        participationMap.put("UNMARKED", ParticipationStatus.UNMARKED);
+        PARTICIPATION_MAP.put("EXCELLENT", ParticipationStatus.EXCELLENT);
+        PARTICIPATION_MAP.put("GOOD", ParticipationStatus.GOOD);
+        PARTICIPATION_MAP.put("AVERAGE", ParticipationStatus.AVERAGE);
+        PARTICIPATION_MAP.put("POOR", ParticipationStatus.POOR);
+        PARTICIPATION_MAP.put("NONE", ParticipationStatus.NONE);
+        PARTICIPATION_MAP.put("UNMARKED", ParticipationStatus.UNMARKED);
     }
 
     public final ParticipationStatus status;
@@ -39,20 +39,20 @@ public class Participation {
     /**
      * Constructs a {@code Participation}.
      * Used when updating a Person's participation.
-     * 
+     *
      * @param status A valid participation status.
      */
     public Participation(String status) {
         requireNonNull(status);
         checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
-        this.status = participationMap.get(status.toUpperCase());
+        this.status = PARTICIPATION_MAP.get(status.toUpperCase());
     }
 
     /**
      * Returns true if a given string is a valid participation status.
      */
     public static boolean isValidStatus(String test) {
-        return participationMap.containsKey(test.toUpperCase());
+        return PARTICIPATION_MAP.containsKey(test.toUpperCase());
     }
 
     @Override

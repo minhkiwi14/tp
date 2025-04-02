@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -161,14 +162,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFilteredPersonList(Comparator<Person> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void resetRecords() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Person getPerson(Id id) throws PersonNotFoundException {
-            // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'getPerson'");
         }
 
         @Override
         public ObservableList<Person> getPersonList() {
-            // TODO Auto-generated method stub
             throw new UnsupportedOperationException("Unimplemented method 'getPersonList'");
         }
     }

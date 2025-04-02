@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -98,7 +101,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Person getPerson(Id id) throws PersonNotFoundException{
+    public Person getPerson(Id id) throws PersonNotFoundException {
         requireNonNull(id);
         Person person = addressBook.getPerson(id);
 
@@ -127,6 +130,12 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void resetRecords() {
+        List<Person> updatedPersons = addressBook.resetAllRecords();
+        addressBook.setPersons(updatedPersons);
+    }
+
     //=========== Person List Accessors ======================================================================
 
     @Override
@@ -149,6 +158,14 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortFilteredPersonList(Comparator<Person> comparator) {
+        requireNonNull(comparator);
+        List<Person> sorted = new ArrayList<>(addressBook.getPersonList());
+        sorted.sort(comparator);
+        addressBook.setPersons(sorted);
     }
 
     @Override

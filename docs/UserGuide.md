@@ -1,192 +1,512 @@
+
+
+# Better Call TA User Guide
+**BetterCallTA** enables you to **effortlessly manage your students' contacts**. Optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User Interface (GUI)**, **BetterCallTA** handles all the nitty gritty details of your session so that you can focus on **delivering the best to your students**.
+
+## Table of Contents
+1. [Overview](#overview)
+1. [Quick start](#quick-start)
+1. [Person](#person)
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+1. [Features](#features)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Person](#adding-a-person-add)
+   - [Listing All Persons](#listing-all-persons-list)
+   - [Editing a Person](#editing-a-person-edit)
+   - [Locating Persons by Name](#locating-persons-by-name-find)
+   - [Deleting a Person](#deleting-a-person-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+   - [Exiting the Program](#exiting-the-program-exit)
+1. [FAQ](#faq)
+1. [Known Issues](#known-issues)
+1. [Command Summary](#command-summary)
+1. [Glossary](#glossary)
+
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
----
 
-# AB-3 User Guide
+## Overview
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+### Target audience
+Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice commands
 
-<!-- * Table of Contents -->
-<page-nav-print />
+### Value proposition
+**Better Call TA** is a **contact management platform** for teaching assistants to manage the details of students in their class(es) as well as **relevant administrative details**, such as their attendance, participation and grades.
+
+### Assumptions
+- You prefer typing to mouse or voice commands.
+- The student's name has an English translation. For example,
+   - `陈李` can be translated to `Chen Li`.
+   - `X Æ A-12 Musk` can be translated to `Ash Musk`.
+
+### Notations
+- Angular brackets `< number x '(list of characters) >` means choose `number` from the list of characters, allowing duplicates. For example:
+   - <2 x (A/B/C)> means choose two of A, B or C.
+   - <(0-2) x (A-Z)> means choose 0 to 2 of any capital letters.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+1. Ensure you have `Java 17` or above installed in your Computer.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
+1. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+1. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
+   - For example,  `cd .\Downloads`
+1. Use the `java -jar BetterCallTA.jar` command to run the application.<br>
+   - A GUI similar to the below should appear in a few seconds.
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+   > ![Ui](images/Ui.png)
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   > Here are some example commands you can try:
+   >
+   > | Command                                      | Description                                               |
+   > |----------------------------------------------|-----------------------------------------------------------|
+   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a student with the ID `A3478231B` to the Address Book.      |
+   > | `edit /id A3478231B /attendance present /participation good /grade 84` | Edits the attendance, participation and grade of the student with ID `A3478231B` to `PRESENT`, `GOOD` and `84` respectively.
+   > | `delete /id A1234567B`                       | Deletes the student with ID `A1234567B` in the student list. |
+   > | `list`                                       | Lists all students.                                       |
+   > | `clear`                                      | Deletes all students.                                     |
+   > | `exit`                                       | Exits the app.                                            |
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+Do refer to the [Features](#features) below for details of each command!
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+--------------------------------------------------------------------------------------------------------------------
+## Person
 
-   * `clear` : Deletes all contacts.
+This section covers a `Person`, which encapsulates a student's contact details in BetterCallTA.
 
-   * `exit` : Exits the app.
+> ![Person descriptor](images/person.png)
 
-1. Refer to the [Features](#features) below for details of each command.
+---
+### Properties
+
+   - [ID - Unique student identifier](#-id---unique-student-identifier)
+   - [Name - Student's name](#name---your-students-name)
+   - [Phone - Student's phone number](#-phone---students-phone-number)
+   - [Email - Student's email address](#-email---students-email-address)
+   - [Course - NUS course code](#-course---nus-course-code)
+   - [Attendance - Student's class participation status](#-attendance---students-class-participation-status)
+   - [Participation - Student's engagement level](#-participation---students-engagement-level)
+   - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+
+---
+
+#### 🆔 **`ID`** - Unique student identifier
+
+**Format**:
+```
+<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>
+```
+
+> **📌 ID Format Rules**
+> Follows NUS Student ID format:
+> 1. Must start with `A`, `U`, `HT`, or `NT`
+> 2. Starting letters must be followed by **7 digits**
+> 3. Must end with one of:
+>    `A, B, E, H, J, L, M, N, R, U, W, X, Y`
+
+**Examples**:
+- `A0738475N`
+- `HT0347856U`
+
+---
+
+#### `Name` - Your student's name
+
+Duplicate names are allowed, as that is something that **can** happen!
+
+---
+
+#### 📞 **`Phone`** - Student's phone number
+
+> **Phone Number Format Rules**:
+> 1. Can start with +
+> 1. Otherwise, must only contain numbers (0-9) or -
+> 1. Must be at least 7 digits long and no more than 15 digits long
+
+**Default**: `00000000`
+
+**Example**:
+- 86566289
+- +65-8576-9485
+
+---
+
+#### 📧 **`Email`** - Student's email address
+
+> **Email Format Rules - Student's Email**
+>
+> **Format**: `local-part@domain`
+>
+> **Requirements**<br>
+> **Local-part**:
+> - Only alphanumeric characters (a-z, A-Z, 0-9)
+> - Cannot contain these special characters: `+`, `_`, `.`, `-`
+> - Cannot start or end with special characters
+>
+> **Domain**:
+> - Must end with domain label of at least 2 characters
+> - Each label must:
+>  - Start and end with alphanumeric characters
+>  - Contain only alphanumerics and hyphens
+
+**Default**: `studentname@u.nus.edu`
+
+**Valid Examples**:
+- `johndoe@u.nus.edu`
+- `example32@gmail.com`
+
+---
+
+#### 🎓 **`Course`** - NUS course code
+
+**Format**:
+```
+<(2/3) x (A-Z)> + 4 digits + <(0-2) x (A-Z)>
+```
+
+> **Format Rules**:
+> 1. Must start with 2 or 3 letters
+> 2. Followed by exactly 4 digits
+> 3. May optionally end with up to 2 letters
+
+**Default**: `AAA0000AA`
+
+**Valid Examples**:
+- `CS2103T`
+- `IS1108`
+- `MA1101R`
+
+---
+
+#### ✅ **`Attendance`** - Student's class participation status
+
+| Status      | Description                          | Case Sensitivity |
+|-------------|--------------------------------------|------------------|
+| `PRESENT` | Present             | Case-insensitive |
+| `ABSENT`      | Absent without valid reason          | Case-insensitive |
+| `EXCUSED`   | Absent with valid reason             | Case-insensitive |
+
+> **Format Rules**:
+> - Only the above status values are valid
+> - Matches must be exact (e.g., "Absent" not "Absent again")
+> - Input can be in any capitalization (e.g., "Present" or "PRESENT")
+
+**Default**: `UNMARKED`
+
+---
+
+#### 🗣️ **`Participation`** - Student's engagement level
+
+| Status      | Description                          | Case Sensitivity |
+|-------------|--------------------------------------|------------------|
+| `EXCELLENT` | Outstanding contribution             | Case-insensitive |
+| `GOOD`      | Above average participation          | Case-insensitive |
+| `AVERAGE`   | Meets basic expectations             | Case-insensitive |
+| `POOR`      | Minimal or insufficient engagement   | Case-insensitive |
+| `NONE`      | No observable participation          | Case-insensitive |
+
+> **Format Rules**:
+> - Only the above status values are valid
+> - Matches must be exact (e.g., "Good" not "Good enough")
+> - Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")
+
+**Default**: `UNMARKED`
+
+---
+
+#### `Grade` - The predicted grade of your student based on their previous graded assignments
+
+> **Format Rules**
+> -  You can only enter an integer from `0` to `100` (inclusive), or `NA`.
+
+---
+
+#### `Notes` - Additional details that you may want to keep about individual students
+
+- You can attach any number of notes to each student.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
 
-<box type="info" seamless>
+- [Command Syntax Notes](#command-syntax-notes)
+- [Viewing Help](#viewing-help-help)
+- [Adding a Person](#adding-a-person-add)
+- [Listing All Persons](#listing-all-persons-list)
+- [Editing a Person](#editing-a-person-edit)
+- [Locating Persons by Name](#locating-persons-by-name-find)
+- [Deleting a Person](#deleting-a-person-delete)
+- [Clearing All Entries](#clearing-all-entries-clear)
+- [Exiting the Program](#exiting-the-program-exit)
+- [Saving the Data](#saving-the-data)
+- [Editing the Data File](#editing-the-data-file)
+- [Archiving data files (Coming in v2.0)](#archiving-data-files-coming-in-v20)
 
-**Notes about the command format:**<br>
+---
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+### Command Syntax Notes
+This section covers the Command Syntax Notes you should be aware of when you are using BetterCallTA
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+**Command Syntax Notation**
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
-
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
+| Notation               | Meaning                                                                 | Example                                                                 |
+|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
+| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
+| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
 
 
-### Adding a person: `add`
+**Command Syntax Rules**
+
+| Rule                      | Description                                                                 | Example                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
+| Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
+| PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
+
+
+**Recommended Best Practices for Command Syntax**
+
+1. **Required Parameters**
+   - Must always be provided for commands that require them
+   - Example: `ID` in `delete /id ID`
+
+2. **Optional Parameters**
+   - Can be omitted if not needed
+   - Example: Phone number in contact creation
+
+3. **Repeated Parameters**
+   - Can add multiple instances where supported
+   - Example: Multiple notes for a student
+
+4. **Format Preservation**
+   - Maintain exact spacing when copying commands
+   - Test commands after pasting from external sources
+
+---
+
+### Viewing Help: `help`
+
+Shows a message explaining how to access the help page.
+
+**Format**: `help`
+
+> ![Help Message](images/helpMessage.png)
+
+---
+
+### Adding a Person: `add`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+**Format**:
+`add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-<box type="tip" seamless>
+**Examples**:
+- `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com`
+- `add /id A4045018Y /name Betsy Crowe /email betsycrowe@example.com /phone 1234567 /course CS4215`
 
-**Tip:** A person can have any number of tags (including 0)
-</box>
+---
 
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
-### Listing all persons : `list`
+### Listing All Persons: `list`
 
 Shows a list of all persons in the address book.
 
-Format: `list`
+**Format**:
+`list`
 
-### Editing a person : `edit`
+---
+
+### Editing a Person: `edit`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+**Format**:
+`edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+**Notes**:
+- Edits the person with the specified `ID`.
+- Only the specified properties will be updated. Other properties will remain as they were previously.
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>At least one optional field must be provided</li>
+      <li>Not more than one of each optional field should be provided</li>
+      <li>The new ID must not already be used by a different person</li>
+    </ul>
+</div><br>
 
-### Locating persons by name: `find`
+**Example**:
+`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
+This will update the phone number and email of the person with ID `A0123456N` to `91234567` and `johndoe@example.com` respectively.
+
+---
+
+### Locating Persons by Name: `find`
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+**Format**:
+`find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>The search is case-insensitive, e.g <code>hans</code> will match <code>Hans</code></li>
+      <li>The order of the keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></li>
+      <li>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
+      e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code> , <code>Bo Yang</code></li>
+    </ul>
+</div><br>
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>Only the name is searched</li>
+      <li>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></li>
+    </ul>
+</div><br>
 
 Examples:
 * `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find alex david` returns `Alex Yeoh`, `David Li`
 
-### Deleting a person : `delete`
+<br>
+
+  >![result for 'find alex david'](images/findAlexDavidResult.png)
+
+---
+
+### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
 
-Format: `delete INDEX`
+**Format**:
+`delete /id ID`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person with the specified `ID`.
+* The ID refers to the ID belonging to the person in the person list.
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+**Examples**:
+- `delete /id A1234567N` deletes the person with ID `A1234567N`.
+- `delete /id A7654321B` deletes the person with ID `A7654321B`.
 
-### Clearing all entries : `clear`
+---
+
+### Saving Contact Data: `file /save`
+
+BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
+
+Change the save file that the address book will store data to with `file /save`.
+
+**Format**
+`file /save SAVE_FILE`
+
+* Modify the save file location as specified with `SAVE_FILE` in `[JAR file location]/data/` as `SAVE_FILE.json`.
+
+**Examples**:
+- `file /save CS2103T-T10-3`
+
+---
+
+### Loading Contact Data: `file /load`
+
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
+
+Change the `.json` save file that the address book will read/save from with `file /load`.
+
+**Format**
+`file /load SAVE_FILE`
+
+* Load the specified save file `[JAR file location]/data/SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+
+**Examples**:
+- `file /load CS2103T-T10-3`
+
+---
+
+### Listing Save Files: `file /list`
+
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+
+**Format**
+`file /list all`
+
+* List out all the save files stored by the application.
+
+**Examples**:
+- `file /list all`
+
+---
+
+### Clearing All Entries: `clear`
 
 Clears all entries from the address book.
 
-Format: `clear`
+**Format**:
+`clear`
 
-### Exiting the program : `exit`
+---
+
+### Resetting All Attendance and Participation Records: `resetRecords`
+
+Resets the attendance and participation status of all persons to `UNMARKED`.
+
+**Format**:
+`resetRecords`
+
+---
+
+### Exiting the Program: `exit`
 
 Exits the program.
 
-Format: `exit`
+**Format**:
+`exit`
 
-### Saving the data
+---
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+**Warning for Advanced Users**:
+You can update the data directly by editing the file, but be cautious.
 
-### Editing the data file
+#### **Caution**:
+- Saving the application data with the `file /save FILE` command will overwrite the `FILE.json` save file if it already exists.
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
+This section covers common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
+This section covers the current known issues with BetterCallTA.
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
@@ -194,13 +514,33 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
+This section covers the summary of commands in BetterCallTA.
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add**    | `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​` <br> e.g., `add /id A0123456E /name James Ho /phone 22224444 /email jamesho@example.com`
 **Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Delete** | `delete /id ID`<br> e.g., `delete /id A3456712E`
+**Edit**   | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​`<br> e.g.,`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+**List all users**   | `list`
+**Show Usage**   | `help`
+**Save Data**   | `file /save SAVE_FILE`
+**Load Data**   | `file /load SAVE_FILE`
+**Reset Attendence and Participation Records** | `resetRecords`
+**List Save Files** | `file /list all`
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentations.
+
+| Term | Definition |
+|------|------------|
+| **TA** | Teaching Assistant - Supports the instructor in teaching a course by conducting tutorials, grading assignments, and assisting students |
+| **CLI** | Command Line Interface - Text-based interface for interacting with software |
+| **GUI** | Graphical User Interface - Visual interface with graphical elements |
+| **NUS** | National University of Singapore - Institution where this system is primarily used |
+| **ID** | Student Identification Number - Unique identifier following NUS format |
+| **Home folder** | The folder in your file system that serves as your personal storage space |
+| **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux

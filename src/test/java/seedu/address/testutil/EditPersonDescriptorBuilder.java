@@ -1,5 +1,8 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Course;
@@ -32,9 +35,15 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder(Person person) {
         descriptor = new EditPersonDescriptor();
+        descriptor.setNewId(person.getId());
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
+        descriptor.setCourse(person.getCourse());
+        descriptor.setAttendance(person.getAttendance());
+        descriptor.setParticipation(person.getParticipation());
+        descriptor.setGrade(person.getGrade());
+        //descriptor.setNote(person.getNotes());
     }
 
     /**
@@ -105,7 +114,9 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Note} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withNote(String note) {
-        descriptor.setNote(new Note(note));
+        List<Note> noteList = new ArrayList<>();
+        noteList.add(new Note(note));
+        descriptor.setNotes(noteList);
         return this;
     }
 

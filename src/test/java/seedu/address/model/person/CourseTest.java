@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class CourseTest {
-    
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Course(null));
@@ -27,18 +27,19 @@ public class CourseTest {
         // invalid course
         assertFalse(Course.isValidCourse("")); // empty string
         assertFalse(Course.isValidCourse(" ")); // spaces only
+        assertFalse(Course.isValidCourse("Introduction to Software Engineering")); // long course name
 
         // valid course
         assertTrue(Course.isValidCourse("CS2103T")); // course code
-        assertTrue(Course.isValidCourse("Software Engineering")); // full name
+        assertTrue(Course.isValidCourse("cs2109")); // all lowercase
     }
 
     @Test
     public void equals() {
-        Course course = new Course("Valid Course");
+        Course course = new Course("CS2103T");
 
         // same values -> returns true
-        assertTrue(course.equals(new Course("Valid Course")));
+        assertTrue(course.equals(new Course("CS2103T")));
 
         // same object -> returns true
         assertTrue(course.equals(course));
@@ -50,6 +51,6 @@ public class CourseTest {
         assertFalse(course.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(course.equals(new Course("Other Valid Course")));
+        assertFalse(course.equals(new Course("HSA1000")));
     }
 }

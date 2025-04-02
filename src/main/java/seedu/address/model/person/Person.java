@@ -2,6 +2,7 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +23,7 @@ public class Person {
     private final Attendance attendance;
     private final Participation participation;
     private final Grade grade;
-    private final List<Note> notes;
+    private final List<Note> notes = new ArrayList<>();
 
     /**
      * Constructor for Person.
@@ -44,7 +45,29 @@ public class Person {
         this.attendance = new Attendance();
         this.participation = new Participation();
         this.grade = new Grade();
-        this.notes = List.of();
+    }
+
+    /**
+     * Constructor for Person.
+     * Used when initializing a new Person object with full details (and notes).
+     *
+     * @param id     The student ID of the person.
+     * @param name   The name of the person.
+     * @param phone  The phone number of the person.
+     * @param email  The email of the person.
+     * @param course The course of the person.
+     */
+    public Person(Id id, Name name, Phone phone, Email email, Course course, List<Note> notes) {
+        requireAllNonNull(id, name, phone, email);
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.course = course;
+        this.attendance = new Attendance();
+        this.participation = new Participation();
+        this.grade = new Grade();
+        this.notes.addAll(notes);
     }
 
     /**
@@ -72,7 +95,7 @@ public class Person {
         this.attendance = attendance;
         this.participation = participation;
         this.grade = grade;
-        this.notes = notes;
+        this.notes.addAll(notes);
     }
 
     /**
@@ -283,7 +306,6 @@ public class Person {
                 && this.attendance.equals(otherPerson.attendance)
                 && this.participation.equals(otherPerson.participation)
                 && this.grade.equals(otherPerson.grade);
-                //&& this.notes.equals(otherPerson.notes);
     }
 
     /**
