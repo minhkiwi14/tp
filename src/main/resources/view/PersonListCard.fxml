@@ -11,13 +11,15 @@
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <!-- Student Info Column -->
-      <ColumnConstraints minWidth="180" prefWidth="200" hgrow="SOMETIMES" />
+      <ColumnConstraints minWidth="220" prefWidth="240" hgrow="SOMETIMES" />
       <!-- Attendance Column -->
       <ColumnConstraints minWidth="100" prefWidth="120" halignment="CENTER" />
       <!-- Participation Column -->
       <ColumnConstraints minWidth="100" prefWidth="120" halignment="CENTER" />
       <!-- Grade Column -->
       <ColumnConstraints minWidth="80" prefWidth="100" halignment="CENTER" />
+      <!-- Notes Column -->
+      <ColumnConstraints minWidth="80" halignment="CENTER" />
     </columnConstraints>
 
     <!-- Student Info -->
@@ -49,6 +51,11 @@
     <!-- Grade -->
     <VBox GridPane.columnIndex="3" alignment="CENTER" minHeight="60">
       <Label fx:id="grade" text="10" styleClass="cell_big_label" />
+    </VBox>
+
+    <!-- Notes -->
+    <VBox GridPane.columnIndex="4" alignment="CENTER" minHeight="60">
+      <Label fx:id="notes" text="\$notes" styleClass="cell_big_label" />
     </VBox>
   </GridPane>
 </HBox>
