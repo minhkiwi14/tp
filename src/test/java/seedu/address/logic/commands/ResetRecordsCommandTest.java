@@ -30,8 +30,8 @@ public class ResetRecordsCommandTest {
     public void execute_emptyAddressBook_throwsCommandException() {
         Model emptyModel = new ModelManager();
         assertCommandFailure(
-                new ResetRecordsCommand(), 
-                emptyModel, 
+                new ResetRecordsCommand(),
+                emptyModel,
                 ResetRecordsCommand.MESSAGE_EMPTY_ADDRESS_BOOK);
     }
 
@@ -66,9 +66,9 @@ public class ResetRecordsCommandTest {
         }
 
         assertCommandSuccess(
-                new ResetRecordsCommand(), 
-                model, 
-                ResetRecordsCommand.MESSAGE_SUCCESS, 
+                new ResetRecordsCommand(),
+                model,
+                ResetRecordsCommand.MESSAGE_SUCCESS,
                 expectedModel);
     }
 
