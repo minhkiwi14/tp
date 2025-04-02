@@ -1,9 +1,12 @@
 package seedu.address.ui;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Person;
 
 /**
@@ -43,6 +46,8 @@ public class PersonCard extends UiPart<Region> {
     private Label participation;
     @FXML
     private Label grade;
+    @FXML
+    private Label notes;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -58,6 +63,13 @@ public class PersonCard extends UiPart<Region> {
         course.setText(person.getCourse().course);
         attendance.setText(person.getAttendance().toString());
         participation.setText(person.getParticipation().toString());
+        List<Note> displayNotes = person.getNotes();
+        StringBuilder displayedNote = new StringBuilder();
+        for (Note note : displayNotes) {
+            displayedNote.append(note.toString());
+            displayedNote.append("\n");
+        }
+        notes.setText(displayedNote.toString());
         int gradeValue = person.getGrade().grade;
         if (gradeValue == -1) {
             grade.setText("Grade: N/A");
