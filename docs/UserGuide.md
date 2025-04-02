@@ -527,6 +527,7 @@ Action     | Format, Examples
 **Show Usage**   | `help`
 **Save Data**   | `file /save SAVE_FILE`
 **Load Data**   | `file /load SAVE_FILE`
+**Reset Attendence and Participation Records** | `resetRecords`
 **List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
