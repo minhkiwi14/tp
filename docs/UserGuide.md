@@ -421,12 +421,12 @@ BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file loc
 Change the save file that the address book will store data to with `file /save`.
 
 **Format**
-`file /save SAVE_FILE.json`
+`file /save SAVE_FILE`
 
-* Modify the save file location as specified with `SAVE_FILE.json` in `[JAR file location]/data/`.
+* Modify the save file location as specified with `SAVE_FILE` in `[JAR file location]/data/` as `SAVE_FILE.json`.
 
 **Examples**:
-- `file /save CS2103T-T10-3.json`
+- `file /save CS2103T-T10-3`
 
 ---
 
@@ -434,20 +434,21 @@ Change the save file that the address book will store data to with `file /save`.
 
 BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
-Change the save file that the address book will read/save from with `file /load`.
+Change the `.json` save file that the address book will read/save from with `file /load`.
 
 **Format**
-`file /load SAVE_FILE.json`
+`file /load SAVE_FILE`
 
-* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+* Load the specified save file `[JAR file location]/data/SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+
 **Examples**:
-- `file /load CS2103T-T10-3.json`
+- `file /load CS2103T-T10-3`
 
 ---
 
 ### Listing Save Files: `file /list`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
 **Format**
 `file /list all`
@@ -481,7 +482,7 @@ Exits the program.
 You can update the data directly by editing the file, but be cautious.
 
 #### **Caution**:
-- Saving the application data with the `file /save FILE.json` command will overwrite `FILE.json` if the file already exists.
+- Saving the application data with the `file /save FILE` command will overwrite the `FILE.json` save file if it already exists.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -514,8 +515,8 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List all users**   | `list`
 **Show Usage**   | `help`
-**Save Data**   | `file /save SAVE_FILE.json`
-**Load Data**   | `file /load SAVE_FILE.json`
+**Save Data**   | `file /save SAVE_FILE`
+**Load Data**   | `file /load SAVE_FILE`
 **List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
