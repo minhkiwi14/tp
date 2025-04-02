@@ -23,6 +23,7 @@
    - [Listing All Persons](#listing-all-persons-list)
    - [Editing a Person](#editing-a-person-edit)
    - [Locating Persons by Name](#locating-persons-by-name-find)
+   - [Sorting Your List](#sorting-your-list-sort)
    - [Deleting a Person](#deleting-a-person-delete)
    - [Saving Contact Data](#saving-contact-data-file-save)
    - [Loading Contact Data](#loading-contact-data-file-load)
@@ -399,6 +400,26 @@ Examples:
 
 ---
 
+### Sorting Your List: `sort`
+
+Sorts your current list by **one** of four parameters: name, grade, attendance or participation.
+
+**Format**:
+sort /by name | grade | attendance | participation
+
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>The keywords are case-insensitive, e.g <code>grade</code> will match <code>Grade</code></li>
+      <li>To sort by multiple parameters, you must sort them one by one, in any order.</li>
+      <li>The sort order for each keyword is as follows (name: A to Z | grade: 100 to 0 | attendance: Present > Excused > Absent > Unmarked | Participation: Excellent to Unmarked).</li>
+</ul>
+</div><br>
+
+Examples:
+* `sort /by name` will arrange your list in alphabetical order.
+* `sort /by grade` will arrange your students by their grade scores in descending order.
+
 ### Deleting a Person: `delete`
 
 Deletes the specified person from the address book.
@@ -523,6 +544,7 @@ Action     | Format, Examples
 **Delete** | `delete /id ID`<br> e.g., `delete /id A3456712E`
 **Edit**   | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​`<br> e.g.,`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Sort**   | `sort /by KEYWORD [name/grade/attendance/participation]` e.g., `sort /by name`
 **List all users**   | `list`
 **Show Usage**   | `help`
 **Save Data**   | `file /save SAVE_FILE`
