@@ -1,13 +1,12 @@
 
 
 # Better Call TA User Guide
-
-**BetterCallTA** is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BetterCallTA can get your contact management tasks done faster than traditional GUI apps.
+**BetterCallTA** enables you to **effortlessly manage your students' contacts**. Optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User Interface (GUI)**, **BetterCallTA** handles all the nitty gritty details of your session so that you can focus on **delivering the best to your students**.
 
 ## Table of Contents
-1. [Better Call TA User Guide](#better-call-ta-user-guide)
-2. [Quick start](#quick-start)
-3. [Person](#person)
+1. [Overview](#overview)
+1. [Quick start](#quick-start)
+1. [Person](#person)
    - [ID - Unique student identifier](#-id---unique-student-identifier)
    - [Name - Student's name](#name---your-students-name)
    - [Phone - Student's phone number](#-phone---students-phone-number)
@@ -17,7 +16,7 @@
    - [Participation - Student's engagement level](#-participation---students-engagement-level)
    - [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
    - [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
-4. [Features](#features)
+1. [Features](#features)
    - [Command Syntax Notes](#command-syntax-notes)
    - [Viewing Help](#viewing-help-help)
    - [Adding a Person](#adding-a-person-add)
@@ -29,35 +28,62 @@
    - [Loading Contact Data](#loading-contact-data-file-load)
    - [Listing Save Files](#listing-save-files-file-list)
    - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
    - [Exiting the Program](#exiting-the-program-exit)
-5. [FAQ](#faq)
-6. [Known Issues](#known-issues)
-7. [Command Summary](#command-summary)
-8. [Glossary](#glossary)
+1. [FAQ](#faq)
+1. [Known Issues](#known-issues)
+1. [Command Summary](#command-summary)
+1. [Glossary](#glossary)
 
 ---
 
+## Overview
+
+### Target audience
+Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice commands
+
+### Value proposition
+**Better Call TA** is a **contact management platform** for teaching assistants to manage the details of students in their class(es) as well as **relevant administrative details**, such as their attendance, participation and grades.
+
+### Assumptions
+- You prefer typing to mouse or voice commands.
+- The student's name has an English translation. For example,
+   - `陈李` can be translated to `Chen Li`.
+   - `X Æ A-12 Musk` can be translated to `Ash Musk`.
+
+### Notations
+- Angular brackets `< number x '(list of characters) >` means choose `number` from the list of characters, allowing duplicates. For example:
+   - <2 x (A/B/C)> means choose two of A, B or C.
+   - <(0-2) x (A-Z)> means choose 0 to 2 of any capital letters.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.
-2. Download the latest `.jar` file from [here]([https://github.com/se-edu/addressbook-level3/releases](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases)).
-3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
+1. Ensure you have `Java 17` or above installed in your Computer.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
+
+1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
+1. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+1. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
+   - For example,  `cd .\Downloads`
+1. Use the `java -jar BetterCallTA.jar` command to run the application.<br>
+   - A GUI similar to the below should appear in a few seconds.
 
    > ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
 
    > Here are some example commands you can try:
    >
    > | Command                                      | Description                                               |
    > |----------------------------------------------|-----------------------------------------------------------|
-   > | `list`                                       | Lists all contacts.                                       |
-   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a contact named `John Doe` to the Address Book.      |
-   > | `delete /id A1234567B`                       | Deletes the contact with ID `A1234567B` in the current list. |
-   > | `clear`                                      | Deletes all contacts.                                     |
+   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a student with the ID `A3478231B` to the Address Book.      |
+   > | `edit /id A3478231B /attendance present /participation good /grade 84` | Edits the attendance, participation and grade of the student with ID `A3478231B` to `PRESENT`, `GOOD` and `84` respectively.
+   > | `delete /id A1234567B`                       | Deletes the student with ID `A1234567B` in the student list. |
+   > | `list`                                       | Lists all students.                                       |
+   > | `clear`                                      | Deletes all students.                                     |
    > | `exit`                                       | Exits the app.                                            |
 
 Do refer to the [Features](#features) below for details of each command!
@@ -65,7 +91,7 @@ Do refer to the [Features](#features) below for details of each command!
 --------------------------------------------------------------------------------------------------------------------
 ## Person
 
-This section covers a `Person`, which encapsulates a person's contact details in BetterCallTA.
+This section covers a `Person`, which encapsulates a student's contact details in BetterCallTA.
 
 > ![Person descriptor](images/person.png)
 
@@ -88,7 +114,7 @@ This section covers a `Person`, which encapsulates a person's contact details in
 
 **Format**:
 ```
-[A/U/HT/NT] + 7 digits + [A,B,E,H,J,L,M,N,R,U,W,X,Y]
+<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>
 ```
 
 > **📌 ID Format Rules**
@@ -113,13 +139,15 @@ Duplicate names are allowed, as that is something that **can** happen!
 #### 📞 **`Phone`** - Student's phone number
 
 > **Phone Number Format Rules**:
-> 1. Must only contain numbers (0-9)
-> 2. Must be at least 3 digits long
+> 1. Can start with +
+> 1. Otherwise, must only contain numbers (0-9) or -
+> 1. Must be at least 7 digits long and no more than 15 digits long
 
 **Default**: `00000000`
 
 **Example**:
 - 86566289
+- +65-8576-9485
 
 ---
 
@@ -128,8 +156,8 @@ Duplicate names are allowed, as that is something that **can** happen!
 > **Email Format Rules - Student's Email**
 >
 > **Format**: `local-part@domain`
-> **Requirements**:
 >
+> **Requirements**<br>
 > **Local-part**:
 > - Only alphanumeric characters (a-z, A-Z, 0-9)
 > - Cannot contain these special characters: `+`, `_`, `.`, `-`
@@ -151,14 +179,17 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 #### 🎓 **`Course`** - NUS course code
 
+**Format**:
+```
+<(2/3) x (A-Z)> + 4 digits + <(0-2) x (A-Z)>
+```
+
 > **Format Rules**:
 > 1. Must start with 2 or 3 letters
 > 2. Followed by exactly 4 digits
 > 3. May optionally end with up to 2 letters
->
-> **Pattern**: `[A-Z]{2,3}[0-9]{4}[A-Z]{0,2}`
 
-**Default**: `No course`
+**Default**: `AAA0000AA`
 
 **Valid Examples**:
 - `CS2103T`
@@ -169,14 +200,16 @@ Duplicate names are allowed, as that is something that **can** happen!
 
 #### ✅ **`Attendance`** - Student's class participation status
 
-**Valid Status Values**:
-- `PRESENT`
-- `ABSENT`
-- `EXCUSED`
+| Status      | Description                          | Case Sensitivity |
+|-------------|--------------------------------------|------------------|
+| `PRESENT` | Present             | Case-insensitive |
+| `ABSENT`      | Absent without valid reason          | Case-insensitive |
+| `EXCUSED`   | Absent with valid reason             | Case-insensitive |
 
-**Notes**:
-- Case-insensitive (e.g., "Present" or "present" are accepted)
-- Must match one of the values exactly
+> **Format Rules**:
+> - Only the above status values are valid
+> - Matches must be exact (e.g., "Absent" not "Absent again")
+> - Input can be in any capitalization (e.g., "Present" or "PRESENT")
 
 **Default**: `UNMARKED`
 
@@ -204,7 +237,7 @@ Duplicate names are allowed, as that is something that **can** happen!
 #### `Grade` - The predicted grade of your student based on their previous graded assignments
 
 > **Format Rules**
-> -  You can only enter an integer from `0` to `100` (inclusive) for a grade.
+> -  You can only enter an integer from `0` to `100` (inclusive), or `NA`.
 
 ---
 
@@ -389,12 +422,12 @@ BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file loc
 Change the save file that the address book will store data to with `file /save`.
 
 **Format**
-`file /save SAVE_FILE.json`
+`file /save SAVE_FILE`
 
-* Modify the save file location as specified with `SAVE_FILE.json` in `[JAR file location]/data/`.
+* Modify the save file location as specified with `SAVE_FILE` in `[JAR file location]/data/` as `SAVE_FILE.json`.
 
 **Examples**:
-- `file /save CS2103T-T10-3.json`
+- `file /save CS2103T-T10-3`
 
 ---
 
@@ -402,20 +435,21 @@ Change the save file that the address book will store data to with `file /save`.
 
 BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
-Change the save file that the address book will read/save from with `file /load`.
+Change the `.json` save file that the address book will read/save from with `file /load`.
 
 **Format**
-`file /load SAVE_FILE.json`
+`file /load SAVE_FILE`
 
-* Load the specified save file `SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+* Load the specified save file `[JAR file location]/data/SAVE_FILE.json` to the current working application. Subsequent operations will be saved to the loaded `SAVE_FILE.json` file.
+
 **Examples**:
-- `file /load CS2103T-T10-3.json`
+- `file /load CS2103T-T10-3`
 
 ---
 
 ### Listing Save Files: `file /list`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
 **Format**
 `file /list all`
@@ -436,6 +470,15 @@ Clears all entries from the address book.
 
 ---
 
+### Resetting All Attendance and Participation Records: `resetRecords`
+
+Resets the attendance and participation status of all persons to `UNMARKED`.
+
+**Format**:
+`resetRecords`
+
+---
+
 ### Exiting the Program: `exit`
 
 Exits the program.
@@ -449,7 +492,7 @@ Exits the program.
 You can update the data directly by editing the file, but be cautious.
 
 #### **Caution**:
-- Saving the application data with the `file /save FILE.json` command will overwrite `FILE.json` if the file already exists.
+- Saving the application data with the `file /save FILE` command will overwrite the `FILE.json` save file if it already exists.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -457,8 +500,8 @@ You can update the data directly by editing the file, but be cautious.
 ## FAQ
 This section covers common questions that BetterCallTA users face.
 
-**Q**: How do I transfer my data to another Computer?
-**A**: Copy the save files stored in `[JAR file location]/data/` over to the new Computer's `[JAR file location]/data/` location. `[JAR file location]` indicates the root directory of the repository.
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -482,8 +525,9 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List all users**   | `list`
 **Show Usage**   | `help`
-**Save Data**   | `file /save SAVE_FILE.json`
-**Load Data**   | `file /load SAVE_FILE.json`
+**Save Data**   | `file /save SAVE_FILE`
+**Load Data**   | `file /load SAVE_FILE`
+**Reset Attendence and Participation Records** | `resetRecords`
 **List Save Files** | `file /list all`
 
 --------------------------------------------------------------------------------------------------------------------
@@ -498,3 +542,5 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **GUI** | Graphical User Interface - Visual interface with graphical elements |
 | **NUS** | National University of Singapore - Institution where this system is primarily used |
 | **ID** | Student Identification Number - Unique identifier following NUS format |
+| **Home folder** | The folder in your file system that serves as your personal storage space |
+| **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux

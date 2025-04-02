@@ -27,15 +27,21 @@ public class NameTest {
         // invalid name
         assertFalse(Name.isValidName("")); // empty string
         assertFalse(Name.isValidName(" ")); // spaces only
-        assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
-        assertFalse(Name.isValidName("peter*")); // contains non-alphanumeric characters
 
         // valid name
-        assertTrue(Name.isValidName("peter jack")); // alphabets only
+        assertTrue(Name.isValidName("Peter Jack")); // alphabets only
         assertTrue(Name.isValidName("12345")); // numbers only
         assertTrue(Name.isValidName("peter the 2nd")); // alphanumeric characters
-        assertTrue(Name.isValidName("Capital Tan")); // with capital letters
-        assertTrue(Name.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+        assertTrue(Name.isValidName("X Æ A-12 Musk")); // names with special characters
+        assertTrue(Name.isValidName("陈李")); // names with non-English letters
+    }
+
+    @Test
+    public void trimExtraSpaces() {
+        // Trims leading and trailing spaces
+        assertTrue(Name.trimExtraSpaces(" a ").equals("a"));
+        // Trims extra spaces between words
+        assertTrue(Name.trimExtraSpaces("Peter   Parker").equals("Peter Parker"));
     }
 
     @Test

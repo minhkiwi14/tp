@@ -12,16 +12,16 @@ public class FileCommandTest {
 
     @Test
     public void execute_load_success() {
-        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data.json");
+        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data");
         assertEquals(FileOperation.LOAD, fileCommand.getOperation());
-        assertEquals("data.json", fileCommand.getFileName());
+        assertEquals("data", fileCommand.getFileName());
     }
 
     @Test
     public void execute_save_success() {
-        FileCommand fileCommand = new FileCommand(FileOperation.SAVE, "data.json");
+        FileCommand fileCommand = new FileCommand(FileOperation.SAVE, "data");
         assertEquals(FileOperation.SAVE, fileCommand.getOperation());
-        assertEquals("data.json", fileCommand.getFileName());
+        assertEquals("data", fileCommand.getFileName());
     }
 
     @Test
@@ -33,19 +33,19 @@ public class FileCommandTest {
 
     @Test
     public void execute_oneFieldSpecified_success() {
-        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data.json");
+        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data");
         assertEquals(FileOperation.LOAD, fileCommand.getOperation());
-        assertEquals("data.json", fileCommand.getFileName());
+        assertEquals("data", fileCommand.getFileName());
     }
 
     @Test
     public void equals() {
         // same object -> returns true
-        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data.json");
+        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data");
         assertTrue(fileCommand.equals(fileCommand));
 
         // same values -> returns true
-        FileCommand fileCommandCopy = new FileCommand(FileOperation.LOAD, "data.json");
+        FileCommand fileCommandCopy = new FileCommand(FileOperation.LOAD, "data");
         assertTrue(fileCommand.equals(fileCommandCopy));
 
         // different types -> returns false
@@ -55,18 +55,18 @@ public class FileCommandTest {
         assertFalse(fileCommand.equals(null));
 
         // different file name -> returns false
-        FileCommand fileCommandDiff = new FileCommand(FileOperation.LOAD, "data2.json");
+        FileCommand fileCommandDiff = new FileCommand(FileOperation.LOAD, "data2");
         assertFalse(fileCommand.equals(fileCommandDiff));
 
         // different operation -> returns false
-        FileCommand fileCommandDiffOp = new FileCommand(FileOperation.SAVE, "data.json");
+        FileCommand fileCommandDiffOp = new FileCommand(FileOperation.SAVE, "data");
         assertFalse(fileCommand.equals(fileCommandDiffOp));
     }
 
     @Test
     public void toStringMethod() {
-        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data.json");
-        String expected = FileCommand.class.getCanonicalName() + "{operation=LOAD, filePath=data.json}";
-        assertTrue(fileCommand.toString().equals(expected));
+        FileCommand fileCommand = new FileCommand(FileOperation.LOAD, "data");
+        String expected = FileCommand.class.getCanonicalName() + "{operation=LOAD, arg=data}";
+        assertEquals(fileCommand.toString(), expected);
     }
 }

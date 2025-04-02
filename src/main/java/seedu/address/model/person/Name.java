@@ -10,13 +10,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Names should not be blank.";
 
     /*
-     * The first character of the address must not be a whitespace,
+     * The first character of the name must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String fullName;
 
@@ -27,8 +27,9 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        this.fullName = name;
+        String trimmedName = trimExtraSpaces(name);
+        checkArgument(isValidName(trimmedName), MESSAGE_CONSTRAINTS);
+        this.fullName = trimmedName;
     }
 
     /**
@@ -38,6 +39,27 @@ public class Name {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns the name without extra spaces.
+     * Extra spaces are defined as more than one space between words.
+     */
+    public static String trimExtraSpaces(String name) {
+        String trimmedName = name.trim();
+        StringBuilder sb = new StringBuilder();
+        boolean lastWasSpace = false;
+        for (char c : trimmedName.toCharArray()) {
+            if (c == ' ') {
+                if (!lastWasSpace) {
+                    sb.append(c);
+                }
+                lastWasSpace = true;
+            } else {
+                sb.append(c);
+                lastWasSpace = false;
+            }
+        }
+        return sb.toString().trim();
+    }
 
     @Override
     public String toString() {
