@@ -29,7 +29,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
     // Placeholder values for optional fields
     private static final String PHONE_PLACEHOLDER = "00000000";
-    private static final String EMAIL_PLACEHOLDER = "%s@u.nus.edu";
+    private static final String EMAIL_PLACEHOLDER = "example@u.nus.edu";
     private static final String COURSE_PLACEHOLDER = "AAA0000AA";
 
     /**
@@ -53,7 +53,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).orElse(PHONE_PLACEHOLDER));
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)
-                .orElse(String.format(EMAIL_PLACEHOLDER, name.toString().toLowerCase().strip().replace(" ", ""))));
+                .orElse(EMAIL_PLACEHOLDER));
         Course course = ParserUtil.parseCourse(argMultimap.getValue(PREFIX_COURSE).orElse(COURSE_PLACEHOLDER));
         List<Note> noteList = ParserUtil.parseNotes(argMultimap.getAllValues(PREFIX_NOTE));
 
