@@ -55,8 +55,10 @@ public class PersonUtil {
                 .append(attendance.status).append(" "));
         descriptor.getParticipation().ifPresent(participation -> sb.append(PREFIX_PARTICIPATION)
                 .append(" ").append(participation.status).append(" "));
-        descriptor.getGrade().ifPresent(grade -> sb.append(PREFIX_GRADE).append(" ").append(grade.grade)
-                .append(" "));
+        descriptor.getGrade().ifPresent(grade -> {
+            String gradeValue = (grade.grade == -1) ? "NA" : String.valueOf(grade.grade);
+            sb.append(String.format("%s %s ", PREFIX_GRADE, gradeValue));
+        });
         return sb.toString();
     }
 }
