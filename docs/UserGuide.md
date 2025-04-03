@@ -127,13 +127,12 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
-    
-    <ol>
+    <ul>
       <li>Can start with <code>+</code></li>
       <li>Otherwise, must only contain numbers <code>(0-9)</code> or <code>-</code></li>
       <li>Cannot contain consecutive hyphens</li>
       <li>Must be at least 7 digits long and no more than 15 digits long</li>
-    </ol>
+    </ul>
 </div><br>
 
 **Default**: `00000000`
@@ -153,14 +152,12 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Email Format Rules</b>
-    
     <b>Local-Part:</b>
     <ul>
       <li>Only alphanumeric characters <code>(a-z, A-Z, 0-9)</code></li>
       <li>Cannot contain these special characters: <code>+</code>, <code>_</code>, <code>.</code>, <code>-</code></li>
       <li>Cannot start or end with special characters</li>
     </ul>
-
     <b>Domain:</b>
     <ul>
       <li>Must end with domain label of at least 2 characters</li>
@@ -189,7 +186,6 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Course Format Rules</b>
-    
     <ol>
       <li>Must start with 2 or 3 letters</li>
       <li>Followed by exactly 4 digits</li>
@@ -216,7 +212,6 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Attendance Format Rules</b>
-    
     <ol>
       <li>Only the above status values are valid</li>
       <li>Matches must be exact (e.g., "Absent" not "Absent again")</li>
@@ -240,7 +235,6 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Participation Format Rules</b>
-    
     <ol>
       <li>Only the above status values are valid</li>
       <li>Matches must be exact (e.g., "Good" not "Good enough")</li>
@@ -256,7 +250,6 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Grade Format Rules</b>
-    
     <ol>
       <li>You can only enter an integer from <code>0</code> to <code>100</code> (inclusive), or <code>NA</code></li>
     </ol>
