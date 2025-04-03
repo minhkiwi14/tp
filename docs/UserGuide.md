@@ -579,6 +579,7 @@ clear
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
+      <li>The entire list will be <b>permanently</b> deleted and cannot be recovered, so proceed with caution.</li>
       <li>If there are no students in BetterCallTA, an error message will be shown. </li>
     </ul>
 </div><br>
