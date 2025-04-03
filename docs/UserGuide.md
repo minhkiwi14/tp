@@ -3,17 +3,17 @@
 
 ---
 
-## 💡 Overview
+## Overview
 This section covers the overview of **BetterCallTA** application.
 
 ### 🎯 Target audience
-Teaching Assistants (TA) who can type fast ⌨️, preferring typing over mouse 🖱️/voice commands 🗣️
+Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice commands.
 
 ### ✨ Value proposition
-**Better Call TA** is a **contact management platform** 📇 for teaching assistants to manage the details of students in their class(es) 🧑‍🎓 as well as **relevant administrative details**, such as their attendance ✅, participation 🗣️ and grades 💯.
+**Better Call TA** is a **contact management platform** for teaching assistants to manage the details of students in their class(es) as well as **relevant administrative details**, such as their attendance, participation and grades.
 
 ### 🤔 Assumptions
-- You prefer typing ⌨️ to mouse 🖱️ or voice commands 🗣️.
+- You prefer typing to mouse or voice commands.
 
 ### 📝 Notations
 - Angular brackets `< number x '(list of characters) >` means choose `number` from the list of characters, allowing duplicates. For example:
@@ -22,56 +22,58 @@ Teaching Assistants (TA) who can type fast ⌨️, preferring typing over mouse 
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
 | Main Section | Sub Sections |
 |---|---|
-| 1. [Overview](#-overview) |  |
-| 2. [Quick start](#-quick-start) |  |
-| 3. [Student](#-student) | [ID - Unique student identifier](#-id---unique-student-identifier) <br> [Name - Student's name](#-name---your-students-name) <br> [Phone - Student's phone number](#-phone---students-phone-number) <br> [Email - Student's email address](#-email---students-email-address) <br> [Course - NUS course code](#-course---nus-course-code) <br> [Attendance - Student's class participation status](#-attendance---students-class-participation-status) <br> [Participation - Student's engagement level](#-participation---students-engagement-level) <br> [Grade - Predicted grade](#-grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#-notes---additional-details-that-you-may-want-to-keep-about-individual-students) |
-| 4. [Features](#-features) | [Command Syntax Notes](#-command-syntax-notes) <br> [Viewing Help](#-viewing-help-help) <br> [Adding a Student](#-adding-a-student-add) <br> [Listing All Students](#-listing-all-students-list) <br> [Editing a Student](#-editing-a-student-edit) <br> [Locating Students by Name](#-locating-students-by-name-find) <br> [Sorting Your List](#-sorting-your-list-sort) <br> [Deleting a Student](#-deleting-a-student-delete) <br> [Saving Contact Data](#-saving-contact-data-file-save) <br> [Loading Contact Data](#-loading-contact-data-file-load) <br> [Listing Save Files](#-listing-save-files-file-list) <br> [Clearing All Entries](#-clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#-resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#-exiting-the-program-exit) |
-| 5. [FAQ](#-faq) |  |
-| 6. [Known Issues](#-known-issues) |  |
-| 7. [Command Summary](#-command-summary) |  |
-| 8. [Glossary](#-glossary) |  |
+| 1. [Overview](#overview) |  |
+| 2. [Quick start](#quick-start) |  |
+| 3. [Student](#student) | [ID - Unique student identifier](#id---unique-student-identifier) <br> [Name - Student's name](#name---your-students-name) <br> [Phone - Student's phone number](#phone---students-phone-number) <br> [Email - Student's email address](#email---students-email-address) <br> [Course - NUS course code](#course---nus-course-code) <br> [Attendance - Student's class participation status](#attendance---students-class-participation-status) <br> [Participation - Student's engagement level](#participation---students-engagement-level) <br> [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students) |
+| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
+| 5. [FAQ](#faq) |  |
+| 6. [Known Issues](#known-issues) |  |
+| 7. [Command Summary](#command-summary) |  |
+| 8. [Glossary](#glossary) |  |
 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 🚀 Quick start
+## Quick start
 
 1. Ensure you have `Java 17` or above installed in your Computer 💻.
-   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html) 🔗, selecting your appropriate Operating System (OS) ⚙️.
-2. Download 📥 the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases) 🔗.
-3. Copy 📄 the file to the folder you want to use as the _home folder_ 🏠 for BetterCallTA.
-4. Open a command terminal 💻 (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS) ⚙️.
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
+3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
+4. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
    - For example,  `cd .\Downloads`
-5. Use the `java -jar BetterCallTA.jar` command to run ▶️ the application.<br>
+5. Use the `java -jar BetterCallTA.jar` command to run the application.<br>
    - A GUI similar to the one below should appear in a few seconds.
 
    > ![Ui](images/Ui.png)
    <br>Fig 1 - Example User Interface (UI)
 
-6. Type ⌨️ the command in the command box and press Enter ↵ to execute it. e.g. typing **`help`** and pressing Enter will open the help window 窗口.
+6. Type the command in the command box and press Enter ↵ to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
 
 
    > Here are some example commands you can try:
    >
    > | Command                                      | Description                                               |
    > |----------------------------------------------|-----------------------------------------------------------|
-   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a student 🧑‍🎓 with the ID `A3478231B` to the application 📇.      |
-   > | `edit /id A3478231B /attendance present /participation good /grade 84` | Edits ✏️ the attendance ✅, participation 🗣️ and grade 💯 of the student 🧑‍🎓 with ID `A3478231B` to `PRESENT`, `GOOD` and `84` respectively.
-   > | `delete /id A1234567B`                       | Deletes 🗑️ the student 🧑‍🎓 with ID `A1234567B` in the student list 📜. |
-   > | `list`                                       | Lists 📃 all students 🧑‍🎓.                                       |
-   > | `clear`                                      | Deletes 🧹 all students 🧑‍🎓.                                     |
-   > | `exit`                                       | Exits 🚪 the app.                                            |
+   > | `add /id A3478231B /name John Doe /phone 98765432 /email johnd@example.com` | Adds a student with the ID `A3478231B` to the application.      |
+   > | `edit /id A3478231B /attendance present /participation good /grade 84` | Edits the attendance, participation and grade of the student with ID `A3478231B` to `PRESENT`, `GOOD` and `84` respectively.
+   > | `delete /id A1234567B`                       | Deletes the student with ID `A1234567B` in the student list. |
+   > | `list`                                       | Lists all students.                                       |
+   > | `clear`                                      | Deletes all students.                                     |
+   > | `exit`                                       | Exits the app.                                            |
 
 Do refer to the [Features](#features) below for details of each command!
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 🧑‍🎓 Student
+## Student
 
 This section covers the `Student` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
 
@@ -81,19 +83,19 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 ---
 ### Properties
 
-   - [🆔 ID - Unique student identifier](#-🆔-id---unique-student-identifier)
-   - [👤 Name - Student's name](#-👤-name---your-students-name)
-   - [📞 Phone - Student's phone number](#-📞-phone---students-phone-number)
-   - [📧 Email - Student's email address](#-📧-email---students-email-address)
-   - [🎓 Course - NUS course code](#-🎓-course---nus-course-code)
-   - [✅ Attendance - Student's class participation status](#-✅-attendance---students-class-participation-status)
-   - [🗣️ Participation - Student's engagement level](#-🗣️-participation---students-engagement-level)
-   - [💯 Grade - Predicted grade](#💯-grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
-   - [📝 Notes - Additional details](#-📝-notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+   - [🆔 ID - Unique student identifier](#id---unique-student-identifier)
+   - [👤 Name - Student's name](#name---your-students-name)
+   - [📞 Phone - Student's phone number](#phone---students-phone-number)
+   - [📧 Email - Student's email address](#email---students-email-address)
+   - [🎓 Course - NUS course code](#course---nus-course-code)
+   - [✅ Attendance - Student's class participation status](#attendance---students-class-participation-status)
+   - [🗣️ Participation - Student's engagement level](#participation---students-engagement-level)
+   - [💯 Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [📝 Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
 
 ---
 
-#### 🆔 **`ID`** - Unique student identifier
+#### **`ID`** - Unique student identifier
 
 **Format**:
 ```
@@ -115,7 +117,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-#### 👤 `Name` - Your student's name
+#### `Name` - Your student's name
 
 Multiple students with the same name are allowed, as long as they have a unique Student ID. 
 
@@ -132,7 +134,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### 📞 **`Phone`** - Student's phone number
+#### **`Phone`** - Student's phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -152,7 +154,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### 📧 **`Email`** - Student's email address
+#### **`Email`** - Student's email address
 
 **Format**:
 ```
@@ -186,7 +188,7 @@ local-part@domain
 
 ---
 
-#### 🎓 **`Course`** - NUS course code
+#### **`Course`** - NUS course code
 
 **Format**:
 ```
@@ -211,7 +213,7 @@ local-part@domain
 
 ---
 
-#### ✅ **`Attendance`** - Student's class participation status
+#### **`Attendance`** - Student's class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -232,7 +234,7 @@ local-part@domain
 
 ---
 
-#### 🗣️ **`Participation`** - Student's engagement level
+#### **`Participation`** - Student's engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -281,7 +283,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Adding a Student](#adding-a-student-add)
 - [Listing All Students](#listing-all-students-list)
 - [Editing a Student](#editing-a-student-edit)
-- [Locating Students by Name, Id or Course](#locating-students-by-name-id-or-course)
+- [Locating Students by Name, Id or Course](#locating-students-by-name-id-or-course-find)
 - [Sorting Your List](#sorting-your-list-sort)
 - [Deleting a Student](#deleting-a-student-delete)
 - [Clearing All Entries](#clearing-all-entries-clear)
@@ -292,7 +294,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 
 ---
 
-### 📝 Command Syntax Notes
+### Command Syntax Notes
 This section covers the Command Syntax Notes you should be aware of when you are using BetterCallTA.
 
 
@@ -335,7 +337,7 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 ---
 
-### ❓ Viewing Help: `help`
+### Viewing Help: `help`
 
 Shows a message explaining how to access the help page 🆘.
 
@@ -351,7 +353,7 @@ help
 
 ### Adding a Student: `add`
 
-Adds a student (`Person`) to the application.
+Adds a student to the application.
 
 **Format**:
 ```
@@ -370,9 +372,9 @@ add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/no
 
 ---
 
-### 📜 Listing All Students: `list`
+### Listing All Students: `list`
 
-Shows a list of all students (`Person`) 🧑‍🎓 in the application 📇.
+Shows a list of all students in the application.
 
 
 **Format**:
@@ -389,7 +391,7 @@ list
 
 ### Editing a Student: `edit`
 
-Edits an existing student (`Person`) in the application.
+Edits an existing student in the application.
 
 **Format**:
 ```
@@ -397,7 +399,7 @@ edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/
 ```
 
 **Notes**:
-- Edits the student (`Person`) with the specified `ID`.
+- Edits the student with the specified `ID`.
 - Only the specified properties will be updated. Other properties will remain as they were previously.
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
@@ -421,9 +423,9 @@ This will update the phone number and email of the student with ID `A0123456N` t
 
 ---
 
-### 🔎 Locating Students by Name, Id or Course: `find`
+### Locating Students by Name, ID or Course: `find`
 
-Finds students 🧑‍🎓 whose names, ids or courses contain any of the given keywords.
+Finds students whose names, IDs or courses contain any of the given keywords.
 
 **Format**:
 ```
@@ -435,23 +437,16 @@ find KEYWORD [MORE_KEYWORDS]
     <ul>
       <li>The search is case-insensitive, e.g <code>hans</code> will match <code>Hans</code></li>
       <li>The order of the keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></li>
-      <li>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
+      <li>Students matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
       e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code> , <code>Bo Yang</code></li>
-    </ul>
-</div><br>
-
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
-    <ul>
-      <li>Only the name is searched</li>
-      <li>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></li>
+      <li>Partial words are also matched e.g. <code>Han</code> will match <code>Hans</
     </ul>
 </div><br>
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`
-* `find A1234` returns students with Id numbers that start with A1234
+* `find A1234` returns students with ID numbers that start with A1234
 
 <br>
 
@@ -460,9 +455,9 @@ Examples:
 
 ---
 
-### 🔀 Sorting Your List: `sort`
+### Sorting Your List: `sort`
 
-Sorts your current list by **one** of four parameters: name 🧑‍🎓, grade 💯, attendance ✅ or participation 🗣️.
+Sorts your current list by **one** of four parameters: name, grade, attendance or participation.
 
 **Format**:
 ```
@@ -487,16 +482,16 @@ Examples:
 > ![Sort Command Example](images/sortCommandExample.png)
 <br> Fig 3.6 - Output of `sort /by grade`
 
-### 🗑️ Deleting a Person: `delete`
+### Deleting a Student: `delete`
 
-Deletes the specified student (`Person`) 🧑‍🎓 from the application.
+Deletes the specified student from the application.
 
 **Format**:
 ```
 delete /id ID
 ```
 
-* Deletes the student (`Person`) with the specified `ID`.
+* Deletes the student with the specified `ID`.
 * The ID refers to the ID belonging to the student in the student list.
 
 **Examples**:
@@ -510,7 +505,7 @@ delete /id ID
 
 ---
 
-### 💾 Saving Contact Data: `file /save`
+### Saving Contact Data: `file /save`
 
 BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
 
@@ -536,7 +531,7 @@ file /save SAVE_FILE
 
 ---
 
-### 📤 Loading Contact Data: `file /load`
+### Loading Contact Data: `file /load`
 
 BetterCallTA data will load the most recent save file 💾 that was used in the application by default. Save files can be loaded with the `file /load` command.
 
@@ -555,7 +550,7 @@ file /load SAVE_FILE
 
 ---
 
-### 📂 Listing Save Files: `file /list`
+### Listing Save Files: `file /list`
 
 BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)` 📌.
 
@@ -572,7 +567,7 @@ file /list all
 
 — 
 
-### 🧹 Clearing All Entries: `clear`
+### Clearing All Entries: `clear`
 
 Clears all entries from the application 📇.
 
@@ -590,9 +585,9 @@ clear
 
 ---
 
-### 🔄 Resetting All Attendance and Participation Records: `resetRecords`
+### Resetting All Attendance and Participation Records: `resetRecords`
 
-Resets the attendance ✅ and participation 🗣️ status of all students 🧑‍🎓 to `UNMARKED`.
+Resets the attendance and participation status of all students to `UNMARKED`.
 
 **Format**
 ```
@@ -608,7 +603,7 @@ resetRecords
 
 ---
 
-### 🚪 Exiting the Program: `exit`
+### Exiting the Program: `exit`
 
 Exits the program.
 
@@ -629,7 +624,7 @@ You can update the data directly by editing the file, but be cautious.
 
 ---
 
-## ❓ FAQ
+## FAQ
 This section covers common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer 💻?<br>
@@ -641,10 +636,10 @@ This section covers common questions that BetterCallTA users face.
 **Q**: How do I know the correct format for student IDs?<br>
 **A**: Student IDs must follow the NUS student ID format: `<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>`.
 
-**Q**: Does BetterCallTA support international phone number formats? 
+**Q**: Does BetterCallTA support international phone number formats?<br>
 **A**: Yes, BetterCallTA supports phone numbers starting with a `+` and allows hyphens, as long as the length is between 7 and 15 digits. 
 
-**Q**: If I edit a student, and leave some fields blank, what happens? 
+**Q**: If I edit a student, and leave some fields blank, what happens?<br>
 **A**: If you edit a student, and only specify some fields, the other fields will remain as they were before the edit.
 
 **Q**: What happens if I accidentally delete a student?<br>
@@ -653,26 +648,26 @@ This section covers common questions that BetterCallTA users face.
 **Q**: Why are command words not case-insensitive?<br>
 **A**: Command words are case-sensitive as we expect you TAs to not want to waste time capitalising the command word. However, the parameters are case-insensitive as we understand different users have different ways of entering certain fields.
 
-**Q**: Can I add a student without an email address?
+**Q**: Can I add a student without an email address?<br>
 **A**: Yes, the email field is optional.
 
-**Q**: Is there a limit to the number of students I can add? 
+**Q**: Is there a limit to the number of students I can add?<br>
 **A**: There is no hard limit, but performance may degrade with a very large number of students. 
 
 
 
 ---
 
-## 🐞 Known issues
+## Known issues
 This section covers the current known issues with BetterCallTA.
 
-1.  **Multi-Screen Issue**: When using multiple screens 🖥️, if you move the application to a secondary screen, and later switch to using only the primary screen 🖥️, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1.  **Multi-Screen Issue**: When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2.  **Minimized Help Window Issue**: If you minimize the Help Window and then run the `help` command (or use the `Help` menu 🆘, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-3. **Save File Corruption 💾💥**: In the event of an unexpected application crash 💥 or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup 🔄 your save files. If a file is corrupted, restore ↩️ from a backup.
+3. **Save File Corruption 💾💥**: In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## ⚙️ Command summary
+## Command summary
 This section covers the summary of commands in BetterCallTA.
 
 
@@ -694,7 +689,7 @@ Action | Format | Examples
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 📖 Glossary
+## Glossary
 This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentation.
 
 | Term | Definition |
