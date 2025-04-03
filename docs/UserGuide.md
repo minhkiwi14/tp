@@ -32,7 +32,7 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 | 1. [Overview](#overview) |  |
 | 2. [Quick start](#quick-start) |  |
 | 3. [Student](#student) | [ID - Unique student identifier](#id---unique-student-identifier) <br> [Name - Student's name](#name---your-students-name) <br> [Phone - Student's phone number](#phone---students-phone-number) <br> [Email - Student's email address](#email---students-email-address) <br> [Course - NUS course code](#course---nus-course-code) <br> [Attendance - Student's class participation status](#attendance---students-class-participation-status) <br> [Participation - Student's engagement level](#participation---students-engagement-level) <br> [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students) |
-| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
+| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
 | 5. [FAQ](#faq) |  |
 | 6. [Known Issues](#known-issues) |  |
 | 7. [Command Summary](#command-summary) |  |
@@ -353,7 +353,7 @@ help
 
 ### Adding a Student: `add`
 
-Adds a student (`Person`) to the application.
+Adds a student to the application.
 
 **Format**:
 ```
@@ -374,7 +374,7 @@ add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/no
 
 ### Listing All Students: `list`
 
-Shows a list of all students (`Person`) in the application.
+Shows a list of all students in the application.
 
 
 **Format**:
@@ -391,7 +391,7 @@ list
 
 ### Editing a Student: `edit`
 
-Edits an existing student (`Person`) in the application.
+Edits an existing student in the application.
 
 **Format**:
 ```
@@ -399,7 +399,7 @@ edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/
 ```
 
 **Notes**:
-- Edits the student (`Person`) with the specified `ID`.
+- Edits the student with the specified `ID`.
 - Only the specified properties will be updated. Other properties will remain as they were previously.
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
@@ -423,9 +423,9 @@ This will update the phone number and email of the student with ID `A0123456N` t
 
 ---
 
-### Locating Students by Name, Id or Course: `find`
+### Locating Students by Name, ID or Course: `find`
 
-Finds students whose names, ids or courses contain any of the given keywords.
+Finds students whose names, IDs or courses contain any of the given keywords.
 
 **Format**:
 ```
@@ -437,23 +437,16 @@ find KEYWORD [MORE_KEYWORDS]
     <ul>
       <li>The search is case-insensitive, e.g <code>hans</code> will match <code>Hans</code></li>
       <li>The order of the keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></li>
-      <li>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
+      <li>Students matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
       e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code> , <code>Bo Yang</code></li>
-    </ul>
-</div><br>
-
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
-    <ul>
-      <li>Only the name is searched</li>
-      <li>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></li>
+      <li>Partial words are also matched e.g. <code>Han</code> will match <code>Hans</
     </ul>
 </div><br>
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`
-* `find A1234` returns students with Id numbers that start with A1234
+* `find A1234` returns students with ID numbers that start with A1234
 
 <br>
 
@@ -489,16 +482,16 @@ Examples:
 > ![Sort Command Example](images/sortCommandExample.png)
 <br> Fig 3.6 - Output of `sort /by grade`
 
-### Deleting a Person: `delete`
+### Deleting a Student: `delete`
 
-Deletes the specified student (`Person`) from the application.
+Deletes the specified student from the application.
 
 **Format**:
 ```
 delete /id ID
 ```
 
-* Deletes the student (`Person`) with the specified `ID`.
+* Deletes the student with the specified `ID`.
 * The ID refers to the ID belonging to the student in the student list.
 
 **Examples**:
