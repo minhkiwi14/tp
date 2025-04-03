@@ -95,7 +95,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-#### **`ID`** - Unique student identifier
+#### `ID` - Unique student identifier
 
 **Format**:
 ```
@@ -134,7 +134,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### **`Phone`** - Student's phone number
+#### `Phone` - Student's phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -154,7 +154,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### **`Email`** - Student's email address
+#### `Email` - Student's email address
 
 **Format**:
 ```
@@ -188,7 +188,7 @@ local-part@domain
 
 ---
 
-#### **`Course`** - NUS course code
+#### `Course` - NUS course code
 
 **Format**:
 ```
@@ -213,7 +213,7 @@ local-part@domain
 
 ---
 
-#### **`Attendance`** - Student's class participation status
+#### `Attendance` - Student's class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -234,7 +234,7 @@ local-part@domain
 
 ---
 
-#### **`Participation`** - Student's engagement level
+#### `Participation` - Student's engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
