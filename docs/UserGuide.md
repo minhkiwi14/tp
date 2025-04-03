@@ -22,6 +22,8 @@ Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice c
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
