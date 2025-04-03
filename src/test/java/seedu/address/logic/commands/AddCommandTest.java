@@ -53,7 +53,10 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validPerson);
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(
+                CommandException.class,
+                "Student with ID A0123456N already exists in the address book",
+                () -> addCommand.execute(modelStub));
     }
 
     @Test
