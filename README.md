@@ -1,6 +1,6 @@
-[![CI Status](https://github.com/AY2425S2-CS2103-T10-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103-T10-3/tp/actions)
-[![MarkBind Action](https://github.com/AY2425S2-CS2103-T10-3/tp/actions/workflows/docs.yml/badge.svg)](https://github.com/AY2425S2-CS2103-T10-3/tp/actions/workflows/docs.yml)
-[![pages-build-deployment](https://github.com/AY2425S2-CS2103-T10-3/tp/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/AY2425S2-CS2103-T10-3/tp/actions/workflows/pages/pages-build-deployment)
+[![CI Status](https://github.com/AY2425S2-CS2103T-T10-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2425S2-CS2103T-T10-3/tp/actions)
+[![MarkBind Action](https://github.com/AY2425S2-CS2103T-T10-3/tp/actions/workflows/docs.yml/badge.svg)](https://github.com/AY2425S2-CS2103T-T10-3/tp/actions/workflows/docs.yml)
+[![pages-build-deployment](https://github.com/AY2425S2-CS2103T-T10-3/tp/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/AY2425S2-CS2103T-T10-3/tp/actions/workflows/pages/pages-build-deployment)
 
 # Better Call TA
 
