@@ -40,7 +40,7 @@ public class Grade {
 
             int parsedGrade = Integer.parseInt(grade);
 
-            if (parsedGrade == -1) {
+            if (parsedGrade < 0 || parsedGrade > 100) {
                 throw new ParseException(MESSAGE_CONSTRAINTS);
             }
 
