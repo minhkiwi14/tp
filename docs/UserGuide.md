@@ -14,9 +14,6 @@ Teaching Assistants (TA) who can type fast ⌨️, preferring typing over mouse 
 
 ### 🤔 Assumptions
 - You prefer typing ⌨️ to mouse 🖱️ or voice commands 🗣️.
-- The student's name has an English translation. For example,
-   - `陈李` can be translated to `Chen Li`.
-   - `X Æ A-12 Musk` can be translated to `Ash Musk`.
 
 ### 📝 Notations
 - Angular brackets `< number x '(list of characters) >` means choose `number` from the list of characters, allowing duplicates. For example:
@@ -46,7 +43,6 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 
 1. Ensure you have `Java 17` or above installed in your Computer 💻.
    - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html) 🔗, selecting your appropriate Operating System (OS) ⚙️.
-
 2. Download 📥 the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases) 🔗.
 3. Copy 📄 the file to the folder you want to use as the _home folder_ 🏠 for BetterCallTA.
 4. Open a command terminal 💻 (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
@@ -55,6 +51,7 @@ This section covers the table of contents of our user guide for **BetterCallTA**
    - A GUI similar to the one below should appear in a few seconds.
 
    > ![Ui](images/Ui.png)
+   <br>Fig 1 - Example User Interface (UI)
 
 6. Type ⌨️ the command in the command box and press Enter ↵ to execute it. e.g. typing **`help`** and pressing Enter will open the help window 窗口.
 
@@ -76,9 +73,10 @@ Do refer to the [Features](#features) below for details of each command!
 
 ## 🧑‍🎓 Student
 
-This section covers the `Person` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
+This section covers the `Student` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
 
 > ![Student descriptor](images/person.png)
+<br>Fig 2 - Example Student
 
 ---
 ### Properties
@@ -120,6 +118,17 @@ This section covers the `Person` field used in BetterCallTA, which encapsulates 
 #### 👤 `Name` - Your student's name
 
 Multiple students with the same name are allowed, as long as they have a unique Student ID. 
+
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>All unicode strings are accepted for name. For example,</li>
+      <ul>
+        <li>陈李 is accepted</li>
+        <li>X Æ A-12 Musk is accepted</li>
+      </ul>
+    </ul>
+</div><br>
 
 ---
 
@@ -334,7 +343,8 @@ Shows a message explaining how to access the help page 🆘.
 help
 ```
 
-> ![Help Message](images/helpMessage.png)
+> ![Help Message Example](images/helpMessage.png)
+<br>Fig 3.1 - Pop-Up window from entering `help` command
 
 ---
 
@@ -344,12 +354,18 @@ Adds a student (`Person`) to the application.
 
 **Format**:
 ```
-add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]
+add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/note NOTE...]
 ```
 
 **Examples**:
-- `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com`
+- `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com /note Consistently late`
 - `add /id A4045018Y /name Betsy Crowe /email betsycrowe@example.com /phone 1234567 /course CS4215`
+
+<br>
+
+> ![Add Command Example](images/addCommandExample.png)
+<br>Fig 3.2 - Output of
+<br>`add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com /note Consistently late`
 
 ---
 
@@ -362,6 +378,11 @@ Shows a list of all students (`Person`) 🧑‍🎓 in the application 📇.
 ```
 list
 ```
+
+<br>
+
+> ![List Command Example](images/listCommandExample.png)
+<br>Fig 3.3 - Output of `list`
 
 ---
 
@@ -388,8 +409,14 @@ edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/
 </div><br>
 
 **Example**:
-`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
+`edit /id A0123456N /phone 91234567 /email johndoe@example.com`<br><br>
 This will update the phone number and email of the student with ID `A0123456N` to `91234567` and `johndoe@example.com` respectively.
+
+<br>
+
+> ![Edit Command Example](images/editCommandExample.png)
+<br>Fig 3.4 - Output of
+<br>`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
 
 ---
 
@@ -427,7 +454,8 @@ Examples:
 
 <br>
 
-  >![result for 'find alex david'](images/findAlexDavidResult.png)
+  >![Find Command Example](images/findCommandExample.png)
+  <br>Fig 3.5 - Output of `find alex david`
 
 ---
 
@@ -453,6 +481,11 @@ Examples:
 * `sort /by name` will arrange your list in alphabetical order.
 * `sort /by grade` will arrange your students by their grade scores in descending order.
 
+<br>
+
+> ![Sort Command Example](images/sortCommandExample.png)
+<br> Fig 3.6 - Output of `sort /by grade`
+
 ### 🗑️ Deleting a Person: `delete`
 
 Deletes the specified student (`Person`) 🧑‍🎓 from the application.
@@ -468,6 +501,11 @@ delete /id ID
 **Examples**:
 - `delete /id A1234567N` deletes the student with ID `A1234567N`.
 - `delete /id A7654321B` deletes the student with ID `A7654321B`.
+
+<br>
+
+> ![Delete Command Example](images/deleteCommandExample.png)
+<br> Fig 3.7 - Output of `delete /id A1234567N`
 
 ---
 
