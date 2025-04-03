@@ -102,11 +102,11 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 ID Format Rules</b> Follows NUS Student ID format:
-    <ol>
+    <ul>
       <li>Must start with <code>A</code>, <code>U</code>, <code>HT</code>, or <code>NT</code></li>
       <li>Starting letters must be followed by <b>7 digits</b></li>
       <li>Must end with one of: <code>A, B, E, H, J, L, M, N, R, U, W, X, Y</code></li>
-    </ol>
+    </ul>
 </div><br>
 
 **Examples**:
@@ -195,11 +195,11 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Course Format Rules</b>
-    <ol>
+    <ul>
       <li>Must start with 2 or 3 letters</li>
       <li>Followed by exactly 4 digits</li>
       <li>May optionally end with up to 2 letters</li>
-    </ol>
+    </ul>
 </div><br>
 
 **Default**: `AAA0000AA`
@@ -221,11 +221,11 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Attendance Format Rules</b>
-    <ol>
+    <ul>
       <li>Only the above status values are valid</li>
       <li>Matches must be exact (e.g., "Absent" not "Absent again")</li>
       <li>Input can be in any capitalization (e.g., "Present" or "PRESENT")</li>
-    </ol>
+    </ul>
 </div><br>
 
 **Default**: `UNMARKED`
@@ -244,12 +244,13 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Participation Format Rules</b>
-    <ol>
+    <ul>
       <li>Only the above status values are valid</li>
       <li>Matches must be exact (e.g., "Good" not "Good enough")</li>
       <li>Input can be in any capitalization (e.g., "Excellent" or "EXCELLENT")</li>
-    </ol>
+    </ul>
 </div><br>
+
 
 **Default**: `UNMARKED`
 
@@ -259,9 +260,9 @@ local-part@domain
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Grade Format Rules</b>
-    <ol>
+    <ul>
       <li>You can only enter an integer from <code>0</code> to <code>100</code> (inclusive), or <code>NA</code></li>
-    </ol>
+    </ul>
 </div><br>
 
 ---
