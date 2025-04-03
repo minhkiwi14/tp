@@ -548,6 +548,13 @@ Clears all entries from the application 📇.
 clear
 ```
 
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>If there are no students in BetterCallTA, an error message will be shown. </li>
+    </ul>
+</div><br>
+
 ---
 
 ### 🔄 Resetting All Attendance and Participation Records: `resetRecords`
@@ -562,7 +569,7 @@ resetRecords
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
-      <li>If there are no students in BetterCallTA, or all students have their attendance and participation status <code>UNMARKED</code>, an error will be shown. </li>
+      <li>If there are no students in BetterCallTA, or all students have their attendance and participation status <code>UNMARKED</code>, an error message will be shown. </li>
     </ul>
 </div><br>
 
