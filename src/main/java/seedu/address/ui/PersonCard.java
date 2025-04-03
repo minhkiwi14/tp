@@ -65,9 +65,9 @@ public class PersonCard extends UiPart<Region> {
         participation.setText(person.getParticipation().toString());
         List<Note> displayNotes = person.getNotes();
         StringBuilder displayedNote = new StringBuilder();
+        displayedNote.append("Notes:\n");
         for (Note note : displayNotes) {
-            displayedNote.append(note.toString());
-            displayedNote.append("\n");
+            displayedNote.append("* ").append(note.toString()).append("\n");
         }
         notes.setText(displayedNote.toString());
         int gradeValue = person.getGrade().grade;
