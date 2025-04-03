@@ -4,6 +4,7 @@
 ---
 
 ## 💡 Overview
+This section covers the overview of **BetterCallTA** application.
 
 ### 🎯 Target audience
 Teaching Assistants (TA) who can type fast ⌨️, preferring typing over mouse 🖱️/voice commands 🗣️
@@ -22,9 +23,10 @@ Teaching Assistants (TA) who can type fast ⌨️, preferring typing over mouse 
    - <2 x (A/B/C)> means choose two of A, B or C.
    - <(0-2) x (A-Z)> means choose 0 to 2 of any capital letters.
 
-—
+---
 
 ## Table of Contents
+This section covers the table of contents of our user guide for **BetterCallTA**.
 
 | Main Section | Sub Sections |
 |---|---|
