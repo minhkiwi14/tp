@@ -278,7 +278,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Adding a Student](#adding-a-student-add)
 - [Listing All Students](#listing-all-students-list)
 - [Editing a Student](#editing-a-student-edit)
-- [Locating Students by Name](#locating-students-by-name-find)
+- [Locating Students by Name, Id or Course](#locating-students-by-name-id-or-course)
 - [Sorting Your List](#sorting-your-list-sort)
 - [Deleting a Student](#deleting-a-student-delete)
 - [Clearing All Entries](#clearing-all-entries-clear)
@@ -400,9 +400,9 @@ This will update the phone number and email of the student with ID `A0123456N` t
 
 ---
 
-### 🔎 Locating Students by Name: `find`
+### 🔎 Locating Students by Name, Id or Course: `find`
 
-Finds students 🧑‍🎓 whose names contain any of the given keywords.
+Finds students 🧑‍🎓 whose names, ids or courses contain any of the given keywords.
 
 **Format**:
 ```
@@ -430,6 +430,7 @@ find KEYWORD [MORE_KEYWORDS]
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`
+* `find A1234` returns students with Id numbers that start with A1234
 
 <br>
 
