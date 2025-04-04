@@ -526,13 +526,18 @@ file /save SAVE_FILE
 **Examples**:
 - `file /save CS2103T-T10-3`
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
+<div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
+    <b>Alert</b>
     <ul>
       <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
       <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
     </ul>
 </div><br>
+
+<br>
+
+> ![File Save Command Example](images/fileSaveCommandExample.png)
+<br> Fig 3.8 - Output of `file /save CS2103T-T10-3`
 
 ---
 
@@ -553,11 +558,16 @@ file /load SAVE_FILE
 **Examples**:
 - `file /load CS2103T-T10-3`
 
+<br>
+
+> ![File Load Command Example](images/fileLoadCommandExample.png)
+<br> Fig 3.9 - Output of `file /load CS2103T-T10-3`
+
 ---
 
-### 📂 Listing Save Files: `file /list`
+### 📂 Listing Save Files: `file /list all`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)` 📌.
+BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `file /list all` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)` 📌.
 
 
 **Format**
@@ -565,10 +575,16 @@ BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `
 file /list all
 ```
 
-* List out all the save files stored by the application.
+Lists out all the save files stored by the application.
 
 **Examples**:
 - `file /list all`
+
+<br>
+
+> ![File List All Command Example](images/fileListCommandExample.png)
+<br> Fig 3.10 - Output of `file /list all`
+<br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
 
 — 
 
@@ -588,6 +604,11 @@ clear
     </ul>
 </div><br>
 
+<br>
+
+> ![Clear Command Example](images/clearCommandExample.png)
+<br> Fig 3.11 - Output of `clear`
+
 ---
 
 ### 🔄 Resetting All Attendance and Participation Records: `resetRecords`
@@ -606,6 +627,11 @@ resetRecords
     </ul>
 </div><br>
 
+<br>
+
+> ![Reset Records Command Example](images/resetRecordsCommandExample.png)
+<br> Fig 3.12 - Output of `resetRecords`
+
 ---
 
 ### 🚪 Exiting the Program: `exit`
@@ -619,12 +645,17 @@ exit
 
 ---
 
-**⚠️ Warning for Advanced Users**:
-You can update the data directly by editing the file, but be cautious.
+<br>
 
-#### ❗ **Caution**:
-- Saving 💾 the application data with the `file /save FILE` command will overwrite the `FILE.json` save file if it already exists.
-- Manually editing the `.json` file can introduce syntax errors, rendering the file unreadable by BetterCallTA. **Validate your `.json` syntax using a JSON linter before attempting to load it.**
+<div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
+    <b>⚠️ Warning for Advanced Users</b>
+    You can update the data directly by editing the file, but be cautious.
+    <br><br>
+    <ul>
+      <li>Saving 💾 the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
+      <li>Manually editing the <code>.json</code> file can introduce syntax errors, rendering the file unreadable by BetterCallTA. <b>Validate your <code>.json</code> syntax using a JSON linter before attempting to load it.</b></li>
+    </ul>
+</div><br>
 
 
 ---
