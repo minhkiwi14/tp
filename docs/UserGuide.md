@@ -117,7 +117,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 #### `Name` - Your student's name
 
-Multiple students with the same name are allowed, as long as they have a unique Student ID. 
+Multiple students with the same name are allowed, as long as they have a unique Student ID.
 
 <div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Tips</b>
@@ -523,6 +523,11 @@ file /save SAVE_FILE
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
+      <li>If the save file contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
+      <li>
+        If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP<code> captures the timestamp of which the save file is created.
+      </li>
+      <li>If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
       <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
       <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
     </ul>
@@ -536,7 +541,6 @@ BetterCallTA data will load the most recent save file 💾 that was used in the 
 
 Change the `.json` save file that the application will read/save from with `file /load`.
 
-
 **Format**
 ```
 file /load SAVE_FILE
@@ -546,6 +550,17 @@ file /load SAVE_FILE
 
 **Examples**:
 - `file /load CS2103T-T10-3`
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>If the save file you attempt to load contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
+      <li>If the save file you attempt to load contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
+      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+    </ul>
+</div><br>
+
 
 ---
 
@@ -564,7 +579,7 @@ file /list all
 **Examples**:
 - `file /list all`
 
-— 
+—
 
 ### Clearing All Entries: `clear`
 
@@ -637,7 +652,7 @@ This section covers common questions that BetterCallTA users face.
 **A**: Student IDs must follow the NUS student ID format: `<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>`.
 
 **Q**: Does BetterCallTA support international phone number formats?<br>
-**A**: Yes, BetterCallTA supports phone numbers starting with a `+` and allows hyphens, as long as the length is between 7 and 15 digits. 
+**A**: Yes, BetterCallTA supports phone numbers starting with a `+` and allows hyphens, as long as the length is between 7 and 15 digits.
 
 **Q**: If I edit a student, and leave some fields blank, what happens?<br>
 **A**: If you edit a student, and only specify some fields, the other fields will remain as they were before the edit.
@@ -652,7 +667,7 @@ This section covers common questions that BetterCallTA users face.
 **A**: Yes, the email field is optional.
 
 **Q**: Is there a limit to the number of students I can add?<br>
-**A**: There is no hard limit, but performance may degrade with a very large number of students. 
+**A**: There is no hard limit, but performance may degrade with a very large number of students.
 
 
 
@@ -701,5 +716,3 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **ID** | Student Identification Number - Unique identifier following NUS format |
 | **Home folder** | The folder in your file system that serves as your personal storage space |
 | **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
-
-
