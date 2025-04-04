@@ -525,7 +525,7 @@ file /save SAVE_FILE
     <ul>
       <li>If the save file contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
       <li>
-        If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP<code> captures the timestamp of which the save file is created.
+        If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP</code> captures the timestamp of which the save file is created.
       </li>
       <li>If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
       <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
