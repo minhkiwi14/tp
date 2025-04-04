@@ -5,6 +5,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_LOAD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE_SAVE;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -30,13 +33,57 @@ public class FileCommandParser implements Parser<FileCommand> {
         argMultimap.verifyOnlyOnePrefix(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
                 PREFIX_FILE_LIST);
 
-        if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.LOAD, argMultimap.getValue(PREFIX_FILE_LOAD).get());
-        } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.SAVE, argMultimap.getValue(PREFIX_FILE_SAVE).get());
-        } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.LIST, argMultimap.getValue(PREFIX_FILE_LIST).get());
+        if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) { // Load command
+            return new FileCommand(
+                    FileCommand.FileOperation.LOAD,
+                    sanitizeFileName(argMultimap.getValue(PREFIX_FILE_LOAD).get()));
+
+        } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) { // Save command
+            return new FileCommand(
+                    FileCommand.FileOperation.SAVE,
+                    sanitizeFileName(argMultimap.getValue(PREFIX_FILE_SAVE).get()));
+
+        } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) { // List command
+            return new FileCommand(
+                    FileCommand.FileOperation.LIST,
+                    argMultimap.getValue(PREFIX_FILE_LIST).get());
         }
         throw new ParseException(FileCommand.MESSAGE_USAGE);
+    }
+
+    /**
+     * Sanitizes the input file name to prevent directory traversal and invalid characters.
+     *
+     * @param inputName The original file name to be sanitized, without the file extension.
+     * @return The sanitized file name, without the file extension
+     */
+    private static String sanitizeFileName(String inputName) {
+        // Remove path separators and reserved characters
+        String sanitized = inputName.replaceAll("[\\\\/:*?\"<>|]", ""); // removes \ / : * ? " < > |
+
+        // Replace whitespace with underscores
+        sanitized = sanitized.replaceAll("\\s+", "_");
+
+        // Prevent directory traversal by removing any occurrences of ".."
+        sanitized = sanitized.replaceAll("\\.\\.+", "");
+
+        // Limit the length of the file name to 255 characters
+        int maxLength = 255;
+        if (sanitized.length() > maxLength) {
+            return sanitized.substring(0, maxLength);
+        }
+
+        // edge case: if the sanitized name is empty, return a default name
+        if (sanitized.isBlank()) {
+            return String.format("file_%s",
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")));
+        }
+
+        assert sanitized.length() <= maxLength : "Sanitized file name exceeds maximum length";
+        assert !sanitized.contains("..") : "Sanitized file name contains directory traversal characters";
+        assert !sanitized.matches(".*[\\\\/:*?\"<>|].*") : "Sanitized file name contains invalid characters";
+        assert !sanitized.isEmpty() : "Sanitized file name is empty";
+
+        return sanitized;
     }
 }
