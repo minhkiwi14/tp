@@ -20,4 +20,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_FILE_SAVE = new Prefix("/save");
     public static final Prefix PREFIX_FILE_APPEND = new Prefix("/append");
     public static final Prefix PREFIX_FILE_LIST = new Prefix("/list");
+    public static final Prefix PREFIX_BY = new Prefix("/by");
+
 }

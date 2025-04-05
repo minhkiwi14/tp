@@ -39,8 +39,8 @@ public class AddressBookParserTest {
                 .withId("A0123456N")
                 .withName("Amy Bee")
                 .withPhone("00000000")
-                .withEmail("amybee@u.nus.edu")
-                .withCourse("No course specified")
+                .withEmail("example@u.nus.edu")
+                .withCourse("AAA0000AA")
                 .build();
 
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));

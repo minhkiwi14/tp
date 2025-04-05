@@ -1,25 +1,30 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Phone;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_EMAIL = "example.com";
-
     private static final String VALID_NAME = "Rachel Walker";
-    private static final String VALID_PHONE = "123456";
+    private static final String VALID_PHONE = "12345678";
     private static final String VALID_EMAIL = "rachel@example.com";
+    private static final String VALID_NOTE = "do stuff";
+    private static final ArrayList<String> VALID_NOTES = new ArrayList<>();
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -110,5 +115,34 @@ public class ParserUtilTest {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    }
+
+    @Test
+    public void parseNote_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseNote((String) null));
+    }
+
+    @Test
+    public void parseNote_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNote(WHITESPACE));
+    }
+
+    @Test
+    public void parseNote_validValueWithWhitespace_returnsTrimmedNote() throws Exception {
+        String noteWithWhitespace = WHITESPACE + VALID_NOTE + WHITESPACE;
+        Note expectedNote = new Note(VALID_NOTE);
+        assertEquals(expectedNote, ParserUtil.parseNote(noteWithWhitespace));
+    }
+
+    @Test
+    public void parseNotes_returnsNotes() throws Exception {
+        Note note1 = new Note("a");
+        Note note2 = new Note("b");
+        VALID_NOTES.add("a");
+        VALID_NOTES.add("b");
+        List<Note> expectedNotes = new ArrayList<>();
+        expectedNotes.add(note1);
+        expectedNotes.add(note2);
+        assertEquals(expectedNotes, ParserUtil.parseNotes(VALID_NOTES));
     }
 }

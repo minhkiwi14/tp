@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.testutil.PersonBuilder;
 
@@ -40,8 +39,8 @@ public class AddCommandParserTest {
                         .withName("Alice")
                         .withId("A0123456N")
                         .withPhone("00000000")
-                        .withEmail("alice@u.nus.edu")
-                        .withCourse("No course specified")
+                        .withEmail("example@u.nus.edu")
+                        .withCourse("AAA0000AA")
                         .build());
 
         assertParseSuccess(parser, args, expectedCommand);
@@ -60,9 +59,6 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-
-        // Invalid Name
-        assertParseFailure(parser, " /name ` /id A0236291A", Name.MESSAGE_CONSTRAINTS);
 
         // Invalid Email
         assertParseFailure(parser, " /name charlie /id A0237297A /email 123", Email.MESSAGE_CONSTRAINTS);

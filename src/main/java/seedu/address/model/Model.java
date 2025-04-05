@@ -107,4 +107,13 @@ public interface Model {
      */
     void sortFilteredPersonList(Comparator<Person> comparator);
 
+    /**
+     * Resets all attendance and participation records to unmarked state.
+     */
+    void resetRecords();
+
+    /**
+     * Returns true if all attendance and participation records are unmarked.
+     */
+    boolean areAllRecordsUnmarked();
 }

@@ -39,9 +39,9 @@ public class FileCommand extends Command {
             %s all
 
             Example:
-            file /load data.json
-            file /save data.json
-            file /list
+            file /load savefile1
+            file /save savefile2
+            file /list all
             """;
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_STRING_UNFORMATTED, COMMAND_WORD, PREFIX_FILE_LOAD,
@@ -51,14 +51,17 @@ public class FileCommand extends Command {
 
     private final FileOperation operation;
 
-    private final String fileName;
+    private final String arg;
 
     /**
      * Creates a FileCommand to load, save or append data to a file.
+     *
+     * @param operation The operation to be performed (LOAD, SAVE, LIST).
+     * @param arg       The file path or name to be used for the operation.
      */
-    public FileCommand(FileOperation operation, String filePath) {
+    public FileCommand(FileOperation operation, String arg) {
         this.operation = operation;
-        this.fileName = filePath;
+        this.arg = arg;
     }
 
     /**
@@ -78,7 +81,7 @@ public class FileCommand extends Command {
         case SAVE:
             return save(model);
         case LIST:
-            return list();
+            return list(model);
         default:
             throw new CommandException(String.format(MESSAGE_ERROR, "Invalid file operation"));
         }
@@ -89,14 +92,14 @@ public class FileCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof FileCommand // instanceof handles nulls
                         && operation.equals(((FileCommand) other).operation)
-                        && fileName.equals(((FileCommand) other).fileName)); // state check
+                        && arg.equals(((FileCommand) other).arg)); // state check
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("operation", operation)
-                .add("filePath", fileName)
+                .add("arg", arg)
                 .toString();
     }
 
@@ -115,7 +118,7 @@ public class FileCommand extends Command {
      * @return String
      */
     public String getFileName() {
-        return fileName;
+        return arg;
     }
 
     /**
@@ -124,26 +127,34 @@ public class FileCommand extends Command {
      * @param model representing the current address book
      * @return CommandResult indicating the result of the load operation
      */
-    public CommandResult load(Model model) {
+    private CommandResult load(Model model) {
 
-        Path filePath = Path.of(ADDRESSBOOK_FILE_DIR, fileName);
+        String fullFileName = String.format("%s.json", arg);
+        Path filePath = Path.of(ADDRESSBOOK_FILE_DIR, fullFileName);
 
         // Check if file exists
         if (!filePath.toFile().exists() && !filePath.toFile().isFile()) {
-            return new CommandResult(String.format(MESSAGE_ERROR, "File does not exist: " + fileName));
+            return new CommandResult(String.format(MESSAGE_ERROR, "File does not exist: " + fullFileName));
         }
 
-        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
+        assert filePath.toFile().exists() : "File should exist";
+
+        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName));
+
+        assert model.getAddressBookFilePath().toString()
+                .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString()) : "File path should be set";
 
         // Load data from file
         try {
             ((AddressBook) model.getAddressBook())
                     .resetData(new JsonAddressBookStorage(filePath).readAddressBook().get());
         } catch (DataLoadingException e) {
-            return new CommandResult(String.format(MESSAGE_ERROR, "Failed to load data from " + fileName));
+            return new CommandResult(
+                    String.format(MESSAGE_ERROR, "Failed to load data from save file: " + fullFileName));
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, "Loaded data from " + fileName));
+        return new CommandResult(
+                String.format(MESSAGE_SUCCESS, "Loaded data from save file. Current save file: " + fullFileName));
     }
 
     /**
@@ -152,11 +163,17 @@ public class FileCommand extends Command {
      * @param model Model to save
      * @return CommandResult indicating the result of the save operation
      */
-    public CommandResult save(Model model) {
+    private CommandResult save(Model model) {
 
-        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fileName));
+        String fullFileName = String.format("%s.json", arg);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, "Change saved file to " + fileName));
+        model.setAddressBookFilePath(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName));
+
+        assert model.getAddressBookFilePath().toString()
+                .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString()) : "File path should be set";
+
+        return new CommandResult(
+                String.format(MESSAGE_SUCCESS, "File saved. Current save file: " + arg));
     }
 
     /**
@@ -164,15 +181,41 @@ public class FileCommand extends Command {
      *
      * @return CommandResult indicating the result of the list operation
      */
-    public CommandResult list() {
+    private CommandResult list(Model model) {
 
-        File dataDir = new File(Path.of(ADDRESSBOOK_FILE_DIR).toString());
-        ArrayList<String> fileNames = new ArrayList<>(Arrays.asList(dataDir.list()));
-        StringBuilder sb = new StringBuilder();
-        for (String fileName : fileNames) {
-            sb.append(fileName).append("\n");
+        // Check if the argument is "all"
+        if (arg.equals("all")) {
+            return listAll(model);
         }
 
-        return new CommandResult(String.format("Listing all files: \n%s", sb.toString()));
+        return new CommandResult(MESSAGE_USAGE);
+    }
+
+    /**
+     * Lists all files in the data directory, storing addressbook data.
+     *
+     * @return CommandResult indicating the result of the list operation
+     */
+    private CommandResult listAll(Model model) {
+        File dataDir = new File(Path.of(ADDRESSBOOK_FILE_DIR).toString());
+        ArrayList<String> fileNames = new ArrayList<>(Arrays.asList(dataDir.list()));
+
+        assert fileNames != null : "File names should not be null";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0, n = fileNames.size(); i < n; i++) {
+            String fullFileName = fileNames.get(i);
+
+            assert fullFileName != null : "File name should not be null";
+
+            sb.append(String.format("%d) ", i + 1)).append(fullFileName.strip().replace(".json", ""));
+            if (model.getAddressBookFilePath().toString()
+                    .equals(Path.of(ADDRESSBOOK_FILE_DIR, fullFileName).toString())) {
+                sb.append(" (current save file)");
+            }
+            sb.append("\n");
+        }
+
+        return new CommandResult(String.format("Listing all save files: \n%s", sb.toString()));
     }
 }

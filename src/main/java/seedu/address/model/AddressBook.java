@@ -2,11 +2,14 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Id;
+import seedu.address.model.person.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -104,6 +107,32 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    /**
+     * Resets all attendance and participation records for all persons in the address book.
+     * @return List of persons with reset records
+     */
+    public List<Person> resetAllRecords() {
+        List<Person> resetPersons = new ArrayList<>();
+
+        for (Person person : persons) {
+            Person resetPerson = new Person(
+                person.getId(),
+                person.getName(),
+                person.getPhone(),
+                person.getEmail(),
+                person.getCourse(),
+                new Attendance(),
+                new Participation(),
+                person.getGrade(),
+                person.getNotes()
+            );
+
+            resetPersons.add(resetPerson);
+        }
+
+        return resetPersons;
+    }
+
     //// util methods
 
     @Override
@@ -136,5 +165,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    /**
+     * Checks if all students' attendance and participation records are unmarked.
+     *
+     * @return true if all records are unmarked, false otherwise
+     */
+    public boolean areAllRecordsUnmarked() {
+        List<Person> persons = new ArrayList<>();
+
+        for (Person person : this.persons) {
+            persons.add(person);
+        }
+
+        return persons.stream()
+                .allMatch(person ->
+                        person.getAttendance().getStatus().toUpperCase().equals("UNMARKED")
+                                && person.getParticipation().toString().toUpperCase().equals("UNMARKED"));
     }
 }

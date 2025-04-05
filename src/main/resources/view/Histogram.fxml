@@ -8,7 +8,6 @@
 <StackPane styleClass="stack-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
     <BarChart fx:id="barChart" animated="false" barGap="1" categoryGap="0" legendVisible="false" title="Grades of Students in Current List">
-              
         <xAxis>
             <CategoryAxis label="Grade" fx:id="xAxis" />
         </xAxis>

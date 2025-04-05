@@ -80,12 +80,12 @@ public class NameContainsKeywordsPredicateTest {
     public void test_courseContainsKeywords_returnsTrue() {
         // One keyword in course
         NameContainsKeywordsPredicate predicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("Science"));
-        assertTrue(predicate.test(new PersonBuilder().withCourse("Computer Science").build()));
+                new NameContainsKeywordsPredicate(Collections.singletonList("CS2103"));
+        assertTrue(predicate.test(new PersonBuilder().withCourse("CS2103T").build()));
 
         // Mixed-case keyword in course
-        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("cOMPuTER"));
-        assertTrue(predicate.test(new PersonBuilder().withCourse("Computer Science").build()));
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("hsa1000"));
+        assertTrue(predicate.test(new PersonBuilder().withCourse("HSA1000").build()));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder()
                 .withName("Alice")
                 .withId("A1234567B")
-                .withCourse("Engineering")
+                .withCourse("CS2103T")
                 .build()));
 
         // Non-matching keyword for name, id and course
@@ -104,7 +104,7 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder()
                 .withName("Alice Bob")
                 .withId("A1234567B")
-                .withCourse("Computer Science")
+                .withCourse("HSA1000")
                 .build()));
 
         // Keywords that match other fields (phone, email) but not name, id, or course.
@@ -114,8 +114,8 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder()
                 .withName("Alice")
                 .withId("A7654321B")
-                .withCourse("Computer Science")
-                .withPhone("12345")
+                .withCourse("CS2103T")
+                .withPhone("12345678")
                 .withEmail("alice@email")
                 .build()));
     }

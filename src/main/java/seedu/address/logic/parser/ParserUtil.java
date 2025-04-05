@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -151,15 +153,7 @@ public class ParserUtil {
     public static Grade parseGrade(String grade) throws ParseException {
         requireNonNull(grade);
         String trimmedGrade = grade.trim();
-        try {
-            int intGrade = Integer.parseInt(trimmedGrade);
-            if (!Grade.isValidGrade(intGrade)) {
-                throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
-            }
-            return new Grade(intGrade);
-        } catch (NumberFormatException e) {
-            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
-        }
+        return new Grade(trimmedGrade);
     }
 
     // Not yet implemented
@@ -170,7 +164,24 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code notes} is invalid.
      */
-    public static List<Note> parseNotes(String notes) throws ParseException {
-        return List.of();
+    public static Note parseNote(String note) throws ParseException {
+        requireNonNull(note);
+        String trimmedNote = note.trim();
+        if (!Note.isValidNote(trimmedNote)) {
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
+        }
+        return new Note(trimmedNote);
+    }
+
+    /**
+     * Parses {@code Collection<String> notes} into a {@code List<Note>}.
+     */
+    public static List<Note> parseNotes(Collection<String> notes) throws ParseException {
+        requireNonNull(notes);
+        final List<Note> noteList = new ArrayList<>();
+        for (String note : notes) {
+            noteList.add(parseNote(note));
+        }
+        return noteList;
     }
 }

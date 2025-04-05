@@ -1,6 +1,14 @@
 package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ATTENDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_COURSE;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADE;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ID;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PARTICIPATION;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE;
 import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -21,16 +29,6 @@ import seedu.address.model.person.Participation;
 import seedu.address.model.person.Phone;
 
 public class JsonAdaptedPersonTest {
-    private static final String INVALID_ID = "A1234567";
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_EMAIL = "kiwi.com";
-    private static final String INVALID_COURSE = " ";
-    private static final String INVALID_ATTENDANCE = "NORMAL";
-    private static final String INVALID_PARTICIPATION = "ACTIVE";
-    private static final Integer INVALID_GRADE = 101;
-    private static final String INVALID_NOTE = "";
-
     private static final String VALID_ID = BENSON.getId().toString();
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
