@@ -40,12 +40,8 @@ public class Histogram extends UiPart<Region> {
     public Histogram() {
         super(FXML);
 
-        // Initialise the chart
-        xAxis = new CategoryAxis();
-        yAxis = new NumberAxis();
-
         xAxis.setLabel("Grade");
-        xAxis.setLabel("Frequency");
+        yAxis.setLabel("Frequency");
 
         // Configure x-axis
         xAxis.setCategories(FXCollections.observableArrayList("0-9", "10-19", "20-29", "30-39",
@@ -108,7 +104,7 @@ public class Histogram extends UiPart<Region> {
      * @param bins bins of the histogram.
      */
     private void setMaxFrequency(int[] bins) {
-        int maxFrequency = Arrays.stream(bins).max().orElse(DEFAULT_MAX_FREQUENCY);
+        int maxFrequency = Arrays.stream(bins).max().orElse(DEFAULT_MAX_FREQUENCY) + 1;
         int upperBound = Math.max(DEFAULT_MAX_FREQUENCY, maxFrequency);
 
         yAxis.setLowerBound(LOWER_BOUND_FREQUENCY);
@@ -117,7 +113,6 @@ public class Histogram extends UiPart<Region> {
         yAxis.setMinorTickCount(0);
         yAxis.setAutoRanging(false);
 
-        yAxis.layout();
         barChart.layout();
     }
 
