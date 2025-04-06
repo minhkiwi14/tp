@@ -381,7 +381,8 @@ Edits an existing student in the application.
 
 **Format**:
 ```
-edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]
+edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL]
+[/course COURSE] [/attendance ATTENDANCE] [/participation PARTICIPATION] [/grade GRADE] [/note NOTE…]
 ```
 
 **Notes**:
@@ -627,14 +628,14 @@ Clears all entries from the application 📇.
 ```
 clear
 ```
-=======
+
 <br>
 
 > ![File List All Command Example](images/fileListCommandExample.png)
 <br> Fig 3.10 - Output of `file /list all`
 <br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
 
-— 
+---
 
 ### Resetting All Attendance and Participation Records: `resetRecords`
 
