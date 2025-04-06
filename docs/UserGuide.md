@@ -442,7 +442,7 @@ Clears all entries from the application.
 clear
 ```
 
-If there are no students in BetterCallTA, an error message will be shown. 
+If there are no students in BetterCallTA, an error message will be shown.
 
 <div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
     <b>Alert!</b><br><br>
@@ -534,7 +534,7 @@ list
 
 ---
 
-### Saving Contact Data: `file /save`
+### Saving Contact Data: `file /save FILENAME`
 
 BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
 
@@ -553,13 +553,26 @@ file /save SAVE_FILE
 <div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
     <b>Alert!</b>
     <ul>
-      <li>If the save file contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
+      <li>
+        You do NOT need to specify the <code>.json</code> file extension as it will automatically be added by our application. If you attempt to include the file extension type <code>SAVE_FILE</code>, such as <code>save.pdf</code>, it will be saved as <code>save.pdf.json</code>. This is NOT a bug as <code>.</code> is a valid character that can be used in the filename of the save file.
+      </li>
+      <li>
+        The following illegal characters are not allowed in <code>SAVE_FILE</code>. <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code>
+      <li>
+      <li>
+        Whitespaces will be stripped and replace with underscores (<code>_</code>).
       <li>
         If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP</code> captures the timestamp of which the save file is created.
       </li>
-      <li>If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
-      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
-      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+      <li>
+        If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+      </li>
+      <li>
+        If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.
+      </li>
+      <li>
+        It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.
+      </li>
     </ul>
 </div><br>
 
@@ -570,7 +583,7 @@ file /save SAVE_FILE
 
 ---
 
-### Loading Contact Data: `file /load`
+### Loading Contact Data: `file /load FILENAME`
 
 BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
@@ -605,15 +618,14 @@ file /load SAVE_FILE
 
 ### Listing Save Files: `file /list all`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list all` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
-
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list all` command will list out all `.json` save files in that directory (without the file extension type), as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
 **Format**
 ```
 file /list all
 ```
 
-Lists out all the save files stored by the application.
+Lists out all the `.json` save file filenames (without the file extension type) stored by the application in the `/data/*` directory.
 
 **Examples**:
 - `file /list all`
