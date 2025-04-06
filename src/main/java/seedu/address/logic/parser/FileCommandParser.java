@@ -30,13 +30,58 @@ public class FileCommandParser implements Parser<FileCommand> {
         argMultimap.verifyOnlyOnePrefix(PREFIX_FILE_LOAD, PREFIX_FILE_SAVE,
                 PREFIX_FILE_LIST);
 
-        if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.LOAD, argMultimap.getValue(PREFIX_FILE_LOAD).get());
-        } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.SAVE, argMultimap.getValue(PREFIX_FILE_SAVE).get());
-        } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) {
-            return new FileCommand(FileCommand.FileOperation.LIST, argMultimap.getValue(PREFIX_FILE_LIST).get());
+        if (argMultimap.getValue(PREFIX_FILE_LOAD).isPresent()) { // Load command
+            String fileName = stripFileName(argMultimap.getValue(PREFIX_FILE_LOAD).get());
+            checkIllegalFileName(fileName);
+            return new FileCommand(FileCommand.FileOperation.LOAD, fileName);
+
+        } else if (argMultimap.getValue(PREFIX_FILE_SAVE).isPresent()) { // Save command
+            String fileName = stripFileName(argMultimap.getValue(PREFIX_FILE_SAVE).get());
+            checkIllegalFileName(fileName);
+            return new FileCommand(
+                    FileCommand.FileOperation.SAVE,
+                    argMultimap.getValue(PREFIX_FILE_SAVE).get());
+
+        } else if (argMultimap.getValue(PREFIX_FILE_LIST).isPresent()) { // List command
+            return new FileCommand(
+                    FileCommand.FileOperation.LIST,
+                    argMultimap.getValue(PREFIX_FILE_LIST).get());
         }
         throw new ParseException(FileCommand.MESSAGE_USAGE);
+    }
+
+    /**
+     * Strips whitespaces from the file name to "_".
+     *
+     * @param fileName The input file name to be stripped.
+     * @return The stripped file name.
+     */
+    private String stripFileName(String fileName) {
+        return fileName.strip().replaceAll("\\s+", "_");
+    }
+
+    /**
+     * Checks if the input file name contains illegal characters.
+     *
+     * @param inputName The input file name to check.
+     * @return true if the file name is valid, false otherwise.
+     */
+    private boolean checkIllegalFileName(String inputName) throws ParseException {
+        String validFileNameRegex = "^[a-zA-Z0-9 \\-_\\(\\)]+$";
+
+        if (inputName.isBlank()) {
+            throw new ParseException(String.format(FileCommand.MESSAGE_ERROR,
+                    "File name cannot be empty"));
+        } else if (inputName.length() > 255) {
+            throw new ParseException(String.format(FileCommand.MESSAGE_ERROR,
+                    String.format("File name %s is too long. Maximum length is 255 characters.", inputName)));
+        } else if (!inputName.matches(validFileNameRegex)) {
+            throw new ParseException(String.format(FileCommand.MESSAGE_ERROR,
+                    String.format("File name %s contains illegal characters.", inputName)));
+        } else if (inputName.contains(" ")) {
+            throw new ParseException(String.format(FileCommand.MESSAGE_ERROR,
+                    String.format("File name %s cannot contain spaces.", inputName)));
+        }
+        return true;
     }
 }

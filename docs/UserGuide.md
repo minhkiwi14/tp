@@ -7,20 +7,23 @@
 This section covers the overview of **BetterCallTA** application.
 
 ### 🎯 Target audience
-Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice commands.
+NUS Teaching Assistants (TA) who can type fast, preferring typing over mouse/voice commands.
 
 ### ✨ Value proposition
 **Better Call TA** is a **contact management platform** for teaching assistants to manage the details of students in their class(es) as well as **relevant administrative details**, such as their attendance, participation and grades.
 
 ### 🤔 Assumptions
-- You prefer typing to mouse or voice commands.
+- You are familiar with the formats for certain fields in NUS (e.g. NUS Student ID format, Course format)
+- You do not have a student who is in your session for two (or more) different courses.
 
 ### 📝 Notations
 - Angular brackets `< number x '(list of characters) >` means choose `number` from the list of characters, allowing duplicates. For example:
    - <2 x (A/B/C)> means choose two of A, B or C.
    - <(0-2) x (A-Z)> means choose 0 to 2 of any capital letters.
 
----
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
@@ -40,9 +43,10 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
+This section covers how to get started on using `BetterCallTA`
 
-1. Ensure you have `Java 17` or above installed in your Computer 💻.
-   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS) ⚙️.
+1. Ensure you have `Java 17` or above installed in your Computer.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
 4. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
@@ -93,7 +97,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-#### `ID` - Unique student identifier
+### `ID` - Unique student identifier
 
 **Format**:
 ```
@@ -115,9 +119,9 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-#### `Name` - Your student's name
+### `Name` - Your student's name
 
-Multiple students with the same name are allowed, as long as they have a unique Student ID. 
+Multiple students with the same name are allowed, as long as they have a unique Student ID.
 
 <div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Tips</b>
@@ -132,7 +136,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### `Phone` - Student's phone number
+### `Phone` - Student's phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -152,7 +156,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-#### `Email` - Student's email address
+### `Email` - Student's email address
 
 **Format**:
 ```
@@ -186,7 +190,7 @@ local-part@domain
 
 ---
 
-#### `Course` - NUS course code
+### `Course` - NUS course code
 
 **Format**:
 ```
@@ -211,7 +215,7 @@ local-part@domain
 
 ---
 
-#### `Attendance` - Student's class participation status
+### `Attendance` - Student's class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -232,7 +236,7 @@ local-part@domain
 
 ---
 
-#### `Participation` - Student's engagement level
+### `Participation` - Student's engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -256,7 +260,7 @@ local-part@domain
 
 ---
 
-#### `Grade` - The predicted grade of your student based on their previous graded assignments
+### `Grade` - The predicted grade of your student based on their previous graded assignments
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Grade Format Rules</b>
@@ -267,7 +271,7 @@ local-part@domain
 
 ---
 
-#### `Notes` - Additional details that you may want to keep about individual students
+### `Notes` - Additional details that you may want to keep about individual students
 
 - You can attach any number of notes to each student.
 
@@ -286,7 +290,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Deleting a Student](#deleting-a-student-delete)
 - [Saving Contact Data](#saving-contact-data-file-save)
 - [Loading Contact Data](#loading-contact-data-file-load)
-- [Listing Save Files](#listing-save-files-file-list)
+- [Listing Save Files](#listing-save-files-file-list-all)
 - [Clearing All Entries](#clearing-all-entries-clear)
 - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
 - [Exiting the Program](#exiting-the-program-exit)
@@ -319,26 +323,26 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 1.  **✅ Required Parameters**
     * Must always be provided for commands that require them.
-    * Example: `ID` in `delete /id ID` 🔑
+    * Example: `ID` in `delete /id ID`
 
 2.  **❓ Optional Parameters**
     * Can be omitted if not needed.
-    * Example: Phone number 📞 in contact creation.
+    * Example: Phone number in contact creation.
 
 3.  **➕ Repeated Parameters**
     * Can add multiple instances where supported.
-    * Example: Multiple notes 📝 for a student.
+    * Example: Multiple notes for a student.
 
 4.  **✂️ Format Preservation**
     * Maintain exact spacing when copying commands.
-    * Test commands ✅ after pasting from external sources.
+    * Test commands after pasting from external sources.
 
 
 ---
 
 ### Viewing Help: `help`
 
-Shows a message explaining how to access the help page 🆘.
+Shows a message explaining how to access the help page.
 
 **Format**:
 ```
@@ -371,30 +375,14 @@ add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/no
 
 ---
 
-### Listing All Students: `list`
-
-Shows a list of all students in the application.
-
-
-**Format**:
-```
-list
-```
-
-<br>
-
-> ![List Command Example](images/listCommandExample.png)
-<br>Fig 3.3 - Output of `list`
-
----
-
 ### Editing a Student: `edit`
 
 Edits an existing student in the application.
 
 **Format**:
 ```
-edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]
+edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL]
+[/course COURSE] [/attendance ATTENDANCE] [/participation PARTICIPATION] [/grade GRADE] [/note NOTE…]
 ```
 
 **Notes**:
@@ -419,6 +407,52 @@ This will update the phone number and email of the student with ID `A0123456N` t
 > ![Edit Command Example](images/editCommandExample.png)
 <br>Fig 3.4 - Output of
 <br>`edit /id A0123456N /phone 91234567 /email johndoe@example.com`
+
+---
+
+### Deleting a Student: `delete`
+
+Deletes the specified student from the application.
+
+**Format**:
+```
+delete /id ID
+```
+
+* Deletes the student with the specified `ID`.
+* The ID refers to the ID belonging to the student in the student list.
+
+**Examples**:
+- `delete /id A1234567N` deletes the student with ID `A1234567N`.
+- `delete /id A7654321B` deletes the student with ID `A7654321B`.
+
+<br>
+
+> ![Delete Command Example](images/deleteCommandExample.png)
+<br> Fig 3.7 - Output of `delete /id A1234567N`
+
+---
+
+### Clearing All Entries: `clear`
+
+Clears all entries from the application.
+
+**Format**:
+```
+clear
+```
+
+If there are no students in BetterCallTA, an error message will be shown.
+
+<div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
+    <b>Alert!</b><br><br>
+    The entire list will be <b>permanently</b> deleted and cannot be recovered, so proceed with caution.
+</div><br>
+
+<br>
+
+> ![Clear Command Example](images/clearCommandExample.png)
+<br> Fig 3.11 - Output of `clear`
 
 ---
 
@@ -481,30 +515,26 @@ Examples:
 > ![Sort Command Example](images/sortCommandExample.png)
 <br> Fig 3.6 - Output of `sort /by grade`
 
-### Deleting a Student: `delete`
+---
 
-Deletes the specified student from the application.
+### Listing All Students: `list`
+
+Shows a list of all students in the application.
+
 
 **Format**:
 ```
-delete /id ID
+list
 ```
-
-* Deletes the student with the specified `ID`.
-* The ID refers to the ID belonging to the student in the student list.
-
-**Examples**:
-- `delete /id A1234567N` deletes the student with ID `A1234567N`.
-- `delete /id A7654321B` deletes the student with ID `A7654321B`.
 
 <br>
 
-> ![Delete Command Example](images/deleteCommandExample.png)
-<br> Fig 3.7 - Output of `delete /id A1234567N`
+> ![List Command Example](images/listCommandExample.png)
+<br>Fig 3.3 - Output of `list`
 
 ---
 
-### Saving Contact Data: `file /save`
+### Saving Contact Data: `file /save FILENAME`
 
 BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
 
@@ -520,22 +550,44 @@ file /save SAVE_FILE
 **Examples**:
 - `file /save CS2103T-T10-3`
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
+<div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
+    <b>Alert!</b>
     <ul>
-      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
-      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+      <li>
+        You do NOT need to specify the <code>.json</code> file extension as it will automatically be added by our application. If you attempt to include the file extension type <code>SAVE_FILE</code>, such as <code>save.pdf</code>, it will be saved as <code>save.pdf.json</code>. This is NOT a bug as <code>.</code> is a valid character that can be used in the filename of the save file.
+      </li>
+      <li>
+        The following illegal characters are not allowed in <code>SAVE_FILE</code>. <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code>
+      <li>
+      <li>
+        Whitespaces will be stripped and replace with underscores (<code>_</code>).
+      <li>
+        If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP</code> captures the timestamp of which the save file is created.
+      </li>
+      <li>
+        If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+      </li>
+      <li>
+        If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.
+      </li>
+      <li>
+        It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.
+      </li>
     </ul>
 </div><br>
 
+<br>
+
+> ![File Save Command Example](images/fileSaveCommandExample.png)
+<br> Fig 3.8 - Output of `file /save CS2103T-T10-3`
+
 ---
 
-### Loading Contact Data: `file /load`
+### Loading Contact Data: `file /load FILENAME`
 
-BetterCallTA data will load the most recent save file 💾 that was used in the application by default. Save files can be loaded with the `file /load` command.
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
 Change the `.json` save file that the application will read/save from with `file /load`.
-
 
 **Format**
 ```
@@ -547,41 +599,53 @@ file /load SAVE_FILE
 **Examples**:
 - `file /load CS2103T-T10-3`
 
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>If the save file you attempt to load contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
+      <li>If the save file you attempt to load contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
+      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+    </ul>
+</div><br>
+
+<br>
+
+> ![File Load Command Example](images/fileLoadCommandExample.png)
+<br> Fig 3.9 - Output of `file /load CS2103T-T10-3`
+
 ---
 
-### Listing Save Files: `file /list`
+### Listing Save Files: `file /list all`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `file /list` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)` 📌.
-
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list all` command will list out all `.json` save files in that directory (without the file extension type), as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
 **Format**
 ```
 file /list all
 ```
 
-* List out all the save files stored by the application.
+Lists out all the `.json` save file filenames (without the file extension type) stored by the application in the `/data/*` directory.
 
 **Examples**:
 - `file /list all`
 
-— 
+---
 
 ### Clearing All Entries: `clear`
 
-Clears all entries from the application 📇.
+Clears all entries from the application.
 
 **Format**:
 ```
 clear
 ```
 
-<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>Warning</b>
-    <ul>
-      <li>The entire list will be <b>permanently</b> deleted and cannot be recovered, so proceed with caution.</li>
-      <li>If there are no students in BetterCallTA, an error message will be shown. </li>
-    </ul>
-</div><br>
+<br>
+
+> ![File List All Command Example](images/fileListCommandExample.png)
+<br> Fig 3.10 - Output of `file /list all`
+<br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
 
 ---
 
@@ -601,6 +665,11 @@ resetRecords
     </ul>
 </div><br>
 
+<br>
+
+> ![Reset Records Command Example](images/resetRecordsCommandExample.png)
+<br> Fig 3.12 - Output of `resetRecords`
+
 ---
 
 ### Exiting the Program: `exit`
@@ -614,21 +683,48 @@ exit
 
 ---
 
-**⚠️ Warning for Advanced Users**:
-You can update the data directly by editing the file, but be cautious.
+<br>
 
-#### ❗ **Caution**:
-- Saving 💾 the application data with the `file /save FILE` command will overwrite the `FILE.json` save file if it already exists.
-- Manually editing the `.json` file can introduce syntax errors, rendering the file unreadable by BetterCallTA. **Validate your `.json` syntax using a JSON linter before attempting to load it.**
+<div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
+    <b>⚠️ Warning for Advanced Users</b>
+    You can update the data directly by editing the file, but be cautious.
+    <br><br>
+    <ul>
+      <li>Saving the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
+      <li>Manually editing the <code>.json</code> file can introduce syntax errors, rendering the file unreadable by BetterCallTA. <b>Validate your <code>.json</code> syntax using a JSON linter before attempting to load it.</b></li>
+    </ul>
+</div><br>
 
+--------------------------------------------------------------------------------------------------------------------
 
----
+## Additional Features
+
+### Graph Visualisation
+
+A histogram that shows the grades of all students in the current list.<br>
+
+Automatically updates when a grade is changed.
+
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>Grades with the value <code>NA</code> will be ignored by the histogram</li>
+      <li>Divider between list and histogram can be dragged to resize the widths of both sections.</li>
+</ul>
+</div>
+
+<br>
+
+> ![Histogram Example](images/graphExample.png)
+<br> Fig 4 - Example of a populated graph
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
-This section covers common questions that BetterCallTA users face.
+This section covers some common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer 💻?<br>
-**A**: Copy 📄 the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
 
 **Q**: Can I sort students by multiple criteria (e.g., sort by grade, then by name)?<br>
 **A**: No, the `sort` command only supports sorting by one criterion at a time.
@@ -637,7 +733,7 @@ This section covers common questions that BetterCallTA users face.
 **A**: Student IDs must follow the NUS student ID format: `<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>`.
 
 **Q**: Does BetterCallTA support international phone number formats?<br>
-**A**: Yes, BetterCallTA supports phone numbers starting with a `+` and allows hyphens, as long as the length is between 7 and 15 digits. 
+**A**: Yes, BetterCallTA supports phone numbers starting with a `+` and allows hyphens, as long as the length is between 7 and 15 digits.
 
 **Q**: If I edit a student, and leave some fields blank, what happens?<br>
 **A**: If you edit a student, and only specify some fields, the other fields will remain as they were before the edit.
@@ -652,18 +748,21 @@ This section covers common questions that BetterCallTA users face.
 **A**: Yes, the email field is optional.
 
 **Q**: Is there a limit to the number of students I can add?<br>
-**A**: There is no hard limit, but performance may degrade with a very large number of students. 
+**A**: There is no hard limit, but performance may degrade with a very large number of students.
 
-
-
----
+--------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 This section covers the current known issues with BetterCallTA.
 
-1.  **Multi-Screen Issue**: When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2.  **Minimized Help Window Issue**: If you minimize the Help Window and then run the `help` command (or use the `Help` menu 🆘, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-3. **Save File Corruption 💾💥**: In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
+1.  **Multi-Screen Issue**:
+<br> When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+2.  **Minimized Help Window Issue**:
+<br> If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+3. **Save File Corruption**:
+<br> In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -673,19 +772,18 @@ This section covers the summary of commands in BetterCallTA.
 
 Action | Format | Examples
 ------- | -------- | --------
-**Add** | `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​` | `add /id A0123456E /name James Ho /phone 22224444 /email jamesho@example.com`
-**Clear** | `clear` | (None)
+**Show Usage** | `help` | (None)
+**Add** | `add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/note NOTE…​]` | `add /id A0123456E /name James Ho /phone 22224444 /email jamesho@example.com`
 **Delete** | `delete /id ID` | `delete /id A3456712E`
-**Edit** | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE]…​` | `edit /id A0123456N /phone 91234567 /email johndoe@example.com`
+**Edit** | `edit /id ID [/newid NEW_ID] [/name NAME] [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/attendance ATTENDANCE] [/participation PARTICIPATION] [/grade GRADE] [/note NOTE…]​` | `edit /id A0123456N /phone 91234567 /email johndoe@example.com`
+**Clear** | `clear` | (None)
 **Find** | `find KEYWORD [MORE_KEYWORDS]` | `find James Jake`
 **Sort** | `sort /by KEYWORD [name/grade/attendance/participation]` | `sort /by name`
 **List all users** | `list` | (None)
-**Show Usage** | `help` | (None)
-**Save Data** | `file /save SAVE_FILE` | (None)
-**Load Data** | `file /load SAVE_FILE` | (None)
-**Reset Attendance and Participation Records** | `resetRecords` | (None)
+**Save Data** | `file /save SAVE_FILE` | `file /save CS2103T-T10-3`
+**Load Data** | `file /load SAVE_FILE` | `file /load CS2103T-T10-3`
 **List Save Files** | `file /list all` | (None)
-
+**Reset Attendance and Participation Records** | `resetRecords` | (None)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -701,5 +799,3 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **ID** | Student Identification Number - Unique identifier following NUS format |
 | **Home folder** | The folder in your file system that serves as your personal storage space |
 | **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
-
-

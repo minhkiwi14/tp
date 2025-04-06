@@ -25,13 +25,13 @@
     <!-- Student Info -->
     <VBox GridPane.columnIndex="0" alignment="CENTER_LEFT" minHeight="60">
       <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
+        <Insets top="5" right="15" bottom="5" left="15" />
       </padding>
       <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label"/>
-        <Label fx:id="studentId" text="\$id" styleClass="cell_big_label" />
+        <Label fx:id="id" styleClass="cell_big_label" minWidth="25" />
+        <Label fx:id="studentId" text="\$id" styleClass="cell_big_label" minWidth="90" />
         <Label text="-" styleClass="cell_big_label" />
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        <Label fx:id="name" text="\$first" styleClass="cell_big_label" style="-fx-padding: 0 0 0 10;" wrapText="true" />
       </HBox>
       <Label fx:id="phone" styleClass="cell_small_label" />
       <Label fx:id="email" styleClass="cell_small_label" />

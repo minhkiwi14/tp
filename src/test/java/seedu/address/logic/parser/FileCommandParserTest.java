@@ -15,8 +15,8 @@ public class FileCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsFileCommand() {
-        String args = " /load data.json";
-        FileCommand expectedFileCommand = new FileCommand(FileOperation.LOAD, "data.json");
+        String args = " /load data test";
+        FileCommand expectedFileCommand = new FileCommand(FileOperation.LOAD, "data_test");
         assertParseSuccess(parser, args, expectedFileCommand);
     }
 
@@ -53,4 +53,11 @@ public class FileCommandParserTest {
         assertParseFailure(parser, args, expected);
     }
 
+    @Test void parse_invalidFileName_throwsParseException() {
+        String args = " /save ../invalid.json";
+        assertParseFailure(
+                parser,
+                args,
+                "File operation failed: File name ../invalid.json contains illegal characters.");
+    }
 }
