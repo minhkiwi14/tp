@@ -45,8 +45,8 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 ## Quick start
 This section covers how to get started on using `BetterCallTA`
 
-1. Ensure you have `Java 17` or above installed in your Computer 💻.
-   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS) ⚙️.
+1. Ensure you have `Java 17` or above installed in your Computer.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
 4. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
@@ -290,7 +290,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Deleting a Student](#deleting-a-student-delete)
 - [Saving Contact Data](#saving-contact-data-file-save)
 - [Loading Contact Data](#loading-contact-data-file-load)
-- [Listing Save Files](#listing-save-files-file-list)
+- [Listing Save Files](#listing-save-files-file-list-all)
 - [Clearing All Entries](#clearing-all-entries-clear)
 - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
 - [Exiting the Program](#exiting-the-program-exit)
@@ -323,26 +323,26 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 1.  **✅ Required Parameters**
     * Must always be provided for commands that require them.
-    * Example: `ID` in `delete /id ID` 🔑
+    * Example: `ID` in `delete /id ID`
 
 2.  **❓ Optional Parameters**
     * Can be omitted if not needed.
-    * Example: Phone number 📞 in contact creation.
+    * Example: Phone number in contact creation.
 
 3.  **➕ Repeated Parameters**
     * Can add multiple instances where supported.
-    * Example: Multiple notes 📝 for a student.
+    * Example: Multiple notes for a student.
 
 4.  **✂️ Format Preservation**
     * Maintain exact spacing when copying commands.
-    * Test commands ✅ after pasting from external sources.
+    * Test commands after pasting from external sources.
 
 
 ---
 
 ### Viewing Help: `help`
 
-Shows a message explaining how to access the help page 🆘.
+Shows a message explaining how to access the help page.
 
 **Format**:
 ```
@@ -435,7 +435,7 @@ delete /id ID
 
 ### Clearing All Entries: `clear`
 
-Clears all entries from the application 📇.
+Clears all entries from the application.
 
 **Format**:
 ```
@@ -572,7 +572,7 @@ file /save SAVE_FILE
 
 ### Loading Contact Data: `file /load`
 
-BetterCallTA data will load the most recent save file 💾 that was used in the application by default. Save files can be loaded with the `file /load` command.
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
 Change the `.json` save file that the application will read/save from with `file /load`.
 
@@ -603,9 +603,9 @@ file /load SAVE_FILE
 
 ---
 
-### 📂 Listing Save Files: `file /list all`
+### Listing Save Files: `file /list all`
 
-BetterCallTA stores all save files in `[JAR file location]/data/` 💾 and the `file /list all` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
+BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list all` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
 
 **Format**
@@ -622,7 +622,7 @@ Lists out all the save files stored by the application.
 
 ### Clearing All Entries: `clear`
 
-Clears all entries from the application 📇.
+Clears all entries from the application.
 
 **Format**:
 ```
@@ -678,7 +678,7 @@ exit
     You can update the data directly by editing the file, but be cautious.
     <br><br>
     <ul>
-      <li>Saving 💾 the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
+      <li>Saving the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
       <li>Manually editing the <code>.json</code> file can introduce syntax errors, rendering the file unreadable by BetterCallTA. <b>Validate your <code>.json</code> syntax using a JSON linter before attempting to load it.</b></li>
     </ul>
 </div><br>
@@ -747,9 +747,9 @@ This section covers the current known issues with BetterCallTA.
 <br> When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 2.  **Minimized Help Window Issue**:
-<br> If you minimize the Help Window and then run the `help` command (or use the `Help` menu 🆘, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+<br> If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
-3. **Save File Corruption 💾💥**:
+3. **Save File Corruption**:
 <br> In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
 
 --------------------------------------------------------------------------------------------------------------------
