@@ -47,6 +47,8 @@ This section covers how to get started on using `BetterCallTA`
 
 1. Ensure you have `Java 17` or above installed in your Computer.
    - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
+1. Ensure you have `Java 17` or above installed in your Computer.
+   - If you do not have it installed, follow the instructions [here](https://se-education.org/guides/tutorials/javaInstallation.html), selecting your appropriate Operating System (OS).
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T10-3/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for BetterCallTA.
 4. Open a command terminal (refer to the Glossary for a recommended terminal) and use the `cd` command with the folder you put the jar file in.
@@ -291,6 +293,7 @@ This section covers all the features of BetterCallTA. Navigate to the following 
 - [Saving Contact Data](#saving-contact-data-file-save)
 - [Loading Contact Data](#loading-contact-data-file-load)
 - [Listing Save Files](#listing-save-files-file-list-all)
+- [Listing Save Files](#listing-save-files-file-list-all)
 - [Clearing All Entries](#clearing-all-entries-clear)
 - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
 - [Exiting the Program](#exiting-the-program-exit)
@@ -324,17 +327,21 @@ This section covers the Command Syntax Notes you should be aware of when you are
 1.  **✅ Required Parameters**
     * Must always be provided for commands that require them.
     * Example: `ID` in `delete /id ID`
+    * Example: `ID` in `delete /id ID`
 
 2.  **❓ Optional Parameters**
     * Can be omitted if not needed.
+    * Example: Phone number in contact creation.
     * Example: Phone number in contact creation.
 
 3.  **➕ Repeated Parameters**
     * Can add multiple instances where supported.
     * Example: Multiple notes for a student.
+    * Example: Multiple notes for a student.
 
 4.  **✂️ Format Preservation**
     * Maintain exact spacing when copying commands.
+    * Test commands after pasting from external sources.
     * Test commands after pasting from external sources.
 
 
@@ -342,6 +349,7 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 ### Viewing Help: `help`
 
+Shows a message explaining how to access the help page.
 Shows a message explaining how to access the help page.
 
 **Format**:
@@ -436,13 +444,14 @@ delete /id ID
 ### Clearing All Entries: `clear`
 
 Clears all entries from the application.
+Clears all entries from the application.
 
 **Format**:
 ```
 clear
 ```
 
-If there are no students in BetterCallTA, an error message will be shown. 
+If there are no students in BetterCallTA, an error message will be shown.
 
 <div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
     <b>Alert!</b><br><br>
@@ -534,7 +543,7 @@ list
 
 ---
 
-### Saving Contact Data: `file /save`
+### Saving Contact Data: `file /save FILENAME`
 
 BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
 
@@ -553,13 +562,26 @@ file /save SAVE_FILE
 <div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
     <b>Alert!</b>
     <ul>
-      <li>If the save file contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
+      <li>
+        You do NOT need to specify the <code>.json</code> file extension as it will automatically be added by our application. If you attempt to include the file extension type <code>SAVE_FILE</code>, such as <code>save.pdf</code>, it will be saved as <code>save.pdf.json</code>. This is NOT a bug as <code>.</code> is a valid character that can be used in the filename of the save file.
+      </li>
+      <li>
+        The following illegal characters are not allowed in <code>SAVE_FILE</code>. <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code>
+      <li>
+      <li>
+        Whitespaces will be stripped and replace with underscores (<code>_</code>).
       <li>
         If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP</code> captures the timestamp of which the save file is created.
       </li>
-      <li>If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
-      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
-      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+      <li>
+        If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+      </li>
+      <li>
+        If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.
+      </li>
+      <li>
+        It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.
+      </li>
     </ul>
 </div><br>
 
@@ -570,8 +592,9 @@ file /save SAVE_FILE
 
 ---
 
-### Loading Contact Data: `file /load`
+### Loading Contact Data: `file /load FILENAME`
 
+BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
 Change the `.json` save file that the application will read/save from with `file /load`.
@@ -604,6 +627,7 @@ file /load SAVE_FILE
 ---
 
 ### Listing Save Files: `file /list all`
+### Listing Save Files: `file /list all`
 
 BetterCallTA stores all save files in `[JAR file location]/data/` and the `file /list all` command will list out all `.json` save files in that directory, as well as indicating the current save file that is being in use by the application as indicated by `(current save file)`.
 
@@ -613,7 +637,7 @@ BetterCallTA stores all save files in `[JAR file location]/data/` and the `file 
 file /list all
 ```
 
-Lists out all the save files stored by the application.
+Lists out all the `.json` save file filenames (without the file extension type) stored by the application in the `/data/*` directory.
 
 **Examples**:
 - `file /list all`
@@ -622,6 +646,7 @@ Lists out all the save files stored by the application.
 
 ### Clearing All Entries: `clear`
 
+Clears all entries from the application.
 Clears all entries from the application.
 
 **Format**:
@@ -678,6 +703,7 @@ exit
     You can update the data directly by editing the file, but be cautious.
     <br><br>
     <ul>
+      <li>Saving the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
       <li>Saving the application data with the <code>file /save FILE</code> command will overwrite the <code>FILE.json</code> save file if it already exists</li>
       <li>Manually editing the <code>.json</code> file can introduce syntax errors, rendering the file unreadable by BetterCallTA. <b>Validate your <code>.json</code> syntax using a JSON linter before attempting to load it.</b></li>
     </ul>
@@ -748,7 +774,9 @@ This section covers the current known issues with BetterCallTA.
 
 2.  **Minimized Help Window Issue**:
 <br> If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+<br> If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
+3. **Save File Corruption**:
 3. **Save File Corruption**:
 <br> In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
 
