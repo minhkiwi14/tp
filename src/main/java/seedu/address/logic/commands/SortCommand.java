@@ -132,7 +132,9 @@ public class SortCommand extends Command {
          */
         public Comparator<Person> getComparator() {
             if (sortByName) {
-                return Comparator.comparing(p -> p.getName() != null ? p.getName().toString() : "");
+                return Comparator.comparing((Person p) -> p.getName() != null ? p.getName().toString().toLowerCase()
+                        : "", String.CASE_INSENSITIVE_ORDER).thenComparing(
+                                p -> p.getName() != null ? p.getName().toString() : "");
             } else if (sortByGrade) {
                 return Comparator.comparingInt(p -> p.getGrade() != null ? p.getGrade().grade : Integer.MAX_VALUE);
             } else if (sortByAttendance) {
