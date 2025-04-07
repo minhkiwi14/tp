@@ -214,7 +214,7 @@ The following sequence is illustrated below
 
 The histogram feature is done... The following sequence is illustrated below
 
-<puml src="diagrams/.puml" width="550" />
+<puml src="diagrams/HistogramSequenceDiagram.puml" width="900" />
 
 <br>
 
