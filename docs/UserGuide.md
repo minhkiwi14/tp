@@ -28,17 +28,39 @@ NUS Teaching Assistants (TA) who can type fast, preferring typing over mouse/voi
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
-| Main Section | Sub Sections |
-|---|---|
-| 1. [Overview](#overview) |  |
-| 2. [Quick start](#quick-start) |  |
-| 3. [Student](#student) | [ID - Unique student identifier](#id-unique-student-identifier) <br> [Name - Student's name](#name-your-students-name) <br> [Phone - Student's phone number](#phone-students-phone-number) <br> [Email - Student's email address](#email-students-email-address) <br> [Course - NUS course code](#course-nus-course-code) <br> [Attendance - Student's class participation status](#attendance-students-class-participation-status) <br> [Participation - Student's engagement level](#participation-students-engagement-level) <br> [Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students) |
-| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
-| 5. [FAQ](#faq) |  |
-| 6. [Known Issues](#known-issues) |  |
-| 7. [Command Summary](#command-summary) |  |
-| 8. [Glossary](#glossary) |  |
+## Table of Contents
 
+1. [Overview](#overview)
+2. [Quick start](#quick-start)
+3. [Student](#student)
+   - [ID - Unique student identifier](#id-unique-student-identifier)
+   - [Name - Student's name](#name-your-students-name)
+   - [Phone - Student's phone number](#phone-students-phone-number)
+   - [Email - Student's email address](#email-students-email-address)
+   - [Course - NUS course code](#course-nus-course-code)
+   - [Attendance - Student's class participation status](#attendance-students-class-participation-status)
+   - [Participation - Student's engagement level](#participation-students-engagement-level)
+   - [Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+   - [Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
+4. [Features](#features)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Student](#adding-a-student-add)
+   - [Listing All Students](#listing-all-students-list)
+   - [Editing a Student](#editing-a-student-edit)
+   - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+   - [Sorting Your List](#sorting-your-list-sort)
+   - [Deleting a Student](#deleting-a-student-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list-all)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+   - [Exiting the Program](#exiting-the-program-exit)
+5. [FAQ](#faq)
+6. [Known Issues](#known-issues)
+7. [Command Summary](#command-summary)
+8. [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
