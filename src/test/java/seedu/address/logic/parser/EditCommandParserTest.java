@@ -65,7 +65,9 @@ public class EditCommandParserTest {
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, startingId + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_PHONE_AMY,
-                Name.MESSAGE_CONSTRAINTS);
+                "Expected exactly one space after the prefix, "
+                        + "followed by an argument: /name");
+
     }
 
     @Test

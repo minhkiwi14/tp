@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import seedu.address.logic.parser.exceptions.ParseException;
+
 /**
  * Tokenizes arguments string of the form:
  * {@code preamble <prefix>value <prefix>value ...}<br>
@@ -33,7 +35,7 @@ public class ArgumentTokenizer {
      * @param prefixes   Prefixes to tokenize the arguments string with
      * @return ArgumentMultimap object that maps prefixes to their arguments
      */
-    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) {
+    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws ParseException {
         try {
             List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
             return extractArguments(argsString, positions);
@@ -105,7 +107,8 @@ public class ArgumentTokenizer {
      *                        {@code argsString}
      * @return ArgumentMultimap object that maps prefixes to their arguments
      */
-    private static ArgumentMultimap extractArguments(String argsString, List<PrefixPosition> prefixPositions) {
+    private static ArgumentMultimap extractArguments(String argsString, List<PrefixPosition> prefixPositions)
+            throws ParseException {
         // Sort by start position
         prefixPositions.sort((prefix1, prefix2) -> prefix1.getStartPosition() - prefix2.getStartPosition());
 
@@ -133,10 +136,27 @@ public class ArgumentTokenizer {
      */
     private static String extractArgumentValue(String argsString,
                                                PrefixPosition currentPrefixPosition,
-                                               PrefixPosition nextPrefixPosition) {
+                                               PrefixPosition nextPrefixPosition) throws ParseException {
         Prefix prefix = currentPrefixPosition.getPrefix();
-        int valueStartPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length();
-        return argsString.substring(valueStartPos, nextPrefixPosition.getStartPosition()).trim();
+        if (prefix.getPrefix().isEmpty()) {
+            return argsString.substring(currentPrefixPosition.getStartPosition(),
+                    nextPrefixPosition.getStartPosition()).trim();
+        }
+
+        int prefixEndPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length();
+        String token = argsString.substring(prefixEndPos, nextPrefixPosition.getStartPosition());
+
+        int spaceCount = 0;
+        while (spaceCount < token.length() && token.charAt(spaceCount) == ' ') {
+            spaceCount++;
+        }
+
+        if (spaceCount != 1) {
+            throw new ParseException("Expected exactly one space after the prefix, "
+                    + "followed by an argument: " + prefix.getPrefix());
+        }
+
+        return token.substring(spaceCount).trim();
     }
 
     /**
