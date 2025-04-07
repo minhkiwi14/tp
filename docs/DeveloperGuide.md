@@ -640,8 +640,16 @@ Use case ends.
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+| Term | Definition |
+|------|------------|
+| **TA** | Teaching Assistant - Supports the instructor in teaching a course by conducting tutorials, grading assignments, and assisting students |
+| **CLI** | Command Line Interface - Text-based interface for interacting with software |
+| **GUI** | Graphical User Interface - Visual interface with graphical elements |
+| **NUS** | National University of Singapore - Institution where this system is primarily used |
+| **ID** | Student Identification Number - Unique identifier following NUS format |
+| **Home folder** | The folder in your file system that serves as your personal storage space |
+| **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
+| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world's writing systems that can be digitized. |
 
 --------------------------------------------------------------------------------------------------------------------
 
