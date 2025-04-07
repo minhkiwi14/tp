@@ -12,7 +12,8 @@ public class Phone {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should only contain optionally a leading +, numbers and hyphens,"
-                    + "and it should be at 7 - 15 digits long";
+                    + "and it should be at 7 - 15 digits long\n. Additionally, the phone number should not"
+                    + "contain consecutive hyphens.";
     public static final String VALIDATION_REGEX = "^\\+?([\\d]-?){6,14}[\\d]$";
     public final String value;
 

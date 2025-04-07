@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -33,6 +34,7 @@ public class AddCommand extends Command {
             %s PHONE
             %s EMAIL
             %s COURSE
+            %s NOTE
 
             Example:
             add /name Walter White /id A1234567N
@@ -40,7 +42,7 @@ public class AddCommand extends Command {
             """;
 
     public static final String MESSAGE_USAGE = String.format(MESSAGE_USAGE_UNFORMATTED, COMMAND_WORD,
-            PREFIX_NAME, PREFIX_ID, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_COURSE);
+            PREFIX_NAME, PREFIX_ID, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_COURSE, PREFIX_NOTE);
 
     private final Person toAdd;
 

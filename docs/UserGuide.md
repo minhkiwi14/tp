@@ -28,17 +28,44 @@ NUS Teaching Assistants (TA) who can type fast, preferring typing over mouse/voi
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
-| Main Section | Sub Sections |
-|---|---|
-| 1. [Overview](#overview) |  |
-| 2. [Quick start](#quick-start) |  |
-| 3. [Student](#student) | [ID - Unique student identifier](#id---unique-student-identifier) <br> [Name - Student's name](#name---your-students-name) <br> [Phone - Student's phone number](#phone---students-phone-number) <br> [Email - Student's email address](#email---students-email-address) <br> [Course - NUS course code](#course---nus-course-code) <br> [Attendance - Student's class participation status](#attendance---students-class-participation-status) <br> [Participation - Student's engagement level](#participation---students-engagement-level) <br> [Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students) |
-| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
-| 5. [FAQ](#faq) |  |
-| 6. [Known Issues](#known-issues) |  |
-| 7. [Command Summary](#command-summary) |  |
-| 8. [Glossary](#glossary) |  |
-
+- [Overview](#overview)
+  - [🎯 Target audience](#-target-audience)
+  - [✨ Value proposition](#-value-proposition)
+  - [🤔 Assumptions](#-assumptions)
+  - [📝 Notations](#-notations)
+- [Quick start](#quick-start)
+- [Student](#student)
+  - [Properties](#properties)
+  - [`ID`-Unique student identifier](#id-unique-student-identifier)
+  - [`Name`-Your student name](#name-your-student-name)
+  - [`Phone`-Student phone number](#phone-student-phone-number)
+  - [`Email`-Student email address](#email-student-email-address)
+  - [`Course`-NUS course code](#course-nus-course-code)
+  - [`Attendance`-Student class participation status](#attendance-student-class-participation-status)
+  - [`Participation`-Student engagement level](#participation-student-engagement-level)
+  - [`Grade`-The predicted grade of your student based on their previous graded assignments](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+  - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
+- [Features](#features)
+  - [Command Syntax Notes](#command-syntax-notes)
+  - [Viewing Help](#viewing-help-help)
+  - [Adding a Student](#adding-a-student-add)
+  - [Editing a Student](#editing-a-student-edit)
+  - [Deleting a Student](#deleting-a-student-delete)
+  - [Clearing All Entries](#clearing-all-entries-clear)
+  - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+  - [Sorting Your List](#sorting-your-list-sort)
+  - [Listing All Students](#listing-all-students-list)
+  - [Saving Contact Data](#saving-contact-data-file-save-filename)
+  - [Loading Contact Data](#loading-contact-data-file-load-filename)
+  - [Listing Save Files](#listing-save-files-file-list-all)
+  - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+  - [Exiting the Program](#exiting-the-program-exit)
+- [Additional Features](#additional-features)
+  - [Graph Visualisation](#graph-visualisation)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
+- [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -77,27 +104,32 @@ Do refer to the [Features](#features) below for details of each command!
 
 ## Student
 
-This section covers the `Student` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
+This section covers the `Student` field used in BetterCallTA, which encapsulates a student contact details in BetterCallTA.
 
 > ![Student descriptor](images/person.png)
-<br>Fig 2 - Example Student
+<br>Fig 2.1 - Example Student
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>📝 Note:</b><br>
+    All of the attributes <b>apart from student ID</b> can hold duplicate values for different students. So please be careful when addressing other potential conflicts.
+</div><br>
 
 ---
 ### Properties
 
-   - [🆔 ID - Unique student identifier](#id---unique-student-identifier)
-   - [👤 Name - Student's name](#name---your-students-name)
-   - [📞 Phone - Student's phone number](#phone---students-phone-number)
-   - [📧 Email - Student's email address](#email---students-email-address)
-   - [🎓 Course - NUS course code](#course---nus-course-code)
-   - [✅ Attendance - Student's class participation status](#attendance---students-class-participation-status)
-   - [🗣️ Participation - Student's engagement level](#participation---students-engagement-level)
-   - [💯 Grade - Predicted grade](#grade---the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
-   - [📝 Notes - Additional details](#notes---additional-details-that-you-may-want-to-keep-about-individual-students)
+  - [`ID`-Unique student identifier](#id-unique-student-identifier)
+  - [`Name`-Your student name](#name-your-student-name)
+  - [`Phone`-Student phone number](#phone-student-phone-number)
+  - [`Email`-Student email address](#email-student-email-address)
+  - [`Course`-NUS course code](#course-nus-course-code)
+  - [`Attendance`-Student class participation status](#attendance-student-class-participation-status)
+  - [`Participation`-Student engagement level](#participation-student-engagement-level)
+  - [`Grade`-The predicted grade of your student based on their previous graded assignments](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+  - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
 ---
 
-### `ID` - Unique student identifier
+### `ID`-Unique student identifier
 
 **Format**:
 ```
@@ -107,6 +139,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 ID Format Rules</b> Follows NUS Student ID format:
     <ul>
+      <li>Student ID is <b>case-sensitive</b></li>
       <li>Must start with <code>A</code>, <code>U</code>, <code>HT</code>, or <code>NT</code></li>
       <li>Starting letters must be followed by <b>7 digits</b></li>
       <li>Must end with one of: <code>A, B, E, H, J, L, M, N, R, U, W, X, Y</code></li>
@@ -119,7 +152,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-### `Name` - Your student's name
+### `Name`-Your student name
 
 Multiple students with the same name are allowed, as long as they have a unique Student ID.
 
@@ -136,7 +169,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Phone` - Student's phone number
+### `Phone`-Student phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -144,6 +177,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
       <li>Can start with <code>+</code></li>
       <li>Otherwise, must only contain numbers <code>(0-9)</code> or <code>-</code></li>
       <li>Cannot contain consecutive hyphens</li>
+      <li>Cannot start or end with hyphens</li>
       <li>Must be at least 7 digits long and no more than 15 digits long</li>
     </ul>
 </div><br>
@@ -156,7 +190,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Email` - Student's email address
+### `Email`-Student email address
 
 **Format**:
 ```
@@ -164,11 +198,11 @@ local-part@domain
 ```
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
-    <b>📌 Email Format Rules</b>
+    <b>📌 Email Format Rules</b><br>
     <b>Local-Part:</b>
     <ul>
-      <li>Only alphanumeric characters <code>(a-z, A-Z, 0-9)</code></li>
-      <li>Cannot contain these special characters: <code>+</code>, <code>_</code>, <code>.</code>, <code>-</code></li>
+      <li>Only alphanumeric characters <code>(a-z, A-Z, 0-9)</code> and these special characters are also allowed: <code>+</code>, <code>_</code>, <code>.</code>, <code>-</code></li>
+      <li>No other symbols are allowed</li>
       <li>Cannot start or end with special characters</li>
     </ul>
     <b>Domain:</b>
@@ -177,9 +211,12 @@ local-part@domain
       <li>Each label must:</li>
       <ul>
             <li>Start and end with alphanumeric characters</li>
-            <li>Contain only alphanumerics and hyphens</li>
+            <li>Contain only alphanumerics and periods</li>
       </ul>
     </ul>
+    <br>
+    <b>Note</b><br>
+    This is not a comprehensive list of all the constraints that an email address must satisfy.
 </div><br>
 
 **Default**: `example@u.nus.edu`
@@ -190,7 +227,7 @@ local-part@domain
 
 ---
 
-### `Course` - NUS course code
+### `Course`-NUS course code
 
 **Format**:
 ```
@@ -215,7 +252,7 @@ local-part@domain
 
 ---
 
-### `Attendance` - Student's class participation status
+### `Attendance`-Student class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -236,7 +273,7 @@ local-part@domain
 
 ---
 
-### `Participation` - Student's engagement level
+### `Participation`-Student engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -260,40 +297,44 @@ local-part@domain
 
 ---
 
-### `Grade` - The predicted grade of your student based on their previous graded assignments
+### `Grade`-The predicted grade of your student based on their previous graded assignments
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Grade Format Rules</b>
     <ul>
-      <li>You can only enter an integer from <code>0</code> to <code>100</code> (inclusive), or <code>NA</code></li>
+      <li>You can only enter an integer from <code>0</code> to <code>100</code> (inclusive), or <code>NA</code> (case insensitive)</li>
     </ul>
 </div><br>
 
 ---
 
-### `Notes` - Additional details that you may want to keep about individual students
+### `Notes`-Additional details that you may want to keep about individual students
 
 - You can attach any number of notes to each student.
+- If a student has multiple notes, for example `NOTE 1` and `NOTE 2`, it will be displayed as `[NOTE 1, NOTE 2]` in the command output window.
+
+> ![Multiple Notes Output](images/multipleNotesOutput.png)
+<br>Fig 2.2 - Output of adding multiple notes to a student
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA features.
 
-- [Command Syntax Notes](#command-syntax-notes)
-- [Viewing Help](#viewing-help-help)
-- [Adding a Student](#adding-a-student-add)
-- [Listing All Students](#listing-all-students-list)
-- [Editing a Student](#editing-a-student-edit)
-- [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
-- [Sorting Your List](#sorting-your-list-sort)
-- [Deleting a Student](#deleting-a-student-delete)
-- [Saving Contact Data](#saving-contact-data-file-save)
-- [Loading Contact Data](#loading-contact-data-file-load)
-- [Listing Save Files](#listing-save-files-file-list-all)
-- [Clearing All Entries](#clearing-all-entries-clear)
-- [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
-- [Exiting the Program](#exiting-the-program-exit)
+  - [Command Syntax Notes](#command-syntax-notes)
+  - [Viewing Help](#viewing-help-help)
+  - [Adding a Student](#adding-a-student-add)
+  - [Editing a Student](#editing-a-student-edit)
+  - [Deleting a Student](#deleting-a-student-delete)
+  - [Clearing All Entries](#clearing-all-entries-clear)
+  - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+  - [Sorting Your List](#sorting-your-list-sort)
+  - [Listing All Students](#listing-all-students-list)
+  - [Saving Contact Data](#saving-contact-data-file-save-filename)
+  - [Loading Contact Data](#loading-contact-data-file-load-filename)
+  - [Listing Save Files](#listing-save-files-file-list-all)
+  - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+  - [Exiting the Program](#exiting-the-program-exit)
 
 ---
 
@@ -366,6 +407,13 @@ add /id ID /name NAME [/phone PHONE_NUMBER] [/email EMAIL] [/course COURSE] [/no
 **Examples**:
 - `add /id A4235352H /name John Doe /phone 98765432 /email johnd@example.com /note Consistently late`
 - `add /id A4045018Y /name Betsy Crowe /email betsycrowe@example.com /phone 1234567 /course CS4215`
+
+<div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Tips</b>
+    <ul>
+      <li>If phone, email, course or note are not specified, their default values will be used instead. They can manually be changed by the <code>Edit</code> command.</li>
+    </ul>
+</div><br>
 
 <br>
 
@@ -494,22 +542,22 @@ Sorts your current list by exactly **one** of four parameters: name, grade, atte
 
 **Format**:
 ```
-sort /by name | grade | attendance | participation
+sort /by <1 x (name/grade/attendance/participation)>
 ```
 
 <div style="background-color: #98fB98; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Tips</b>
     <ul>
       <li>The keywords are case-insensitive, e.g <code>grade</code> will match <code>Grade</code></li>
-      <li>To sort by multiple parameters, you must sort them one command at a time, in any order.</li>
-      <li>The sort order for each keyword is as follows (name: special characters first, then numerical digits from 0 to 9, then Aa to Zz | grade: 100 to 0 | attendance: Present > Excused > Absent > Unmarked | Participation: Excellent to Unmarked).</li>
+      <li>To sort by multiple parameters, you must sort them one command at a time, in any order</li>
+      <li>The sort order for each keyword is as follows (name: special characters first, then numerical digits from 0 to 9, then Aa to Zz | grade: 100 to 0 | attendance: Present > Excused > Absent > Unmarked | Participation: Excellent to Unmarked)</li>
 </ul> 
 </div><br>
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
-      <li>Exactly one field must be provided.</li>
+      <li>Exactly one field must be provided</li>
       <li>The list will not automatically sort if you add more people or change student parameters. You must apply the sort again.</li>
     </ul>
 </div><br>
@@ -562,18 +610,10 @@ file /save SAVE_FILE
     <b>Alert!</b>
     <ul>
       <li>
-        You do NOT need to specify the <code>.json</code> file extension as it will automatically be added by our application. If you attempt to include the file extension type <code>SAVE_FILE</code>, such as <code>save.pdf</code>, it will be saved as <code>save.pdf.json</code>. This is NOT a bug as <code>.</code> is a valid character that can be used in the filename of the save file.
+        You do NOT need to specify the <code>.json</code> file extension as it will automatically be added by our application. If you attempt to include the file extension type <code>SAVE_FILE</code>, such as <code>save.json</code>, an error message will be shown.
       </li>
       <li>
-        The following illegal characters are not allowed in <code>SAVE_FILE</code>. <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code>
-      <li>
-      <li>
-        Whitespaces will be stripped and replace with underscores (<code>_</code>).
-      <li>
-        If the resultant file name of your input becomes empty in an edge case, the save file will be <code>file_TIMESTAMP</code>, where <code>TIMESTAMP</code> captures the timestamp of which the save file is created.
-      </li>
-      <li>
-        If the save file contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
+        Only alphanumeric characters and the following symbols are allowed: <code>-</code>, <code>_</code>, <code>(</code>, <code>)</code>. All other symbols are not allowed.
       </li>
       <li>
         If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.
@@ -610,10 +650,8 @@ file /load SAVE_FILE
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
-      <li>If the save file you attempt to load contains illegal characters, such as <code>[, /, :, *,? ,\ , ", <, >, |, ], ..</code> , it will be stripped.</li>
-      <li>If the save file you attempt to load contains whitespace characters, it will be replaced with an underscore (<code>_</code>).
-      <li>If <code>SAVE_FILE.json</code> already exists in the <code>data</code> directory, it will be overwritten.</li>
-      <li>It is recommended NOT to modify the saved <code>SAVE_FILE.json</code> directly as it may introduce unintended behaviour in the application.</li>
+      <li>If the save file you attempt to load contains illegal characters, it will not be loaded</li>
+      <li>The <code>addressbook</code> save file will be loaded by default.  </li>
     </ul>
 </div><br>
 
@@ -621,6 +659,8 @@ file /load SAVE_FILE
 
 > ![File Load Command Example](images/fileLoadCommandExample.png)
 <br> Fig 3.9 - Output of `file /load CS2103T-T10-3`
+
+
 
 ---
 
@@ -638,22 +678,18 @@ Lists out all the `.json` save file filenames (without the file extension type) 
 **Examples**:
 - `file /list all`
 
----
-
-### Clearing All Entries: `clear`
-
-Clears all entries from the application.
-
-**Format**:
-```
-clear
-```
-
 <br>
 
 > ![File List All Command Example](images/fileListCommandExample.png)
 <br> Fig 3.10 - Output of `file /list all`
 <br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
+
+---
+
+
+<br>
+
+> ![Clear Command Example]
 
 ---
 
@@ -732,7 +768,7 @@ Automatically updates when a grade is changed.
 This section covers some common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer 💻?<br>
-**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer `[home folder]/data/` location.
 
 **Q**: Can I sort students by multiple criteria (e.g., sort by grade, then by name)?<br>
 **A**: The `sort` command only supports sorting by one criterion at a time. To sort by multiple parameters, you must use separate sort commands for each.
@@ -750,7 +786,7 @@ This section covers some common questions that BetterCallTA users face.
 **A**: Deleted students are removed permanently. BetterCallTA does not have an undo function. Regularly backing up your save files is recommended.
 
 **Q**: Why are command words not case-insensitive?<br>
-**A**: Command words are case-sensitive as we expect you TAs to not want to waste time capitalising the command word. However, the parameters are case-insensitive as we understand different users have different ways of entering certain fields.
+**A**: Command words are case-sensitive as we expect you TAs to not want to waste time capitalising the command word. For the same reason, prefixes are also case-sensitive. However, the parameters are case-insensitive as we understand different users have different ways of entering certain fields.
 
 **Q**: Can I add a student without an email address?<br>
 **A**: Yes, the email field is optional.
@@ -807,3 +843,4 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **ID** | Student Identification Number - Unique identifier following NUS format |
 | **Home folder** | The folder in your file system that serves as your personal storage space |
 | **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
+| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world writing systems that can be digitized. |
