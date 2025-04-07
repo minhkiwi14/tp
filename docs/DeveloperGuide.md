@@ -620,13 +620,13 @@ MSS
 
 * 1a. The student list is empty.
 
-  * 1a1. BetterCallTA shows the error message `No contacts to reset - the address book is empty.`
+  * 1a1. BetterCallTA shows the error message specifying that the list is empty.
  
     Use case ends.
 
 * 1b. All students' statuses are already unmarked (no changes needed).
 
-  * 1b1. BetterCallTA shows the error message `No records to reset - all students' attendance and participation are already unmarked.`
+  * 1b1. BetterCallTA shows the error message that all students' status are already unmarked.
 
     Use case ends.
 
