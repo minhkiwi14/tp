@@ -499,7 +499,7 @@ Clears all entries from the application.
 clear
 ```
 
-If there are no students in BetterCallTA, an error message will be shown. 
+If there are no students in BetterCallTA, an error message will be shown.
 
 <div style="background-color: #dc3545; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #FFF">
     <b>Alert!</b><br><br>
@@ -599,7 +599,7 @@ list
 
 ---
 
-### Saving Contact Data: `file /save`
+### Saving Contact Data: `file /save FILENAME`
 
 BetterCallTA data is automatically saved to `addressbook.json` in `[JAR file location]/data/` by default unless the save file is modified with the `file /load` command.
 
@@ -640,7 +640,7 @@ file /save SAVE_FILE
 
 ---
 
-### Loading Contact Data: `file /load`
+### Loading Contact Data: `file /load FILENAME`
 
 BetterCallTA data will load the most recent save file that was used in the application by default. Save files can be loaded with the `file /load` command.
 
@@ -682,7 +682,7 @@ BetterCallTA stores all save files in `[JAR file location]/data/` and the `file 
 file /list all
 ```
 
-Lists out all the save files stored by the application.
+Lists out all the `.json` save file filenames (without the file extension type) stored by the application in the `/data/*` directory.
 
 **Examples**:
 - `file /list all`
