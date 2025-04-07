@@ -738,6 +738,10 @@ This section contains Planned Enhancements of future enhancements for BetterCall
 
 * Currently, there are no detailed error messages in the case that a user misspells a flag, such as mistyping <code>/attendance</code> as <code>/attendence</code>. Adding more detailed error messages (instead of a more general error message in our latest iteration) would allow the user to narrow down the errors in their typed command, improving their CLI experience.
 
+5. Allow deletion of save files from BetterCallTA
+
+* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory. 
+
 --------------------------------------------------------------------------------------------------------------------
 
 
