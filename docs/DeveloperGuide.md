@@ -13,7 +13,7 @@
   - [Model Component](#model-component)
   - [Storage Component](#storage-component)
   - [Common Classes](#common-classes)
-- [Implementation](#implementation)
+- [Proposed Implementation](#proposed-implementation)
 - [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product Scope](#product-scope)
