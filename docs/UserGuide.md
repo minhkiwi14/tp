@@ -28,17 +28,44 @@ NUS Teaching Assistants (TA) who can type fast, preferring typing over mouse/voi
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
-| Main Section | Sub Sections |
-|---|---|
-| 1. [Overview](#overview) |  |
-| 2. [Quick start](#quick-start) |  |
-| 3. [Student](#student) | [ID - Unique student identifier](#id-unique-student-identifier) <br> [Name - Student's name](#name-your-students-name) <br> [Phone - Student's phone number](#phone-students-phone-number) <br> [Email - Student's email address](#email-students-email-address) <br> [Course - NUS course code](#course-nus-course-code) <br> [Attendance - Student's class participation status](#attendance-students-class-participation-status) <br> [Participation - Student's engagement level](#participation-students-engagement-level) <br> [Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments) <br> [Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students) |
-| 4. [Features](#features) | [Command Syntax Notes](#command-syntax-notes) <br> [Viewing Help](#viewing-help-help) <br> [Adding a Student](#adding-a-student-add) <br> [Listing All Students](#listing-all-students-list) <br> [Editing a Student](#editing-a-student-edit) <br> [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find) <br> [Sorting Your List](#sorting-your-list-sort) <br> [Deleting a Student](#deleting-a-student-delete) <br> [Saving Contact Data](#saving-contact-data-file-save) <br> [Loading Contact Data](#loading-contact-data-file-load) <br> [Listing Save Files](#listing-save-files-file-list) <br> [Clearing All Entries](#clearing-all-entries-clear) <br> [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords) <br> [Exiting the Program](#exiting-the-program-exit) |
-| 5. [FAQ](#faq) |  |
-| 6. [Known Issues](#known-issues) |  |
-| 7. [Command Summary](#command-summary) |  |
-| 8. [Glossary](#glossary) |  |
-
+- [Overview](#overview)
+  - [🎯 Target audience](#-target-audience)
+  - [✨ Value proposition](#-value-proposition)
+  - [🤔 Assumptions](#-assumptions)
+  - [📝 Notations](#-notations)
+- [Quick start](#quick-start)
+- [Student](#student)
+  - [Properties](#properties)
+  - [`ID`-Unique student identifier](#id-unique-student-identifier)
+  - [`Name`-Your student name](#name-your-student-name)
+  - [`Phone`-Student phone number](#phone-student-phone-number)
+  - [`Email`-Student email address](#email-student-email-address)
+  - [`Course`-NUS course code](#course-nus-course-code)
+  - [`Attendance`-Student class participation status](#attendance-student-class-participation-status)
+  - [`Participation`-Student engagement level](#participation-student-engagement-level)
+  - [`Grade`-The predicted grade of your student based on their previous graded assignments](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+  - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
+- [Features](#features)
+  - [Command Syntax Notes](#command-syntax-notes)
+  - [Viewing Help](#viewing-help-help)
+  - [Adding a Student](#adding-a-student-add)
+  - [Listing All Students](#listing-all-students-list)
+  - [Editing a Student](#editing-a-student-edit)
+  - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+  - [Sorting Your List](#sorting-your-list-sort)
+  - [Deleting a Student](#deleting-a-student-delete)
+  - [Saving Contact Data](#saving-contact-data-file-save)
+  - [Loading Contact Data](#loading-contact-data-file-load)
+  - [Listing Save Files](#listing-save-files-file-list-all)
+  - [Clearing All Entries](#clearing-all-entries-clear)
+  - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+  - [Exiting the Program](#exiting-the-program-exit)
+- [Additional Features](#additional-features)
+  - [Graph Visualisation](#graph-visualisation)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
+- [Glossary](#glossary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -77,7 +104,7 @@ Do refer to the [Features](#features) below for details of each command!
 
 ## Student
 
-This section covers the `Student` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
+This section covers the `Student` field used in BetterCallTA, which encapsulates a student contact details in BetterCallTA.
 
 > ![Student descriptor](images/person.png)
 <br>Fig 2.1 - Example Student
@@ -91,12 +118,12 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 ### Properties
 
    - [🆔 ID - Unique student identifier](#id-unique-student-identifier)
-   - [👤 Name - Student's name](#name-your-students-name)
-   - [📞 Phone - Student's phone number](#phone-students-phone-number)
-   - [📧 Email - Student's email address](#email-students-email-address)
+   - [👤 Name - Student name](#name-your-students-name)
+   - [📞 Phone - Student phone number](#phone-students-phone-number)
+   - [📧 Email - Student email address](#email-students-email-address)
    - [🎓 Course - NUS course code](#course-nus-course-code)
-   - [✅ Attendance - Student's class participation status](#attendance-students-class-participation-status)
-   - [🗣️ Participation - Student's engagement level](#participation-students-engagement-level)
+   - [✅ Attendance - Student class participation status](#attendance-students-class-participation-status)
+   - [🗣️ Participation - Student engagement level](#participation-students-engagement-level)
    - [💯 Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
    - [📝 Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
@@ -125,7 +152,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-### `Name`-Your student's name
+### `Name`-Your student name
 
 Multiple students with the same name are allowed, as long as they have a unique Student ID.
 
@@ -142,7 +169,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Phone`-Student's phone number
+### `Phone`-Student phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -163,7 +190,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Email`-Student's email address
+### `Email`-Student email address
 
 **Format**:
 ```
@@ -225,7 +252,7 @@ local-part@domain
 
 ---
 
-### `Attendance`-Student's class participation status
+### `Attendance`-Student class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -246,7 +273,7 @@ local-part@domain
 
 ---
 
-### `Participation`-Student's engagement level
+### `Participation`-Student engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -292,22 +319,22 @@ local-part@domain
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA features.
 
-- [Command Syntax Notes](#command-syntax-notes)
-- [Viewing Help](#viewing-help-help)
-- [Adding a Student](#adding-a-student-add)
-- [Listing All Students](#listing-all-students-list)
-- [Editing a Student](#editing-a-student-edit)
-- [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
-- [Sorting Your List](#sorting-your-list-sort)
-- [Deleting a Student](#deleting-a-student-delete)
-- [Saving Contact Data](#saving-contact-data-file-save)
-- [Loading Contact Data](#loading-contact-data-file-load)
-- [Listing Save Files](#listing-save-files-file-list-all)
-- [Clearing All Entries](#clearing-all-entries-clear)
-- [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
-- [Exiting the Program](#exiting-the-program-exit)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Student](#adding-a-student-add)
+   - [Listing All Students](#listing-all-students-list)
+   - [Editing a Student](#editing-a-student-edit)
+   - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+   - [Sorting Your List](#sorting-your-list-sort)
+   - [Deleting a Student](#deleting-a-student-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list-all)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+   - [Exiting the Program](#exiting-the-program-exit)
 
 ---
 
@@ -742,7 +769,7 @@ Automatically updates when a grade is changed.
 This section covers some common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer 💻?<br>
-**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer `[home folder]/data/` location.
 
 **Q**: Can I sort students by multiple criteria (e.g., sort by grade, then by name)?<br>
 **A**: The `sort` command only supports sorting by one criterion at a time. To sort by multiple parameters, you must use separate sort commands for each.
@@ -817,4 +844,4 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **ID** | Student Identification Number - Unique identifier following NUS format |
 | **Home folder** | The folder in your file system that serves as your personal storage space |
 | **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
-| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world's writing systems that can be digitized. |
+| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world writing systems that can be digitized. |
