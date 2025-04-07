@@ -303,11 +303,11 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 **Command Syntax Notation**
 
-| Notation               | Meaning                                                                 | Example                                                                 |
-|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
-| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
-| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
+| Notation               | Meaning                                                                 | Example                                                           |
+|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                |
+| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [/phone PHONE_NUMBER]` → Can omit the /phone part |
+| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                          |
 
 
 **Command Syntax Rules**
@@ -472,7 +472,7 @@ find KEYWORD [MORE_KEYWORDS]
       <li>The order of the keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></li>
       <li>Students matching at least one keyword will be returned (i.e. <code>OR</code> search),<br>
       e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code> , <code>Bo Yang</code></li>
-      <li>Partial words are also matched e.g. <code>Han</code> will match <code>Hans</
+      <li>Partial words are also matched e.g. <code>Han</code> will match <code>Hans</code></li>
     </ul>
 </div><br>
 
@@ -490,7 +490,7 @@ Examples:
 
 ### Sorting Your List: `sort`
 
-Sorts your current list by **one** of four parameters: name, grade, attendance or participation.
+Sorts your current list by exactly **one** of four parameters: name, grade, attendance or participation.
 
 **Format**:
 ```
@@ -501,9 +501,17 @@ sort /by name | grade | attendance | participation
     <b>Tips</b>
     <ul>
       <li>The keywords are case-insensitive, e.g <code>grade</code> will match <code>Grade</code></li>
-      <li>To sort by multiple parameters, you must sort them one by one, in any order.</li>
-      <li>The sort order for each keyword is as follows (name: A to Z | grade: 100 to 0 | attendance: Present > Excused > Absent > Unmarked | Participation: Excellent to Unmarked).</li>
-</ul>
+      <li>To sort by multiple parameters, you must sort them one command at a time, in any order.</li>
+      <li>The sort order for each keyword is as follows (name: special characters first, then numerical digits from 0 to 9, then Aa to Zz | grade: 100 to 0 | attendance: Present > Excused > Absent > Unmarked | Participation: Excellent to Unmarked).</li>
+</ul> 
+</div><br>
+
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Warning</b>
+    <ul>
+      <li>Exactly one field must be provided.</li>
+      <li>The list will not automatically sort if you add more people or change student parameters. You must apply the sort again.</li>
+    </ul>
 </div><br>
 
 Examples:
@@ -727,7 +735,7 @@ This section covers some common questions that BetterCallTA users face.
 **A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
 
 **Q**: Can I sort students by multiple criteria (e.g., sort by grade, then by name)?<br>
-**A**: No, the `sort` command only supports sorting by one criterion at a time.
+**A**: The `sort` command only supports sorting by one criterion at a time. To sort by multiple parameters, you must use separate sort commands for each.
 
 **Q**: How do I know the correct format for student IDs?<br>
 **A**: Student IDs must follow the NUS student ID format: `<1 x (A/U/HT/NT)> + 7 digits + <1 x (A/B/E/H/J/L/M/N/R/U/W/X/Y)>`.
