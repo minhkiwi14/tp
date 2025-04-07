@@ -104,9 +104,9 @@ Here's a (partial) class diagram of the `Logic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete /id A0123456N")` API call as an example.
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete /id A0123456N` Command" />
 
 <box type="info" seamless>
 
@@ -168,9 +168,9 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Proposed Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes some noteworthy details on how certain features might be implemented.
 
 #### Design considerations:
 
@@ -219,58 +219,35 @@ This section describes some noteworthy details on how certain features are imple
 | Priority  | As a …​                              | I want to …​                                       | So that I can…​                                             |
 |-----------|----------------------------------|------------------------------------------------|------------------------------------------------|
 | ***       | New user                         | See usage instructions                        | Refer to instructions when I forget how to use the App |
-| ***       | User                             | Add a new person                              | Add a new student to the tutorial group       |
-| ***       | User                             | Delete a person                              | Remove students no longer taking the course      |
-| ***       | User                             | Find a student by name                                | Locate details of a student without going through the entire list |
-| **        | User                  | Hide private contact details              | Minimize the chance of someone else seeing them by accident |
-| *         | User with many students in the address book | Sort students by name                                | Locate a person easily                    |
 | ***       | TA                               | View my student’s contacts                   | Reference them when writing emails              |
 | ***       | TA                               | Add my student’s contact                     | Modify the list when a new student joins        |
+| **        | TA                               | Add a student without filling in all the information | Add a student without having all their details |
 | ***       | TA                               | Delete my student’s contact                  | Modify the list if they drop the module        |
 | **        | TA                               | Edit my student’s contact                    | Change minute details as the course goes on    |
 | **        | TA                               | Track the attendance of a student            | Mark them on participation                     |
-| **        | TA                               | Filter my student’s contact by name          | Easily find them for emergencies               |
-| **        | TA                               | Import student contact lists                 | Avoid manually entering data for large classes |
-| **        | TA                               | Archive student contact information          | Keep my active list clean and organized        |
-| **        | TA                               | Use keyboard shortcuts for common actions    | Navigate the platform more efficiently         |
-| **        | TA                               | Create a “quick view” summary of a student’s key details | Access essential information at a glance  |
-| **        | TA                               | Add a student without filling in all the information | Add a student without having all their details |
-| *         | TA                               | Clear my student’s contacts                  | Start with a new list after every semester     |
+| *         | TA                               | View each student’s participation     | Track their participation progress in class               |
 | *         | TA                               | View the general grade of a student          | Filter out those who may need the most help    |
-| * (Epic)  | TA                               | Sort my students according to different categories | Track their progress against certain metrics |
-| *         | TA                               | Sort students by attendance                  | Track which classes they have attended        |
-| *         | TA                               | Categorize my students into their respective classes | Easily find students belonging to a specific class |
-| *         | TA                               | Categorize my students into their group teams | Contact the team as a whole                    |
-| *         | TA                               | Sort students by grades                      | See who needs more guidance                   |
-| *         | TA                               | Check when a student has an appointment with me | Get to our meeting on time                    |
-| *         | TA                               | Track each student’s class participation     | Give them the appropriate marks               |
-| *         | TA                               | Set preferred communication methods for each student | Contact them in the way they prefer      |
 | *         | TA                               | Add detailed notes to student profiles       | Keep track of important details               |
-| *         | TA                               | View a calendar of all student-related events | Stay organized and prepared                   |
-| *         | TA                               | Track student accommodations                 | Ensure compliance with university policies    |
-| *         | TA                               | Generate visual graphs of student engagement trends | Present data clearly during meetings     |
-| *         | TA                               | Toggle between light and dark mode          | Use the platform comfortably in different lighting conditions |
-
+| *         | TA                               | Keep track of additional notes regarding a student  | Keep track of other information, for my needs      |
+| **        | TA                               | Filter my student’s contact by name          | Easily find them for emergencies               |
+| * (Epic)  | TA                               | Sort my students according to different categories | Track their progress against certain metrics |
+| *         | TA                               | Sort students by name                  | Arrange their names alphabetically        |
+| *         | TA                               | Sort students by attendance                  | Track which classes they have attended        |
+| *         | TA                               | Sort students by participation                  | Track how much effort they put in        |
+| *         | TA                               | Sort students by grades                      | See who needs more guidance                   |
+| **        | TA                               | Import student contact lists                 | Separate student into multiple groups of teams or classes  |
+| **        | TA                               | Save student contact information locally          | Track past student records for my reference should the need arise       |
+| *         | TA                               | Clear my student’s contacts                  | Start with a new list after every semester     |
+| *         | TA                               | Clear only my student’s attendance and participation                  | Reset them for the new week     |
+| *         | TA                               | Generate visual graphs of student grades | Present data clearly during meetings     |
 
 
 ### Use cases
 
-(For all use cases below, the **System** is the `BetterCallTA` and the **Actor** is the `user`, unless specified otherwise)
-
-**<u>Use case: List all students</u>**
-
-**MSS**
-
-1. User requests to list all students
-2. BetterCallTA displays all students in an ordered list.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. List is empty
-
-    Use case ends.
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>📝 Note:</b><br>
+    For all use cases below, <b>System</b> is interchangable with <code>BetterCallTA</code> and <b>Actor</b> with <code>User</code>, unless specified otherwise.
+</div><br>
 
 <br>
 
@@ -282,33 +259,63 @@ This section describes some noteworthy details on how certain features are imple
 2. BetterCallTA checks validity of provided information
 3. BetterCallTA adds the student
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 1a. Not all information is given.
 
-    * 1a1. BetterCallTA sets fields where information is not given to "NA".
+  * 1a1. BetterCallTA sets fields where information is not given to their default values.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 2a. Student ID has incorrect format.
 
-    * 2a1. BetterCallTA shows an error message, specifying the correct format.
+  * 2a1. BetterCallTA shows an error message, specifying the correct format.
 
-      Use case ends.
+    Use case ends.
 
-* 2b. Email is not NA and does not have a correct domain format.
+* 2b. Phone is not NA and does not have a correct format.
 
-    * 2b1. BetterCallTA shows an error message, specifying that correct domain is missing.
+  * 2b1. BetterCallTA shows an error message, specifying that the format is incorrect.
 
-      Use case ends.
+    Use case ends.
+
+* 2c. Email is not NA and does not have a correct format.
+
+  * 2c1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 2d. Course is not NA and does not have a correct format.
+
+  * 2d1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 2e. Attendance is not NA and does not match any valid attendance statuses.
+
+  * 2e1. BetterCallTA shows an error message, specifying that the input for attendance is invalid.
+
+    Use case ends.
+
+* 2f. Participation is not NA and does not match any valid participation statuses.
+
+  * 2f1. BetterCallTA shows an error message, specifying that the input for participation is invalid.
+
+    Use case ends.
+
+* 2g. Grade is neither NA nor within the valid range.
+
+  * 2g1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
 
 * 3a. The student cannot be added to the list.
 
-    * 3a1. BetterCallTA shows an error message.
+  * 3a1. BetterCallTA shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 <br>
 
@@ -329,11 +336,262 @@ This section describes some noteworthy details on how certain features are imple
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The given student ID is invalid.
 
-    * 3a1. BetterCallTA shows an error message.
+  * 3a1. BetterCallTA shows an error message, specifying that the student ID has an incorrect format.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
+
+<br>
+
+**<u>Use case: Edit a student</u>**
+
+**MSS**
+
+1. User requests to edit a student
+2. BetterCallTA checks validity of the new details
+3. BetterCallTA edits the student details to the new ones and displays the new student list
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. No student ID was provided.
+
+  * 1a1. BetterCallTA shows an error message, specifying that the student ID must be provided.
+
+    Use case ends.
+
+* 1b. No details to edit were provided.
+
+  * 1b1. BetterCallTA shows an error message, specifying that at least one detail should be edited.
+
+    Use case ends.
+
+* 2a. Student ID has incorrect format.
+
+  * 2a1. BetterCallTA shows an error message, specifying the correct format.
+
+    Use case ends.
+
+* 2b. Phone is not NA and does not have a correct format.
+
+  * 2b1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 2c. Email is not NA and does not have a correct format.
+
+  * 2c1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 2d. Course is not NA and does not have a correct format.
+
+  * 2d1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 2e. Attendance is not NA and does not match any valid attendance statuses.
+
+  * 2e1. BetterCallTA shows an error message, specifying that the input for attendance is invalid.
+
+    Use case ends.
+
+* 2f. Participation is not NA and does not match any valid participation statuses.
+
+  * 2f1. BetterCallTA shows an error message, specifying that the input for participation is invalid.
+
+    Use case ends.
+
+* 2g. Grade is neither NA nor within the valid range.
+
+  * 2g1. BetterCallTA shows an error message, specifying that the format is incorrect.
+
+    Use case ends.
+
+* 3a. The edited student cannot be added to the list.
+
+  * 3a1. BetterCallTA shows an error message.
+
+    Use case ends.
+
+<br>
+
+**<u>Use case: Clear the list</u>**
+
+**MSS**
+
+1. User requests to clear the list.
+2. BetterCallTA checks if there are any records in the list.
+3. BetterCallTA clears the list of all records, leaving it empty.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  * 2a1. BetterCallTA shows an error message.
+
+  * 2a2. Use case ends.
+
+<br>
+
+**<u>Use case: Find students(s) from keywords</u>**
+
+**MSS**
+
+1.  User requests to show students with name/id/course matching the provided keyword(s) (demarcated by space).
+2. BetterCallTA checks the validity of provided keywords.
+3.  BetterCallTA shows a list composed of students, each of them having their name/id/course match at least one of the keywords.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  * 2a1. An empty list is displayed.
+
+  Use case ends.
+
+* 2b. The keyword(s) do not match the name/id/course of any student.
+  * 2b1. An empty list is displayed.
+
+  Use case ends.
+
+* 2c. User does not provide any keywords to the command.
+
+  * 2c1. BetterCallTA shows an error message.
+
+  Use case ends.
+
+<br>
+
+**<u>Use case: Sorting the list</u>**
+
+MSS
+
+1. User requests to sort by a keyword.
+2. BetterCallTA checks validity of the given keyword.
+3. BetterCallTA the sorts the list by the given keyword and displays the new student list.
+
+   Use case ends.
+
+Extensions
+
+2a. The student list is empty
+2a1. An empty list is displayed
+
+Use case ends
+
+2b. The given keyword is invalid
+2b1. BetterCallTA shows an error message.
+
+  Use case ends
+
+2c. No keyword is entered
+2c1. BetterCallTA shows an error message.
+
+  Use case ends
+
+2d. Multiple keywords are entered
+2d1. BetterCallTA shows an error message
+
+  Use case ends
+
+<br>
+
+
+
+
+**<u>Use case: List all students</u>**
+
+**MSS**
+
+1. User requests to list all students
+2. BetterCallTA displays all students in an ordered list.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. List is empty
+
+  Use case ends.
+
+
+<br>
+
+**<u>Use case: Save Data</u>**
+
+**Preconditions: BetterCallTA is running and has data to be saved.</u>**
+
+**MSS**
+1. User requests to save a file with the `file /save`  command
+2. System validates the filename
+3. System writes the current data to the specified file
+4. System displays confirmation message that data was saved successfully
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. Filename is invalid.
+
+  * 2a1. System displays error message about invalid filename format
+
+  * 2a2. Use case resumes at step 1
+
+* 3a. File cannot be written (e.g., permission issues)
+
+  * 3a1. System displays error message about unable to save
+
+  * 3a2. Use case resumes at step 1.
+
+Use case ends.
+
+<br>
+
+**<u>Use case: Load Data</u>**
+
+**Preconditions: The specified save file exists and is accessible.</u>**
+
+**MSS**
+1. User requests to load a file with the `file /load` command
+2. System validates the filename and checks if the file exists
+3. System reads the data from the specified file
+4. System loads the data into BetterCallTA
+5. System displays a success message confirming the data was loaded
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. Filename is invalid or missing
+
+  * 2a1. System displays an error message about invalid filename format.
+
+  * 2a2. Use case resumes at step 1
+
+* 3a. Specified file does not exist
+
+  * 3a1. System displays error message about unable to save
+
+  * 3a2. Use case resumes at step 1.
+
+Use case ends.
+
+<br>
+
+**<u>Use case: List all Saved Files</u>**
+
+**MSS**
+1. User enters the command `file /list all`
+2. System scans the designated save directory `[application/data/*] for valid files
+3. System compiles a list of saved files
+4. System displays the list of files in a readable format
 
 <br>
 
@@ -348,12 +606,36 @@ This section describes some noteworthy details on how certain features are imple
 
 <br>
 
+**<u>Use case: Reset all students’ attendance and participation status</u>**
+
+**MSS**
+
+1. User requests to reset all attendance and participation status.
+2. BetterCallTA sets the attendance and participation status of all students to `UNMARKED`.
+3. BetterCallTA shows the confirmation message.
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The student list is empty.
+
+  * 1a1. BetterCallTA shows the error message `No contacts to reset - the address book is empty.`
+
+  * 1a2. Use case ends.
+
+* 1b. All students' statuses are already unmarked (no changes needed).
+
+  * 1b1. BetterCallTA shows the error message `No records to reset - all students' attendance and participation are already unmarked.`
+
+  * 1b2. Use case ends.
+
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  A user with above-average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
 ### Glossary
@@ -378,29 +660,92 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+  1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+  1. Re-launch the app by double-clicking the jar file.<br>
+     Expected: The most recent window size and location is retained.
 
 
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list, one with the `Id` of `A0237297R` and none with the `Id` of `A9999999R`.
 
-   1. Test case: `delete /id A0237297R`<br>
-      Expected: Contact with `Id` of `A0237297R` is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  1. Test case: `delete /id A0237297R`<br>
+     Expected: Contact with `Id` of `A0237297R` is deleted from the list. Details of the deleted contact shown in the status message.
 
-   1. Test case: `delete /id A9999999R`<br>
-      Expected: Assume contact with `Id` of `A9999999R` does not exist. No person is deleted. Error details shown in the status message. Status bar remains the same.
+  1. Test case: `delete /id A9999999R`<br>
+     Expected: Assume contact with `Id` of `A9999999R` does not exist. No person is deleted. Error details shown in the status message.
 
-   1. Other incorrect delete commands to try: `delete`, `delete 69`,
-      Expected: Similar to previous.
+  1. Other incorrect delete commands to try: `delete`, `delete 69`,
+     Expected: Similar to previous
+
+
+### Visualizing Grade Histogram.
+
+1. Add a person from an empty save file
+  * Test case: `add /id A0000001R /name teststudent`
+
+1. Edit the person with the `/grade` flag with the `edit` command.
+  * Test case: `edit /id A0000001R /grade 100`
+  * Expected: The histogram will be updated and will show 1 student under [90-100] in the histogram.
+
+1. Delete the person
+  * Test case: `delete /id A0000001R`
+  * Expected: The histogram will be updated to become empty as there are no students in the list.
+
+
+### Save and Load from a Save File
+
+1. Save the current list of students to a save file.
+  * Test case `file /save CS2103T-T10`
+  * Expected: A file `CS2103T-T10.json` will be created in `data/` directory.
+
+1. Exit the application with the `exit` command.
+
+1. Relaunch the application with `java -jar BetterCallTA.jar` from the command line terminal.
+  *  Expected: BetterCallTA will load successfully.
+
+1. Load the application with the Load command.
+  * Test Case: `file /load CS2103T-T10`
+  * Expected: The contents of `CS2103T-T10.json` will be loaded.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+**Team Size : 5**
+
+This section contains Planned Enhancements of future enhancements for BetterCallTA. This section is immune from PE bug reporting, as you should know (for us to award you your PE marks. We want to help you as well, but will not if we deem your report too unreasonable).
+
+1. Do additional error checking in the edge case whereby there are no data save files already in the <code>data</code> directory.
+
+* Currently, there will be no error message thrown if the <code>data</code> directory is empty, and the BetterCallTA will fail to load a save file until a user is added into the application. We plan to add a validation to ensure that a descriptive error message is shown to the user in this case as there is currently no feedback.
+
+2.  Add additional commands for adding, deleting, and clearing of individual notes.
+
+* Currently, there is no easy method for individual notes belonging to a student to be edited, modified, and cleared. We plan to add an additional command for the management of student’s notes to be easier.
+
+3. Command output box is too small
+
+* Currently, the command output box is too small for certain error messages. We plan to allow users to increase the size of the output box to view more text to enhance user experience.
+
+4. Detect when a flag is misspelled and display an error message for it.
+
+* Currently, there are no detailed error messages in the case that a user misspells a flag, such as mistyping <code>/attendance</code> as <code>/attendence</code>. Adding more detailed error messages (instead of a more general error message in our latest iteration) would allow the user to narrow down the errors in their typed command, improving their CLI experience.
+
+5. Allow deletion of save files from BetterCallTA
+
+* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory. 
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
