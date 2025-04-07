@@ -117,15 +117,15 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 ---
 ### Properties
 
-   - [🆔 ID - Unique student identifier](#id-unique-student-identifier)
-   - [👤 Name - Student name](#name-your-students-name)
-   - [📞 Phone - Student phone number](#phone-students-phone-number)
-   - [📧 Email - Student email address](#email-students-email-address)
-   - [🎓 Course - NUS course code](#course-nus-course-code)
-   - [✅ Attendance - Student class participation status](#attendance-students-class-participation-status)
-   - [🗣️ Participation - Student engagement level](#participation-students-engagement-level)
-   - [💯 Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
-   - [📝 Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
+  - [`ID`-Unique student identifier](#id-unique-student-identifier)
+  - [`Name`-Your student name](#name-your-student-name)
+  - [`Phone`-Student phone number](#phone-student-phone-number)
+  - [`Email`-Student email address](#email-student-email-address)
+  - [`Course`-NUS course code](#course-nus-course-code)
+  - [`Attendance`-Student class participation status](#attendance-student-class-participation-status)
+  - [`Participation`-Student engagement level](#participation-student-engagement-level)
+  - [`Grade`-The predicted grade of your student based on their previous graded assignments](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+  - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
 ---
 
