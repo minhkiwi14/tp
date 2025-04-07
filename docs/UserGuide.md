@@ -32,12 +32,12 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 2. [Quick start](#quick-start)
 3. [Student](#student)
    - [ID - Unique student identifier](#id-unique-student-identifier)
-   - [Name - Student's name](#name-your-students-name)
-   - [Phone - Student's phone number](#phone-students-phone-number)
-   - [Email - Student's email address](#email-students-email-address)
+   - [Name - Student name](#name-your-students-name)
+   - [Phone - Student phone number](#phone-students-phone-number)
+   - [Email - Student email address](#email-students-email-address)
    - [Course - NUS course code](#course-nus-course-code)
-   - [Attendance - Student's class participation status](#attendance-students-class-participation-status)
-   - [Participation - Student's engagement level](#participation-students-engagement-level)
+   - [Attendance - Student class participation status](#attendance-students-class-participation-status)
+   - [Participation - Student engagement level](#participation-students-engagement-level)
    - [Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
    - [Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 4. [Features](#features)
@@ -97,7 +97,7 @@ Do refer to the [Features](#features) below for details of each command!
 
 ## Student
 
-This section covers the `Student` field used in BetterCallTA, which encapsulates a student's contact details in BetterCallTA.
+This section covers the `Student` field used in BetterCallTA, which encapsulates a student contact details in BetterCallTA.
 
 > ![Student descriptor](images/person.png)
 <br>Fig 2.1 - Example Student
@@ -111,12 +111,12 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 ### Properties
 
    - [🆔 ID - Unique student identifier](#id-unique-student-identifier)
-   - [👤 Name - Student's name](#name-your-students-name)
-   - [📞 Phone - Student's phone number](#phone-students-phone-number)
-   - [📧 Email - Student's email address](#email-students-email-address)
+   - [👤 Name - Student name](#name-your-students-name)
+   - [📞 Phone - Student phone number](#phone-students-phone-number)
+   - [📧 Email - Student email address](#email-students-email-address)
    - [🎓 Course - NUS course code](#course-nus-course-code)
-   - [✅ Attendance - Student's class participation status](#attendance-students-class-participation-status)
-   - [🗣️ Participation - Student's engagement level](#participation-students-engagement-level)
+   - [✅ Attendance - Student class participation status](#attendance-students-class-participation-status)
+   - [🗣️ Participation - Student engagement level](#participation-students-engagement-level)
    - [💯 Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
    - [📝 Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
@@ -145,7 +145,7 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 
 ---
 
-### `Name`-Your student's name
+### `Name`-Your student name
 
 Multiple students with the same name are allowed, as long as they have a unique Student ID.
 
@@ -162,7 +162,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Phone`-Student's phone number
+### `Phone`-Student phone number
 
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>📌 Phone Number Format Rules</b>
@@ -183,7 +183,7 @@ Multiple students with the same name are allowed, as long as they have a unique 
 
 ---
 
-### `Email`-Student's email address
+### `Email`-Student email address
 
 **Format**:
 ```
@@ -245,7 +245,7 @@ local-part@domain
 
 ---
 
-### `Attendance`-Student's class participation status
+### `Attendance`-Student class participation status
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -266,7 +266,7 @@ local-part@domain
 
 ---
 
-### `Participation`-Student's engagement level
+### `Participation`-Student engagement level
 
 | Status      | Description                          | Case Sensitivity |
 |-------------|--------------------------------------|------------------|
@@ -312,7 +312,7 @@ local-part@domain
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
+This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA features.
 
    - [Command Syntax Notes](#command-syntax-notes)
    - [Viewing Help](#viewing-help-help)
@@ -762,7 +762,7 @@ Automatically updates when a grade is changed.
 This section covers some common questions that BetterCallTA users face.
 
 **Q**: How do I transfer my data to another Computer 💻?<br>
-**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer's `[home folder]/data/` location.
+**A**: Copy the save files stored in `[home folder]/data/` over to the new Computer `[home folder]/data/` location.
 
 **Q**: Can I sort students by multiple criteria (e.g., sort by grade, then by name)?<br>
 **A**: The `sort` command only supports sorting by one criterion at a time. To sort by multiple parameters, you must use separate sort commands for each.
@@ -837,4 +837,4 @@ This section covers the glossary of key terms as discussed in this User Guide an
 | **ID** | Student Identification Number - Unique identifier following NUS format |
 | **Home folder** | The folder in your file system that serves as your personal storage space |
 | **Command terminal** | **Powershell** on Windows, **Terminal** on Mac and Linux
-| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world's writing systems that can be digitized. |
+| **Unicode** | A **text encoding standard** maintained by the Unicode Consortium designed to support the use of text in all of the world writing systems that can be digitized. |
