@@ -28,8 +28,6 @@ NUS Teaching Assistants (TA) who can type fast, preferring typing over mouse/voi
 ## Table of Contents
 This section covers the table of contents of our user guide for **BetterCallTA**.
 
-## Table of Contents
-
 1. [Overview](#overview)
 2. [Quick start](#quick-start)
 3. [Student](#student)
