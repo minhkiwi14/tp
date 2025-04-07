@@ -303,11 +303,11 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 **Command Syntax Notation**
 
-| Notation               | Meaning                                                                 | Example                                                                 |
-|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                     |
-| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [phone]` → Can omit phone                               |
-| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                               |
+| Notation               | Meaning                                                                 | Example                                                           |
+|------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| `UPPER_CASE`           | Required parameters you must provide                                    | `add /id ID` → `add /id A1234567X`                                |
+| `[square brackets]`    | Optional parameters                                                    | `add /name NAME [/phone PHONE_NUMBER]` → Can omit the /phone part |
+| `...` (ellipsis)       | Parameter can be repeated multiple times                               | `/note NOTE...` → Can add multiple notes                          |
 
 
 **Command Syntax Rules**
