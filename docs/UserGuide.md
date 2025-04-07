@@ -49,15 +49,15 @@ This section covers the table of contents of our user guide for **BetterCallTA**
   - [Command Syntax Notes](#command-syntax-notes)
   - [Viewing Help](#viewing-help-help)
   - [Adding a Student](#adding-a-student-add)
-  - [Listing All Students](#listing-all-students-list)
   - [Editing a Student](#editing-a-student-edit)
+  - [Deleting a Student](#deleting-a-student-delete)
+  - [Clearing All Entries](#clearing-all-entries-clear)
   - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
   - [Sorting Your List](#sorting-your-list-sort)
-  - [Deleting a Student](#deleting-a-student-delete)
-  - [Saving Contact Data](#saving-contact-data-file-save)
-  - [Loading Contact Data](#loading-contact-data-file-load)
+  - [Listing All Students](#listing-all-students-list)
+  - [Saving Contact Data](#saving-contact-data-file-save-filename)
+  - [Loading Contact Data](#loading-contact-data-file-load-filename)
   - [Listing Save Files](#listing-save-files-file-list-all)
-  - [Clearing All Entries](#clearing-all-entries-clear)
   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
   - [Exiting the Program](#exiting-the-program-exit)
 - [Additional Features](#additional-features)
@@ -117,15 +117,15 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
 ---
 ### Properties
 
-   - [🆔 ID - Unique student identifier](#id-unique-student-identifier)
-   - [👤 Name - Student name](#name-your-students-name)
-   - [📞 Phone - Student phone number](#phone-students-phone-number)
-   - [📧 Email - Student email address](#email-students-email-address)
-   - [🎓 Course - NUS course code](#course-nus-course-code)
-   - [✅ Attendance - Student class participation status](#attendance-students-class-participation-status)
-   - [🗣️ Participation - Student engagement level](#participation-students-engagement-level)
-   - [💯 Grade - Predicted grade](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
-   - [📝 Notes - Additional details](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
+  - [`ID`-Unique student identifier](#id-unique-student-identifier)
+  - [`Name`-Your student name](#name-your-student-name)
+  - [`Phone`-Student phone number](#phone-student-phone-number)
+  - [`Email`-Student email address](#email-student-email-address)
+  - [`Course`-NUS course code](#course-nus-course-code)
+  - [`Attendance`-Student class participation status](#attendance-student-class-participation-status)
+  - [`Participation`-Student engagement level](#participation-student-engagement-level)
+  - [`Grade`-The predicted grade of your student based on their previous graded assignments](#grade-the-predicted-grade-of-your-student-based-on-their-previous-graded-assignments)
+  - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
 ---
 
@@ -321,20 +321,20 @@ local-part@domain
 ## Features
 This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA features.
 
-   - [Command Syntax Notes](#command-syntax-notes)
-   - [Viewing Help](#viewing-help-help)
-   - [Adding a Student](#adding-a-student-add)
-   - [Listing All Students](#listing-all-students-list)
-   - [Editing a Student](#editing-a-student-edit)
-   - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
-   - [Sorting Your List](#sorting-your-list-sort)
-   - [Deleting a Student](#deleting-a-student-delete)
-   - [Saving Contact Data](#saving-contact-data-file-save)
-   - [Loading Contact Data](#loading-contact-data-file-load)
-   - [Listing Save Files](#listing-save-files-file-list-all)
-   - [Clearing All Entries](#clearing-all-entries-clear)
-   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
-   - [Exiting the Program](#exiting-the-program-exit)
+  - [Command Syntax Notes](#command-syntax-notes)
+  - [Viewing Help](#viewing-help-help)
+  - [Adding a Student](#adding-a-student-add)
+  - [Editing a Student](#editing-a-student-edit)
+  - [Deleting a Student](#deleting-a-student-delete)
+  - [Clearing All Entries](#clearing-all-entries-clear)
+  - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+  - [Sorting Your List](#sorting-your-list-sort)
+  - [Listing All Students](#listing-all-students-list)
+  - [Saving Contact Data](#saving-contact-data-file-save-filename)
+  - [Loading Contact Data](#loading-contact-data-file-load-filename)
+  - [Listing Save Files](#listing-save-files-file-list-all)
+  - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+  - [Exiting the Program](#exiting-the-program-exit)
 
 ---
 
@@ -677,14 +677,6 @@ Lists out all the `.json` save file filenames (without the file extension type) 
 
 ---
 
-### Clearing All Entries: `clear`
-
-Clears all entries from the application.
-
-**Format**:
-```
-clear
-```
 
 <br>
 
