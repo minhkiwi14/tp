@@ -244,7 +244,10 @@ This section describes some noteworthy details on how certain features might be 
 
 ### Use cases
 
-(For all use cases below, the **System** is the `BetterCallTA` and the **Actor** is the `user`, unless specified otherwise)
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>📝 Note:</b><br>
+    For all use cases below, <b>System</b> is interchangable with <code>BetterCallTA</code> and <b>Actor</b> with <code>User</code>, unless specified otherwise.
+</div><br>
 
 <br>
 
