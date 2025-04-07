@@ -648,6 +648,12 @@ Lists out all the `.json` save file filenames (without the file extension type) 
 **Examples**:
 - `file /list all`
 
+<br>
+
+> ![File List All Command Example](images/fileListCommandExample.png)
+<br> Fig 3.10 - Output of `file /list all`
+<br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
+
 ---
 
 ### Clearing All Entries: `clear`
@@ -661,9 +667,7 @@ clear
 
 <br>
 
-> ![File List All Command Example](images/fileListCommandExample.png)
-<br> Fig 3.10 - Output of `file /list all`
-<br> * Actual output may be different depending on what files are in `[JAR file location]/data/`
+> ![Clear Command Example]
 
 ---
 
