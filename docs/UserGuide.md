@@ -651,6 +651,7 @@ file /load SAVE_FILE
     <b>Warning</b>
     <ul>
       <li>If the save file you attempt to load contains illegal characters, it will not be loaded</li>
+      <li>The <code>addressbook</code> save file will be loaded by default.  </li>
     </ul>
 </div><br>
 
@@ -658,6 +659,8 @@ file /load SAVE_FILE
 
 > ![File Load Command Example](images/fileLoadCommandExample.png)
 <br> Fig 3.9 - Output of `file /load CS2103T-T10-3`
+
+
 
 ---
 
