@@ -355,6 +355,7 @@ This section covers the Command Syntax Notes you should be aware of when you are
 
 | Rule                      | Description                                                                 | Example                                                                 |
 |---------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Parameter Spacing            | Parameters must have a trailing space                                              | `add /idA123 /nameJohn` will not work.<br> It should be changed to `add /name John /id A123` instead.              |
 | Parameter Order           | Parameters can be in any order                                              | `add /id A123 /name John` = `add /name John /id A123`                  |
 | Extraneous Parameters     | Extra parameters are ignored for simple commands                            | `help 123` → Treated as `help`                                         |
 | PDF Copy-Paste Warning    | Watch for missing spaces when copying from PDFs                             | Ensure `/idA123` becomes `/id A123` when pasting                       |
@@ -378,6 +379,14 @@ This section covers the Command Syntax Notes you should be aware of when you are
     * Maintain exact spacing when copying commands.
     * Test commands after pasting from external sources.
 
+<div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
+    <b>Note:</b>
+    <ul>
+      <li>There must be exactly one space between the flag and the argument provided. For instance, <code>/flag arg1</code> is valid whereas <code>/flagarg1</code> (no spaces) and <code>/flag  arg1</code> (with two spaces) are invalid.</li>
+    </ul>
+</div>
+
+<br>
 
 ---
 
