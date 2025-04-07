@@ -52,7 +52,7 @@ public class SortCommandParserTest {
 
     @Test
     public void parse_missingFieldAfterPrefix_throwsParseException() {
-        assertParseFailure(parser, " /by", "Missing /by and sort field.\n" + SortCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, " /by", "Expected exactly one space after the prefix, followed by an argument: /by");
     }
 
     @Test

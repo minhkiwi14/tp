@@ -30,13 +30,13 @@ public class FileCommandParserTest {
     @Test
     public void parse_listFiles_throwsParseException() {
         String args = " /list";
-        assertParseFailure(parser, args, FileCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, args, "Expected exactly one space after the prefix, followed by an argument: /list");
     }
 
     @Test
     public void parse_missingArgValue_throwsParseException() {
         String args = " /load";
-        assertParseFailure(parser, args, FileCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, args, "Expected exactly one space after the prefix, followed by an argument: /load");
     }
 
     @Test

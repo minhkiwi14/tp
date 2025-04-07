@@ -72,8 +72,8 @@ public class CommandTestUtil {
 
     public static final String INVALID_ID = "A1234567"; // No ending letter
     public static final String INVALID_NAME = " "; // Name cannot be a blank space
-    public static final String INVALID_PHONE = "+65 1234"; // Cannot have spaces in between
-    public static final String INVALID_EMAIL = "kiwi.com"; // Missing '@' symbol
+    public static final String INVALID_PHONE = " +65 1234"; // Cannot have spaces in between
+    public static final String INVALID_EMAIL = " kiwi.com"; // Missing '@' symbol
     public static final String INVALID_COURSE = "1234"; // Course must have leading letters
     public static final String INVALID_ATTENDANCE = "NORMAL"; // Not a valid attendance status
     public static final String INVALID_PARTICIPATION = "ACTIVE"; // Not a valid participation status
