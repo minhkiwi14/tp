@@ -212,9 +212,9 @@ The following sequence is illustrated below
 
 **API** : [`Histogram.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/ui/Histogram.java)
 
-The histogram feature is done... The following sequence is illustrated below
+The histogram feature shows users a distribution of the grades of the students in the address book as a histogram. The sequence diagram below illustrates how the histogram gets updated when details in the address book change.
 
-<puml src="diagrams/.puml" width="550" />
+<puml src="diagrams/HistogramSequenceDiagram.puml" width="900" />
 
 <br>
 
