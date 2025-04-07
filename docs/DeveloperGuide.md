@@ -78,12 +78,12 @@ The bulk of the app's work is done by the following four components:
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete /id A0111111N`.
 
-<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
+<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="900" />
 
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class, which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -144,7 +144,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="750" />
 
 
 The `Model` component,
@@ -158,7 +158,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Note` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Note` object per unique note, instead of each `Person` needing their own `Note` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="800" />
 
 </box>
 
@@ -182,27 +182,41 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 ## **Implementation**
 
-Here are some example features implemented in BetterCallTA.
+This sections describes some noteworthy details on how certain features are implemented.
 
 ### File Save Feature
 
+**API** : [`FileCommand.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/commands/FileCommand.java)
+
 The file save feature allows users to save the current state of the address book to a specified file in the `data` directory. This ensures that users can maintain multiple save files for different contexts (e.g., different classes or groups). The sequence diagram below illustrates the interactions within the system when the `file /save` command is executed.
+
+The following sequence is illustrated below.
 
 <puml src="diagrams/FileSaveSequenceDiagram.puml" width="600" />
 
 ### File Load Feature
 
+**API** : [`FileCommand.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/commands/FileCommand.java)
+
 The file load feature allows users to load a previously saved state of the address book from a specified file in the `data` directory. This enables users to switch between different save files seamlessly. The sequence diagram below illustrates the interactions within the system when the `file /load` command is executed.
+
+The following sequence is illustrated below
 
 <puml src="diagrams/FileLoadSequenceDiagram.puml" width="600" />
 
-### Histogram Feature
+### Histogram feature
+
+**API** : [`Histogram.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/ui/Histogram.java)
+
+The histogram feature is done... The following sequence is illustrated below
+
+<puml src="diagrams/.puml" width="550" />
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Proposed Implementation**
 
-This section describes some noteworthy details on how certain features might be implemented.
+This section describes how certain features might be implemented.
 
 #### Design considerations:
 
