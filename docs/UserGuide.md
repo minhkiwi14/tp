@@ -316,20 +316,20 @@ local-part@domain
 ## Features
 This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA's features.
 
-- [Command Syntax Notes](#command-syntax-notes)
-- [Viewing Help](#viewing-help-help)
-- [Adding a Student](#adding-a-student-add)
-- [Listing All Students](#listing-all-students-list)
-- [Editing a Student](#editing-a-student-edit)
-- [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
-- [Sorting Your List](#sorting-your-list-sort)
-- [Deleting a Student](#deleting-a-student-delete)
-- [Saving Contact Data](#saving-contact-data-file-save)
-- [Loading Contact Data](#loading-contact-data-file-load)
-- [Listing Save Files](#listing-save-files-file-list-all)
-- [Clearing All Entries](#clearing-all-entries-clear)
-- [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
-- [Exiting the Program](#exiting-the-program-exit)
+   - [Command Syntax Notes](#command-syntax-notes)
+   - [Viewing Help](#viewing-help-help)
+   - [Adding a Student](#adding-a-student-add)
+   - [Listing All Students](#listing-all-students-list)
+   - [Editing a Student](#editing-a-student-edit)
+   - [Locating Students by Name, ID or Course](#locating-students-by-name-id-or-course-find)
+   - [Sorting Your List](#sorting-your-list-sort)
+   - [Deleting a Student](#deleting-a-student-delete)
+   - [Saving Contact Data](#saving-contact-data-file-save)
+   - [Loading Contact Data](#loading-contact-data-file-load)
+   - [Listing Save Files](#listing-save-files-file-list-all)
+   - [Clearing All Entries](#clearing-all-entries-clear)
+   - [Resetting All Attendance and Participation Records](#resetting-all-attendance-and-participation-records-resetrecords)
+   - [Exiting the Program](#exiting-the-program-exit)
 
 ---
 
