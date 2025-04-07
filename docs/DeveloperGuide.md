@@ -15,6 +15,10 @@ The table of contents cover the sections in this Developer Guide.
   - [Model Component](#model-component)
   - [Storage Component](#storage-component)
   - [Common Classes](#common-classes)
+- [Implementation](#implementation)
+  - [File Save Feature](#file-save-feature)
+  - [File Load Feature](#file-load-feature)
+  - [Histogram Feature](#histogram-feature)
 - [Proposed Implementation](#proposed-implementation)
   - [Design considerations](#design-considerations)
 - [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
@@ -176,6 +180,26 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Implementation**
+
+Here are some example features implemented in BetterCallTA.
+
+### File Save Feature
+
+The file save feature allows users to save the current state of the address book to a specified file in the `data` directory. This ensures that users can maintain multiple save files for different contexts (e.g., different classes or groups). The sequence diagram below illustrates the interactions within the system when the `file /save` command is executed.
+
+<puml src="diagrams/FileSaveSequenceDiagram.puml" width="600" />
+
+### File Load Feature
+
+The file load feature allows users to load a previously saved state of the address book from a specified file in the `data` directory. This enables users to switch between different save files seamlessly. The sequence diagram below illustrates the interactions within the system when the `file /load` command is executed.
+
+<puml src="diagrams/FileLoadSequenceDiagram.puml" width="600" />
+
+### Histogram Feature
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Proposed Implementation**
 
 This section describes some noteworthy details on how certain features might be implemented.
@@ -275,6 +299,9 @@ This section describes some noteworthy details on how certain features might be 
 
   * 1a1. BetterCallTA sets fields where information is not given to their default values.
 
+      Use case ends.
+
+
 * 2a. Student ID has incorrect format.
 
   * 2a1. BetterCallTA shows an error message, specifying the correct format.
@@ -343,7 +370,7 @@ This section describes some noteworthy details on how certain features might be 
 * 3a. The given student ID is invalid.
 
   * 3a1. BetterCallTA shows an error message, specifying that the student ID has an incorrect format.
- 
+
     Use case ends.
 
 <br>
@@ -486,20 +513,20 @@ MSS
 **Extensions**
 
 * 2a. The student list is empty.
-  
+
   * 2a1. An empty list is displayed.
- 
+
     Use case ends.
-    
+
 * 2b. The given keyword is invalid.
-  
+
   * 2b1. BetterCallTA shows an error message.
- 
+
     Use case ends.
 
 * 2c. No keyword is entered.
   * 2c1. BetterCallTA shows an error message.
- 
+
     Use case ends.
 
 * 2d. Multiple keywords are entered.
@@ -545,7 +572,7 @@ MSS
 * 2a. Filename is invalid.
 
   * 2a1. System displays error message about invalid filename format.
- 
+
     Use case ends.
 
 * 3a. File cannot be written (e.g., permission issues).
@@ -574,7 +601,7 @@ MSS
 * 2a. Filename is invalid or missing.
 
   * 2a1. System displays an error message about invalid filename format.
- 
+
     Use case ends.
 
 * 3a. Specified file does not exist.
@@ -621,7 +648,7 @@ MSS
 * 1a. The student list is empty.
 
   * 1a1. BetterCallTA shows the error message specifying that the list is empty.
- 
+
     Use case ends.
 
 * 1b. All students' statuses are already unmarked (no changes needed).
@@ -750,9 +777,6 @@ This section contains Planned Enhancements of future enhancements for BetterCall
 
 **5. Allow deletion of save files from BetterCallTA**
 
-* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory. 
+* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory.
 
 --------------------------------------------------------------------------------------------------------------------
-
-
-
