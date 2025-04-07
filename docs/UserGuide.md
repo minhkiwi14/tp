@@ -490,7 +490,7 @@ Examples:
 
 ### Sorting Your List: `sort`
 
-Sorts your current list by **one** of four parameters: name, grade, attendance or participation.
+Sorts your current list by exactly **one** of four parameters: name, grade, attendance or participation.
 
 **Format**:
 ```
@@ -509,9 +509,8 @@ sort /by name | grade | attendance | participation
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Warning</b>
     <ul>
-      <li>At least one field must be provided.</li>
+      <li>Exactly one field must be provided.</li>
       <li>The list will not automatically sort if you add more people or change student parameters. You must apply the sort again.</li>
-      <li>The new ID must not already be used by a different student</li>
     </ul>
 </div><br>
 
