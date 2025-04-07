@@ -662,13 +662,13 @@ testers are expected to do more *exploratory* testing.
 
   1. Download the jar file and copy into an empty folder
 
-  1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-  1. Re-launch the app by double-clicking the jar file.<br>
+  2. Re-launch the app by double-clicking the jar file.<br>
      Expected: The most recent window size and location is retained.
 
 
@@ -678,13 +678,13 @@ testers are expected to do more *exploratory* testing.
 
   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list, one with the `Id` of `A0237297R` and none with the `Id` of `A9999999R`.
 
-  1. Test case: `delete /id A0237297R`<br>
+  2. Test case: `delete /id A0237297R`<br>
      Expected: Contact with `Id` of `A0237297R` is deleted from the list. Details of the deleted contact shown in the status message.
 
-  1. Test case: `delete /id A9999999R`<br>
+  3. Test case: `delete /id A9999999R`<br>
      Expected: Assume contact with `Id` of `A9999999R` does not exist. No person is deleted. Error details shown in the status message.
 
-  1. Other incorrect delete commands to try: `delete`, `delete 69`,
+  4. Other incorrect delete commands to try: `delete`, `delete 69`,
      Expected: Similar to previous
 
 
@@ -693,11 +693,11 @@ testers are expected to do more *exploratory* testing.
 1. Add a person from an empty save file
   * Test case: `add /id A0000001R /name teststudent`
 
-1. Edit the person with the `/grade` flag with the `edit` command.
+2. Edit the person with the `/grade` flag with the `edit` command.
   * Test case: `edit /id A0000001R /grade 100`
   * Expected: The histogram will be updated and will show 1 student under [90-100] in the histogram.
 
-1. Delete the person
+3. Delete the person
   * Test case: `delete /id A0000001R`
   * Expected: The histogram will be updated to become empty as there are no students in the list.
 
@@ -708,12 +708,12 @@ testers are expected to do more *exploratory* testing.
   * Test case `file /save CS2103T-T10`
   * Expected: A file `CS2103T-T10.json` will be created in `data/` directory.
 
-1. Exit the application with the `exit` command.
+2. Exit the application with the `exit` command.
 
-1. Relaunch the application with `java -jar BetterCallTA.jar` from the command line terminal.
+3. Relaunch the application with `java -jar BetterCallTA.jar` from the command line terminal.
   *  Expected: BetterCallTA will load successfully.
 
-1. Load the application with the Load command.
+4. Load the application with the Load command.
   * Test Case: `file /load CS2103T-T10`
   * Expected: The contents of `CS2103T-T10.json` will be loaded.
 
