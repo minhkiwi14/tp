@@ -725,23 +725,23 @@ testers are expected to do more *exploratory* testing.
 
 This section contains Planned Enhancements of future enhancements for BetterCallTA. This section is immune from PE bug reporting, as you should know (for us to award you your PE marks. We want to help you as well, but will not if we deem your report too unreasonable).
 
-1. Do additional error checking in the edge case whereby there are no data save files already in the <code>data</code> directory.
+**1. Do additional error checking in the edge case whereby there are no data save files already in the <code>data</code> directory.**
 
 * Currently, there will be no error message thrown if the <code>data</code> directory is empty, and the BetterCallTA will fail to load a save file until a user is added into the application. We plan to add a validation to ensure that a descriptive error message is shown to the user in this case as there is currently no feedback.
 
-2.  Add additional commands for adding, deleting, and clearing of individual notes.
+**2.  Add additional commands for adding, deleting, and clearing of individual notes.**
 
 * Currently, there is no easy method for individual notes belonging to a student to be edited, modified, and cleared. We plan to add an additional command for the management of student’s notes to be easier.
 
-3. Command output box is too small
+**3. Command output box is too small**
 
 * Currently, the command output box is too small for certain error messages. We plan to allow users to increase the size of the output box to view more text to enhance user experience.
 
-4. Detect when a flag is misspelled and display an error message for it.
+**4. Detect when a flag is misspelled and display an error message for it.**
 
 * Currently, there are no detailed error messages in the case that a user misspells a flag, such as mistyping <code>/attendance</code> as <code>/attendence</code>. Adding more detailed error messages (instead of a more general error message in our latest iteration) would allow the user to narrow down the errors in their typed command, improving their CLI experience.
 
-5. Allow deletion of save files from BetterCallTA
+**5. Allow deletion of save files from BetterCallTA**
 
 * Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory. 
 
