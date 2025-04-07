@@ -152,7 +152,7 @@ The `Model` component,
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. <br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Note` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Note` object per unique note, instead of each `Person` needing their own `Note` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
