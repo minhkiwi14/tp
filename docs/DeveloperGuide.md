@@ -194,6 +194,8 @@ The following sequence is illustrated below.
 
 <puml src="diagrams/FileSaveSequenceDiagram.puml" width="900" />
 
+<br>
+
 ### File Load Feature
 
 **API** : [`FileCommand.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/commands/FileCommand.java)
@@ -203,6 +205,8 @@ The file load feature allows users to load a previously saved state of the addre
 The following sequence is illustrated below
 
 <puml src="diagrams/FileLoadSequenceDiagram.puml" width="900" />
+
+<br>
 
 ### Histogram feature
 
