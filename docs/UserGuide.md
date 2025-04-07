@@ -381,7 +381,7 @@ This section covers the Command Syntax Notes you should be aware of when you are
 <div style="background-color: #fde68a; padding: 10px; border: 1px solid #000; border-radius: 5px; color: #000">
     <b>Note:</b>
     <ul>
-      <li>There must be exactly one space between the flag and the argument provided. For instance, <code>/flag arg1</code> is valid whereas <code>flagarg1</code> is invalid.</li>
+      <li>There must be exactly one space between the flag and the argument provided. For instance, <code>/flag arg1</code> is valid whereas <code>/flagarg1</code> (no spaces) and <code>/flag  arg1</code> (with two spaces) are invalid.</li>
     </ul>
 </div>
 
