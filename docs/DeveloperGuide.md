@@ -4,6 +4,8 @@
 
 ## Table of Contents
 
+The table of contents cover the sections in this Developer Guide.
+
 - [Acknowledgements](#acknowledgements)
 - [Setting up, getting started](#setting-up-getting-started)
 - [Design](#design)
@@ -14,6 +16,7 @@
   - [Storage Component](#storage-component)
   - [Common Classes](#common-classes)
 - [Proposed Implementation](#proposed-implementation)
+  - [Design considerations](#design-considerations)
 - [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product Scope](#product-scope)
@@ -22,6 +25,11 @@
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Glossary](#glossary)
 - [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+  - [Launch and shutdown](#launch-and-shutdown)
+  - [Deleting a person](#deleting-a-person)
+  - [Visualizing Grade Histogram](#visualizing-grade-histogram)
+  - [Save and Load from a Save File](#save-and-load-from-a-save-file)
+- [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 
 --------------------------------------------------------------------------------------------------------------------
 
