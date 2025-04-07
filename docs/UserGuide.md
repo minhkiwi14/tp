@@ -69,6 +69,8 @@ This section covers the table of contents of our user guide for **BetterCallTA**
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 This section covers how to get started on using `BetterCallTA`
 
@@ -102,6 +104,8 @@ Do refer to the [Features](#features) below for details of each command!
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Student
 
 This section covers the `Student` field used in BetterCallTA, which encapsulates a student contact details in BetterCallTA.
@@ -128,6 +132,8 @@ This section covers the `Student` field used in BetterCallTA, which encapsulates
   - [`Notes`-Additional details that you may want to keep about individual students](#notes-additional-details-that-you-may-want-to-keep-about-individual-students)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### `ID`-Unique student identifier
 
@@ -318,6 +324,8 @@ local-part@domain
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 This section covers all the features of BetterCallTA. Navigate to the following sections to know more about BetterCallTA features.
 
@@ -337,6 +345,8 @@ This section covers all the features of BetterCallTA. Navigate to the following 
   - [Exiting the Program](#exiting-the-program-exit)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Command Syntax Notes
 This section covers the Command Syntax Notes you should be aware of when you are using BetterCallTA.
@@ -389,6 +399,8 @@ This section covers the Command Syntax Notes you should be aware of when you are
 <br>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Viewing Help: `help`
 
@@ -750,6 +762,8 @@ exit
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Additional Features
 
 ### Graph Visualisation
@@ -772,6 +786,8 @@ Automatically updates when a grade is changed.
 <br> Fig 4 - Example of a populated graph
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 This section covers some common questions that BetterCallTA users face.
@@ -805,6 +821,8 @@ This section covers some common questions that BetterCallTA users face.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Known issues
 This section covers the current known issues with BetterCallTA.
 
@@ -818,6 +836,8 @@ This section covers the current known issues with BetterCallTA.
 <br> In the event of an unexpected application crash or system failure during a save operation, the save file (`.json`) may become corrupted. Regularly backup your save files. If a file is corrupted, restore from a backup.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 This section covers the summary of commands in BetterCallTA.
@@ -839,6 +859,8 @@ Action | Format | Examples
 **Reset Attendance and Participation Records** | `resetRecords` | (None)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Glossary
 This section covers the glossary of key terms as discussed in this User Guide and in other BetterCallTA documentation.

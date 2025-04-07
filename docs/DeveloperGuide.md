@@ -37,6 +37,8 @@ The table of contents cover the sections in this Developer Guide.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Acknowledgements**
 
 [AddressBook Level-3](https://se-education.org/addressbook-level3), of which we modified our application from.
@@ -48,6 +50,8 @@ The table of contents cover the sections in this Developer Guide.
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Design**
 
@@ -180,6 +184,8 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Implementation**
 
 This sections describes some noteworthy details on how certain features are implemented.
@@ -220,6 +226,8 @@ The histogram feature shows users a distribution of the grades of the students i
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Proposed Implementation**
 
 This section describes how certain features might be implemented.
@@ -237,9 +245,9 @@ This section describes how certain features might be implemented.
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-
-
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -699,6 +707,8 @@ MSS
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
@@ -772,6 +782,8 @@ testers are expected to do more *exploratory* testing.
   * Expected: The contents of `CS2103T-T10.json` will be loaded.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Planned Enhancements**
 
