@@ -3,8 +3,6 @@ package seedu.address.logic.parser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -70,8 +68,7 @@ public class ArgumentTokenizer {
     }
 
     /**
-     * Finds the zero-based position of the prefix in the arguments string,
-     * only if the prefix is at the start of the string or preceded by whitespace.
+     * Finds the zero-based position of the prefix in the arguments string.
      *
      * @param argsString Arguments string of the form:
      *                   {@code preamble <prefix>value <prefix>value ...}
@@ -81,15 +78,8 @@ public class ArgumentTokenizer {
      *         not found
      */
     private static int findPrefixPosition(String argsString, String prefix, int fromIndex) {
-        String regex = "(?<=^|\\s)" + Pattern.quote(prefix);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(argsString);
-
-        if (matcher.find(fromIndex)) {
-            return matcher.start();
-        }
-
-        return -1;
+        int prefixIndex = argsString.indexOf(prefix, fromIndex); // Simplified search
+        return prefixIndex == -1 ? -1 : prefixIndex; // Return position directly
     }
 
     /**
@@ -132,10 +122,10 @@ public class ArgumentTokenizer {
      * The end position of the value is determined by {@code nextPrefixPosition}.
      */
     private static String extractArgumentValue(String argsString,
-                                               PrefixPosition currentPrefixPosition,
-                                               PrefixPosition nextPrefixPosition) {
+            PrefixPosition currentPrefixPosition,
+            PrefixPosition nextPrefixPosition) {
         Prefix prefix = currentPrefixPosition.getPrefix();
-        int valueStartPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length();
+        int valueStartPos = currentPrefixPosition.getStartPosition() + prefix.getPrefix().length() + 1; // +1 for space
         return argsString.substring(valueStartPos, nextPrefixPosition.getStartPosition()).trim();
     }
 
@@ -143,7 +133,7 @@ public class ArgumentTokenizer {
      * Represents a prefix's position in an arguments string.
      */
     private static class PrefixPosition {
-        private final int startPosition;
+        private int startPosition;
         private final Prefix prefix;
 
         PrefixPosition(Prefix prefix, int startPosition) {
@@ -159,4 +149,5 @@ public class ArgumentTokenizer {
             return prefix;
         }
     }
+
 }
