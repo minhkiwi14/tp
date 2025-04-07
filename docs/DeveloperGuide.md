@@ -79,6 +79,7 @@ The bulk of the app's work is done by the following four components:
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete /id A0111111N`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="900" />
+<br>
 
 Each of the four main components (also shown in the diagram above),
 
@@ -144,8 +145,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="750" />
-
+<puml src="diagrams/ModelClassDiagram.puml" width="1200" />
 
 The `Model` component,
 
@@ -158,7 +158,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Note` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Note` object per unique note, instead of each `Person` needing their own `Note` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="800" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="600" />
 
 </box>
 
@@ -192,7 +192,7 @@ The file save feature allows users to save the current state of the address book
 
 The following sequence is illustrated below.
 
-<puml src="diagrams/FileSaveSequenceDiagram.puml" width="800" />
+<puml src="diagrams/FileSaveSequenceDiagram.puml" width="900" />
 
 <br>
 
@@ -204,7 +204,7 @@ The file load feature allows users to load a previously saved state of the addre
 
 The following sequence is illustrated below
 
-<puml src="diagrams/FileLoadSequenceDiagram.puml" width="800" />
+<puml src="diagrams/FileLoadSequenceDiagram.puml" width="900" />
 
 <br>
 
