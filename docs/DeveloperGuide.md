@@ -4,6 +4,8 @@
 
 ## Table of Contents
 
+The table of contents cover the sections in this Developer Guide.
+
 - [Acknowledgements](#acknowledgements)
 - [Setting up, getting started](#setting-up-getting-started)
 - [Design](#design)
@@ -13,7 +15,12 @@
   - [Model Component](#model-component)
   - [Storage Component](#storage-component)
   - [Common Classes](#common-classes)
+- [Implementation](#implementation)
+  - [File Save Feature](#file-save-feature)
+  - [File Load Feature](#file-load-feature)
+  - [Histogram Feature](#histogram-feature)
 - [Proposed Implementation](#proposed-implementation)
+  - [Design considerations](#design-considerations)
 - [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product Scope](#product-scope)
@@ -22,6 +29,11 @@
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Glossary](#glossary)
 - [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+  - [Launch and shutdown](#launch-and-shutdown)
+  - [Deleting a person](#deleting-a-person)
+  - [Visualizing Grade Histogram](#visualizing-grade-histogram)
+  - [Save and Load from a Save File](#save-and-load-from-a-save-file)
+- [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -66,12 +78,12 @@ The bulk of the app's work is done by the following four components:
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete /id A0111111N`.
 
-<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
+<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="900" />
 
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class, which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -132,7 +144,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="750" />
 
 
 The `Model` component,
@@ -144,9 +156,9 @@ The `Model` component,
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Note` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Note` object per unique note, instead of each `Person` needing their own `Note` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="800" />
 
 </box>
 
@@ -168,9 +180,49 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Implementation**
+
+This sections describes some noteworthy details on how certain features are implemented.
+
+### File Save Feature
+
+**API** : [`FileCommand.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/commands/FileCommand.java)
+
+The file save feature allows users to save the current state of the address book to a specified file in the `data` directory. This ensures that users can maintain multiple save files for different contexts (e.g., different classes or groups). The sequence diagram below illustrates the interactions within the system when the `file /save` command is executed.
+
+The following sequence is illustrated below.
+
+<puml src="diagrams/FileSaveSequenceDiagram.puml" width="800" />
+
+<br>
+
+### File Load Feature
+
+**API** : [`FileCommand.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/logic/commands/FileCommand.java)
+
+The file load feature allows users to load a previously saved state of the address book from a specified file in the `data` directory. This enables users to switch between different save files seamlessly. The sequence diagram below illustrates the interactions within the system when the `file /load` command is executed.
+
+The following sequence is illustrated below
+
+<puml src="diagrams/FileLoadSequenceDiagram.puml" width="800" />
+
+<br>
+
+### Histogram feature
+
+**API** : [`Histogram.java`](https://github.com/AY2425S2-CS2103T-T10-3/tp/blob/master/src/main/java/seedu/address/ui/Histogram.java)
+
+The histogram feature is done... The following sequence is illustrated below
+
+<puml src="diagrams/.puml" width="550" />
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Proposed Implementation**
 
-This section describes some noteworthy details on how certain features might be implemented.
+This section describes how certain features might be implemented.
 
 #### Design considerations:
 
@@ -251,7 +303,7 @@ This section describes some noteworthy details on how certain features might be 
 
 <br>
 
-**<u>Use case: Add a student</u>**
+**<u>UC1: Add a student</u>**
 
 **MSS**
 
@@ -267,7 +319,8 @@ This section describes some noteworthy details on how certain features might be 
 
   * 1a1. BetterCallTA sets fields where information is not given to their default values.
 
-    Use case resumes at step 2.
+      Use case ends.
+
 
 * 2a. Student ID has incorrect format.
 
@@ -319,7 +372,7 @@ This section describes some noteworthy details on how certain features might be 
 
 <br>
 
-**<u>Use case: Delete a student</u>**
+**<u>UC2: Delete a student</u>**
 
 **MSS**
 
@@ -334,17 +387,15 @@ This section describes some noteworthy details on how certain features might be 
 
 * 2a. The list is empty.
 
-  Use case ends.
-
 * 3a. The given student ID is invalid.
 
   * 3a1. BetterCallTA shows an error message, specifying that the student ID has an incorrect format.
 
-    Use case resumes at step 2.
+    Use case ends.
 
 <br>
 
-**<u>Use case: Edit a student</u>**
+**<u>UC3: Edit a student</u>**
 
 **MSS**
 
@@ -418,13 +469,13 @@ This section describes some noteworthy details on how certain features might be 
 
 <br>
 
-**<u>Use case: Clear the list</u>**
+**<u>UC4: Clear the list</u>**
 
 **MSS**
 
-1. User requests to clear the list.
-2. BetterCallTA checks if there are any records in the list.
-3. BetterCallTA clears the list of all records, leaving it empty.
+1. User requests to clear the list
+2. BetterCallTA checks if there are any records in the list
+3. BetterCallTA clears the list of all records, leaving it empty
 
    Use case ends.
 
@@ -434,16 +485,16 @@ This section describes some noteworthy details on how certain features might be 
 
   * 2a1. BetterCallTA shows an error message.
 
-  * 2a2. Use case ends.
+    Use case ends.
 
 <br>
 
-**<u>Use case: Find students(s) from keywords</u>**
+**<u>UC5: Find students(s) from keywords</u>**
 
 **MSS**
 
-1.  User requests to show students with name/id/course matching the provided keyword(s) (demarcated by space).
-2. BetterCallTA checks the validity of provided keywords.
+1.  User requests to show students with name/id/course matching the provided keyword(s) (separated by space).
+2.  BetterCallTA checks the validity of provided keywords.
 3.  BetterCallTA shows a list composed of students, each of them having their name/id/course match at least one of the keywords.
 
     Use case ends.
@@ -454,22 +505,22 @@ This section describes some noteworthy details on how certain features might be 
 
   * 2a1. An empty list is displayed.
 
-  Use case ends.
+    Use case ends.
 
 * 2b. The keyword(s) do not match the name/id/course of any student.
   * 2b1. An empty list is displayed.
 
-  Use case ends.
+    Use case ends.
 
 * 2c. User does not provide any keywords to the command.
 
   * 2c1. BetterCallTA shows an error message.
 
-  Use case ends.
+    Use case ends.
 
 <br>
 
-**<u>Use case: Sorting the list</u>**
+**<u>UC6: Sorting the list</u>**
 
 MSS
 
@@ -479,34 +530,34 @@ MSS
 
    Use case ends.
 
-Extensions
+**Extensions**
 
-2a. The student list is empty
-2a1. An empty list is displayed
+* 2a. The student list is empty.
 
-Use case ends
+  * 2a1. An empty list is displayed.
 
-2b. The given keyword is invalid
-2b1. BetterCallTA shows an error message.
+    Use case ends.
 
-  Use case ends
+* 2b. The given keyword is invalid.
 
-2c. No keyword is entered
-2c1. BetterCallTA shows an error message.
+  * 2b1. BetterCallTA shows an error message.
 
-  Use case ends
+    Use case ends.
 
-2d. Multiple keywords are entered
-2d1. BetterCallTA shows an error message
+* 2c. No keyword is entered.
+  * 2c1. BetterCallTA shows an error message.
 
-  Use case ends
+    Use case ends.
+
+* 2d. Multiple keywords are entered.
+  * 2d1. BetterCallTA shows an error message.
+
+    Use case ends.
 
 <br>
 
 
-
-
-**<u>Use case: List all students</u>**
+**<u>UC7: List all students</u>**
 
 **MSS**
 
@@ -524,12 +575,12 @@ Use case ends
 
 <br>
 
-**<u>Use case: Save Data</u>**
+**<u>UC8: Save Data</u>**
 
 **Preconditions: BetterCallTA is running and has data to be saved.</u>**
 
 **MSS**
-1. User requests to save a file with the `file /save`  command
+1. User requests to save a file
 2. System validates the filename
 3. System writes the current data to the specified file
 4. System displays confirmation message that data was saved successfully
@@ -540,26 +591,24 @@ Use case ends
 
 * 2a. Filename is invalid.
 
-  * 2a1. System displays error message about invalid filename format
+  * 2a1. System displays error message about invalid filename format.
 
-  * 2a2. Use case resumes at step 1
+    Use case ends.
 
-* 3a. File cannot be written (e.g., permission issues)
+* 3a. File cannot be written (e.g., permission issues).
 
-  * 3a1. System displays error message about unable to save
+  * 3a1. System displays error message about unable to save.
 
-  * 3a2. Use case resumes at step 1.
-
-Use case ends.
+    Use case ends.
 
 <br>
 
-**<u>Use case: Load Data</u>**
+**<u>UC9: Load Data</u>**
 
 **Preconditions: The specified save file exists and is accessible.</u>**
 
 **MSS**
-1. User requests to load a file with the `file /load` command
+1. User requests to load a file
 2. System validates the filename and checks if the file exists
 3. System reads the data from the specified file
 4. System loads the data into BetterCallTA
@@ -569,33 +618,31 @@ Use case ends.
 
 **Extensions**
 
-* 2a. Filename is invalid or missing
+* 2a. Filename is invalid or missing.
 
   * 2a1. System displays an error message about invalid filename format.
 
-  * 2a2. Use case resumes at step 1
+    Use case ends.
 
-* 3a. Specified file does not exist
+* 3a. Specified file does not exist.
 
-  * 3a1. System displays error message about unable to save
+  * 3a1. System displays error message about unable to save the file.
 
-  * 3a2. Use case resumes at step 1.
-
-Use case ends.
+    Use case ends.
 
 <br>
 
-**<u>Use case: List all Saved Files</u>**
+**<u>UC10: List all Saved Files</u>**
 
 **MSS**
-1. User enters the command `file /list all`
-2. System scans the designated save directory `[application/data/*] for valid files
+1. User enters the command
+2. System scans the designated save directory for valid files
 3. System compiles a list of saved files
 4. System displays the list of files in a readable format
 
 <br>
 
-**<u>Use case: See usage instructions</u>**
+**<u>UC11: See usage instructions</u>**
 
 **MSS**
 
@@ -606,35 +653,34 @@ Use case ends.
 
 <br>
 
-**<u>Use case: Reset all students’ attendance and participation status</u>**
+**<u>UC12: Reset all students’ attendance and participation status</u>**
 
 **MSS**
 
 1. User requests to reset all attendance and participation status.
-2. BetterCallTA sets the attendance and participation status of all students to `UNMARKED`.
+2. BetterCallTA sets the attendance and participation status of all students to unmarked.
 3. BetterCallTA shows the confirmation message.
 
-Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 1a. The student list is empty.
 
-  * 1a1. BetterCallTA shows the error message `No contacts to reset - the address book is empty.`
+  * 1a1. BetterCallTA shows the error message specifying that the list is empty.
 
-  * 1a2. Use case ends.
+    Use case ends.
 
 * 1b. All students' statuses are already unmarked (no changes needed).
 
-  * 1b1. BetterCallTA shows the error message `No records to reset - all students' attendance and participation are already unmarked.`
+  * 1b1. BetterCallTA shows the error message that all students' status are already unmarked.
 
-  * 1b2. Use case ends.
-
+    Use case ends.
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
 3.  A user with above-average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
@@ -751,9 +797,6 @@ This section contains Planned Enhancements of future enhancements for BetterCall
 
 **5. Allow deletion of save files from BetterCallTA**
 
-* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory. 
+* Currently, there are no means to delete a save file as saved with the `file /save SAVE_FILE` command. Users would need to manually delete the file on their local system if they wish to do so. In the future, we will introduce means to delete save files in the `data` directory.
 
 --------------------------------------------------------------------------------------------------------------------
-
-
-
