@@ -192,7 +192,9 @@ The file save feature allows users to save the current state of the address book
 
 The following sequence is illustrated below.
 
-<puml src="diagrams/FileSaveSequenceDiagram.puml" width="600" />
+<puml src="diagrams/FileSaveSequenceDiagram.puml" width="800" />
+
+<br>
 
 ### File Load Feature
 
@@ -202,7 +204,9 @@ The file load feature allows users to load a previously saved state of the addre
 
 The following sequence is illustrated below
 
-<puml src="diagrams/FileLoadSequenceDiagram.puml" width="600" />
+<puml src="diagrams/FileLoadSequenceDiagram.puml" width="800" />
+
+<br>
 
 ### Histogram feature
 
@@ -211,6 +215,8 @@ The following sequence is illustrated below
 The histogram feature is done... The following sequence is illustrated below
 
 <puml src="diagrams/.puml" width="550" />
+
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
