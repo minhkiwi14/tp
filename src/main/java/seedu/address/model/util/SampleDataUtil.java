@@ -22,12 +22,12 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[]{
             new Person(new Id("A0123456N"), new Name("Walter White"), new Phone("12345678"),
-            new Email("walter.w@example.com"), new Course("HS2915"), new Attendance("PRESENT"),
-            new Participation("EXCELLENT"), new Grade(98),
+                new Email("walter.w@example.com"), new Course("HS2915"), new Attendance("PRESENT"),
+                new Participation("EXCELLENT"), new Grade(98),
             List.of(new Note("Requested for a meeting"), new Note("Will be absent next week"))),
             new Person(new Id("A0123457N"), new Name("Jesse Pinkman"), new Phone("87654321"),
-            new Email("jesse.p@example.com"), new Course("HS2915"), new Attendance("PRESENT"),
-            new Participation("GOOD"), new Grade(96), List.of())
+                new Email("jesse.p@example.com"), new Course("HS2915"), new Attendance("PRESENT"),
+                new Participation("GOOD"), new Grade(96), List.of())
         };
     }
 
